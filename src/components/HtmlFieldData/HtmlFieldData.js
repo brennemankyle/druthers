@@ -2,17 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 let HtmlFieldData = (props) => {
-  return <input type="hidden" name={props.name} value={props.data.join(',')} />
+  return <input type="hidden" name={props.name} value={props.selected.join(',')} />
 }
 
 HtmlFieldData.defaultProps = {
   name: '',
-  data: [],
+  selected: [],
 }
 
 HtmlFieldData.propTypes = {
   name: PropTypes.string,
-  data: PropTypes.array,
+  selected: PropTypes.array,
 }
 
 export default HtmlFieldData
