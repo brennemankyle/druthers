@@ -8,24 +8,35 @@ import Option from '../Option/Option'
 import PropTypes from 'prop-types'
 
 let Takey = (props) => {
+  let {
+    HtmlFieldData,
+    Selected,
+    Options,
+    SingleSelected,
+    MultipleSelected,
+    Option,
+  } = props.components
+
   return [
-    <props.components.HtmlFieldData
+    <HtmlFieldData
       name={props.name}
       selected={props.selected}
       key='HtmlFieldData' />,
-    <props.components.Selected
+    <Selected
       selected={props.selected}
       placeholder={props.placeholder}
       multiple={props.multiple}
       key='Selected'
       components={{
-        SingleSelected: props.components.SingleSelected,
-        MultipleSelected: props.components.MultipleSelected,
+        SingleSelected,
+        MultipleSelected,
       }} />,
-    <props.components.Options
+    <Options
       options={props.options}
       key='Options'
-      components={{Option: props.components.Option}} />,
+      components={{
+        Option
+      }} />,
   ]
 }
 

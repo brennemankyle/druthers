@@ -2,7 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 let Options = (props) => {
-  return props.options.map((option) => <props.components.Option option={option} key={option.value} />)
+  let { Option } = props.components
+
+  return props.options.map((option) => <Option option={option} key={option.value} />)
 }
 
 Options.defaultProps = {
