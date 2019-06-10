@@ -18,7 +18,7 @@ Options.propTypes = {
   ),
   components: PropTypes.shape({
     Option: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
-  }),
+  }).isRequired,
 }
 
 export default Options
