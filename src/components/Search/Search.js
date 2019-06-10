@@ -4,14 +4,15 @@ import PropTypes from 'prop-types'
 let Search = (props) => {
   return <input
     type="text"
-    placeholder={props.searchText}
+    placeholder={props.searchPlaceholder}
     onFocus={props.onFocus}
     onBlur={props.onBlur}
+    onChange={props.onChange}
     key="search" />
 }
 
 Search.propTypes = {
-  searchText: PropTypes.string.isRequired,
+  searchPlaceholder: PropTypes.string.isRequired,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
 }

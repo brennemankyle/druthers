@@ -18,7 +18,7 @@ let options = [
 
 let placeholder = 'Placeholder'
 
-function App() {
+let App = () => {
   return (
     <div className="App">
       <h1>Single</h1>

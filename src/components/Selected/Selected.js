@@ -9,6 +9,8 @@ let Selected = (props) => {
 
 Selected.propTypes = {
   selected: PropTypes.array.isRequired,
+  searchText: PropTypes.string.isRequired,
+  searchPlaceholder: PropTypes.string.isRequired,
   onFocus: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
   components: PropTypes.shape({

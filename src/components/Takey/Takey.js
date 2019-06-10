@@ -10,6 +10,7 @@ import PropTypes from 'prop-types'
 
 let Takey = (props) => {
   const [areOptionsOpen, setAreOptionsOpen] = useState(false)
+  const [searchText, setSearchText] = useState('')
 
   let {
     HtmlFieldData,
@@ -30,9 +31,11 @@ let Takey = (props) => {
       selected={props.selected}
       placeholder={props.placeholder}
       multiple={props.multiple}
-      searchText={props.searchText}
+      searchPlaceholder={props.searchPlaceholder}
+      searchText={searchText}
       onFocus={() => setAreOptionsOpen(true)}
       onBlur={() => setAreOptionsOpen(false)}
+      onSearch={(e) => setSearchText(e.target.value)}
       key='Selected'
       components={{
         SingleSelected,
@@ -43,7 +46,9 @@ let Takey = (props) => {
       options={props.options}
       multiple={props.multiple}
       areOptionsOpen={areOptionsOpen}
-      searchText={props.searchText}
+      searchPlaceholder={props.searchPlaceholder}
+      searchText={searchText}
+      onSearch={(e) => setSearchText(e.target.value)}
       key='Options'
       components={{
         Option,
@@ -64,7 +69,7 @@ Takey.defaultProps = {
   minSelectedCount: -1,
   removeSelected: true,
   searchOptions: true,
-  searchText: '...search',
+  searchPlaceholder: '...search',
 
   components: {
     HtmlFieldData: HtmlFieldData,
