@@ -8,7 +8,7 @@ let SelectionList = (props) => {
     tabIndex={props.onFocus && '0'}
     onFocus={props.onFocus}
     onBlur={props.onBlur}>
-      { props.selection
+      { props.selection.length
         ? props.selection.map((item) => <Selection selectionItem={item} key={item.value} />)
         : props.placeholder}</ul>
 }

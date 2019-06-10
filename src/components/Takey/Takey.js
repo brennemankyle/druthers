@@ -20,6 +20,14 @@ let Takey = (props) => {
     Search,
   } = props.components
 
+  let RenderSearch = <Search
+    searchPlaceholder={props.placeholder}
+    searchText={searchText}
+    onFocus={() => setAreOptionsOpen(true)}
+    onBlur={() => setAreOptionsOpen(false)}
+    onChange={(e) => setSearchText(e.target.value)}
+    key="Search" />
+
   let MultiSelection = [
     <SelectionList
       selection={props.selection}
@@ -27,40 +35,20 @@ let Takey = (props) => {
       components={{
         Selection,
       }} />,
-    <Search
-      searchPlaceholder={props.placeholder}
-      searchText={props.searchText}
-      onFocus={() => setAreOptionsOpen(true)}
-      onBlur={() => setAreOptionsOpen(false)}
-      onChange={(e) => setSearchText(e.target.value)}
-      key="Search" />
+    RenderSearch
   ]
 
-  let SingleSelection = <SelectionList
-    selection={props.selection}
-    key='SelectionList'
-    placeholder={props.placeholder}
-    onFocus={() => setAreOptionsOpen(true)}
-    onBlur={() => setAreOptionsOpen(false)}
-    components={{
-      Selection,
-    }} />
-
-  let OptionsContainer = [
-    !props.multiple && <Search
-      searchPlaceholder={props.searchPlaceholder}
-      searchText={props.searchText}
-      onChange={(e) => setSearchText(e.target.value)}
-      key="Search" />,
-    <Options
-      options={props.options}
-      multiple={props.multiple}
-      searchText={searchText}
-      key='Options'
+  let SingleSelection = areOptionsOpen
+    ? RenderSearch
+    : <SelectionList
+      selection={props.selection}
+      key='SelectionList'
+      placeholder={props.placeholder}
+      onFocus={() => setAreOptionsOpen(true)}
+      onBlur={() => setAreOptionsOpen(false)}
       components={{
-        Option,
+        Selection,
       }} />
-    ]
 
   return [
     // Hidden form field
@@ -73,7 +61,14 @@ let Takey = (props) => {
     props.multiple ? MultiSelection : SingleSelection,
 
     // Options
-    areOptionsOpen && OptionsContainer,
+    areOptionsOpen && !!props.options.length && <Options
+      options={props.options}
+      multiple={props.multiple}
+      searchText={searchText}
+      key='Options'
+      components={{
+        Option,
+      }} />,
   ]
 }
 

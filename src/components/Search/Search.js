@@ -8,6 +8,7 @@ let Search = (props) => {
     onFocus={props.onFocus}
     onBlur={props.onBlur}
     onChange={props.onChange}
+    value={props.searchText}
     key="search" />
 }
 
