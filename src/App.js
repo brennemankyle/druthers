@@ -21,24 +21,17 @@ let placeholder = 'Placeholder'
 function App() {
   return (
     <div className="App">
-      <header>Takey</header>
-      <br />
-
-      <label>Single</label>
+      <h1>Single</h1>
       <Takey selected={selectedSingle} options={options} placeholder={placeholder} />
-      <br />
 
-      <label>Multiple</label>
+      <h1>Multiple</h1>
       <Takey selected={selectedMultiple} options={options} placeholder={placeholder} multiple={true} />
-      <br />
 
-      <label>Create Single</label>
+      <h1>Create Single</h1>
       <Takey selected={selectedSingle} options={options} placeholder={placeholder} creatable={true} />
-      <br />
 
-      <label>Create Multiple</label>
+      <h1>Create Multiple</h1>
       <Takey selected={selectedMultiple} options={options} placeholder={placeholder} creatable={true} multiple={true} />
-      <br />
     </div>
   )
 }
