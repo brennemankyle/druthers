@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import HtmlFieldData from '../HtmlFieldData/HtmlFieldData'
 import Selection from '../Selection/Selection'
+import SelectionList from '../SelectionList/SelectionList'
 import Options from '../Options/Options'
 import Option from '../Option/Option'
 import Search from '../Search/Search'
@@ -13,37 +14,44 @@ let Takey = (props) => {
   let {
     HtmlFieldData,
     Selection,
+    SelectionList,
     Options,
     Option,
     Search,
   } = props.components
 
   let MultiSelection = [
-    <Selection
+    <SelectionList
       selection={props.selection}
-      key='Selection' />,
+      key='SelectionList'
+      components={{
+        Selection,
+      }} />,
     <Search
       searchPlaceholder={props.placeholder}
       searchText={props.searchText}
       onFocus={() => setAreOptionsOpen(true)}
       onBlur={() => setAreOptionsOpen(false)}
       onChange={(e) => setSearchText(e.target.value)}
-      key="search" />
+      key="Search" />
   ]
 
-  let SingleSelection = <Selection
+  let SingleSelection = <SelectionList
     selection={props.selection}
+    key='SelectionList'
     placeholder={props.placeholder}
     onFocus={() => setAreOptionsOpen(true)}
     onBlur={() => setAreOptionsOpen(false)}
-    key='Selection' />
+    components={{
+      Selection,
+    }} />
 
   let OptionsContainer = [
     !props.multiple && <Search
       searchPlaceholder={props.searchPlaceholder}
       searchText={props.searchText}
       onChange={(e) => setSearchText(e.target.value)}
-      key="search" />,
+      key="Search" />,
     <Options
       options={props.options}
       multiple={props.multiple}
@@ -55,6 +63,7 @@ let Takey = (props) => {
     ]
 
   return [
+    // Hidden form field
     <HtmlFieldData
       name={props.name}
       selection={props.selection}
@@ -85,6 +94,7 @@ Takey.defaultProps = {
   components: {
     HtmlFieldData: HtmlFieldData,
     Selection: Selection,
+    SelectionList: SelectionList,
     Options: Options,
     Option: Option,
     Search: Search,
@@ -93,8 +103,18 @@ Takey.defaultProps = {
 
 Takey.propTypes = {
   name: PropTypes.string,
-  selection: PropTypes.array,
-  options: PropTypes.array,
+  selection: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    })
+  ),
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    })
+  ),
   placeholder: PropTypes.string,
   multiple: PropTypes.bool,
   creatable: PropTypes.bool,
@@ -107,6 +127,7 @@ Takey.propTypes = {
   components: PropTypes.shape({
     HtmlFieldData: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
     Selection: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+    SelectionList: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
     Options: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
     Option: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
     Search: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),

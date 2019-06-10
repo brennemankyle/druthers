@@ -3,12 +3,12 @@ import './App.css'
 import Takey from './components/Takey/Takey'
 
 let selectionMultiple = [
-  '1',
-  '2',
+  {value: '1', label: 'Option 1'},
+  {value: '2', label: 'Option 2'},
 ]
 
 let selectionSingle = [
-  '1'
+  {value: '1', label: 'Option 1'}
 ]
 
 let options = [

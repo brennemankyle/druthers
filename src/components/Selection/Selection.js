@@ -2,21 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 let Selection = (props) => {
-  return <span
-    tabIndex={props.onFocus && '0'}
-    onFocus={props.onFocus}
-    onBlur={props.onBlur}>{props.selection.join(', ') || props.placeholder}</span>
-}
-
-Selection.defaultProps = {
-  placeholder: '',
+  return <li data-value={props.selectionItem.value}>{props.selectionItem.label}</li>
 }
 
 Selection.propTypes = {
-  selection: PropTypes.array.isRequired,
-  placeholder: PropTypes.string,
-  onFocus: PropTypes.func,
-  onBlur: PropTypes.func,
+  selectionItem: PropTypes.shape({
+    value: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+  }),
 }
 
 export default Selection
