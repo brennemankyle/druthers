@@ -6,16 +6,18 @@ let MultipleSelected = (props) => {
 
   return [
     props.selected && <span key="selected">{props.selected.join(', ')}</span>,
-    <Search searchText={props.searchText} key="search" />,
+    <Search
+      searchText={props.searchText}
+      onFocus={props.onFocus}
+      onBlur={props.onBlur}
+      key="search" />,
   ]
 }
 
-MultipleSelected.defaultProps = {
-  selected: [],
-}
-
 MultipleSelected.propTypes = {
-  selected: PropTypes.array,
+  selected: PropTypes.array.isRequired,
+  onFocus: PropTypes.func.isRequired,
+  onBlur: PropTypes.func.isRequired,
 }
 
 export default MultipleSelected

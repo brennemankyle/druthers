@@ -7,12 +7,10 @@ let Selected = (props) => {
   return <Component {...props} />
 }
 
-Selected.defaultProps = {
-  selected: [],
-}
-
 Selected.propTypes = {
-  selected: PropTypes.array,
+  selected: PropTypes.array.isRequired,
+  onFocus: PropTypes.func.isRequired,
+  onBlur: PropTypes.func.isRequired,
   components: PropTypes.shape({
     SingleSelected: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
     MultipleSelected: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,

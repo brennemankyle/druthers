@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import HtmlFieldData from '../HtmlFieldData/HtmlFieldData'
 import Selected from '../Selected/Selected'
 import SingleSelected from '../SingleSelected/SingleSelected'
@@ -9,6 +9,8 @@ import Search from '../Search/Search'
 import PropTypes from 'prop-types'
 
 let Takey = (props) => {
+  const [areOptionsOpen, setAreOptionsOpen] = useState(false)
+
   let {
     HtmlFieldData,
     Selected,
@@ -29,6 +31,8 @@ let Takey = (props) => {
       placeholder={props.placeholder}
       multiple={props.multiple}
       searchText={props.searchText}
+      onFocus={() => setAreOptionsOpen(true)}
+      onBlur={() => setAreOptionsOpen(false)}
       key='Selected'
       components={{
         SingleSelected,
@@ -38,6 +42,7 @@ let Takey = (props) => {
     <Options
       options={props.options}
       multiple={props.multiple}
+      areOptionsOpen={areOptionsOpen}
       searchText={props.searchText}
       key='Options'
       components={{
