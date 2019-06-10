@@ -2,9 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 let Options = (props) => {
-  let { Option } = props.components
+  let { Option, Search } = props.components
 
-  return props.options.map((option) => <Option option={option} key={option.value} />)
+  return [
+    !props.multiple && <Search searchText={props.searchText} key="search" />,
+    props.options.map((option) => <Option option={option} key={option.value} />)
+  ]
 }
 
 Options.defaultProps = {

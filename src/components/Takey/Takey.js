@@ -5,6 +5,7 @@ import SingleSelected from '../SingleSelected/SingleSelected'
 import MultipleSelected from '../MultipleSelected/MultipleSelected'
 import Options from '../Options/Options'
 import Option from '../Option/Option'
+import Search from '../Search/Search'
 import PropTypes from 'prop-types'
 
 let Takey = (props) => {
@@ -15,6 +16,7 @@ let Takey = (props) => {
     SingleSelected,
     MultipleSelected,
     Option,
+    Search,
   } = props.components
 
   return [
@@ -26,16 +28,21 @@ let Takey = (props) => {
       selected={props.selected}
       placeholder={props.placeholder}
       multiple={props.multiple}
+      searchText={props.searchText}
       key='Selected'
       components={{
         SingleSelected,
         MultipleSelected,
+        Search,
       }} />,
     <Options
       options={props.options}
+      multiple={props.multiple}
+      searchText={props.searchText}
       key='Options'
       components={{
-        Option
+        Option,
+        Search,
       }} />,
   ]
 }
@@ -52,6 +59,7 @@ Takey.defaultProps = {
   minSelectedCount: -1,
   removeSelected: true,
   searchOptions: true,
+  searchText: '...search',
 
   components: {
     HtmlFieldData: HtmlFieldData,
@@ -60,6 +68,7 @@ Takey.defaultProps = {
     MultipleSelected: MultipleSelected,
     Options: Options,
     Option: Option,
+    Search: Search,
   },
 }
 
@@ -83,6 +92,7 @@ Takey.propTypes = {
     MultipleSelected: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
     Options: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
     Option: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+    Search: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
   }),
 }
 

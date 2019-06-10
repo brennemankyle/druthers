@@ -2,9 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 let MultipleSelected = (props) => {
+  let { Search } = props.components
+
   return [
-    props.selected && <div key="selected">{props.selected.join(', ')}</div>,
-    <input type="text" value={props.placeholder} key="search" />,
+    props.selected && <span key="selected">{props.selected.join(', ')}</span>,
+    <Search searchText={props.searchText} key="search" />,
   ]
 }
 
