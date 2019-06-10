@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import HtmlFieldData from '../HtmlFieldData/HtmlFieldData'
-import Selected from '../Selected/Selected'
-import SingleSelected from '../SingleSelected/SingleSelected'
-import MultipleSelected from '../MultipleSelected/MultipleSelected'
+import Selection from '../Selection/Selection'
 import Options from '../Options/Options'
 import Option from '../Option/Option'
 import Search from '../Search/Search'
@@ -14,68 +12,79 @@ let Takey = (props) => {
 
   let {
     HtmlFieldData,
-    Selected,
+    Selection,
     Options,
-    SingleSelected,
-    MultipleSelected,
     Option,
     Search,
   } = props.components
 
-  return [
-    <HtmlFieldData
-      name={props.name}
-      selected={props.selected}
-      key='HtmlFieldData' />,
-    <Selected
-      selected={props.selected}
-      placeholder={props.placeholder}
-      multiple={props.multiple}
-      searchPlaceholder={props.searchPlaceholder}
-      searchText={searchText}
+  let MultiSelection = [
+    <Selection
+      selection={props.selection}
+      key='Selection' />,
+    <Search
+      searchPlaceholder={props.placeholder}
+      searchText={props.searchText}
       onFocus={() => setAreOptionsOpen(true)}
       onBlur={() => setAreOptionsOpen(false)}
-      onSearch={(e) => setSearchText(e.target.value)}
-      key='Selected'
-      components={{
-        SingleSelected,
-        MultipleSelected,
-        Search,
-      }} />,
+      onChange={(e) => setSearchText(e.target.value)}
+      key="search" />
+  ]
+
+  let SingleSelection = <Selection
+    selection={props.selection}
+    placeholder={props.placeholder}
+    onFocus={() => setAreOptionsOpen(true)}
+    onBlur={() => setAreOptionsOpen(false)}
+    key='Selection' />
+
+  let OptionsContainer = [
+    !props.multiple && <Search
+      searchPlaceholder={props.searchPlaceholder}
+      searchText={props.searchText}
+      onChange={(e) => setSearchText(e.target.value)}
+      key="search" />,
     <Options
       options={props.options}
       multiple={props.multiple}
-      areOptionsOpen={areOptionsOpen}
-      searchPlaceholder={props.searchPlaceholder}
       searchText={searchText}
-      onSearch={(e) => setSearchText(e.target.value)}
       key='Options'
       components={{
         Option,
-        Search,
-      }} />,
+      }} />
+    ]
+
+  return [
+    <HtmlFieldData
+      name={props.name}
+      selection={props.selection}
+      key='HtmlFieldData' />,
+
+    // Selection
+    props.multiple ? MultiSelection : SingleSelection,
+
+    // Options
+    areOptionsOpen && OptionsContainer,
   ]
 }
 
 Takey.defaultProps = {
   name: '',
-  selected: [],
+  selection: [],
   options: [],
   placeholder: '',
   multiple: false,
   creatable: false,
 
-  maxSelectedCount: -1,
-  minSelectedCount: -1,
-  removeSelected: true,
+  maxSelectionCount: -1,
+  minSelectionCount: -1,
+  removeSelection: true,
   searchOptions: true,
   searchPlaceholder: '...search',
 
   components: {
     HtmlFieldData: HtmlFieldData,
-    Selected: Selected,
-    SingleSelected: SingleSelected,
-    MultipleSelected: MultipleSelected,
+    Selection: Selection,
     Options: Options,
     Option: Option,
     Search: Search,
@@ -84,22 +93,20 @@ Takey.defaultProps = {
 
 Takey.propTypes = {
   name: PropTypes.string,
-  selected: PropTypes.array,
+  selection: PropTypes.array,
   options: PropTypes.array,
   placeholder: PropTypes.string,
   multiple: PropTypes.bool,
   creatable: PropTypes.bool,
 
-  maxSelectedCount: PropTypes.number,
-  minSelectedCount: PropTypes.number,
-  removeSelected: PropTypes.bool,
+  maxSelectionCount: PropTypes.number,
+  minSelectionCount: PropTypes.number,
+  removeSelection: PropTypes.bool,
   searchOptions: PropTypes.bool,
 
   components: PropTypes.shape({
     HtmlFieldData: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
-    Selected: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
-    SingleSelected: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
-    MultipleSelected: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+    Selection: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
     Options: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
     Option: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
     Search: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
