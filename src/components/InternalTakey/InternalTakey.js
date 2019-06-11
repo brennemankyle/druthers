@@ -22,7 +22,22 @@ let InternalTakey = (props) => {
   }
   let onBlur = () => setAreOptionsOpen(false)
   let onChange = (e) => {
-    return props.onChange(e)
+    let value
+
+    if (props.multiple) {
+      value = props.selection.map((option) => option.value)
+      value.push(String(e.target.value))
+      e.target.value = value
+    }
+
+    let event = {
+      target: {
+        value: value || e.target.value,
+        name: props.name,
+      }
+    }
+
+    props.onChange(event)
   }
 
   let RenderSearch = <Search
