@@ -7,8 +7,6 @@ let options = [
   {value: '2', label: 'Option 2'},
 ]
 
-let placeholder = '...select'
-
 let App = () => {
   const [selectionSingle, setSelectionSingle] = useState()
   const [selectionMultiple, setSelectionMultiple] = useState([])
@@ -18,16 +16,16 @@ let App = () => {
   return (
     <div className="App">
       <h1>Single</h1>
-      <Takey selection={selectionSingle} onChange={(e) => setSelectionSingle(e.target.value)} options={options} placeholder={placeholder} />
+      <Takey selection={selectionSingle} onChange={(e) => setSelectionSingle(e.target.value)} options={options} />
 
       <h1>Multiple</h1>
-      <Takey selection={selectionMultiple} onChange={(e) => setSelectionMultiple(e.target.value)} options={options} placeholder={placeholder} multiple={true} />
+      <Takey selection={selectionMultiple} onChange={(e) => setSelectionMultiple(e.target.value)} options={options} multiple={true} />
 
       <h1>Create Single</h1>
-      <Takey selection={selectionSingleCreate} onChange={(e) => setSelectionSingleCreate(e.target.value)} options={options} placeholder={placeholder} creatable={true} />
+      <Takey selection={selectionSingleCreate} onChange={(e) => setSelectionSingleCreate(e.target.value)} options={options} creatable={true} />
 
       <h1>Create Multiple</h1>
-      <Takey selection={selectionMultipleCreate} onChange={(e) => setSelectionMultipleCreate(e.target.value)} options={options} placeholder={placeholder} creatable={true} multiple={true} />
+      <Takey selection={selectionMultipleCreate} onChange={(e) => setSelectionMultipleCreate(e.target.value)} options={options} creatable={true} multiple={true} />
     </div>
   )
 }

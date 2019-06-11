@@ -53,14 +53,20 @@ let InternalTakey = (props) => {
 
     props.onChange(event)
   }
+  let onKeyDown = (e) => {
+    if (e.keyCode === 13 && props.creatable) { // Enter Key
+      onChange(e)
+    }
+  }
 
   let RenderSearch = <Search
     searchPlaceholder={props.placeholder}
     searchText={searchText}
     onFocus={onFocus}
     onBlur={onBlur}
-    ref={searchRef}
+    onKeyDown={onKeyDown}
     onChange={(e) => setSearchText(e.target.value)}
+    ref={searchRef}
     key="Search" />
 
   let MultiSelection = [
@@ -130,6 +136,7 @@ InternalTakey.propTypes = {
   minSelectionCount: PropTypes.number.isRequired,
   removeSelection: PropTypes.bool,
   searchOptions: PropTypes.bool,
+  noOptionsFound: PropTypes.string,
 
   components: PropTypes.shape({
     HtmlFieldData: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]).isRequired,

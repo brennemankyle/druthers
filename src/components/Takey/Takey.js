@@ -33,7 +33,7 @@ Takey.defaultProps = {
   name: '',
   selection: [],
   options: [],
-  placeholder: '',
+  placeholder: '...select',
   multiple: false,
   creatable: false,
 
@@ -42,6 +42,7 @@ Takey.defaultProps = {
   removeSelection: true,
   searchOptions: true,
   searchPlaceholder: '...search',
+  noOptionsFound: 'No Options Found',
 
   components: {
     HtmlFieldData: HtmlFieldData,
@@ -80,6 +81,7 @@ Takey.propTypes = {
   minSelectionCount: PropTypes.number,
   removeSelection: PropTypes.bool,
   searchOptions: PropTypes.bool,
+  noOptionsFound: PropTypes.string,
 
   components: PropTypes.shape({
     HtmlFieldData: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]),

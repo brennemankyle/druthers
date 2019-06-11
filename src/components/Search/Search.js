@@ -9,6 +9,7 @@ let Search = (props, ref) => {
     onFocus={props.onFocus}
     onBlur={props.onBlur}
     onChange={props.onChange}
+    onKeyDown={props.onKeyDown}
     value={props.searchText}
     key="search" />
 }
@@ -19,6 +20,8 @@ Search.propTypes = {
   searchPlaceholder: PropTypes.string.isRequired,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
+  onChange: PropTypes.func,
+  onKeyDown: PropTypes.func,
 }
 
 export default Search
