@@ -61,8 +61,6 @@ let InternalTakey = (props) => {
     if (props.removeSelection && e.target.classList.contains('remove')) {
       let value = ''
 
-      debugger
-
       if (props.multiple) {
         value = props.selection.map((option) => option.value)
         value.splice(value.indexOf(String(e.target.value)), 1)
