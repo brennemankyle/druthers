@@ -10,14 +10,14 @@ let InternalTakey = (props) => {
 
   let filteredOptions = props.options
 
+  if (props.selection.length) {
+    filteredOptions = differenceWith(filteredOptions, props.selection, isEqual)
+  }
+
   // TODO move filtering and ording out
   if (searchText) {
     filteredOptions = filteredOptions
       .filter((option) => option.label.includes(searchText) || option.value.includes(searchText))
-  }
-
-  if (props.selection.length) {
-    filteredOptions = differenceWith(filteredOptions, props.selection, isEqual)
   }
 
   let {
