@@ -34,13 +34,17 @@ let InternalTakey = (props) => {
     onFocus()
     setTimeout(() => searchRef.current.focus()) // useEffect instead of setTimeout?
   }
-  let onBlur = () => setAreOptionsOpen(false)
-  let onChange = (e) => {
+  let onBlur = (e) => {
+    debugger
+    setAreOptionsOpen(false)
+  }
+  let onOptionClick = (e) => {
     let value = e.target.value
 
     if (props.multiple) {
       value = props.selection.map((option) => option.value)
       value.push(String(e.target.value))
+      e.preventDefault()
     }
 
     let event = {
@@ -54,7 +58,7 @@ let InternalTakey = (props) => {
   }
   let onKeyDown = (e) => {
     if (e.keyCode === 13 && props.creatable) { // Enter Key
-      onChange(e)
+      onOptionClick(e)
     }
   }
   let onRemove = (e) => {
@@ -125,7 +129,7 @@ let InternalTakey = (props) => {
     areOptionsOpen && !!filteredOptions.length && <Options
       options={filteredOptions}
       multiple={props.multiple}
-      onClick={onChange}
+      onClick={onOptionClick}
       key='Options'
       components={{
         Option,
