@@ -10,10 +10,10 @@ let options = [
 let placeholder = '...select'
 
 let App = () => {
-  const [selectionSingle, setSelectionSingle] = useState(1)
+  const [selectionSingle, setSelectionSingle] = useState()
+  const [selectionMultiple, setSelectionMultiple] = useState([])
   const [selectionSingleCreate, setSelectionSingleCreate] = useState('1')
-  const [selectionMultiple, setSelectionMultiple] = useState([1, '2'])
-  const [selectionMultipleCreate, setSelectionMultipleCreate] = useState(['1', 2])
+  const [selectionMultipleCreate, setSelectionMultipleCreate] = useState(['1'])
 
   return (
     <div className="App">

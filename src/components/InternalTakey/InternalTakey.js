@@ -1,10 +1,24 @@
 import React, { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
+import differenceWith from 'lodash/differenceWith'
+import isEqual from 'lodash/isEqual'
 
 let InternalTakey = (props) => {
   const [areOptionsOpen, setAreOptionsOpen] = useState(false)
   const [searchText, setSearchText] = useState('')
   const searchRef = useRef(null)
+
+  let filteredOptions = props.options
+
+  // TODO move filtering and ording out
+  if (searchText) {
+    filteredOptions = filteredOptions
+      .filter((option) => option.label.includes(searchText) || option.value.includes(searchText))
+  }
+
+  if (props.selection.length) {
+    filteredOptions = differenceWith(filteredOptions, props.selection, isEqual)
+  }
 
   let {
     HtmlFieldData,
@@ -82,10 +96,9 @@ let InternalTakey = (props) => {
     props.multiple ? MultiSelection : SingleSelection,
 
     // Options
-    areOptionsOpen && !!props.options.length && <Options
-      options={props.options}
+    areOptionsOpen && !!filteredOptions.length && <Options
+      options={filteredOptions}
       multiple={props.multiple}
-      searchText={searchText}
       onClick={onChange}
       key='Options'
       components={{
