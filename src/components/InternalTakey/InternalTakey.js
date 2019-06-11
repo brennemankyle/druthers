@@ -63,7 +63,7 @@ let InternalTakey = (props) => {
   }
   let onRemove = (e) => {
     if (props.removeSelection && e.target.classList.contains('remove')) {
-      let value = ''
+      let value = []
 
       if (props.multiple) {
         value = props.selection.map((option) => option.value)
