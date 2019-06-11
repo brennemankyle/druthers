@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 
-let Search = (props) => {
+let Search = (props, ref) => {
   return <input
+    ref={ref}
     type="text"
     placeholder={props.searchPlaceholder}
     onFocus={props.onFocus}
@@ -11,6 +12,8 @@ let Search = (props) => {
     value={props.searchText}
     key="search" />
 }
+
+Search = forwardRef(Search)
 
 Search.propTypes = {
   searchPlaceholder: PropTypes.string.isRequired,

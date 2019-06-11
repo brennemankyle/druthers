@@ -82,12 +82,12 @@ Takey.propTypes = {
   searchOptions: PropTypes.bool,
 
   components: PropTypes.shape({
-    HtmlFieldData: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
-    Selection: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
-    SelectionList: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
-    Options: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
-    Option: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
-    Search: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+    HtmlFieldData: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]),
+    Selection: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]),
+    SelectionList: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]),
+    Options: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]),
+    Option: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]),
+    Search: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]),
   }),
 }
 

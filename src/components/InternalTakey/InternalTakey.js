@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 
 let InternalTakey = (props) => {
   const [areOptionsOpen, setAreOptionsOpen] = useState(false)
   const [searchText, setSearchText] = useState('')
+  const searchRef = useRef(null)
 
   let {
     HtmlFieldData,
@@ -15,9 +16,12 @@ let InternalTakey = (props) => {
   } = props.components
 
   let onFocus = () => setAreOptionsOpen(true)
+  let onFocusSingleSelection = () => {
+    onFocus()
+    setTimeout(() => searchRef.current.focus()) // useEffect instead of setTimeout?
+  }
   let onBlur = () => setAreOptionsOpen(false)
   let onChange = (e) => {
-    debugger
     return props.onChange(e)
   }
 
@@ -26,6 +30,7 @@ let InternalTakey = (props) => {
     searchText={searchText}
     onFocus={onFocus}
     onBlur={onBlur}
+    ref={searchRef}
     onChange={(e) => setSearchText(e.target.value)}
     key="Search" />
 
@@ -45,7 +50,7 @@ let InternalTakey = (props) => {
       selection={props.selection}
       key='SelectionList'
       placeholder={props.placeholder}
-      onFocus={onFocus}
+      onFocus={onFocusSingleSelection}
       onBlur={onBlur}
       components={{
         Selection,
@@ -99,12 +104,12 @@ InternalTakey.propTypes = {
   searchOptions: PropTypes.bool,
 
   components: PropTypes.shape({
-    HtmlFieldData: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
-    Selection: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
-    SelectionList: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
-    Options: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
-    Option: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
-    Search: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
+    HtmlFieldData: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]).isRequired,
+    Selection: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]).isRequired,
+    SelectionList: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]).isRequired,
+    Options: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]).isRequired,
+    Option: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]).isRequired,
+    Search: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]).isRequired,
   }).isRequired,
 }
 
