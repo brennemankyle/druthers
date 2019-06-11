@@ -36,17 +36,16 @@ let InternalTakey = (props) => {
   }
   let onBlur = () => setAreOptionsOpen(false)
   let onChange = (e) => {
-    let value
+    let value = e.target.value
 
     if (props.multiple) {
       value = props.selection.map((option) => option.value)
       value.push(String(e.target.value))
-      e.target.value = value
     }
 
     let event = {
       target: {
-        value: value || e.target.value,
+        value: value,
         name: props.name,
       }
     }
@@ -56,6 +55,27 @@ let InternalTakey = (props) => {
   let onKeyDown = (e) => {
     if (e.keyCode === 13 && props.creatable) { // Enter Key
       onChange(e)
+    }
+  }
+  let onRemove = (e) => {
+    if (props.removeSelection && e.target.classList.contains('remove')) {
+      let value = ''
+
+      debugger
+
+      if (props.multiple) {
+        value = props.selection.map((option) => option.value)
+        value.splice(value.indexOf(String(e.target.value)), 1)
+      }
+
+      let event = {
+        target: {
+          value: value,
+          name: props.name,
+        }
+      }
+
+      props.onChange(event)
     }
   }
 
@@ -73,6 +93,7 @@ let InternalTakey = (props) => {
     <SelectionList
       selection={props.selection}
       key='SelectionList'
+      onClick={onRemove}
       components={{
         Selection,
       }} />,
@@ -87,6 +108,7 @@ let InternalTakey = (props) => {
       placeholder={props.placeholder}
       onFocus={onFocusSingleSelection}
       onBlur={onBlur}
+      onClick={onRemove}
       components={{
         Selection,
       }} />

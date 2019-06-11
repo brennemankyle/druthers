@@ -7,7 +7,8 @@ let SelectionList = (props) => {
   return <ul
     tabIndex={props.onFocus && '0'}
     onFocus={props.onFocus}
-    onBlur={props.onBlur}>
+    onBlur={props.onBlur}
+    onMouseDown={props.onClick}>
       { props.selection.length
         ? props.selection.map((item) => <Selection selectionItem={item} key={item.value} />)
         : props.placeholder}</ul>
@@ -27,6 +28,7 @@ SelectionList.propTypes = {
   placeholder: PropTypes.string,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
+  onClick: PropTypes.func,
   components: PropTypes.shape({
     Selection: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
   }).isRequired,
