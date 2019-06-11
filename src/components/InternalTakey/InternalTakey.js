@@ -60,6 +60,10 @@ let InternalTakey = (props) => {
     if (e.keyCode === 13 && props.creatable) { // Enter Key
       onOptionClick(e)
       setSearchText('')
+
+      if (!props.multiple) {
+        e.target.blur()
+      }
     }
   }
   let onRemove = (e) => {
