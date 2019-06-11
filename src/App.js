@@ -1,15 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './App.css'
 import Takey from './components/Takey/Takey'
-
-let selectionMultiple = [
-  {value: '1', label: 'Option 1'},
-  {value: '2', label: 'Option 2'},
-]
-
-let selectionSingle = [
-  {value: '1', label: 'Option 1'}
-]
 
 let options = [
   {value: '1', label: 'Option 1'},
@@ -19,19 +10,24 @@ let options = [
 let placeholder = '...select'
 
 let App = () => {
+  const [selectionSingle, setSelectionSingle] = useState(1)
+  const [selectionSingleCreate, setSelectionSingleCreate] = useState('1')
+  const [selectionMultiple, setSelectionMultiple] = useState([1, '2'])
+  const [selectionMultipleCreate, setSelectionMultipleCreate] = useState(['1', 2])
+
   return (
     <div className="App">
       <h1>Single</h1>
-      <Takey selection={selectionSingle} options={options} placeholder={placeholder} />
+      <Takey selection={selectionSingle} onChange={(e) => setSelectionSingle(e.target.value)} options={options} placeholder={placeholder} />
 
       <h1>Multiple</h1>
-      <Takey selection={selectionMultiple} options={options} placeholder={placeholder} multiple={true} />
+      <Takey selection={selectionMultiple} onChange={(e) => setSelectionMultiple(e.target.value)} options={options} placeholder={placeholder} multiple={true} />
 
       <h1>Create Single</h1>
-      <Takey selection={selectionSingle} options={options} placeholder={placeholder} creatable={true} />
+      <Takey selection={selectionSingleCreate} onChange={(e) => setSelectionSingleCreate(e.target.value)} options={options} placeholder={placeholder} creatable={true} />
 
       <h1>Create Multiple</h1>
-      <Takey selection={selectionMultiple} options={options} placeholder={placeholder} creatable={true} multiple={true} />
+      <Takey selection={selectionMultipleCreate} onChange={(e) => setSelectionMultipleCreate(e.target.value)} options={options} placeholder={placeholder} creatable={true} multiple={true} />
     </div>
   )
 }

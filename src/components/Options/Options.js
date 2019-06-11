@@ -12,7 +12,8 @@ let Options = (props) => {
       .filter((options) => options.label.includes(props.searchText) || options.value.includes(props.searchText))
   }
 
-  return options.map((option) => <Option option={option} key={option.value} />)
+  return <ul onMouseDown={props.onClick}>
+    {options.map((option) => <Option option={option} key={option.value} />)}</ul>
 }
 
 Options.propTypes = {
@@ -23,6 +24,7 @@ Options.propTypes = {
       label: PropTypes.string.isRequired,
     })
   ).isRequired,
+  onClick: PropTypes.func.isRequired,
   components: PropTypes.shape({
     Option: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
   }).isRequired,

@@ -1,75 +1,32 @@
-import React, { useState } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
+import InternalTakey from '../InternalTakey/InternalTakey'
 import HtmlFieldData from '../HtmlFieldData/HtmlFieldData'
 import Selection from '../Selection/Selection'
 import SelectionList from '../SelectionList/SelectionList'
 import Options from '../Options/Options'
 import Option from '../Option/Option'
 import Search from '../Search/Search'
-import PropTypes from 'prop-types'
+import castArray from 'lodash/castArray'
 
 let Takey = (props) => {
-  const [areOptionsOpen, setAreOptionsOpen] = useState(false)
-  const [searchText, setSearchText] = useState('')
+  let {selection, options, ...otherProps} = props
 
-  let {
-    HtmlFieldData,
-    Selection,
-    SelectionList,
-    Options,
-    Option,
-    Search,
-  } = props.components
+  // Stringify
+  selection = castArray(selection).map((value) => String(value))
+  options = options.map((option) => ({value: String(option.value), label: String(option.label)}))
 
-  let RenderSearch = <Search
-    searchPlaceholder={props.placeholder}
-    searchText={searchText}
-    onFocus={() => setAreOptionsOpen(true)}
-    onBlur={() => setAreOptionsOpen(false)}
-    onChange={(e) => setSearchText(e.target.value)}
-    key="Search" />
+  // Objectify
+  let massagedSelection = selection.map((value) => {
+    let option = options.find((option) => option.value === value)
 
-  let MultiSelection = [
-    <SelectionList
-      selection={props.selection}
-      key='SelectionList'
-      components={{
-        Selection,
-      }} />,
-    RenderSearch
-  ]
+    return option == null ? {value: value, label: value} : option
+  })
 
-  let SingleSelection = areOptionsOpen
-    ? RenderSearch
-    : <SelectionList
-      selection={props.selection}
-      key='SelectionList'
-      placeholder={props.placeholder}
-      onFocus={() => setAreOptionsOpen(true)}
-      onBlur={() => setAreOptionsOpen(false)}
-      components={{
-        Selection,
-      }} />
-
-  return [
-    // Hidden form field
-    <HtmlFieldData
-      name={props.name}
-      selection={props.selection}
-      key='HtmlFieldData' />,
-
-    // Selection
-    props.multiple ? MultiSelection : SingleSelection,
-
-    // Options
-    areOptionsOpen && !!props.options.length && <Options
-      options={props.options}
-      multiple={props.multiple}
-      searchText={searchText}
-      key='Options'
-      components={{
-        Option,
-      }} />,
-  ]
+  return <InternalTakey
+    selection={massagedSelection}
+    options={options}
+    {...otherProps} />
 }
 
 Takey.defaultProps = {
@@ -98,18 +55,23 @@ Takey.defaultProps = {
 
 Takey.propTypes = {
   name: PropTypes.string,
-  selection: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired,
-    })
-  ),
+  selection: PropTypes.oneOfType([
+    PropTypes.string.isRequired,
+    PropTypes.bool.isRequired,
+    PropTypes.number.isRequired,
+    PropTypes.arrayOf(PropTypes.oneOfType([
+      PropTypes.string.isRequired,
+      PropTypes.bool.isRequired,
+      PropTypes.number.isRequired,
+    ])),
+  ]),
   options: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
     })
   ),
+  onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
   multiple: PropTypes.bool,
   creatable: PropTypes.bool,

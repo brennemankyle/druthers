@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 let Option = (props) => {
-  return <div value={props.option.value}>{props.option.label}</div>
+  return <li value={props.option.value}>{props.option.label}</li>
 }
 
 Option.propTypes = {

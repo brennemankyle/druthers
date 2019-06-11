@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 let Selection = (props) => {
-  return <li data-value={props.selectionItem.value}>{props.selectionItem.label}</li>
+  return <li value={props.selectionItem.value}>{props.selectionItem.label}</li>
 }
 
 Selection.propTypes = {
