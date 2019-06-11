@@ -59,6 +59,7 @@ let InternalTakey = (props) => {
   let onKeyDown = (e) => {
     if (e.keyCode === 13 && props.creatable) { // Enter Key
       onOptionClick(e)
+      setSearchText('')
     }
   }
   let onRemove = (e) => {
