@@ -1,24 +1,13 @@
 import React, { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
-import differenceWith from 'lodash/differenceWith'
-import isEqual from 'lodash/isEqual'
+import filterOptions from '../../utils/filterOptions'
 
 let InternalTakey = (props) => {
   const [areOptionsOpen, setAreOptionsOpen] = useState(false)
   const [searchText, setSearchText] = useState('')
   const searchRef = useRef(null)
 
-  let filteredOptions = props.options
-
-  if (props.selection.length) {
-    filteredOptions = differenceWith(filteredOptions, props.selection, isEqual)
-  }
-
-  // TODO move filtering and ording out
-  if (searchText) {
-    filteredOptions = filteredOptions
-      .filter((option) => option.label.includes(searchText) || option.value.includes(searchText))
-  }
+  let filteredOptions = filterOptions(searchText, props.selection, props.options)
 
   let {
     HtmlFieldData,
@@ -35,7 +24,6 @@ let InternalTakey = (props) => {
     setTimeout(() => searchRef.current.focus()) // useEffect instead of setTimeout?
   }
   let onBlur = (e) => {
-    debugger
     setAreOptionsOpen(false)
   }
   let onOptionClick = (e) => {
