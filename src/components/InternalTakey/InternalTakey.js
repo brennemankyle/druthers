@@ -1,13 +1,12 @@
 import React, { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
-import filterOptions from '../../utils/filterOptions'
 
 let InternalTakey = (props) => {
   const [areOptionsOpen, setAreOptionsOpen] = useState(false)
   const [searchText, setSearchText] = useState('')
   const searchRef = useRef(null)
 
-  let filteredOptions = filterOptions(searchText, props.selection, props.options)
+  let filteredOptions = props.filterOptions(searchText, props.selection, props.options)
 
   let {
     HtmlFieldData,
@@ -153,6 +152,8 @@ InternalTakey.propTypes = {
   minSelectionCount: PropTypes.number.isRequired,
   removeSelection: PropTypes.bool,
   searchOptions: PropTypes.bool,
+  searchPlaceholder: PropTypes.string,
+  filterOptions: PropTypes.func,
   noOptionsFound: PropTypes.string,
 
   components: PropTypes.shape({

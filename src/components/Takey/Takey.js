@@ -8,6 +8,7 @@ import Options from '../Options/Options'
 import Option from '../Option/Option'
 import Search from '../Search/Search'
 import castArray from 'lodash/castArray'
+import filterOptions from '../../utils/filterOptions'
 
 let Takey = (props) => {
   let {selection, options, ...otherProps} = props
@@ -42,6 +43,7 @@ Takey.defaultProps = {
   removeSelection: true,
   searchOptions: true,
   searchPlaceholder: '...search',
+  filterOptions: filterOptions,
   noOptionsFound: 'No Options Found',
 
   components: {
@@ -81,6 +83,8 @@ Takey.propTypes = {
   minSelectionCount: PropTypes.number,
   removeSelection: PropTypes.bool,
   searchOptions: PropTypes.bool,
+  searchPlaceholder: PropTypes.string,
+  filterOptions: PropTypes.func,
   noOptionsFound: PropTypes.string,
 
   components: PropTypes.shape({
