@@ -1,6 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+const styleOptions = `
+
+`
+
 let Options = (props) => {
   let { Option } = props.components
 
@@ -21,4 +25,5 @@ Options.propTypes = {
   }).isRequired,
 }
 
+export { styleOptions }
 export default Options

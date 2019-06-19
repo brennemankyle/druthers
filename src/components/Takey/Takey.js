@@ -4,9 +4,9 @@ import InternalTakey from '../InternalTakey/InternalTakey'
 import HtmlFieldData from '../HtmlFieldData/HtmlFieldData'
 import Selection, { styleSelection } from '../Selection/Selection'
 import SelectionList, { styleSelectionList } from '../SelectionList/SelectionList'
-import Options from '../Options/Options'
-import Option from '../Option/Option'
-import Search from '../Search/Search'
+import Options, { styleOptions } from '../Options/Options'
+import Option, { styleOption } from '../Option/Option'
+import Search, { styleSearch } from '../Search/Search'
 import castArray from 'lodash/castArray'
 import filterOptions from '../../utils/filterOptions'
 import styled from 'styled-components'
@@ -51,9 +51,9 @@ Takey.defaultProps = {
     HtmlFieldData: HtmlFieldData,
     Selection: styled(Selection)`${styleSelection}`,
     SelectionList: styled(SelectionList)`${styleSelectionList}`,
-    Options: Options,
-    Option: Option,
-    Search: Search,
+    Options: styled(Options)`${styleOptions}`,
+    Option: styled(Option)`${styleOption}`,
+    Search: styled(Search)`${styleSearch}`,
   },
 }
 

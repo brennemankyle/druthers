@@ -1,6 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+const styleOption = `
+
+`
+
 let Option = (props) => {
   return <li value={props.option.value}>{props.option.label}</li>
 }
@@ -12,4 +16,5 @@ Option.propTypes = {
   }).isRequired
 }
 
+export { styleOption }
 export default Option
