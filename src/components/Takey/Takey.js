@@ -2,13 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import InternalTakey from '../InternalTakey/InternalTakey'
 import HtmlFieldData from '../HtmlFieldData/HtmlFieldData'
-import Selection from '../Selection/Selection'
-import SelectionList from '../SelectionList/SelectionList'
+import Selection, { styleSelection } from '../Selection/Selection'
+import SelectionList, { styleSelectionList } from '../SelectionList/SelectionList'
 import Options from '../Options/Options'
 import Option from '../Option/Option'
 import Search from '../Search/Search'
 import castArray from 'lodash/castArray'
 import filterOptions from '../../utils/filterOptions'
+import styled from 'styled-components'
 
 let Takey = (props) => {
   let {selection, options, ...otherProps} = props
@@ -48,8 +49,8 @@ Takey.defaultProps = {
 
   components: {
     HtmlFieldData: HtmlFieldData,
-    Selection: Selection,
-    SelectionList: SelectionList,
+    Selection: styled(Selection)`${styleSelection}`,
+    SelectionList: styled(SelectionList)`${styleSelectionList}`,
     Options: Options,
     Option: Option,
     Search: Search,

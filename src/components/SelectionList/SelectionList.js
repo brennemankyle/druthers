@@ -1,10 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+const styleSelectionList = `
+  background-color: blue;
+  color: blue;
+`
+
 let SelectionList = (props) => {
   let { Selection } = props.components
 
   return <ul
+    className={props.className}
     tabIndex={props.onFocus && '0'}
     onFocus={props.onFocus}
     onBlur={props.onBlur}
@@ -34,4 +40,5 @@ SelectionList.propTypes = {
   }).isRequired,
 }
 
+export { styleSelectionList }
 export default SelectionList
