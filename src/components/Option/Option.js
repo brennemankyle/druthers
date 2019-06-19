@@ -2,11 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const styleOption = `
-
+  &:hover {
+    background-color: lightblue;
+  }
 `
 
 let Option = (props) => {
-  return <li value={props.option.value}>{props.option.label}</li>
+  return <li className={props.className} value={props.option.value}>{props.option.label}</li>
 }
 
 Option.propTypes = {

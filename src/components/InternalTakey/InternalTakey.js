@@ -73,8 +73,10 @@ let InternalTakey = (props) => {
     }
   }
 
+  let placeholder = props.multiple ? props.searchPlaceholder : props.placeholder
+
   let RenderSearch = <Search
-    searchPlaceholder={props.placeholder}
+    placeholder={placeholder}
     searchText={searchText}
     onFocus={onFocus}
     onBlur={onBlur}

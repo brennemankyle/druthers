@@ -2,8 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const styleSelectionList = `
-  background-color: blue;
-  color: blue;
+  display: inline-block;
+  list-style-type: none;
+  padding: 0;
 `
 
 let SelectionList = (props) => {

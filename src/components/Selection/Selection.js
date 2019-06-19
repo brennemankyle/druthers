@@ -2,10 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const styleSelection = `
-  color: brown
+  display: inline-block;
+  background-color: lightgray;
+  margin: .1em;
 
   .remove {
-    color: green
+    border: none;
+    background-color: transparent;
+
+    &:hover {
+      color: darkred;
+      background-color: #CD5C5C;
+    }
   }
 `
 

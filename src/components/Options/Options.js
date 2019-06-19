@@ -2,13 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const styleOptions = `
-
+  list-style-type: none;
+  padding: 0;
+  border: 1px solid gray;
 `
 
 let Options = (props) => {
   let { Option } = props.components
 
-  return <ul onMouseDown={props.onClick}>
+  return <ul className={props.className} onMouseDown={props.onClick}>
     {props.options.map((option) => <Option option={option} key={option.value} />)}</ul>
 }
 

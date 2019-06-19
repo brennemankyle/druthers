@@ -2,14 +2,15 @@ import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 
 const styleSearch = `
-
+  border: none;
 `
 
 let Search = (props, ref) => {
   return <input
+    className={props.className}
     ref={ref}
     type="text"
-    placeholder={props.searchPlaceholder}
+    placeholder={props.placeholder}
     onFocus={props.onFocus}
     onBlur={props.onBlur}
     onChange={props.onChange}
@@ -21,7 +22,7 @@ let Search = (props, ref) => {
 Search = forwardRef(Search)
 
 Search.propTypes = {
-  searchPlaceholder: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
