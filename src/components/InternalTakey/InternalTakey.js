@@ -75,7 +75,7 @@ let InternalTakey = (props) => {
   }
 
   let searchProps = {
-    placeholder: props.multiple ? props.placeholder : props.searchPlaceholder,
+    placeholder: props.multiple || (!areOptionsOpen && !props.selection.length) ? props.placeholder : props.searchPlaceholder,
     searchText: searchText,
     onBlur: onBlur,
     onKeyDown: onKeyDown,
@@ -106,8 +106,7 @@ let InternalTakey = (props) => {
           <Search {...searchProps} /></Container>
       : <Container key="Container" onFocus={onFocus}>
           {!areOptionsOpen && <SelectionList {...selectionProps} />}
-          {areOptionsOpen && <Search {...searchProps} />}
-          {!areOptionsOpen && !props.selection.length && props.placeholder}</Container>,
+          {(areOptionsOpen || !props.selection.length) && <Search {...searchProps} />}</Container>,
 
     // OptionList
     areOptionsOpen && !!filteredOptions.length && <OptionList

@@ -35,7 +35,7 @@ Takey.defaultProps = {
   name: '',
   selection: [],
   options: [],
-  placeholder: '...pick',
+  placeholder: 'Select...',
   multiple: false,
   creatable: false,
 
@@ -43,7 +43,7 @@ Takey.defaultProps = {
   minSelectionCount: -1,
   removeSelection: true,
   searchOptions: true,
-  searchPlaceholder: '...search',
+  searchPlaceholder: 'Search...',
   noOptionsFound: 'No Options Found',
   filterOptions: filterOptions,
   optionKeys: ['value', 'label'],
