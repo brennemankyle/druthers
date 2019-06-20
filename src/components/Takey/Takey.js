@@ -15,7 +15,7 @@ let Takey = (props) => {
 
   // Stringify
   selection = castArray(selection).map((value) => String(value))
-  options = options.map((option) => ({value: String(option.value), label: String(option.label)}))
+  options = options.map((option) => ({value: String(option[props.optionKeys[0]]), label: String(option[props.optionKeys[1]])}))
 
   // Objectify
   let massagedSelection = selection.map((value) => {
@@ -45,6 +45,7 @@ Takey.defaultProps = {
   searchPlaceholder: '...search',
   noOptionsFound: 'No Options Found',
   filterOptions: filterOptions,
+  optionKeys: ['value', 'label'],
 
   components: {
     HtmlFieldData: HtmlFieldData,
@@ -59,16 +60,10 @@ Takey.defaultProps = {
 Takey.propTypes = {
   name: PropTypes.string,
   selection: PropTypes.oneOfType([
-    PropTypes.string.isRequired,
-    PropTypes.bool.isRequired,
-    PropTypes.number.isRequired,
-    PropTypes.arrayOf(PropTypes.oneOfType([
-      PropTypes.string.isRequired,
-      PropTypes.bool.isRequired,
-      PropTypes.number.isRequired,
-    ])),
+    AppPropTypes.rawValue,
+    PropTypes.arrayOf(AppPropTypes.rawValue),
   ]),
-  options: AppPropTypes.itemList,
+  options: AppPropTypes.rawItemList,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
   multiple: PropTypes.bool,
@@ -81,6 +76,7 @@ Takey.propTypes = {
   searchPlaceholder: PropTypes.string,
   noOptionsFound: PropTypes.string,
   filterOptions: PropTypes.func,
+  optionKeys: PropTypes.arrayOf(PropTypes.string),
 
   components: PropTypes.shape({
     HtmlFieldData: AppPropTypes.element,
