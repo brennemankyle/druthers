@@ -5,6 +5,7 @@ import AppPropTypes from '../../utils/AppPropTypes'
 let InternalTakey = (props) => {
   const [areOptionsOpen, setAreOptionsOpen] = useState(false)
   const [searchText, setSearchText] = useState('')
+  const [placeholder, setPlacholder] = useState(props.placeholder)
   const searchRef = useRef(null)
 
   let filteredOptions = props.filterOptions(searchText, props.selection, props.options)
@@ -21,10 +22,16 @@ let InternalTakey = (props) => {
 
   let onFocus = () => {
     setAreOptionsOpen(true)
+
+    setPlacholder(!props.multiple && props.selection.length
+      ? props.selection[0].label
+      : props.placeholder)
+
     setTimeout(() => searchRef.current.focus()) // useEffect instead of setTimeout?
   }
   let onBlur = (e) => {
     setAreOptionsOpen(false)
+    setSearchText('')
   }
   let onOptionClick = (e) => {
     let value = e.target.value
@@ -56,6 +63,8 @@ let InternalTakey = (props) => {
   }
   let onRemove = (e) => {
     if (props.removeSelection && e.target.classList.contains('remove')) {
+      e.preventDefault()
+      setPlacholder(props.placeholder)
       let value = []
 
       if (props.multiple) {
@@ -74,11 +83,8 @@ let InternalTakey = (props) => {
     }
   }
 
-  let showSelection = props.multiple || !areOptionsOpen
-  let showSearch = props.multiple || areOptionsOpen || !props.selection.length
-  let placeholder = props.multiple || (!areOptionsOpen && !props.selection.length)
-    ? props.placeholder
-    : props.searchPlaceholder
+  let showSelection = props.multiple || !areOptionsOpen // Multiple: always show. Single: show when options are closed
+  let showSearch = props.multiple || areOptionsOpen || !props.selection.length // Multiple: always show. Single: show when options are open or when nothing is selected (placeholder should be shown)
 
   return [
     // Hidden form field
@@ -126,7 +132,6 @@ InternalTakey.propTypes = {
   minSelectionCount: PropTypes.number.isRequired,
   removeSelection: PropTypes.bool,
   searchOptions: PropTypes.bool,
-  searchPlaceholder: PropTypes.string,
   noOptionsFound: PropTypes.string,
   filterOptions: PropTypes.func,
 
