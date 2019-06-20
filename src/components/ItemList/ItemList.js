@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import AppPropTypes from '../../utils/AppPropTypes'
 
 const styleOptions = `
   list-style-type: none;
@@ -31,18 +32,13 @@ ItemList.defaultProps = {
 }
 
 ItemList.propTypes = {
-  itemList: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  itemList: AppPropTypes.itemList.isRequired,
   canRemove: PropTypes.bool,
   placeholder: PropTypes.string,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
   onClick: PropTypes.func,
-  Item: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
+  Item: AppPropTypes.element.isRequired,
 }
 
 export { styleSelectionList, styleOptions }

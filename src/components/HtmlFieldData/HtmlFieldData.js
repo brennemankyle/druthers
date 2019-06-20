@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import AppPropTypes from '../../utils/AppPropTypes'
 
 let HtmlFieldData = (props) => {
   return <input
@@ -10,12 +11,7 @@ let HtmlFieldData = (props) => {
 
 HtmlFieldData.propTypes = {
   name: PropTypes.string.isRequired,
-  selection: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  selection: AppPropTypes.itemList.isRequired,
 }
 
 export default HtmlFieldData

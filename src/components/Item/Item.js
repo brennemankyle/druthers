@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import AppPropTypes from '../../utils/AppPropTypes'
 
 const styleSelection = `
   display: inline-block;
@@ -34,10 +35,7 @@ let Item = (props) => {
 
 Item.propTypes = {
   canRemove: PropTypes.bool.isRequired,
-  item: PropTypes.shape({
-    value: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-  }),
+  item: AppPropTypes.item,
 }
 
 export { styleSelection, styleOption }

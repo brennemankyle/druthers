@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import AppPropTypes from '../../utils/AppPropTypes'
 import styled from 'styled-components'
 import InternalTakey from '../InternalTakey/InternalTakey'
 import HtmlFieldData from '../HtmlFieldData/HtmlFieldData'
@@ -67,12 +68,7 @@ Takey.propTypes = {
       PropTypes.number.isRequired,
     ])),
   ]),
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired,
-    })
-  ),
+  options: AppPropTypes.itemList,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
   multiple: PropTypes.bool,
@@ -87,12 +83,12 @@ Takey.propTypes = {
   filterOptions: PropTypes.func,
 
   components: PropTypes.shape({
-    HtmlFieldData: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]),
-    Item: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]),
-    SelectionList: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]),
-    OptionList: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]),
-    Option: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]),
-    Search: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]),
+    HtmlFieldData: AppPropTypes.element,
+    Item: AppPropTypes.element,
+    SelectionList: AppPropTypes.element,
+    OptionList: AppPropTypes.element,
+    Option: AppPropTypes.element,
+    Search: AppPropTypes.element,
   }),
 }
 

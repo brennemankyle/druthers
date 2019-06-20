@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
+import AppPropTypes from '../../utils/AppPropTypes'
 
 let InternalTakey = (props) => {
   const [areOptionsOpen, setAreOptionsOpen] = useState(false)
@@ -129,18 +130,8 @@ let InternalTakey = (props) => {
 
 InternalTakey.propTypes = {
   name: PropTypes.string.isRequired,
-  selection: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  selection: AppPropTypes.itemList.isRequired,
+  options: AppPropTypes.itemList.isRequired,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
   multiple: PropTypes.bool.isRequired,
@@ -155,12 +146,12 @@ InternalTakey.propTypes = {
   filterOptions: PropTypes.func,
 
   components: PropTypes.shape({
-    HtmlFieldData: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]).isRequired,
-    Selection: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]).isRequired,
-    SelectionList: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]).isRequired,
-    OptionList: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]).isRequired,
-    Option: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]).isRequired,
-    Search: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]).isRequired,
+    HtmlFieldData: AppPropTypes.element.isRequired,
+    Selection: AppPropTypes.element.isRequired,
+    SelectionList: AppPropTypes.element.isRequired,
+    OptionList: AppPropTypes.element.isRequired,
+    Option: AppPropTypes.element.isRequired,
+    Search: AppPropTypes.element.isRequired,
   }).isRequired,
 }
 
