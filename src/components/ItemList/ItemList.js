@@ -10,7 +10,7 @@ const styleOptions = `
 `
 
 const styleSelectionList = `
-  display: inline-block;
+  display: inline;
   list-style-type: none;
   padding: 0;
   margin: 0;
