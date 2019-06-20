@@ -12,7 +12,7 @@ let InternalTakey = (props) => {
     HtmlFieldData,
     Selection,
     SelectionList,
-    Options,
+    OptionList,
     Option,
     Search,
   } = props.components
@@ -73,7 +73,7 @@ let InternalTakey = (props) => {
     }
   }
 
-  let placeholder = props.multiple ? props.searchPlaceholder : props.placeholder
+  let placeholder = props.multiple ? props.placeholder : props.searchPlaceholder
 
   let RenderSearch = <Search
     placeholder={placeholder}
@@ -87,27 +87,25 @@ let InternalTakey = (props) => {
 
   let MultiSelection = [
     <SelectionList
-      selection={props.selection}
+      itemList={props.selection}
       key='SelectionList'
       onClick={onRemove}
-      components={{
-        Selection,
-      }} />,
+      canRemove={true}
+      Item={Selection} />,
     RenderSearch
   ]
 
   let SingleSelection = areOptionsOpen
     ? RenderSearch
     : <SelectionList
-      selection={props.selection}
+      itemList={props.selection}
       key='SelectionList'
       placeholder={props.placeholder}
       onFocus={onFocusSingleSelection}
       onBlur={onBlur}
       onClick={onRemove}
-      components={{
-        Selection,
-      }} />
+      canRemove={true}
+      Item={Selection} />
 
   return [
     // Hidden form field
@@ -119,15 +117,13 @@ let InternalTakey = (props) => {
     // Selection
     props.multiple ? MultiSelection : SingleSelection,
 
-    // Options
-    areOptionsOpen && !!filteredOptions.length && <Options
-      options={filteredOptions}
+    // OptionList
+    areOptionsOpen && !!filteredOptions.length && <OptionList
+      itemList={filteredOptions}
       multiple={props.multiple}
       onClick={onOptionClick}
-      key='Options'
-      components={{
-        Option,
-      }} />,
+      key='OptionList'
+      Item={Option} />,
   ]
 }
 
@@ -155,14 +151,14 @@ InternalTakey.propTypes = {
   removeSelection: PropTypes.bool,
   searchOptions: PropTypes.bool,
   searchPlaceholder: PropTypes.string,
-  filterOptions: PropTypes.func,
   noOptionsFound: PropTypes.string,
+  filterOptions: PropTypes.func,
 
   components: PropTypes.shape({
     HtmlFieldData: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]).isRequired,
     Selection: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]).isRequired,
     SelectionList: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]).isRequired,
-    Options: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]).isRequired,
+    OptionList: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]).isRequired,
     Option: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]).isRequired,
     Search: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]).isRequired,
   }).isRequired,

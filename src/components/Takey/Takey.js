@@ -1,15 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 import InternalTakey from '../InternalTakey/InternalTakey'
 import HtmlFieldData from '../HtmlFieldData/HtmlFieldData'
-import Selection, { styleSelection } from '../Selection/Selection'
-import SelectionList, { styleSelectionList } from '../SelectionList/SelectionList'
-import Options, { styleOptions } from '../Options/Options'
-import Option, { styleOption } from '../Option/Option'
+import Item, { styleSelection, styleOption } from '../Item/Item'
+import ItemList, { styleSelectionList, styleOptions } from '../ItemList/ItemList'
 import Search, { styleSearch } from '../Search/Search'
 import castArray from 'lodash/castArray'
 import filterOptions from '../../utils/filterOptions'
-import styled from 'styled-components'
 
 let Takey = (props) => {
   let {selection, options, ...otherProps} = props
@@ -44,15 +42,15 @@ Takey.defaultProps = {
   removeSelection: true,
   searchOptions: true,
   searchPlaceholder: '...search',
-  filterOptions: filterOptions,
   noOptionsFound: 'No Options Found',
+  filterOptions: filterOptions,
 
   components: {
     HtmlFieldData: HtmlFieldData,
-    Selection: styled(Selection)`${styleSelection}`,
-    SelectionList: styled(SelectionList)`${styleSelectionList}`,
-    Options: styled(Options)`${styleOptions}`,
-    Option: styled(Option)`${styleOption}`,
+    Selection: styled(Item)`${styleSelection}`,
+    SelectionList: styled(ItemList)`${styleSelectionList}`,
+    OptionList: styled(ItemList)`${styleOptions}`,
+    Option: styled(Item)`${styleOption}`,
     Search: styled(Search)`${styleSearch}`,
   },
 }
@@ -85,14 +83,14 @@ Takey.propTypes = {
   removeSelection: PropTypes.bool,
   searchOptions: PropTypes.bool,
   searchPlaceholder: PropTypes.string,
-  filterOptions: PropTypes.func,
   noOptionsFound: PropTypes.string,
+  filterOptions: PropTypes.func,
 
   components: PropTypes.shape({
     HtmlFieldData: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]),
-    Selection: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]),
+    Item: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]),
     SelectionList: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]),
-    Options: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]),
+    OptionList: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]),
     Option: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]),
     Search: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]),
   }),

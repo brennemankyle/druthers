@@ -1,45 +1,49 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+const styleOptions = `
+  list-style-type: none;
+  padding: 0;
+  border: 1px solid gray;
+`
+
 const styleSelectionList = `
   display: inline-block;
   list-style-type: none;
   padding: 0;
 `
 
-let SelectionList = (props) => {
-  let { Selection } = props.components
-
+let ItemList = (props) => {
   return <ul
     className={props.className}
     tabIndex={props.onFocus && '0'}
     onFocus={props.onFocus}
     onBlur={props.onBlur}
     onMouseDown={props.onClick}>
-      { props.selection.length
-        ? props.selection.map((item) => <Selection selectionItem={item} key={item.value} />)
+      { props.itemList.length
+        ? props.itemList.map((item) => <props.Item item={item} canRemove={props.canRemove} key={item.value} />)
         : props.placeholder}</ul>
 }
 
-SelectionList.defaultProps = {
+ItemList.defaultProps = {
   placeholder: '',
+  canRemove: false,
 }
 
-SelectionList.propTypes = {
-  selection: PropTypes.arrayOf(
+ItemList.propTypes = {
+  itemList: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
     })
   ).isRequired,
+  canRemove: PropTypes.bool,
   placeholder: PropTypes.string,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
   onClick: PropTypes.func,
-  components: PropTypes.shape({
-    Selection: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
-  }).isRequired,
+  Item: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
 }
 
-export { styleSelectionList }
-export default SelectionList
+export { styleSelectionList, styleOptions }
+export default ItemList
