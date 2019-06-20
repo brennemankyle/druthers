@@ -16,11 +16,11 @@ let InternalTakey = (props) => {
     OptionList,
     Option,
     Search,
+    Container,
   } = props.components
 
-  let onFocus = () => setAreOptionsOpen(true)
-  let onFocusSingleSelection = () => {
-    onFocus()
+  let onFocus = () => {
+    setAreOptionsOpen(true)
     setTimeout(() => searchRef.current.focus()) // useEffect instead of setTimeout?
   }
   let onBlur = (e) => {
@@ -77,7 +77,6 @@ let InternalTakey = (props) => {
   let searchProps = {
     placeholder: props.multiple ? props.placeholder : props.searchPlaceholder,
     searchText: searchText,
-    onFocus: onFocus,
     onBlur: onBlur,
     onKeyDown: onKeyDown,
     onChange: (e) => setSearchText(e.target.value),
@@ -93,19 +92,6 @@ let InternalTakey = (props) => {
     Item: Selection,
   }
 
-  let MultiSelection = [
-    <SelectionList {...selectionProps} />,
-    <Search {...searchProps} />,
-  ]
-
-  let SingleSelection = areOptionsOpen
-    ? <Search {...searchProps} />
-    : <SelectionList
-      {...selectionProps}
-      placeholder={props.placeholder}
-      onFocus={onFocusSingleSelection}
-      onBlur={onBlur} />
-
   return [
     // Hidden form field
     <HtmlFieldData
@@ -114,7 +100,14 @@ let InternalTakey = (props) => {
       key='HtmlFieldData' />,
 
     // Selection
-    props.multiple ? MultiSelection : SingleSelection,
+    props.multiple
+      ? <Container key="Container" onFocus={onFocus}>
+          <SelectionList {...selectionProps} />
+          <Search {...searchProps} /></Container>
+      : <Container key="Container" onFocus={onFocus}>
+          {!areOptionsOpen && <SelectionList {...selectionProps} />}
+          {areOptionsOpen && <Search {...searchProps} />}
+          {!areOptionsOpen && !props.selection.length && props.placeholder}</Container>,
 
     // OptionList
     areOptionsOpen && !!filteredOptions.length && <OptionList
@@ -150,6 +143,7 @@ InternalTakey.propTypes = {
     OptionList: AppPropTypes.element.isRequired,
     Option: AppPropTypes.element.isRequired,
     Search: AppPropTypes.element.isRequired,
+    Container: AppPropTypes.element.isRequired,
   }).isRequired,
 }
 

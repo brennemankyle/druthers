@@ -7,6 +7,7 @@ import HtmlFieldData from '../HtmlFieldData/HtmlFieldData'
 import Item, { styleSelection, styleOption } from '../Item/Item'
 import ItemList, { styleSelectionList, styleOptions } from '../ItemList/ItemList'
 import Search, { styleSearch } from '../Search/Search'
+import Container, { styleContainer } from '../Container/Container'
 import castArray from 'lodash/castArray'
 import filterOptions from '../../utils/filterOptions'
 
@@ -54,6 +55,7 @@ Takey.defaultProps = {
     OptionList: styled(ItemList)`${styleOptions}`,
     Option: styled(Item)`${styleOption}`,
     Search: styled(Search)`${styleSearch}`,
+    Container: styled(Container)`${styleContainer}`,
   },
 }
 
@@ -85,6 +87,7 @@ Takey.propTypes = {
     OptionList: AppPropTypes.element,
     Option: AppPropTypes.element,
     Search: AppPropTypes.element,
+    Container: AppPropTypes.element,
   }),
 }
 
