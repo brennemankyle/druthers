@@ -112,7 +112,7 @@ let InternalTakey = (props) => {
     // Hidden form field
     <HtmlFieldData
       name={props.name}
-      selection={props.selection}
+      itemList={props.selection}
       key='HtmlFieldData' />,
 
     // Selection

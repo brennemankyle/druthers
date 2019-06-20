@@ -21,7 +21,7 @@ let ItemList = (props) => {
     onFocus={props.onFocus}
     onBlur={props.onBlur}
     onMouseDown={props.onClick}>
-      { props.itemList.length
+      {props.itemList.length
         ? props.itemList.map((item) => <props.Item item={item} canRemove={props.canRemove} key={item.value} />)
         : props.placeholder}</ul>
 }
