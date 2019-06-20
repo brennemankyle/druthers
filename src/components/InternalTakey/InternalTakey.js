@@ -74,39 +74,37 @@ let InternalTakey = (props) => {
     }
   }
 
-  let placeholder = props.multiple ? props.placeholder : props.searchPlaceholder
+  let searchProps = {
+    placeholder: props.multiple ? props.placeholder : props.searchPlaceholder,
+    searchText: searchText,
+    onFocus: onFocus,
+    onBlur: onBlur,
+    onKeyDown: onKeyDown,
+    onChange: (e) => setSearchText(e.target.value),
+    ref: searchRef,
+    key: "Search",
+  }
 
-  let RenderSearch = <Search
-    placeholder={placeholder}
-    searchText={searchText}
-    onFocus={onFocus}
-    onBlur={onBlur}
-    onKeyDown={onKeyDown}
-    onChange={(e) => setSearchText(e.target.value)}
-    ref={searchRef}
-    key="Search" />
+  let selectionProps = {
+    itemList: props.selection,
+    key: 'SelectionList',
+    onClick: onRemove,
+    canRemove: true,
+    Item: Selection,
+  }
 
   let MultiSelection = [
-    <SelectionList
-      itemList={props.selection}
-      key='SelectionList'
-      onClick={onRemove}
-      canRemove={true}
-      Item={Selection} />,
-    RenderSearch
+    <SelectionList {...selectionProps} />,
+    <Search {...searchProps} />,
   ]
 
   let SingleSelection = areOptionsOpen
-    ? RenderSearch
+    ? <Search {...searchProps} />
     : <SelectionList
-      itemList={props.selection}
-      key='SelectionList'
+      {...selectionProps}
       placeholder={props.placeholder}
       onFocus={onFocusSingleSelection}
-      onBlur={onBlur}
-      onClick={onRemove}
-      canRemove={true}
-      Item={Selection} />
+      onBlur={onBlur} />
 
   return [
     // Hidden form field
