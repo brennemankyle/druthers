@@ -74,23 +74,11 @@ let InternalTakey = (props) => {
     }
   }
 
-  let searchProps = {
-    placeholder: props.multiple || (!areOptionsOpen && !props.selection.length) ? props.placeholder : props.searchPlaceholder,
-    searchText: searchText,
-    onBlur: onBlur,
-    onKeyDown: onKeyDown,
-    onChange: (e) => setSearchText(e.target.value),
-    ref: searchRef,
-    key: "Search",
-  }
-
-  let selectionProps = {
-    itemList: props.selection,
-    key: 'SelectionList',
-    onClick: onRemove,
-    canRemove: true,
-    Item: Selection,
-  }
+  let showSelection = props.multiple || !areOptionsOpen
+  let showSearch = props.multiple || areOptionsOpen || !props.selection.length
+  let placeholder = props.multiple || (!areOptionsOpen && !props.selection.length)
+    ? props.placeholder
+    : props.searchPlaceholder
 
   return [
     // Hidden form field
@@ -100,16 +88,23 @@ let InternalTakey = (props) => {
       key='HtmlFieldData' />,
 
     // Selection
-    props.multiple
-      ? <Container key="Container" onFocus={onFocus}>
-          <SelectionList {...selectionProps} />
-          <Search {...searchProps} /></Container>
-      : <Container key="Container" onFocus={onFocus}>
-          {!areOptionsOpen && <SelectionList {...selectionProps} />}
-          {(areOptionsOpen || !props.selection.length) && <Search {...searchProps} />}</Container>,
+    <Container key="Container" onFocus={onFocus}>
+      {showSelection && <SelectionList
+        itemList={props.selection}
+        onClick={onRemove}
+        canRemove={true}
+        Item={Selection} />}
+      {showSearch && <Search
+        placeholder={placeholder}
+        searchText={searchText}
+        onBlur={onBlur}
+        onKeyDown={onKeyDown}
+        onChange={(e) => setSearchText(e.target.value)}
+        ref={searchRef} />}
+    </Container>,
 
     // OptionList
-    areOptionsOpen && !!filteredOptions.length && <OptionList
+    areOptionsOpen && <OptionList
       itemList={filteredOptions}
       multiple={props.multiple}
       onClick={onOptionClick}
