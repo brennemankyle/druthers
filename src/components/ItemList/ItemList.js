@@ -6,7 +6,7 @@ let ItemList = (props) => {
   let renderItem = (item) =>
     <props.Item item={item} canRemove={props.canRemove} key={item.value} multiple={props.multiple} />
 
-  return (
+  return !!props.itemList.length && (
     <ul className={props.className} onMouseDown={props.onClick}>
       {props.itemList.map(renderItem)}
     </ul>

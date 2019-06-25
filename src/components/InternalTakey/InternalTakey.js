@@ -94,7 +94,7 @@ let InternalTakey = (props) => {
       key='HtmlFieldData' />,
 
     // Selection
-    <Container key="Container" onFocus={onFocus}>
+    <Container key="Container" onFocus={onFocus} multiple={props.multiple}>
       {showSelection && <SelectionList
         itemList={props.selection}
         onClick={onRemove}

@@ -6,9 +6,6 @@ import RawContainer from '../Container/Container'
 
 
 const Selection = styled(Item)`
-  display: inline-flex;
-  width: ${props => props.multiple ? 'auto' : '100%'};
-  background-color: lightgray;
   margin: .1em;
 
   .remove {
@@ -20,6 +17,16 @@ const Selection = styled(Item)`
       background-color: #CD5C5C;
     }
   }
+
+  ${props => props.multiple
+    ? `
+      display: inline;
+      background-color: lightgray;`
+    : `
+      display: flex;
+      flex-grow: 1;
+      justify-content: space-between;`
+  }
 `
 
 const Option = styled(Item)`
@@ -29,7 +36,7 @@ const Option = styled(Item)`
 `
 
 const SelectionList = styled(ItemList)`
-  display: inline;
+  display: ${props => props.multiple ? 'inline' : 'block' };
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -50,6 +57,16 @@ const Search = styled(RawSearch)`
 
 const Container = styled(RawContainer)`
   border: 1px solid gray;
+  display: flex;
+  justify-content: space-between;
+
+  & > *:last-child {
+    flex-grow: 1;
+  }
+
+  &:after {
+    content: "v";
+  }
 `
 
 export {

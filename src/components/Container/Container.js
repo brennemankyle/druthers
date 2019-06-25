@@ -10,6 +10,7 @@ let Container = (props) => {
 
 Container.propTypes = {
   onFocus: PropTypes.func,
+  multiple: PropTypes.bool.isRequired,
 }
 
 export default Container
