@@ -95,20 +95,22 @@ let InternalTakey = (props) => {
       key='HtmlFieldData' />,
 
     // Selection
-    <Container key="Container" onFocus={onFocus} multiple={props.multiple} hasOptions={hasOptions}>
+    <Container key="Container" onFocus={onFocus} multiple={props.multiple} hasOptions={hasOptions} styles={props.styles} areOptionsOpen={areOptionsOpen}>
       {showSelection && <SelectionList
         itemList={props.selection}
         onClick={onRemove}
         canRemove={true}
         multiple={props.multiple}
-        Item={Selection} />}
+        Item={Selection}
+        styles={props.styles} />}
       {showSearch && <Search
         placeholder={placeholder}
         searchText={searchText}
         onBlur={onBlur}
         onKeyDown={onKeyDown}
         onChange={(e) => setSearchText(e.target.value)}
-        ref={searchRef} />}
+        ref={searchRef}
+        styles={props.styles} />}
     </Container>,
 
     // OptionList
@@ -117,7 +119,8 @@ let InternalTakey = (props) => {
       multiple={props.multiple}
       onClick={onOptionClick}
       key='OptionList'
-      Item={Option} />,
+      Item={Option}
+      styles={props.styles} />,
   ]
 }
 
@@ -146,6 +149,8 @@ InternalTakey.propTypes = {
     Search: AppPropTypes.element.isRequired,
     Container: AppPropTypes.element.isRequired,
   }).isRequired,
+
+  styles: AppPropTypes.styles.isRequired,
 }
 
 export default InternalTakey

@@ -52,6 +52,15 @@ Takey.defaultProps = {
     Search,
     Container,
   },
+
+  styles: {
+    colors: {
+      primary: 'black',
+      secondary: 'lightgray',
+      highlight: 'lightblue',
+      warning: '#CD5C5C',
+    }
+  }
 }
 
 Takey.propTypes = {
@@ -83,6 +92,8 @@ Takey.propTypes = {
     Search: AppPropTypes.element,
     Container: AppPropTypes.element,
   }),
+
+  styles: AppPropTypes.styles.isRequired,
 }
 
 export default Takey

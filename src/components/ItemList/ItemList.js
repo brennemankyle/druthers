@@ -4,7 +4,7 @@ import AppPropTypes from '../../utils/AppPropTypes'
 
 let ItemList = (props) => {
   let renderItem = (item) =>
-    <props.Item item={item} canRemove={props.canRemove} key={item.value} multiple={props.multiple} />
+    <props.Item item={item} canRemove={props.canRemove} key={item.value} multiple={props.multiple} styles={props.styles} />
 
   return !!props.itemList.length && (
     <ul className={props.className} onMouseDown={props.onClick}>
@@ -23,6 +23,7 @@ ItemList.propTypes = {
   onClick: PropTypes.func,
   multiple: PropTypes.bool.isRequired,
   Item: AppPropTypes.element.isRequired,
+  styles: AppPropTypes.styles.isRequired,
 }
 
 export default ItemList

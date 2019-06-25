@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
+import AppPropTypes from '../../utils/AppPropTypes'
 
 let Search = (props, ref) => {
   return <input
@@ -21,6 +22,7 @@ Search.propTypes = {
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
   onKeyDown: PropTypes.func,
+  styles: AppPropTypes.styles.isRequired,
 }
 
 export default Search

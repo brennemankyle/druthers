@@ -15,6 +15,7 @@ Container.propTypes = {
   onFocus: PropTypes.func,
   multiple: PropTypes.bool.isRequired,
   hasOptions: PropTypes.bool.isRequired,
+  areOptionsOpen: PropTypes.bool.isRequired,
 }
 
 export default Container

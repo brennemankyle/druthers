@@ -23,6 +23,9 @@ let AppPropTypes = {
   rawValue: rawValue,
   rawItem: rawItem,
   rawItemList: PropTypes.arrayOf(rawItem),
+  styles: PropTypes.shape({
+    colors: PropTypes.object.isRequired,
+  })
 }
 
 export default AppPropTypes

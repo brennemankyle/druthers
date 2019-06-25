@@ -16,6 +16,7 @@ Item.propTypes = {
   canRemove: PropTypes.bool.isRequired,
   item: AppPropTypes.item,
   multiple: PropTypes.bool.isRequired,
+  styles: AppPropTypes.styles.isRequired,
 }
 
 export default Item

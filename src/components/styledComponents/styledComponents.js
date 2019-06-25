@@ -14,7 +14,7 @@ const Selection = styled(Item)`
     border: none;
     border-radius: .2em;
     background-color: transparent;
-    padding: 0;
+    padding: 0 .2em;
     font-size: 1em;
 
     img {
@@ -23,20 +23,16 @@ const Selection = styled(Item)`
     }
 
     &:hover {
-      color: darkred;
-      background-color: #CD5C5C;
+      background-color: ${props => props.styles.colors.warning};
     }
   }
 
   ${props => props.multiple
     ? `
       display: inline-flex;
-      background-color: lightgray;
+      background-color: ${props.styles.colors.secondary};
       margin-right: .2em;
-      padding-left: .2em;
-      .remove {
-        padding: 0 .2em;
-      }`
+      padding-left: .2em;`
     : `
       display: flex;`
   }
@@ -46,7 +42,7 @@ const Option = styled(Item)`
   padding: .25em;
 
   &:hover {
-    background-color: lightblue;
+    background-color: ${props => props.styles.colors.highlight};
   }
 `
 
@@ -60,23 +56,31 @@ const OptionList = styled(ItemList)`
   list-style-type: none;
   padding: 0;
   margin: 0;
-  border: 1px solid gray;
+  border: 1px solid ${props => props.styles.colors.secondary};
 `
 
 const Search = styled(RawSearch)`
   border: none;
   outline: none;
+  padding: 0;
   width: 10em;
   font-size: 1em;
+  font-family: inherit;
 `
 
 const Container = styled(RawContainer)`
-  border: 1px solid gray;
+  border: 1px solid ${props => props.styles.colors.secondary};
   border-radius: .2em;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: .25em;
+
+  &:hover {
+    border-color: ${props => props.styles.colors.primary};
+  }
+
+  ${props => props.areOptionsOpen && `border-color: ${props.styles.colors.primary}`}
 
   & > *:nth-last-child(3) {
     flex-grow: 1;
@@ -87,13 +91,17 @@ const Container = styled(RawContainer)`
       .divider {
         width: 1px;
         align-self: stretch;
-        background-color: black;
+        background-color: ${props.styles.colors.secondary};
         margin: 0 .4em;
       }
 
       .expand {
         width: 1em;
         vertical-align: middle;
+
+        &:hover {
+          opacity: 0.5;
+        }
       }`
     : `
       .divider {
