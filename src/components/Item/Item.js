@@ -7,7 +7,7 @@ let Item = (props) => {
     <li className={props.className} value={props.item.value}>
       {props.item.label}
       {props.canRemove && <button className="remove" type="button" value={props.item.value}>
-        <img src="remove.png" alt="remove" /></button>}
+        <img className="remove" src="remove.png" alt="remove" value={props.item.value} /></button>}
     </li>
   )
 }
