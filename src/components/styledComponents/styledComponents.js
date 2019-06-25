@@ -6,11 +6,21 @@ import RawContainer from '../Container/Container'
 
 
 const Selection = styled(Item)`
-  margin: .1em;
+  border-radius: .2em;
+  align-items: center;
+  justify-content: space-between;
 
   .remove {
     border: none;
+    border-radius: .2em;
     background-color: transparent;
+    padding: 0;
+    font-size: 1em;
+
+    img {
+      width: 1em;
+      vertical-align: middle;
+    }
 
     &:hover {
       color: darkred;
@@ -20,16 +30,21 @@ const Selection = styled(Item)`
 
   ${props => props.multiple
     ? `
-      display: inline;
-      background-color: lightgray;`
+      display: inline-flex;
+      background-color: lightgray;
+      margin-right: .2em;
+      padding-left: .2em;
+      .remove {
+        padding: 0 .2em;
+      }`
     : `
-      display: flex;
-      flex-grow: 1;
-      justify-content: space-between;`
+      display: flex;`
   }
 `
 
 const Option = styled(Item)`
+  padding: .25em;
+
   &:hover {
     background-color: lightblue;
   }
@@ -57,15 +72,37 @@ const Search = styled(RawSearch)`
 
 const Container = styled(RawContainer)`
   border: 1px solid gray;
+  border-radius: .2em;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: .25em;
 
-  & > *:last-child {
+  & > *:nth-last-child(3) {
     flex-grow: 1;
   }
 
-  &:after {
-    content: "v";
+  ${props => props.hasOptions
+    ? `
+      .divider {
+        width: 1px;
+        align-self: stretch;
+        background-color: black;
+        margin: 0 .4em;
+      }
+
+      .expand {
+        width: 1em;
+        vertical-align: middle;
+      }`
+    : `
+      .divider {
+        display: none;
+      }
+
+      .expand {
+        display: none;
+      }`
   }
 `
 

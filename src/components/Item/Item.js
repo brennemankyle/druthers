@@ -6,7 +6,8 @@ let Item = (props) => {
   return (
     <li className={props.className} value={props.item.value}>
       {props.item.label}
-      {props.canRemove && <button className="remove" type="button" value={props.item.value}>x</button>}
+      {props.canRemove && <button className="remove" type="button" value={props.item.value}>
+        <img src="remove.png" alt="remove" /></button>}
     </li>
   )
 }

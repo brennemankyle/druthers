@@ -9,6 +9,7 @@ let InternalTakey = (props) => {
   const searchRef = useRef(null)
 
   let filteredOptions = props.filterOptions(searchText, props.selection, props.options)
+  let hasOptions = !!props.options.length
 
   let {
     HtmlFieldData,
@@ -94,7 +95,7 @@ let InternalTakey = (props) => {
       key='HtmlFieldData' />,
 
     // Selection
-    <Container key="Container" onFocus={onFocus} multiple={props.multiple}>
+    <Container key="Container" onFocus={onFocus} multiple={props.multiple} hasOptions={hasOptions}>
       {showSelection && <SelectionList
         itemList={props.selection}
         onClick={onRemove}
