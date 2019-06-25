@@ -1,10 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const styleContainer = `
-  border: 1px solid gray;
-`
-
 let Container = (props) => {
   return <div
     className={props.className}
@@ -16,5 +12,4 @@ Container.propTypes = {
   onFocus: PropTypes.func,
 }
 
-export { styleContainer }
 export default Container

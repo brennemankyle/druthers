@@ -2,23 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
 
-const styleOptions = `
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  border: 1px solid gray;
-`
-
-const styleSelectionList = `
-  display: inline;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-`
-
 let ItemList = (props) => {
   let renderItem = (item) =>
-    <props.Item item={item} canRemove={props.canRemove} key={item.value} />
+    <props.Item item={item} canRemove={props.canRemove} key={item.value} multiple={props.multiple} />
 
   return (
     <ul className={props.className} onMouseDown={props.onClick}>
@@ -35,8 +21,8 @@ ItemList.propTypes = {
   itemList: AppPropTypes.itemList.isRequired,
   canRemove: PropTypes.bool,
   onClick: PropTypes.func,
+  multiple: PropTypes.bool.isRequired,
   Item: AppPropTypes.element.isRequired,
 }
 
-export { styleSelectionList, styleOptions }
 export default ItemList

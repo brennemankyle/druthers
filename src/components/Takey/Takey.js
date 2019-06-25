@@ -1,13 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
-import styled from 'styled-components'
 import InternalTakey from '../InternalTakey/InternalTakey'
 import HtmlFieldData from '../HtmlFieldData/HtmlFieldData'
-import Item, { styleSelection, styleOption } from '../Item/Item'
-import ItemList, { styleSelectionList, styleOptions } from '../ItemList/ItemList'
-import Search, { styleSearch } from '../Search/Search'
-import Container, { styleContainer } from '../Container/Container'
+import { Selection, SelectionList, OptionList, Option, Search, Container } from '../styledComponents/styledComponents'
 import castArray from 'lodash/castArray'
 import filterOptions from '../../utils/filterOptions'
 
@@ -48,13 +44,13 @@ Takey.defaultProps = {
   optionKeys: ['value', 'label'],
 
   components: {
-    HtmlFieldData: HtmlFieldData,
-    Selection: styled(Item)`${styleSelection}`,
-    SelectionList: styled(ItemList)`${styleSelectionList}`,
-    OptionList: styled(ItemList)`${styleOptions}`,
-    Option: styled(Item)`${styleOption}`,
-    Search: styled(Search)`${styleSearch}`,
-    Container: styled(Container)`${styleContainer}`,
+    HtmlFieldData,
+    Selection,
+    SelectionList,
+    OptionList,
+    Option,
+    Search,
+    Container,
   },
 }
 

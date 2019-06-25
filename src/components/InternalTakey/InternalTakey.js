@@ -99,6 +99,7 @@ let InternalTakey = (props) => {
         itemList={props.selection}
         onClick={onRemove}
         canRemove={true}
+        multiple={props.multiple}
         Item={Selection} />}
       {showSearch && <Search
         placeholder={placeholder}

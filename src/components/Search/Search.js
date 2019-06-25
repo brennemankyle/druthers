@@ -1,13 +1,6 @@
 import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 
-const styleSearch = `
-  border: none;
-  outline: none;
-  width: 10em;
-  font-size: 1em;
-`
-
 let Search = (props, ref) => {
   return <input
     className={props.className}
@@ -30,5 +23,4 @@ Search.propTypes = {
   onKeyDown: PropTypes.func,
 }
 
-export { styleSearch }
 export default Search
