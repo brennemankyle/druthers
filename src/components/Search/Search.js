@@ -4,12 +4,12 @@ import AppPropTypes from '../../utils/AppPropTypes'
 
 let Search = (props, ref) => {
   return <input
-    className={props.className}
+    className={props.className + ' search'}
     ref={ref}
     type="text"
     placeholder={props.placeholder}
-    onBlur={props.onBlur}
     onChange={props.onChange}
+    onMouseDown={props.onClick}
     onKeyDown={props.onKeyDown}
     value={props.searchText}
     key="search" />
@@ -19,9 +19,9 @@ Search = forwardRef(Search)
 
 Search.propTypes = {
   placeholder: PropTypes.string.isRequired,
-  onBlur: PropTypes.func,
-  onChange: PropTypes.func,
-  onKeyDown: PropTypes.func,
+  onChange: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
+  onKeyDown: PropTypes.func.isRequired,
   styles: AppPropTypes.styles.isRequired,
 }
 

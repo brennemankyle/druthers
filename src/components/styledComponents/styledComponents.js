@@ -81,7 +81,11 @@ const SelectionContainer = styled(RawSelectionContainer)`
     border-color: ${props => props.styles.colors.primary};
   }
 
-  ${props => props.areOptionsOpen && `border-color: ${props.styles.colors.primary}`}
+  ${props => props.areOptionsOpen && `
+    border-color: ${props.styles.colors.primary};
+    img {
+      transform: scaleY(-1);
+    }`}
 
   & > *:nth-last-child(3) {
     flex-grow: 1;

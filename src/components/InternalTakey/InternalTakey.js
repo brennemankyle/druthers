@@ -36,18 +36,32 @@ let InternalTakey = (props) => {
   }
 
   // Events
-  let onFocus = () => {
-    setAreOptionsOpen(true)
+  let onFocus = (e) => {
+    if (!areOptionsOpen) {
+      setAreOptionsOpen(true)
 
-    setPlacholder(!props.multiple && props.selection.length
-      ? props.selection[0].label // Set placeholder to current selection on single select
-      : props.placeholder)
+      setPlacholder(!props.multiple && props.selection.length
+        ? props.selection[0].label // Set placeholder to current selection on single select
+        : props.placeholder)
 
-    setTimeout(() => searchRef.current.focus())
+      setTimeout(() => searchRef.current.focus())
+    } else if (!e.target.classList.contains('search')) {
+      e.target.blur()
+    }
   }
   let onBlur = (e) => {
-    setAreOptionsOpen(false)
-    setSearchText('')
+    if (e.target.classList.contains('search')) {
+      setTimeout(() => {
+        setAreOptionsOpen(false)
+        setSearchText('')
+      })
+    }
+  }
+  let onSearchClick = (e) => {
+    if (areOptionsOpen) {
+      e.preventDefault()
+      searchRef.current.blur()
+    }
   }
   let onOptionClick = (e) => {
     let value = targetValue(e)
@@ -111,7 +125,7 @@ let InternalTakey = (props) => {
           let input = document.createElement("input")
           input.value = _last(props.selection).value
           input.classList.add('remove')
-          
+
           onRemove({
             target: input,
             preventDefault: e.preventDefault,
@@ -170,7 +184,7 @@ let InternalTakey = (props) => {
       itemList={props.selection}
       key='HtmlFieldData' />
 
-    <SelectionContainer key="SelectionContainer" onFocus={onFocus} multiple={props.multiple} hasOptions={hasOptions} styles={props.styles} areOptionsOpen={areOptionsOpen}>
+    <SelectionContainer key="SelectionContainer" onFocus={onFocus} onBlur={onBlur} multiple={props.multiple} hasOptions={hasOptions} styles={props.styles} areOptionsOpen={areOptionsOpen}>
       {showSelection && <SelectionList
         itemList={props.selection}
         onClick={onRemove}
@@ -181,9 +195,9 @@ let InternalTakey = (props) => {
       {showSearch && <Search
         placeholder={placeholder}
         searchText={searchText}
-        onBlur={onBlur}
         onKeyDown={onKeyDown}
         onChange={(e) => setSearchText(targetValue(e))}
+        onClick={onSearchClick}
         ref={searchRef}
         styles={props.styles} />}
     </SelectionContainer>
