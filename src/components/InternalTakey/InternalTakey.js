@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
 
 const ENTER_KEY = 13
+const ESCAPE = 27
 const ARROW_UP = 38
 const ARROW_DOWN = 40
 const ARROW_LEFT = 37
@@ -66,7 +67,9 @@ let InternalTakey = (props) => {
   let onKeyDown = (e) => {
     switch (e.keyCode) {
       case ENTER_KEY:
-        if (optionHighlighted) {
+        if (!areOptionsOpen) {
+          setAreOptionsOpen(true)
+        } else if (optionHighlighted) {
           onOptionClick({
             target: {
               value: optionHighlighted
@@ -80,18 +83,28 @@ let InternalTakey = (props) => {
         }
         break
       case ARROW_UP:
-        if (areOptionsOpen && filteredOptions.length && optionHighlighted) {
+        if (!areOptionsOpen) {
+          setAreOptionsOpen(true)
+        } else if (filteredOptions.length && optionHighlighted) {
           let index = filteredOptions.map((option) => option.value).indexOf(optionHighlighted) - 1
           if (index >= 0) setOptionHighlighted(filteredOptions[index].value)
         }
         break
       case ARROW_DOWN:
-        if (areOptionsOpen && filteredOptions.length && optionHighlighted) {
+        if (!areOptionsOpen) {
+          setAreOptionsOpen(true)
+        } else if (filteredOptions.length && optionHighlighted) {
           let index = filteredOptions.map((option) => option.value).indexOf(optionHighlighted) + 1
           if (index < filteredOptions.length) setOptionHighlighted(filteredOptions[index].value)
         }
         break
+      case ESCAPE:
+        if (areOptionsOpen) setAreOptionsOpen(false)
+        setSearchText('')
+        break
       default:
+        if (!areOptionsOpen) setAreOptionsOpen(true)
+        break
     }
   }
   let onRemove = (e) => {
