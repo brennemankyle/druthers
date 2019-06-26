@@ -1,9 +1,12 @@
 import React, { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
+import _last from 'lodash/last'
 
 const ENTER_KEY = 13
 const ESCAPE = 27
+const BACKSPACE = 8
+const DELETE = 46
 const ARROW_UP = 38
 const ARROW_DOWN = 40
 const ARROW_LEFT = 37
@@ -101,6 +104,19 @@ let InternalTakey = (props) => {
       case ESCAPE:
         if (areOptionsOpen) setAreOptionsOpen(false)
         setSearchText('')
+        break
+      case BACKSPACE:
+      case DELETE:
+        if (!searchText && props.selection.length) {
+          let input = document.createElement("input")
+          input.value = _last(props.selection).value
+          input.classList.add('remove')
+          
+          onRemove({
+            target: input,
+            preventDefault: e.preventDefault,
+          })
+        }
         break
       default:
         if (!areOptionsOpen) setAreOptionsOpen(true)
