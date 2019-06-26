@@ -4,7 +4,6 @@ import ItemList from '../ItemList/ItemList'
 import RawSearch from '../Search/Search'
 import RawContainer from '../Container/Container'
 
-
 const Selection = styled(Item)`
   border-radius: .2em;
   align-items: center;

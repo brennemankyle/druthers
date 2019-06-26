@@ -11,24 +11,14 @@ let InternalTakey = (props) => {
   let filteredOptions = props.filterOptions(searchText, props.selection, props.options)
   let hasOptions = !!props.options.length
 
-  let {
-    HtmlFieldData,
-    Selection,
-    SelectionList,
-    OptionList,
-    Option,
-    Search,
-    Container,
-  } = props.components
-
   let onFocus = () => {
     setAreOptionsOpen(true)
 
     setPlacholder(!props.multiple && props.selection.length
-      ? props.selection[0].label
+      ? props.selection[0].label // Set placeholder to current selection on single select
       : props.placeholder)
 
-    setTimeout(() => searchRef.current.focus()) // useEffect instead of setTimeout?
+    setTimeout(() => searchRef.current.focus())
   }
   let onBlur = (e) => {
     setAreOptionsOpen(false)
@@ -40,7 +30,7 @@ let InternalTakey = (props) => {
     if (props.multiple) {
       value = props.selection.map((option) => option.value)
       value.push(String(e.target.value))
-      e.preventDefault()
+      e.preventDefault() // Keep options open on multi select
     }
 
     let event = {
@@ -57,20 +47,18 @@ let InternalTakey = (props) => {
       onOptionClick(e)
       setSearchText('')
 
-      if (!props.multiple) {
-        e.target.blur()
-      }
+      if (!props.multiple) e.target.blur() // Close options on single select
     }
   }
   let onRemove = (e) => {
     if (props.removeSelection && e.target.classList.contains('remove')) {
-      e.preventDefault()
-      setPlacholder(props.placeholder)
+      e.preventDefault() // Prevent click from opening options
+      setPlacholder(props.placeholder) // Reset placeholder for single select
       let value = []
 
       if (props.multiple) {
         value = props.selection.map((option) => option.value)
-        value.splice(value.indexOf(String(e.target.value)), 1)
+        value.splice(value.indexOf(String(e.target.value)), 1) // Remove
       }
 
       let event = {
@@ -86,6 +74,16 @@ let InternalTakey = (props) => {
 
   let showSelection = props.multiple || !areOptionsOpen // Multiple: always show. Single: show when options are closed
   let showSearch = props.multiple || areOptionsOpen || !props.selection.length // Multiple: always show. Single: show when options are open or when nothing is selected (placeholder should be shown)
+
+  let {
+    HtmlFieldData,
+    Selection,
+    SelectionList,
+    OptionList,
+    Option,
+    Search,
+    Container,
+  } = props.components
 
   return [
     // Hidden form field
