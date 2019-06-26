@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
 import InternalTakey from '../InternalTakey/InternalTakey'
 import HtmlFieldData from '../HtmlFieldData/HtmlFieldData'
-import { Selection, SelectionList, OptionList, Option, Search, SelectionContainer } from '../styledComponents/styledComponents'
+import Container from '../Container/Container'
+import { Selection, SelectionList, OptionList, Option, Search, SelectionContainer, NoOptions } from '../styledComponents/styledComponents'
 import castArray from 'lodash/castArray'
 import filterOptions from '../../utils/filterOptions'
 
@@ -39,18 +40,20 @@ Takey.defaultProps = {
   minSelectionCount: -1,
   removeSelection: true,
   searchOptions: true,
-  noOptionsFound: 'No Options Found',
+  noOptionsText: 'No Options',
   filterOptions: filterOptions,
   optionKeys: ['value', 'label'],
 
   components: {
     HtmlFieldData,
+    Container,
     Selection,
     SelectionList,
     OptionList,
     Option,
     Search,
     SelectionContainer,
+    NoOptions,
   },
 
   styles: {
@@ -79,18 +82,20 @@ Takey.propTypes = {
   minSelectionCount: PropTypes.number,
   removeSelection: PropTypes.bool,
   searchOptions: PropTypes.bool,
-  noOptionsFound: PropTypes.string,
+  noOptionsText: PropTypes.string,
   filterOptions: PropTypes.func,
   optionKeys: PropTypes.arrayOf(PropTypes.string),
 
   components: PropTypes.shape({
     HtmlFieldData: AppPropTypes.element,
+    Container: AppPropTypes.element,
     Item: AppPropTypes.element,
     SelectionList: AppPropTypes.element,
     OptionList: AppPropTypes.element,
     Option: AppPropTypes.element,
     Search: AppPropTypes.element,
     SelectionContainer: AppPropTypes.element,
+    NoOptions: AppPropTypes.element,
   }),
 
   styles: AppPropTypes.styles.isRequired,

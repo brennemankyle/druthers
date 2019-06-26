@@ -84,15 +84,17 @@ let InternalTakey = (props) => {
 
   let {
     HtmlFieldData,
+    Container,
     Selection,
     SelectionList,
     OptionList,
     Option,
     Search,
     SelectionContainer,
+    NoOptions,
   } = props.components
 
-  return <div className="takey">
+  return <Container styles={props.styles}>
     <HtmlFieldData
       name={props.name}
       itemList={props.selection}
@@ -116,7 +118,7 @@ let InternalTakey = (props) => {
         styles={props.styles} />}
     </SelectionContainer>
 
-    {areOptionsOpen && <OptionList
+    {areOptionsOpen && !!filteredOptions.length && <OptionList
       itemList={filteredOptions}
       multiple={props.multiple}
       onClick={onOptionClick}
@@ -124,7 +126,9 @@ let InternalTakey = (props) => {
       key='OptionList'
       Item={Option}
       optionHighlighted={optionHighlighted}
-      styles={props.styles} />}</div>
+      styles={props.styles} />}
+
+    {areOptionsOpen && !filteredOptions.length && <NoOptions styles={props.styles}>{props.noOptionsText}</NoOptions>}</Container>
 }
 
 InternalTakey.propTypes = {
@@ -140,17 +144,19 @@ InternalTakey.propTypes = {
   minSelectionCount: PropTypes.number.isRequired,
   removeSelection: PropTypes.bool,
   searchOptions: PropTypes.bool,
-  noOptionsFound: PropTypes.string,
+  noOptionsText: PropTypes.string,
   filterOptions: PropTypes.func,
 
   components: PropTypes.shape({
     HtmlFieldData: AppPropTypes.element.isRequired,
+    Container: AppPropTypes.element.isRequired,
     Selection: AppPropTypes.element.isRequired,
     SelectionList: AppPropTypes.element.isRequired,
     OptionList: AppPropTypes.element.isRequired,
     Option: AppPropTypes.element.isRequired,
     Search: AppPropTypes.element.isRequired,
     SelectionContainer: AppPropTypes.element.isRequired,
+    NoOptions: AppPropTypes.element.isRequired,
   }).isRequired,
 
   styles: AppPropTypes.styles.isRequired,

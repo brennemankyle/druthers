@@ -3,6 +3,7 @@ import Item from '../Item/Item'
 import ItemList from '../ItemList/ItemList'
 import RawSearch from '../Search/Search'
 import RawSelectionContainer from '../SelectionContainer/SelectionContainer'
+import Container from '../Container/Container'
 
 const Selection = styled(Item)`
   border-radius: .2em;
@@ -114,6 +115,12 @@ const SelectionContainer = styled(RawSelectionContainer)`
   }
 `
 
+let NoOptions = styled(Container)`
+  padding: .25em;
+  text-align: center;
+  border: 1px solid ${props => props.styles.colors.secondary};
+`
+
 export {
   Selection,
   SelectionList,
@@ -121,4 +128,5 @@ export {
   Option,
   Search,
   SelectionContainer,
+  NoOptions
 }
