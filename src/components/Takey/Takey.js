@@ -41,6 +41,7 @@ Takey.defaultProps = {
   removeSelection: true,
   searchOptions: true,
   noOptionsText: 'No Options',
+  createText: 'Create',
   filterOptions: filterOptions,
   optionKeys: ['value', 'label'],
 
@@ -83,6 +84,7 @@ Takey.propTypes = {
   removeSelection: PropTypes.bool,
   searchOptions: PropTypes.bool,
   noOptionsText: PropTypes.string,
+  createText: PropTypes.string,
   filterOptions: PropTypes.func,
   optionKeys: PropTypes.arrayOf(PropTypes.string),
 

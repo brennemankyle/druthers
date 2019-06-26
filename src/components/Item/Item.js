@@ -4,10 +4,10 @@ import AppPropTypes from '../../utils/AppPropTypes'
 
 let Item = (props) => {
   return (
-    <li className={props.className} value={props.item.value}>
+    <li className={props.className} val={props.item.value}>
       {props.item.label}
-      {props.canRemove && <button className="remove" type="button" value={props.item.value}>
-        <img className="remove" src="remove.png" alt="remove" value={props.item.value} /></button>}
+      {props.canRemove && <button className="remove" type="button" val={props.item.value}>
+        <img className="remove" src="remove.png" alt="remove" val={props.item.value} /></button>}
     </li>
   )
 }

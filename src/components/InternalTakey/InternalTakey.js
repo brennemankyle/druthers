@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
 
+let targetValue = (e) => String(e.target.value || e.target.getAttribute('val') || '')
+
 let InternalTakey = (props) => {
   const [areOptionsOpen, setAreOptionsOpen] = useState(false)
   const [searchText, setSearchText] = useState('')
@@ -9,12 +11,23 @@ let InternalTakey = (props) => {
   const [optionHighlighted, setOptionHighlighted] = useState()
   const searchRef = useRef(null)
 
-  let filteredOptions = props.filterOptions(searchText, props.selection, props.options)
   let hasOptions = !!props.options.length
+  let filteredOptions = props.filterOptions(searchText, props.selection, props.options)
+  let showSelection = props.multiple || !areOptionsOpen // Multiple: always show. Single: show when options are closed
+  let showSearch = props.multiple || areOptionsOpen || !props.selection.length // Multiple: always show. Single: show when options are open or when nothing is selected (placeholder should be shown)
 
+  if (props.creatable && searchText) {
+    filteredOptions.push({value: searchText, label: props.createText + ` "${searchText}"`})
+  }
+
+  if (!filteredOptions.map((option) => option.value).includes(optionHighlighted)) {
+    let newOptionHighlighted = filteredOptions.length ? filteredOptions[0].value : undefined
+    if (newOptionHighlighted !== optionHighlighted) setOptionHighlighted(newOptionHighlighted)
+  }
+
+  // Events
   let onFocus = () => {
     setAreOptionsOpen(true)
-    if (hasOptions) setOptionHighlighted(props.options[0].value)
 
     setPlacholder(!props.multiple && props.selection.length
       ? props.selection[0].label // Set placeholder to current selection on single select
@@ -27,11 +40,11 @@ let InternalTakey = (props) => {
     setSearchText('')
   }
   let onOptionClick = (e) => {
-    let value = e.target.value
+    let value = targetValue(e)
 
     if (props.multiple) {
       value = props.selection.map((option) => option.value)
-      value.push(String(e.target.value))
+      value.push(targetValue(e))
       e.preventDefault() // Keep options open on multi select
     }
 
@@ -45,8 +58,14 @@ let InternalTakey = (props) => {
     props.onChange(event)
   }
   let onKeyDown = (e) => {
-    if (e.keyCode === 13 && props.creatable) { // Enter Key
-      onOptionClick(e)
+    if (e.keyCode === 13 && optionHighlighted) { // Enter Key
+      onOptionClick({
+        target: {
+          value: optionHighlighted
+        },
+        preventDefault: e.preventDefault,
+      })
+      setOptionHighlighted()
       setSearchText('')
 
       if (!props.multiple) e.target.blur() // Close options on single select
@@ -60,7 +79,7 @@ let InternalTakey = (props) => {
 
       if (props.multiple) {
         value = props.selection.map((option) => option.value)
-        value.splice(value.indexOf(String(e.target.value)), 1) // Remove
+        value.splice(value.indexOf(targetValue(e)), 1) // Remove
       }
 
       let event = {
@@ -74,13 +93,12 @@ let InternalTakey = (props) => {
     }
   }
   let onHoverOption = (e) => {
-    if (e.target.value && e.target.value !== optionHighlighted) {
-      setOptionHighlighted(String(e.target.value))
+    let value = targetValue(e)
+
+    if (value && value !== optionHighlighted) {
+      setOptionHighlighted(value)
     }
   }
-
-  let showSelection = props.multiple || !areOptionsOpen // Multiple: always show. Single: show when options are closed
-  let showSearch = props.multiple || areOptionsOpen || !props.selection.length // Multiple: always show. Single: show when options are open or when nothing is selected (placeholder should be shown)
 
   let {
     HtmlFieldData,
@@ -113,7 +131,7 @@ let InternalTakey = (props) => {
         searchText={searchText}
         onBlur={onBlur}
         onKeyDown={onKeyDown}
-        onChange={(e) => setSearchText(e.target.value)}
+        onChange={(e) => setSearchText(targetValue(e))}
         ref={searchRef}
         styles={props.styles} />}
     </SelectionContainer>
@@ -144,7 +162,8 @@ InternalTakey.propTypes = {
   minSelectionCount: PropTypes.number.isRequired,
   removeSelection: PropTypes.bool,
   searchOptions: PropTypes.bool,
-  noOptionsText: PropTypes.string,
+  noOptionsText: PropTypes.string.isRequired,
+  createText: PropTypes.string.isRequired,
   filterOptions: PropTypes.func,
 
   components: PropTypes.shape({
