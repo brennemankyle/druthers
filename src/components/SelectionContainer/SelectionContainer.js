@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-let Container = (props) => {
+let SelectionContainer = (props) => {
   return <div
     className={props.className}
     tabIndex={props.onFocus && '0'}
@@ -11,11 +11,11 @@ let Container = (props) => {
       <img className="expand" src="expand.png" alt="expand" /></div>
 }
 
-Container.propTypes = {
+SelectionContainer.propTypes = {
   onFocus: PropTypes.func,
   multiple: PropTypes.bool.isRequired,
   hasOptions: PropTypes.bool.isRequired,
   areOptionsOpen: PropTypes.bool.isRequired,
 }
 
-export default Container
+export default SelectionContainer

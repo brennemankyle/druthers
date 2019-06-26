@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import Item from '../Item/Item'
 import ItemList from '../ItemList/ItemList'
 import RawSearch from '../Search/Search'
-import RawContainer from '../Container/Container'
+import RawSelectionContainer from '../SelectionContainer/SelectionContainer'
 
 const Selection = styled(Item)`
   border-radius: .2em;
@@ -67,7 +67,7 @@ const Search = styled(RawSearch)`
   font-family: inherit;
 `
 
-const Container = styled(RawContainer)`
+const SelectionContainer = styled(RawSelectionContainer)`
   border: 1px solid ${props => props.styles.colors.secondary};
   border-radius: .2em;
   display: flex;
@@ -119,5 +119,5 @@ export {
   OptionList,
   Option,
   Search,
-  Container,
+  SelectionContainer,
 }

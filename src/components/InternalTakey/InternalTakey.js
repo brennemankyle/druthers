@@ -82,18 +82,16 @@ let InternalTakey = (props) => {
     OptionList,
     Option,
     Search,
-    Container,
+    SelectionContainer,
   } = props.components
 
-  return [
-    // Hidden form field
+  return <div className="takey">
     <HtmlFieldData
       name={props.name}
       itemList={props.selection}
-      key='HtmlFieldData' />,
+      key='HtmlFieldData' />
 
-    // Selection
-    <Container key="Container" onFocus={onFocus} multiple={props.multiple} hasOptions={hasOptions} styles={props.styles} areOptionsOpen={areOptionsOpen}>
+    <SelectionContainer key="SelectionContainer" onFocus={onFocus} multiple={props.multiple} hasOptions={hasOptions} styles={props.styles} areOptionsOpen={areOptionsOpen}>
       {showSelection && <SelectionList
         itemList={props.selection}
         onClick={onRemove}
@@ -109,17 +107,15 @@ let InternalTakey = (props) => {
         onChange={(e) => setSearchText(e.target.value)}
         ref={searchRef}
         styles={props.styles} />}
-    </Container>,
+    </SelectionContainer>
 
-    // OptionList
-    areOptionsOpen && <OptionList
+    {areOptionsOpen && <OptionList
       itemList={filteredOptions}
       multiple={props.multiple}
       onClick={onOptionClick}
       key='OptionList'
       Item={Option}
-      styles={props.styles} />,
-  ]
+      styles={props.styles} />}</div>
 }
 
 InternalTakey.propTypes = {
@@ -145,7 +141,7 @@ InternalTakey.propTypes = {
     OptionList: AppPropTypes.element.isRequired,
     Option: AppPropTypes.element.isRequired,
     Search: AppPropTypes.element.isRequired,
-    Container: AppPropTypes.element.isRequired,
+    SelectionContainer: AppPropTypes.element.isRequired,
   }).isRequired,
 
   styles: AppPropTypes.styles.isRequired,

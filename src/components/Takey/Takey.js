@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
 import InternalTakey from '../InternalTakey/InternalTakey'
 import HtmlFieldData from '../HtmlFieldData/HtmlFieldData'
-import { Selection, SelectionList, OptionList, Option, Search, Container } from '../styledComponents/styledComponents'
+import { Selection, SelectionList, OptionList, Option, Search, SelectionContainer } from '../styledComponents/styledComponents'
 import castArray from 'lodash/castArray'
 import filterOptions from '../../utils/filterOptions'
 
@@ -50,7 +50,7 @@ Takey.defaultProps = {
     OptionList,
     Option,
     Search,
-    Container,
+    SelectionContainer,
   },
 
   styles: {
@@ -90,7 +90,7 @@ Takey.propTypes = {
     OptionList: AppPropTypes.element,
     Option: AppPropTypes.element,
     Search: AppPropTypes.element,
-    Container: AppPropTypes.element,
+    SelectionContainer: AppPropTypes.element,
   }),
 
   styles: AppPropTypes.styles.isRequired,
