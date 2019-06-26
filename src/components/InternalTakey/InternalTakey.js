@@ -2,6 +2,12 @@ import React, { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
 
+const ENTER_KEY = 13
+const ARROW_UP = 38
+const ARROW_DOWN = 40
+const ARROW_LEFT = 37
+const ARROW_RIGHT = 39
+
 let targetValue = (e) => String(e.target.value || e.target.getAttribute('val') || '')
 
 let InternalTakey = (props) => {
@@ -58,17 +64,34 @@ let InternalTakey = (props) => {
     props.onChange(event)
   }
   let onKeyDown = (e) => {
-    if (e.keyCode === 13 && optionHighlighted) { // Enter Key
-      onOptionClick({
-        target: {
-          value: optionHighlighted
-        },
-        preventDefault: e.preventDefault,
-      })
-      setOptionHighlighted()
-      setSearchText('')
+    switch (e.keyCode) {
+      case ENTER_KEY:
+        if (optionHighlighted) {
+          onOptionClick({
+            target: {
+              value: optionHighlighted
+            },
+            preventDefault: e.preventDefault,
+          })
+          setOptionHighlighted()
+          setSearchText('')
 
-      if (!props.multiple) e.target.blur() // Close options on single select
+          if (!props.multiple) e.target.blur() // Close options on single select
+        }
+        break
+      case ARROW_UP:
+        if (areOptionsOpen && filteredOptions.length && optionHighlighted) {
+          let index = filteredOptions.map((option) => option.value).indexOf(optionHighlighted) - 1
+          if (index >= 0) setOptionHighlighted(filteredOptions[index].value)
+        }
+        break
+      case ARROW_DOWN:
+        if (areOptionsOpen && filteredOptions.length && optionHighlighted) {
+          let index = filteredOptions.map((option) => option.value).indexOf(optionHighlighted) + 1
+          if (index < filteredOptions.length) setOptionHighlighted(filteredOptions[index].value)
+        }
+        break
+      default:
     }
   }
   let onRemove = (e) => {
