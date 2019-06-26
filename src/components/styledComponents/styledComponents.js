@@ -40,8 +40,9 @@ const Selection = styled(Item)`
 const Option = styled(Item)`
   padding: .25em;
 
-  &:hover {
-    background-color: ${props => props.styles.colors.highlight};
+  ${props => props.optionHighlighted === props.item.value
+    ? `background-color: ${props.styles.colors.highlight};`
+    : ``
   }
 `
 

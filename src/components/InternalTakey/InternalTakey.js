@@ -6,6 +6,7 @@ let InternalTakey = (props) => {
   const [areOptionsOpen, setAreOptionsOpen] = useState(false)
   const [searchText, setSearchText] = useState('')
   const [placeholder, setPlacholder] = useState(props.placeholder)
+  const [optionHighlighted, setOptionHighlighted] = useState()
   const searchRef = useRef(null)
 
   let filteredOptions = props.filterOptions(searchText, props.selection, props.options)
@@ -13,6 +14,7 @@ let InternalTakey = (props) => {
 
   let onFocus = () => {
     setAreOptionsOpen(true)
+    if (hasOptions) setOptionHighlighted(props.options[0].value)
 
     setPlacholder(!props.multiple && props.selection.length
       ? props.selection[0].label // Set placeholder to current selection on single select
@@ -71,6 +73,11 @@ let InternalTakey = (props) => {
       props.onChange(event)
     }
   }
+  let onHoverOption = (e) => {
+    if (e.target.value && e.target.value !== optionHighlighted) {
+      setOptionHighlighted(String(e.target.value))
+    }
+  }
 
   let showSelection = props.multiple || !areOptionsOpen // Multiple: always show. Single: show when options are closed
   let showSearch = props.multiple || areOptionsOpen || !props.selection.length // Multiple: always show. Single: show when options are open or when nothing is selected (placeholder should be shown)
@@ -113,8 +120,10 @@ let InternalTakey = (props) => {
       itemList={filteredOptions}
       multiple={props.multiple}
       onClick={onOptionClick}
+      onMouseOver={onHoverOption}
       key='OptionList'
       Item={Option}
+      optionHighlighted={optionHighlighted}
       styles={props.styles} />}</div>
 }
 
