@@ -3,9 +3,15 @@ import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
 
 let Search = (props, ref) => {
+  let style = props.hide ? {
+    opacity: 0,
+    width: 0,
+  } : {}
+
   return <input
     className={props.className + ' search'}
     ref={ref}
+    style={style}
     type="text"
     placeholder={props.placeholder}
     onChange={props.onChange}
@@ -22,6 +28,7 @@ Search.propTypes = {
   onChange: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
   onKeyDown: PropTypes.func.isRequired,
+  hide: PropTypes.bool.isRequired,
   styles: AppPropTypes.styles.isRequired,
 }
 

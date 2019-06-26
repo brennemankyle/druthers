@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 let SelectionContainer = (props) => {
   return <div
     className={props.className}
-    tabIndex={props.multiple || props.areOptionsOpen ? '-1' : '0'}
+    tabIndex={'-1'}
     onFocus={props.onFocus}
     onBlur={props.onBlur}>
       {props.children}
@@ -17,6 +17,7 @@ SelectionContainer.propTypes = {
   onBlur: PropTypes.func.isRequired,
   multiple: PropTypes.bool.isRequired,
   hasOptions: PropTypes.bool.isRequired,
+  hasSelection: PropTypes.bool.isRequired,
   areOptionsOpen: PropTypes.bool.isRequired,
 }
 

@@ -82,13 +82,21 @@ const SelectionContainer = styled(RawSelectionContainer)`
   }
 
   ${props => props.areOptionsOpen && `
-    border-color: ${props.styles.colors.primary};
     img {
       transform: scaleY(-1);
-    }`}
+    }
+    border-color: ${props.styles.colors.primary};`}
 
-  & > *:nth-last-child(3) {
-    flex-grow: 1;
+  ${props => !props.multiple && !props.areOptionsOpen && props.hasSelection
+    ? `
+      & > *:nth-last-child(4) {
+        flex-grow: 1;
+      }
+    ` : `
+      & > *:nth-last-child(3) {
+        flex-grow: 1;
+      }
+    `
   }
 
   ${props => props.hasOptions

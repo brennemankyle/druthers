@@ -22,6 +22,7 @@ let InternalTakey = (props) => {
   const searchRef = useRef(null)
 
   let hasOptions = !!props.options.length
+  let hasSelection = !!props.selection.length
   let filteredOptions = props.filterOptions(searchText, props.selection, props.options)
   let showSelection = props.multiple || !areOptionsOpen // Multiple: always show. Single: show when options are closed
   let showSearch = props.multiple || areOptionsOpen || !props.selection.length // Multiple: always show. Single: show when options are open or when nothing is selected (placeholder should be shown)
@@ -44,7 +45,7 @@ let InternalTakey = (props) => {
         ? props.selection[0].label // Set placeholder to current selection on single select
         : props.placeholder)
 
-      setTimeout(() => searchRef.current.focus())
+      searchRef.current.focus()
     } else if (!e.target.classList.contains('search')) {
       e.target.blur()
     }
@@ -184,7 +185,7 @@ let InternalTakey = (props) => {
       itemList={props.selection}
       key='HtmlFieldData' />
 
-    <SelectionContainer key="SelectionContainer" onFocus={onFocus} onBlur={onBlur} multiple={props.multiple} hasOptions={hasOptions} styles={props.styles} areOptionsOpen={areOptionsOpen}>
+    <SelectionContainer key="SelectionContainer" onFocus={onFocus} onBlur={onBlur} multiple={props.multiple} hasOptions={hasOptions} hasSelection={hasSelection} styles={props.styles} areOptionsOpen={areOptionsOpen}>
       {showSelection && <SelectionList
         itemList={props.selection}
         onClick={onRemove}
@@ -192,14 +193,15 @@ let InternalTakey = (props) => {
         multiple={props.multiple}
         Item={Selection}
         styles={props.styles} />}
-      {showSearch && <Search
+      <Search
+        hide={!showSearch}
         placeholder={placeholder}
         searchText={searchText}
         onKeyDown={onKeyDown}
         onChange={(e) => setSearchText(targetValue(e))}
         onClick={onSearchClick}
         ref={searchRef}
-        styles={props.styles} />}
+        styles={props.styles} />
     </SelectionContainer>
 
     {areOptionsOpen && !!filteredOptions.length && <OptionList
