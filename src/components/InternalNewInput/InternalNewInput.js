@@ -2,15 +2,20 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
 import _last from 'lodash/last'
+import _inRange from 'lodash/inRange'
 
 const ENTER_KEY = 13
+const TAB = 9
 const ESCAPE = 27
+const SPACE = 32
 const BACKSPACE = 8
 const DELETE = 46
 const ARROW_UP = 38
 const ARROW_DOWN = 40
 const ARROW_LEFT = 37
 const ARROW_RIGHT = 39
+const NUM_LETTER_START = 48
+const NUM_LETTER_END = 111
 
 let targetValue = (e) => String(e.target.value || e.target.getAttribute('val') || '')
 
@@ -27,7 +32,7 @@ let InternalNewInput = (props) => {
   let showSearch = props.multiple || areOptionsOpen || !props.selection.length // Multiple: always show. Single: show when options are open or when nothing is selected (placeholder should be shown)
 
   if (props.creatable && searchText) {
-    filteredOptions.push({value: searchText, label: props.props.createText + ` "${searchText}"`})
+    filteredOptions.push({value: searchText, label: props.text.create + ` "${searchText}"`})
   }
 
   if (!filteredOptions.map((option) => option.value).includes(optionHighlighted)) {
@@ -89,11 +94,13 @@ let InternalNewInput = (props) => {
     }
   }
   let onKeyDown = (e) => {
+    let openKeys = [ENTER_KEY, ARROW_UP, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, SPACE]
+    if (!areOptionsOpen
+      && (_inRange(e.keyCode, NUM_LETTER_START, NUM_LETTER_END) || openKeys.includes(e.keyCode))) setAreOptionsOpen(true)
+
     switch (e.keyCode) {
       case ENTER_KEY:
-        if (!areOptionsOpen) {
-          setAreOptionsOpen(true)
-        } else if (optionHighlighted) {
+        if (areOptionsOpen && optionHighlighted) {
           onOptionClick({
             target: {
               value: optionHighlighted
@@ -107,17 +114,13 @@ let InternalNewInput = (props) => {
         }
         break
       case ARROW_UP:
-        if (!areOptionsOpen) {
-          setAreOptionsOpen(true)
-        } else if (filteredOptions.length && optionHighlighted) {
+        if (areOptionsOpen && filteredOptions.length && optionHighlighted) {
           let index = filteredOptions.map((option) => option.value).indexOf(optionHighlighted) - 1
           if (index >= 0) setOptionHighlighted(filteredOptions[index].value)
         }
         break
       case ARROW_DOWN:
-        if (!areOptionsOpen) {
-          setAreOptionsOpen(true)
-        } else if (filteredOptions.length && optionHighlighted) {
+        if (areOptionsOpen && filteredOptions.length && optionHighlighted) {
           let index = filteredOptions.map((option) => option.value).indexOf(optionHighlighted) + 1
           if (index < filteredOptions.length) setOptionHighlighted(filteredOptions[index].value)
         }
@@ -140,7 +143,6 @@ let InternalNewInput = (props) => {
         }
         break
       default:
-        if (!areOptionsOpen) setAreOptionsOpen(true)
         break
     }
   }
