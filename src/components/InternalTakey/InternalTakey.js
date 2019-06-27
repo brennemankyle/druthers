@@ -83,7 +83,7 @@ let InternalTakey = (props) => {
       e.preventDefault() // Keep options open on multi select
     }
 
-    props.callOnChange(value)
+    callOnChange(value)
   }
   let onKeyDown = (e) => {
     switch (e.keyCode) {
@@ -152,7 +152,7 @@ let InternalTakey = (props) => {
         value.splice(value.indexOf(targetValue(e)), 1) // Remove
       }
 
-      props.callOnChange(value)
+      callOnChange(value)
     }
   }
   let onHoverOption = (e) => {
