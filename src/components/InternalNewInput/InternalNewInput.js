@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
 import _last from 'lodash/last'
 import _inRange from 'lodash/inRange'
 
 const ENTER_KEY = 13
-const TAB = 9
 const ESCAPE = 27
 const SPACE = 32
 const BACKSPACE = 8
@@ -16,6 +15,16 @@ const ARROW_LEFT = 37
 const ARROW_RIGHT = 39
 const NUM_LETTER_START = 48
 const NUM_LETTER_END = 111
+const SEMI_COLON = 186
+const EQUAL_SIGN = 187
+const COMMA = 188
+const DASH = 189
+const PERIOD = 190
+const FORWARD_SLASH = 191
+const OPEN_BRACKET = 219
+const BACK_SLASH = 220
+const CLOSE_BRAKET = 221
+const SINGLE_QUOTE = 222
 
 let targetValue = (e) => String(e.target.value || e.target.getAttribute('val') || '')
 
@@ -94,7 +103,8 @@ let InternalNewInput = (props) => {
     }
   }
   let onKeyDown = (e) => {
-    let openKeys = [ENTER_KEY, ARROW_UP, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, SPACE]
+    let openKeys = [ENTER_KEY, ARROW_UP, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, SPACE, SEMI_COLON,
+      EQUAL_SIGN, COMMA, DASH, PERIOD, FORWARD_SLASH, OPEN_BRACKET, BACK_SLASH, CLOSE_BRAKET, SINGLE_QUOTE]
     if (!areOptionsOpen
       && (_inRange(e.keyCode, NUM_LETTER_START, NUM_LETTER_END) || openKeys.includes(e.keyCode))) setAreOptionsOpen(true)
 
