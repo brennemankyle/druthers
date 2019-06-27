@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 
 let SelectionContainer = (props) => {
+  const searchRef = useRef(null)
+
   let onFocus = (e) => {
     if (!props.areOptionsOpen) {
       props.onFocus(e)
+
+      searchRef.current.focus()
     } else {
       e.target.blur() // Close if already open options
     }
@@ -16,13 +20,27 @@ let SelectionContainer = (props) => {
       })
     }
   }
+  let onSearchClick = (e) => {
+    if (props.areOptionsOpen) {
+      // Call blur on search click
+      e.preventDefault()
+      searchRef.current.blur()
+    }
+  }
+
+  const Search = React.cloneElement(props.Search, {
+    onClick: onSearchClick,
+    ref: searchRef,
+    disabled: props.disabled,
+  })
 
   return <div
     className={props.className}
     tabIndex={props.disabled ? 'false' : '-1'}
     onFocus={onFocus}
     onBlur={onBlur}>
-      {props.children}
+      {props.SelectionList}
+      {Search}
       <span className="divider"></span>
       <img className="expand" src="expand.png" alt="expand" /></div>
 }

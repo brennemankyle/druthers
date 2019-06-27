@@ -27,10 +27,10 @@ Search = forwardRef(Search)
 Search.propTypes = {
   placeholder: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   onKeyDown: PropTypes.func.isRequired,
   hide: PropTypes.bool.isRequired,
-  disabled: PropTypes.bool.isRequired,
+  disabled: PropTypes.bool,
   styles: AppPropTypes.styles.isRequired,
 }
 

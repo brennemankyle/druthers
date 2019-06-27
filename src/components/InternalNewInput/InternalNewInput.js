@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
 import _last from 'lodash/last'
@@ -19,7 +19,6 @@ let InternalNewInput = (props) => {
   const [searchText, setSearchText] = useState('')
   const [placeholder, setPlacholder] = useState(props.text.placeholder)
   const [optionHighlighted, setOptionHighlighted] = useState()
-  const searchRef = useRef(null)
 
   let hasOptions = !!props.options.length
   let hasSelection = !!props.selection.length
@@ -52,19 +51,10 @@ let InternalNewInput = (props) => {
     setPlacholder(!props.multiple && props.selection.length
       ? props.selection[0].label // Set placeholder to current selection on single select
       : props.text.placeholder)
-
-    searchRef.current.focus()
   }
   let onBlur = (e) => {
     setAreOptionsOpen(false)
     setSearchText('')
-  }
-  let onSearchClick = (e) => {
-    if (areOptionsOpen) {
-      // Close options
-      e.preventDefault()
-      searchRef.current.blur()
-    }
   }
   let onOptionClick = (e) => {
     let value = targetValue(e)
@@ -76,6 +66,27 @@ let InternalNewInput = (props) => {
     }
 
     callOnChange(value)
+  }
+  let onRemove = (e) => {
+    if (props.removable && e.target.classList.contains('remove')) {
+      e.preventDefault() // Prevent click from opening options
+      setPlacholder(props.text.placeholder) // Reset placeholder for single select
+      let value = []
+
+      if (props.multiple) {
+        value = props.selection.map((option) => option.value)
+        value.splice(value.indexOf(targetValue(e)), 1) // Remove
+      }
+
+      callOnChange(value)
+    }
+  }
+  let onHoverOption = (e) => {
+    let value = targetValue(e)
+
+    if (value && value !== optionHighlighted) {
+      setOptionHighlighted(value)
+    }
   }
   let onKeyDown = (e) => {
     switch (e.keyCode) {
@@ -133,30 +144,9 @@ let InternalNewInput = (props) => {
         break
     }
   }
-  let onRemove = (e) => {
-    if (props.removable && e.target.classList.contains('remove')) {
-      e.preventDefault() // Prevent click from opening options
-      setPlacholder(props.text.placeholder) // Reset placeholder for single select
-      let value = []
-
-      if (props.multiple) {
-        value = props.selection.map((option) => option.value)
-        value.splice(value.indexOf(targetValue(e)), 1) // Remove
-      }
-
-      callOnChange(value)
-    }
-  }
-  let onHoverOption = (e) => {
-    let value = targetValue(e)
-
-    if (value && value !== optionHighlighted) {
-      setOptionHighlighted(value)
-    }
-  }
 
   if (props.disabled) {
-    onFocus = onBlur = onSearchClick = onOptionClick = onKeyDown = onRemove = onHoverOption = () => {}
+    onFocus = onBlur = onOptionClick = onKeyDown = onRemove = onHoverOption = () => {}
   }
 
   let {
@@ -174,35 +164,41 @@ let InternalNewInput = (props) => {
   return <Container styles={props.styles}>
     <HtmlFieldData
       name={props.name}
-      itemList={props.selection}
-      key='HtmlFieldData' />
+      itemList={props.selection} />
 
-    <SelectionContainer key="SelectionContainer" onFocus={onFocus} onBlur={onBlur} multiple={props.multiple} hasOptions={hasOptions} hasSelection={hasSelection} styles={props.styles} areOptionsOpen={areOptionsOpen} disabled={props.disabled}>
-      {showSelection && <SelectionList
-        itemList={props.selection}
-        onClick={onRemove}
-        canRemove={!props.disabled && props.removable}
-        multiple={props.multiple}
-        Item={Selection}
-        styles={props.styles} />}
-      <Search
-        hide={!showSearch}
-        placeholder={placeholder}
-        searchText={searchText}
-        onKeyDown={onKeyDown}
-        onChange={(e) => setSearchText(targetValue(e))}
-        onClick={onSearchClick}
-        disabled={props.disabled}
-        ref={searchRef}
-        styles={props.styles} />
-    </SelectionContainer>
+    <SelectionContainer
+      onFocus={onFocus}
+      onBlur={onBlur}
+      multiple={props.multiple}
+      hasOptions={hasOptions}
+      hasSelection={hasSelection}
+      styles={props.styles}
+      areOptionsOpen={areOptionsOpen}
+      disabled={props.disabled}
+      SelectionList={
+        showSelection && <SelectionList
+          itemList={props.selection}
+          onClick={onRemove}
+          canRemove={!props.disabled && props.removable}
+          multiple={props.multiple}
+          Item={Selection}
+          styles={props.styles} />
+      }
+      Search={
+        <Search
+          hide={!showSearch}
+          placeholder={placeholder}
+          searchText={searchText}
+          onKeyDown={onKeyDown}
+          onChange={(e) => setSearchText(targetValue(e))}
+          styles={props.styles} />
+      } />
 
     {areOptionsOpen && !!filteredOptions.length && <OptionList
       itemList={filteredOptions}
       multiple={props.multiple}
       onClick={onOptionClick}
       onMouseOver={onHoverOption}
-      key='OptionList'
       Item={Option}
       optionHighlighted={optionHighlighted}
       styles={props.styles} />}
