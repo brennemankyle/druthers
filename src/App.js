@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './App.css'
-import Takey from './components/Takey/Takey'
+import NewInput from './components/NewInput/NewInput'
 
 let options = [
   {value: '1', label: 'Option 1'},
@@ -24,16 +24,16 @@ let App = () => {
   return (
     <div className="App">
       <h1>Single</h1>
-      <Takey selection={selectionSingle} onChange={(e) => setSelectionSingle(e.target.value)} options={options} />
+      <NewInput selection={selectionSingle} onChange={(e) => setSelectionSingle(e.target.value)} options={options} />
 
       <h1>Multiple</h1>
-      <Takey selection={selectionMultiple} onChange={(e) => setSelectionMultiple(e.target.value)} options={options} multiple={true} />
+      <NewInput selection={selectionMultiple} onChange={(e) => setSelectionMultiple(e.target.value)} options={options} multiple={true} />
 
       <h1>Create Single</h1>
-      <Takey selection={selectionSingleCreate} onChange={(e) => setSelectionSingleCreate(e.target.value)} options={options} creatable={true} />
+      <NewInput selection={selectionSingleCreate} onChange={(e) => setSelectionSingleCreate(e.target.value)} options={options} creatable={true} />
 
       <h1>Create Multiple</h1>
-      <Takey selection={selectionMultipleCreate} onChange={(e) => setSelectionMultipleCreate(e.target.value)} options={options} creatable={true} multiple={true} />
+      <NewInput selection={selectionMultipleCreate} onChange={(e) => setSelectionMultipleCreate(e.target.value)} options={options} creatable={true} multiple={true} />
     </div>
   )
 }

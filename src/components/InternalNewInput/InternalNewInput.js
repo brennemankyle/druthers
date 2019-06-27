@@ -14,7 +14,7 @@ const ARROW_RIGHT = 39
 
 let targetValue = (e) => String(e.target.value || e.target.getAttribute('val') || '')
 
-let InternalTakey = (props) => {
+let InternalNewInput = (props) => {
   const [areOptionsOpen, setAreOptionsOpen] = useState(false)
   const [searchText, setSearchText] = useState('')
   const [placeholder, setPlacholder] = useState(props.placeholder)
@@ -213,7 +213,7 @@ let InternalTakey = (props) => {
     {areOptionsOpen && !filteredOptions.length && <NoOptions styles={props.styles}>{props.noOptionsText}</NoOptions>}</Container>
 }
 
-InternalTakey.propTypes = {
+InternalNewInput.propTypes = {
   name: PropTypes.string.isRequired,
   selection: AppPropTypes.itemList.isRequired,
   options: AppPropTypes.itemList.isRequired,
@@ -245,4 +245,4 @@ InternalTakey.propTypes = {
   styles: AppPropTypes.styles.isRequired,
 }
 
-export default InternalTakey
+export default InternalNewInput

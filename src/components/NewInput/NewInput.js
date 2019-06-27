@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
-import InternalTakey from '../InternalTakey/InternalTakey'
+import InternalNewInput from '../InternalNewInput/InternalNewInput'
 import HtmlFieldData from '../HtmlFieldData/HtmlFieldData'
 import Container from '../Container/Container'
 import { Selection, SelectionList, OptionList, Option, Search, SelectionContainer, NoOptions } from '../styledComponents/styledComponents'
 import castArray from 'lodash/castArray'
 import filterOptions from '../../utils/filterOptions'
 
-let Takey = (props) => {
+let NewInput = (props) => {
   let {selection, options, ...otherProps} = props
 
   // Stringify
@@ -22,13 +22,13 @@ let Takey = (props) => {
     return option == null ? {value: value, label: value} : option
   })
 
-  return <InternalTakey
+  return <InternalNewInput
     selection={massagedSelection}
     options={options}
     {...otherProps} />
 }
 
-Takey.defaultProps = {
+NewInput.defaultProps = {
   name: '',
   selection: [],
   options: [],
@@ -67,7 +67,7 @@ Takey.defaultProps = {
   }
 }
 
-Takey.propTypes = {
+NewInput.propTypes = {
   name: PropTypes.string,
   selection: PropTypes.oneOfType([
     AppPropTypes.rawValue,
@@ -103,4 +103,4 @@ Takey.propTypes = {
   styles: AppPropTypes.styles.isRequired,
 }
 
-export default Takey
+export default NewInput
