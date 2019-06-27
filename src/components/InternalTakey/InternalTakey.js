@@ -36,6 +36,15 @@ let InternalTakey = (props) => {
     if (newOptionHighlighted !== optionHighlighted) setOptionHighlighted(newOptionHighlighted)
   }
 
+  let callOnChange = (value) => {
+    props.onChange({
+      target: {
+        value: value,
+        name: props.name,
+      }
+    })
+  }
+
   // Events
   let onFocus = (e) => {
     if (!areOptionsOpen) {
@@ -46,13 +55,13 @@ let InternalTakey = (props) => {
         : props.placeholder)
 
       searchRef.current.focus()
-    } else if (!e.target.classList.contains('search')) {
-      e.target.blur()
+    } else {
+      e.target.blur() // Close options
     }
   }
   let onBlur = (e) => {
     if (e.target.classList.contains('search')) {
-      setTimeout(() => {
+      setTimeout(() => { // Call blur after focus event
         setAreOptionsOpen(false)
         setSearchText('')
       })
@@ -60,6 +69,7 @@ let InternalTakey = (props) => {
   }
   let onSearchClick = (e) => {
     if (areOptionsOpen) {
+      // Close options
       e.preventDefault()
       searchRef.current.blur()
     }
@@ -73,14 +83,7 @@ let InternalTakey = (props) => {
       e.preventDefault() // Keep options open on multi select
     }
 
-    let event = {
-      target: {
-        value: value,
-        name: props.name,
-      }
-    }
-
-    props.onChange(event)
+    props.callOnChange(value)
   }
   let onKeyDown = (e) => {
     switch (e.keyCode) {
@@ -149,14 +152,7 @@ let InternalTakey = (props) => {
         value.splice(value.indexOf(targetValue(e)), 1) // Remove
       }
 
-      let event = {
-        target: {
-          value: value,
-          name: props.name,
-        }
-      }
-
-      props.onChange(event)
+      props.callOnChange(value)
     }
   }
   let onHoverOption = (e) => {
