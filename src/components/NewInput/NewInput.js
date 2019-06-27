@@ -36,15 +36,11 @@ NewInput.defaultProps = {
   options: [],
   placeholder: 'Select...',
   multiple: false,
-  required: false,
   disabled: false,
   creatable: false,
   removable: true,
-  maxSelectionCount: Infinity,
-  minSelectionCount: 0,
   filterOptions: filterOptions,
   optionKeys: ['value', 'label'],
-
   text: {
     placeholder: '',
     noOptions: 'No Options',
@@ -69,6 +65,7 @@ NewInput.defaultProps = {
       secondary: 'lightgray',
       highlight: 'lightblue',
       warning: '#CD5C5C',
+      disabled: '#ECECEC',
     }
   }
 }
@@ -83,12 +80,9 @@ NewInput.propTypes = {
   options: AppPropTypes.rawItemList.isRequired,
   placeholder: PropTypes.string.isRequired,
   multiple: PropTypes.bool.isRequired,
-  required: PropTypes.bool.isRequired,
   disabled: PropTypes.bool.isRequired,
   creatable: PropTypes.bool.isRequired,
   removable: PropTypes.bool.isRequired,
-  maxSelectionCount: PropTypes.number.isRequired,
-  minSelectionCount: PropTypes.number.isRequired,
   filterOptions: PropTypes.func.isRequired,
   optionKeys: PropTypes.arrayOf(PropTypes.string).isRequired,
 

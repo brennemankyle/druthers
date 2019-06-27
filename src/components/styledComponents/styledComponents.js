@@ -32,7 +32,8 @@ const Selection = styled(Item)`
       display: inline-flex;
       background-color: ${props.styles.colors.secondary};
       margin-right: .2em;
-      padding-left: .2em;`
+      padding-left: .2em;
+      padding-right: ${props.removable ? '0' : '.2em'}`
     : `
       display: flex;`
   }
@@ -67,6 +68,7 @@ const Search = styled(RawSearch)`
   width: 10em;
   font-size: 1em;
   font-family: inherit;
+  background-color: transparent;
 `
 
 const SelectionContainer = styled(RawSelectionContainer)`
@@ -77,8 +79,10 @@ const SelectionContainer = styled(RawSelectionContainer)`
   align-items: center;
   padding: .25em;
 
-  &:hover {
-    border-color: ${props => props.styles.colors.primary};
+  ${props => !props.disabled && `
+    &:hover {
+      border-color: ${props.styles.colors.primary};
+    }`
   }
 
   ${props => props.areOptionsOpen && `
@@ -112,8 +116,10 @@ const SelectionContainer = styled(RawSelectionContainer)`
         width: 1em;
         vertical-align: middle;
 
-        &:hover {
-          opacity: 0.5;
+        ${!props.disabled && `
+          &:hover {
+            opacity: 0.5;
+          }`
         }
       }`
     : `
@@ -124,6 +130,10 @@ const SelectionContainer = styled(RawSelectionContainer)`
       .expand {
         display: none;
       }`
+  }
+
+  ${props => props.disabled && `
+    background-color: ${props.styles.colors.disabled}`
   }
 `
 

@@ -47,25 +47,17 @@ let InternalNewInput = (props) => {
 
   // Events
   let onFocus = (e) => {
-    if (!areOptionsOpen) {
-      setAreOptionsOpen(true)
+    setAreOptionsOpen(true)
 
-      setPlacholder(!props.multiple && props.selection.length
-        ? props.selection[0].label // Set placeholder to current selection on single select
-        : props.text.placeholder)
+    setPlacholder(!props.multiple && props.selection.length
+      ? props.selection[0].label // Set placeholder to current selection on single select
+      : props.text.placeholder)
 
-      searchRef.current.focus()
-    } else {
-      e.target.blur() // Close options
-    }
+    searchRef.current.focus()
   }
   let onBlur = (e) => {
-    if (e.target.classList.contains('search')) {
-      setTimeout(() => { // Call blur after focus event
-        setAreOptionsOpen(false)
-        setSearchText('')
-      })
-    }
+    setAreOptionsOpen(false)
+    setSearchText('')
   }
   let onSearchClick = (e) => {
     if (areOptionsOpen) {
@@ -163,6 +155,10 @@ let InternalNewInput = (props) => {
     }
   }
 
+  if (props.disabled) {
+    onFocus = onBlur = onSearchClick = onOptionClick = onKeyDown = onRemove = onHoverOption = () => {}
+  }
+
   let {
     HtmlFieldData,
     Container,
@@ -181,11 +177,11 @@ let InternalNewInput = (props) => {
       itemList={props.selection}
       key='HtmlFieldData' />
 
-    <SelectionContainer key="SelectionContainer" onFocus={onFocus} onBlur={onBlur} multiple={props.multiple} hasOptions={hasOptions} hasSelection={hasSelection} styles={props.styles} areOptionsOpen={areOptionsOpen}>
+    <SelectionContainer key="SelectionContainer" onFocus={onFocus} onBlur={onBlur} multiple={props.multiple} hasOptions={hasOptions} hasSelection={hasSelection} styles={props.styles} areOptionsOpen={areOptionsOpen} disabled={props.disabled}>
       {showSelection && <SelectionList
         itemList={props.selection}
         onClick={onRemove}
-        canRemove={true}
+        canRemove={!props.disabled && props.removable}
         multiple={props.multiple}
         Item={Selection}
         styles={props.styles} />}
@@ -196,6 +192,7 @@ let InternalNewInput = (props) => {
         onKeyDown={onKeyDown}
         onChange={(e) => setSearchText(targetValue(e))}
         onClick={onSearchClick}
+        disabled={props.disabled}
         ref={searchRef}
         styles={props.styles} />
     </SelectionContainer>
@@ -219,12 +216,9 @@ InternalNewInput.propTypes = {
   selection: AppPropTypes.itemList.isRequired,
   options: AppPropTypes.itemList.isRequired,
   multiple: PropTypes.bool.isRequired,
-  required: PropTypes.bool.isRequired,
   disabled: PropTypes.bool.isRequired,
   creatable: PropTypes.bool.isRequired,
   removable: PropTypes.bool.isRequired,
-  maxSelectionCount: PropTypes.number.isRequired,
-  minSelectionCount: PropTypes.number.isRequired,
   filterOptions: PropTypes.func,
 
   text: PropTypes.shape({
