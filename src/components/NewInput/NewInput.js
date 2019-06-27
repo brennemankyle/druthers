@@ -9,7 +9,7 @@ import castArray from 'lodash/castArray'
 import filterOptions from '../../utils/filterOptions'
 
 let NewInput = (props) => {
-  let {selection, options, ...otherProps} = props
+  let {selection, options, placeholder, ...otherProps} = props
 
   // Stringify
   selection = castArray(selection).map((value) => String(value))
@@ -21,6 +21,8 @@ let NewInput = (props) => {
 
     return option == null ? {value: value, label: value} : option
   })
+
+  otherProps.text.placeholder = otherProps.text.placeholder ? otherProps.text.placeholder : placeholder
 
   return <InternalNewInput
     selection={massagedSelection}
@@ -34,16 +36,20 @@ NewInput.defaultProps = {
   options: [],
   placeholder: 'Select...',
   multiple: false,
+  required: false,
+  disabled: false,
   creatable: false,
-
-  maxSelectionCount: -1,
-  minSelectionCount: -1,
-  removeSelection: true,
-  searchOptions: true,
-  noOptionsText: 'No Options',
-  createText: 'Create',
+  removable: true,
+  maxSelectionCount: Infinity,
+  minSelectionCount: 0,
   filterOptions: filterOptions,
   optionKeys: ['value', 'label'],
+
+  text: {
+    placeholder: '',
+    noOptions: 'No Options',
+    create: 'Create',
+  },
 
   components: {
     HtmlFieldData,
@@ -68,37 +74,41 @@ NewInput.defaultProps = {
 }
 
 NewInput.propTypes = {
-  name: PropTypes.string,
-  selection: PropTypes.oneOfType([
-    AppPropTypes.rawValue,
-    PropTypes.arrayOf(AppPropTypes.rawValue),
-  ]),
-  options: AppPropTypes.rawItemList,
   onChange: PropTypes.func.isRequired,
-  placeholder: PropTypes.string,
-  multiple: PropTypes.bool,
-  creatable: PropTypes.bool,
+  name: PropTypes.string.isRequired,
+  selection: PropTypes.oneOfType([
+    AppPropTypes.rawValue.isRequired,
+    PropTypes.arrayOf(AppPropTypes.rawValue).isRequired,
+  ]).isRequired,
+  options: AppPropTypes.rawItemList.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  multiple: PropTypes.bool.isRequired,
+  required: PropTypes.bool.isRequired,
+  disabled: PropTypes.bool.isRequired,
+  creatable: PropTypes.bool.isRequired,
+  removable: PropTypes.bool.isRequired,
+  maxSelectionCount: PropTypes.number.isRequired,
+  minSelectionCount: PropTypes.number.isRequired,
+  filterOptions: PropTypes.func.isRequired,
+  optionKeys: PropTypes.arrayOf(PropTypes.string).isRequired,
 
-  maxSelectionCount: PropTypes.number,
-  minSelectionCount: PropTypes.number,
-  removeSelection: PropTypes.bool,
-  searchOptions: PropTypes.bool,
-  noOptionsText: PropTypes.string,
-  createText: PropTypes.string,
-  filterOptions: PropTypes.func,
-  optionKeys: PropTypes.arrayOf(PropTypes.string),
+  text: PropTypes.shape({
+    placeholder: PropTypes.string.isRequired,
+    noOptions: PropTypes.string.isRequired,
+    create: PropTypes.string.isRequired,
+  }).isRequired,
 
   components: PropTypes.shape({
-    HtmlFieldData: AppPropTypes.element,
-    Container: AppPropTypes.element,
-    Item: AppPropTypes.element,
-    SelectionList: AppPropTypes.element,
-    OptionList: AppPropTypes.element,
-    Option: AppPropTypes.element,
-    Search: AppPropTypes.element,
-    SelectionContainer: AppPropTypes.element,
-    NoOptions: AppPropTypes.element,
-  }),
+    HtmlFieldData: AppPropTypes.element.isRequired,
+    Container: AppPropTypes.element.isRequired,
+    Selection: AppPropTypes.element.isRequired,
+    SelectionList: AppPropTypes.element.isRequired,
+    OptionList: AppPropTypes.element.isRequired,
+    Option: AppPropTypes.element.isRequired,
+    Search: AppPropTypes.element.isRequired,
+    SelectionContainer: AppPropTypes.element.isRequired,
+    NoOptions: AppPropTypes.element.isRequired,
+  }).isRequired,
 
   styles: AppPropTypes.styles.isRequired,
 }

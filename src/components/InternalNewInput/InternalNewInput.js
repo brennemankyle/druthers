@@ -17,7 +17,7 @@ let targetValue = (e) => String(e.target.value || e.target.getAttribute('val') |
 let InternalNewInput = (props) => {
   const [areOptionsOpen, setAreOptionsOpen] = useState(false)
   const [searchText, setSearchText] = useState('')
-  const [placeholder, setPlacholder] = useState(props.placeholder)
+  const [placeholder, setPlacholder] = useState(props.text.placeholder)
   const [optionHighlighted, setOptionHighlighted] = useState()
   const searchRef = useRef(null)
 
@@ -28,7 +28,7 @@ let InternalNewInput = (props) => {
   let showSearch = props.multiple || areOptionsOpen || !props.selection.length // Multiple: always show. Single: show when options are open or when nothing is selected (placeholder should be shown)
 
   if (props.creatable && searchText) {
-    filteredOptions.push({value: searchText, label: props.createText + ` "${searchText}"`})
+    filteredOptions.push({value: searchText, label: props.props.createText + ` "${searchText}"`})
   }
 
   if (!filteredOptions.map((option) => option.value).includes(optionHighlighted)) {
@@ -52,7 +52,7 @@ let InternalNewInput = (props) => {
 
       setPlacholder(!props.multiple && props.selection.length
         ? props.selection[0].label // Set placeholder to current selection on single select
-        : props.placeholder)
+        : props.text.placeholder)
 
       searchRef.current.focus()
     } else {
@@ -142,9 +142,9 @@ let InternalNewInput = (props) => {
     }
   }
   let onRemove = (e) => {
-    if (props.removeSelection && e.target.classList.contains('remove')) {
+    if (props.removable && e.target.classList.contains('remove')) {
       e.preventDefault() // Prevent click from opening options
-      setPlacholder(props.placeholder) // Reset placeholder for single select
+      setPlacholder(props.text.placeholder) // Reset placeholder for single select
       let value = []
 
       if (props.multiple) {
@@ -210,25 +210,28 @@ let InternalNewInput = (props) => {
       optionHighlighted={optionHighlighted}
       styles={props.styles} />}
 
-    {areOptionsOpen && !filteredOptions.length && <NoOptions styles={props.styles}>{props.noOptionsText}</NoOptions>}</Container>
+    {areOptionsOpen && !filteredOptions.length && <NoOptions styles={props.styles}>{props.text.noOptions}</NoOptions>}</Container>
 }
 
 InternalNewInput.propTypes = {
+  onChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   selection: AppPropTypes.itemList.isRequired,
   options: AppPropTypes.itemList.isRequired,
-  onChange: PropTypes.func.isRequired,
-  placeholder: PropTypes.string.isRequired,
   multiple: PropTypes.bool.isRequired,
+  required: PropTypes.bool.isRequired,
+  disabled: PropTypes.bool.isRequired,
   creatable: PropTypes.bool.isRequired,
-
+  removable: PropTypes.bool.isRequired,
   maxSelectionCount: PropTypes.number.isRequired,
   minSelectionCount: PropTypes.number.isRequired,
-  removeSelection: PropTypes.bool,
-  searchOptions: PropTypes.bool,
-  noOptionsText: PropTypes.string.isRequired,
-  createText: PropTypes.string.isRequired,
   filterOptions: PropTypes.func,
+
+  text: PropTypes.shape({
+    placeholder: PropTypes.string.isRequired,
+    noOptions: PropTypes.string.isRequired,
+    create: PropTypes.string.isRequired,
+  }).isRequired,
 
   components: PropTypes.shape({
     HtmlFieldData: AppPropTypes.element.isRequired,
