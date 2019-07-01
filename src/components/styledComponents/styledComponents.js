@@ -3,6 +3,7 @@ import Item from '../Item/Item'
 import ItemList from '../ItemList/ItemList'
 import RawSearch from '../Search/Search'
 import RawSelectionContainer from '../SelectionContainer/SelectionContainer'
+import RawAppendToBodyOptionsContainer from '../AppendToBodyOptionsContainer/AppendToBodyOptionsContainer'
 import Container from '../Container/Container'
 
 const Selection = styled(Item)`
@@ -137,7 +138,19 @@ const SelectionContainer = styled(RawSelectionContainer)`
   }
 `
 
+const DivRelative = styled.div`
+  position: relative
+`
+
 const OptionContainer = styled(Container)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: ${props => props.styles.colors.background};
+  width: ${props => props.styles.rect.width}px;
+`
+
+const AppendToBodyOptionsContainer = styled(RawAppendToBodyOptionsContainer)`
   position: absolute;
   background-color: ${props => props.styles.colors.background};
   width: ${props => props.styles.rect.width}px;
@@ -158,6 +171,7 @@ const NoOptions = styled(Container)`
 `
 
 export {
+  DivRelative,
   Selection,
   SelectionList,
   OptionList,
@@ -165,5 +179,6 @@ export {
   Search,
   SelectionContainer,
   OptionContainer,
+  AppendToBodyOptionsContainer,
   NoOptions,
 }

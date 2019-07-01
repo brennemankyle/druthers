@@ -6,6 +6,7 @@ import useRefRect from '../../hooks/useRefRect/useRefRect'
 import usePlaceAbove from '../../hooks/usePlaceAbove/usePlaceAbove'
 import _last from 'lodash/last'
 import _inRange from 'lodash/inRange'
+import { DivRelative } from '../styledComponents/styledComponents'
 
 const ENTER_KEY = 13
 const ESCAPE = 27
@@ -187,6 +188,7 @@ let InternalNewInput = (props) => {
     Search,
     SelectionContainer,
     OptionContainer,
+    AppendToBodyOptionsContainer,
     NoOptions,
   } = props.components
 
@@ -223,7 +225,7 @@ let InternalNewInput = (props) => {
           styles={styles} />
       } />
 
-    {ReactDOM.createPortal(<OptionContainer styles={styles} ref={optionContainerRef}>
+    {!props.appendToBody && <DivRelative><OptionContainer styles={styles}>
       {areOptionsOpen && !!filteredOptions.length && <OptionList
         itemList={filteredOptions}
         multiple={props.multiple}
@@ -233,7 +235,19 @@ let InternalNewInput = (props) => {
         optionHighlighted={optionHighlighted}
         styles={styles} />}
 
-      {areOptionsOpen && !filteredOptions.length && <NoOptions styles={styles}>{props.text.noOptions}</NoOptions>}</OptionContainer>,
+      {areOptionsOpen && !filteredOptions.length && <NoOptions styles={styles}>{props.text.noOptions}</NoOptions>}</OptionContainer></DivRelative>}
+
+    {props.appendToBody && ReactDOM.createPortal(<AppendToBodyOptionsContainer styles={styles} ref={optionContainerRef}>
+      {areOptionsOpen && !!filteredOptions.length && <OptionList
+        itemList={filteredOptions}
+        multiple={props.multiple}
+        onClick={onOptionClick}
+        onMouseOver={onHoverOption}
+        Item={Option}
+        optionHighlighted={optionHighlighted}
+        styles={styles} />}
+
+      {areOptionsOpen && !filteredOptions.length && <NoOptions styles={styles}>{props.text.noOptions}</NoOptions>}</AppendToBodyOptionsContainer>,
       document.body)}</Container>
 }
 
@@ -265,6 +279,7 @@ InternalNewInput.propTypes = {
     Search: AppPropTypes.element.isRequired,
     SelectionContainer: AppPropTypes.element.isRequired,
     OptionContainer: AppPropTypes.element.isRequired,
+    AppendToBodyOptionsContainer: AppPropTypes.element.isRequired,
     NoOptions: AppPropTypes.element.isRequired,
   }).isRequired,
 

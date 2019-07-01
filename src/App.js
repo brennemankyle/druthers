@@ -35,6 +35,9 @@ let App = () => {
       <h1>Create Multiple</h1>
       <NewInput selection={selectionMultipleCreate} onChange={(e) => setSelectionMultipleCreate(e.target.value)} options={options} creatable={true} multiple={true} />
 
+      <h1>Append to body</h1>
+      <NewInput selection={selectionMultipleCreate} onChange={(e) => setSelectionMultipleCreate(e.target.value)} options={options} creatable={true} multiple={true} appendToBody={true} />
+
       <h1>Single Disabled</h1>
       <NewInput selection={['1']} onChange={(e) => setSelectionSingle(e.target.value)} options={options} disabled={true} />
 
