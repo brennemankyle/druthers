@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
+import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
 import _last from 'lodash/last'
@@ -27,18 +28,52 @@ const CLOSE_BRAKET = 221
 const SINGLE_QUOTE = 222
 
 let targetValue = (e) => String(e.target.value || e.target.getAttribute('val') || '')
+let getRect = (current) => {
+  if (!current) return {top: 0, bottom: 0, left: 0, right: 0, width: 0, height: 0, x: 0, y: 0}
+  let {top, bottom, left, right, width, height, x, y} = current.getBoundingClientRect()
+  x += window.scrollX
+  y += window.scrollY
+  return {top, bottom, left, right, width, height, x, y}
+}
 
 let InternalNewInput = (props) => {
+  const selfRef = useRef(null)
+  const optionContainerRef = useRef(null)
   const [areOptionsOpen, setAreOptionsOpen] = useState(false)
   const [searchText, setSearchText] = useState('')
   const [placeholder, setPlacholder] = useState(props.text.placeholder)
   const [optionHighlighted, setOptionHighlighted] = useState()
+  const [rect, setRect] = useState(getRect())
+  const [optionContainerRect, setOptionContainerRect] = useState(getRect())
+  const [placeOptionsAbove, setPlaceOptionsAbove] = useState(false)
+  useEffect(() => {
+    setRect(getRect(selfRef.current))
+    // eslint-disable-next-line
+  }, Object.values(getRect(selfRef.current)).concat([searchText, props.selection, props.options]))
+  useEffect(() => {
+    setOptionContainerRect(getRect(optionContainerRef.current))
+    // eslint-disable-next-line
+  }, Object.values(getRect(optionContainerRef.current)).concat([searchText, props.selection, props.options]))
+  useEffect(() => {
+    if (areOptionsOpen) {
+      let windowHeight = window.innerHeight + window.scrollY
+      let belowDiff = windowHeight - (rect.y + rect.height + optionContainerRef.current.offsetHeight)
+      let aboveDiff = rect.y - optionContainerRef.current.offsetHeight
+      setPlaceOptionsAbove(belowDiff < 0 && aboveDiff > belowDiff)
+    }
+  }, [areOptionsOpen, rect, optionContainerRect, searchText, props.selection, props.options])
 
   let hasOptions = !!props.options.length
   let hasSelection = !!props.selection.length
   let filteredOptions = props.filterOptions(searchText, props.selection, props.options)
   let showSelection = props.multiple || !areOptionsOpen // Multiple: always show. Single: show when options are closed
   let showSearch = props.multiple || areOptionsOpen || !props.selection.length // Multiple: always show. Single: show when options are open or when nothing is selected (placeholder should be shown)
+  let styles = {
+    rect,
+    optionContainerRect,
+    placeOptionsAbove,
+    ...props.styles
+  }
 
   if (props.creatable && searchText) {
     filteredOptions.push({value: searchText, label: props.text.create + ` "${searchText}"`})
@@ -48,6 +83,8 @@ let InternalNewInput = (props) => {
     let newOptionHighlighted = filteredOptions.length ? filteredOptions[0].value : undefined
     if (newOptionHighlighted !== optionHighlighted) setOptionHighlighted(newOptionHighlighted)
   }
+
+  if (placeOptionsAbove) filteredOptions = filteredOptions.reverse()
 
   let callOnChange = (value) => {
     props.onChange({
@@ -170,10 +207,11 @@ let InternalNewInput = (props) => {
     Option,
     Search,
     SelectionContainer,
+    OptionContainer,
     NoOptions,
   } = props.components
 
-  return <Container styles={props.styles}>
+  return <Container styles={styles} ref={selfRef}>
     <HtmlFieldData
       name={props.name}
       itemList={props.selection} />
@@ -184,7 +222,7 @@ let InternalNewInput = (props) => {
       multiple={props.multiple}
       hasOptions={hasOptions}
       hasSelection={hasSelection}
-      styles={props.styles}
+      styles={styles}
       areOptionsOpen={areOptionsOpen}
       disabled={props.disabled}
       SelectionList={
@@ -194,7 +232,7 @@ let InternalNewInput = (props) => {
           canRemove={!props.disabled && props.removable}
           multiple={props.multiple}
           Item={Selection}
-          styles={props.styles} />
+          styles={styles} />
       }
       Search={
         <Search
@@ -203,19 +241,21 @@ let InternalNewInput = (props) => {
           searchText={searchText}
           onKeyDown={onKeyDown}
           onChange={(e) => setSearchText(targetValue(e))}
-          styles={props.styles} />
+          styles={styles} />
       } />
 
-    {areOptionsOpen && !!filteredOptions.length && <OptionList
-      itemList={filteredOptions}
-      multiple={props.multiple}
-      onClick={onOptionClick}
-      onMouseOver={onHoverOption}
-      Item={Option}
-      optionHighlighted={optionHighlighted}
-      styles={props.styles} />}
+    {ReactDOM.createPortal(<OptionContainer styles={styles} ref={optionContainerRef}>
+      {areOptionsOpen && !!filteredOptions.length && <OptionList
+        itemList={filteredOptions}
+        multiple={props.multiple}
+        onClick={onOptionClick}
+        onMouseOver={onHoverOption}
+        Item={Option}
+        optionHighlighted={optionHighlighted}
+        styles={styles} />}
 
-    {areOptionsOpen && !filteredOptions.length && <NoOptions styles={props.styles}>{props.text.noOptions}</NoOptions>}</Container>
+      {areOptionsOpen && !filteredOptions.length && <NoOptions styles={styles}>{props.text.noOptions}</NoOptions>}</OptionContainer>,
+      document.body)}</Container>
 }
 
 InternalNewInput.propTypes = {
@@ -227,6 +267,7 @@ InternalNewInput.propTypes = {
   disabled: PropTypes.bool.isRequired,
   creatable: PropTypes.bool.isRequired,
   removable: PropTypes.bool.isRequired,
+  appendToBody: PropTypes.bool.isRequired,
   filterOptions: PropTypes.func,
 
   text: PropTypes.shape({
@@ -244,6 +285,7 @@ InternalNewInput.propTypes = {
     Option: AppPropTypes.element.isRequired,
     Search: AppPropTypes.element.isRequired,
     SelectionContainer: AppPropTypes.element.isRequired,
+    OptionContainer: AppPropTypes.element.isRequired,
     NoOptions: AppPropTypes.element.isRequired,
   }).isRequired,
 

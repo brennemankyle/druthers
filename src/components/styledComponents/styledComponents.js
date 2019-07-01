@@ -137,7 +137,21 @@ const SelectionContainer = styled(RawSelectionContainer)`
   }
 `
 
-let NoOptions = styled(Container)`
+const OptionContainer = styled(Container)`
+  position: absolute;
+  background-color: ${props => props.styles.colors.background};
+  width: ${props => props.styles.rect.width}px;
+
+  ${props => props.styles.placeOptionsAbove ? `
+      top: ${props.styles.rect.y - props.styles.optionContainerRect.height}px;
+      left: ${props.styles.rect.x}px;
+    ` : `
+      top: ${props.styles.rect.y + props.styles.rect.height}px;
+      left: ${props.styles.rect.x}px;
+    `}
+`
+
+const NoOptions = styled(Container)`
   padding: .25em;
   text-align: center;
   border: 1px solid ${props => props.styles.colors.secondary};
@@ -150,5 +164,6 @@ export {
   Option,
   Search,
   SelectionContainer,
-  NoOptions
+  OptionContainer,
+  NoOptions,
 }
