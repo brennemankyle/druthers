@@ -1,7 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
+import useRefRect from '../../hooks/useRefRect/useRefRect'
+import usePlaceAbove from '../../hooks/usePlaceAbove/usePlaceAbove'
 import _last from 'lodash/last'
 import _inRange from 'lodash/inRange'
 
@@ -28,13 +30,6 @@ const CLOSE_BRAKET = 221
 const SINGLE_QUOTE = 222
 
 let targetValue = (e) => String(e.target.value || e.target.getAttribute('val') || '')
-let getRect = (current) => {
-  if (!current) return {top: 0, bottom: 0, left: 0, right: 0, width: 0, height: 0, x: 0, y: 0}
-  let {top, bottom, left, right, width, height, x, y} = current.getBoundingClientRect()
-  x += window.scrollX
-  y += window.scrollY
-  return {top, bottom, left, right, width, height, x, y}
-}
 
 let InternalNewInput = (props) => {
   const selfRef = useRef(null)
@@ -43,25 +38,9 @@ let InternalNewInput = (props) => {
   const [searchText, setSearchText] = useState('')
   const [placeholder, setPlacholder] = useState(props.text.placeholder)
   const [optionHighlighted, setOptionHighlighted] = useState()
-  const [rect, setRect] = useState(getRect())
-  const [optionContainerRect, setOptionContainerRect] = useState(getRect())
-  const [placeOptionsAbove, setPlaceOptionsAbove] = useState(false)
-  useEffect(() => {
-    setRect(getRect(selfRef.current))
-    // eslint-disable-next-line
-  }, Object.values(getRect(selfRef.current)).concat([searchText, props.selection, props.options]))
-  useEffect(() => {
-    setOptionContainerRect(getRect(optionContainerRef.current))
-    // eslint-disable-next-line
-  }, Object.values(getRect(optionContainerRef.current)).concat([searchText, props.selection, props.options]))
-  useEffect(() => {
-    if (areOptionsOpen) {
-      let windowHeight = window.innerHeight + window.scrollY
-      let belowDiff = windowHeight - (rect.y + rect.height + optionContainerRef.current.offsetHeight)
-      let aboveDiff = rect.y - optionContainerRef.current.offsetHeight
-      setPlaceOptionsAbove(belowDiff < 0 && aboveDiff > belowDiff)
-    }
-  }, [areOptionsOpen, rect, optionContainerRect, searchText, props.selection, props.options])
+  const rect = useRefRect(selfRef, [searchText, props.selection, props.options])
+  const optionContainerRect = useRefRect(optionContainerRef, [searchText, props.selection, props.options])
+  const placeOptionsAbove = usePlaceAbove(areOptionsOpen, rect, optionContainerRect, [searchText, props.selection, props.options])
 
   let hasOptions = !!props.options.length
   let hasSelection = !!props.selection.length
