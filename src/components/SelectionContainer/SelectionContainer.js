@@ -31,12 +31,11 @@ let SelectionContainer = (props) => {
   const Search = React.cloneElement(props.Search, {
     onClick: onSearchClick,
     ref: searchRef,
-    disabled: props.disabled,
   })
 
   return <div
     className={props.className}
-    tabIndex={props.disabled ? 'false' : '-1'}
+    tabIndex={props.styles.disabled ? 'false' : '-1'}
     onFocus={onFocus}
     onBlur={onBlur}>
       {props.SelectionList}
@@ -48,11 +47,7 @@ let SelectionContainer = (props) => {
 SelectionContainer.propTypes = {
   onFocus: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
-  multiple: PropTypes.bool.isRequired,
-  hasOptions: PropTypes.bool.isRequired,
-  hasSelection: PropTypes.bool.isRequired,
   areOptionsOpen: PropTypes.bool.isRequired,
-  disabled: PropTypes.bool.isRequired,
 }
 
 export default SelectionContainer

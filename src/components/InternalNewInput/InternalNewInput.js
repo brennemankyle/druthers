@@ -46,6 +46,11 @@ let InternalNewInput = (props) => {
   let showSearch = props.multiple || areOptionsOpen || !props.selection.length // Multiple: always show. Single: show when options are open or when nothing is selected (placeholder should be shown)
   let styles = {
     width: selfRef && selfRef.current ? selfRef.current.offsetWidth : 0,
+    multiple: props.multiple,
+    disabled: props.disabled,
+    hasSelection: hasSelection,
+    hasOptions: hasOptions,
+    optionHighlighted: optionHighlighted,
     ...props.styles
   }
 
@@ -186,12 +191,10 @@ let InternalNewInput = (props) => {
 
   let optionList = <OptionList
     itemList={filteredOptions}
-    multiple={props.multiple}
     onClick={onOptionClick}
     onMouseOver={onHoverOption}
     Item={Option}
     noItemsText={props.text.noOptions}
-    optionHighlighted={optionHighlighted}
     styles={styles} />
 
   return <Container styles={styles} ref={selfRef}>
@@ -202,18 +205,13 @@ let InternalNewInput = (props) => {
     <SelectionContainer
       onFocus={onFocus}
       onBlur={onBlur}
-      multiple={props.multiple}
-      hasOptions={hasOptions}
-      hasSelection={hasSelection}
       styles={styles}
       areOptionsOpen={areOptionsOpen}
-      disabled={props.disabled}
       SelectionList={
         showSelection && <SelectionList
           itemList={props.selection}
           onClick={onRemove}
-          canRemove={!props.disabled && props.removable}
-          multiple={props.multiple}
+          removable={!props.disabled && props.removable}
           Item={Selection}
           styles={styles} />
       }

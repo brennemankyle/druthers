@@ -28,7 +28,7 @@ const Selection = styled(Item)`
     }
   }
 
-  ${props => props.multiple
+  ${props => props.styles.multiple
     ? `
       display: inline-flex;
       background-color: ${props.styles.colors.secondary};
@@ -43,14 +43,14 @@ const Selection = styled(Item)`
 const Option = styled(Item)`
   padding: .25em;
 
-  ${props => props.optionHighlighted === props.item.value
+  ${props => props.styles.optionHighlighted === props.item.value
     ? `background-color: ${props.styles.colors.highlight};`
     : ``
   }
 `
 
 const SelectionList = styled(ItemList)`
-  display: ${props => props.multiple ? 'inline' : 'block' };
+  display: ${props => props.styles.multiple ? 'inline' : 'block' };
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -80,7 +80,7 @@ const SelectionContainer = styled(RawSelectionContainer)`
   align-items: center;
   padding: .25em;
 
-  ${props => !props.disabled && `
+  ${props => !props.styles.disabled && `
     &:hover {
       border-color: ${props.styles.colors.primary};
     }`
@@ -92,7 +92,7 @@ const SelectionContainer = styled(RawSelectionContainer)`
     }
     border-color: ${props.styles.colors.primary};`}
 
-  ${props => !props.multiple && !props.areOptionsOpen && props.hasSelection
+  ${props => !props.styles.multiple && !props.areOptionsOpen && props.styles.hasSelection
     ? `
       & > *:nth-last-child(4) {
         flex-grow: 1;
@@ -104,7 +104,7 @@ const SelectionContainer = styled(RawSelectionContainer)`
     `
   }
 
-  ${props => props.hasOptions
+  ${props => props.styles.hasOptions
     ? `
       .divider {
         width: 1px;
@@ -117,7 +117,7 @@ const SelectionContainer = styled(RawSelectionContainer)`
         width: 1em;
         vertical-align: middle;
 
-        ${!props.disabled && `
+        ${!props.styles.disabled && `
           &:hover {
             opacity: 0.5;
           }`
@@ -133,7 +133,7 @@ const SelectionContainer = styled(RawSelectionContainer)`
       }`
   }
 
-  ${props => props.disabled && `
+  ${props => props.styles.disabled && `
     background-color: ${props.styles.colors.disabled}`
   }
 `

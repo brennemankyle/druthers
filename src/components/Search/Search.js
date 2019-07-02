@@ -12,7 +12,7 @@ let Search = (props, ref) => {
     className={props.className + ' search'}
     ref={ref}
     style={style}
-    disabled={props.disabled}
+    disabled={props.styles.disabled}
     type="text"
     placeholder={props.placeholder}
     onChange={props.onChange}
@@ -30,7 +30,6 @@ Search.propTypes = {
   onClick: PropTypes.func,
   onKeyDown: PropTypes.func.isRequired,
   hide: PropTypes.bool.isRequired,
-  disabled: PropTypes.bool,
   styles: AppPropTypes.styles.isRequired,
 }
 
