@@ -34,14 +34,10 @@ let targetValue = (e) => String(e.target.value || e.target.getAttribute('val') |
 
 let InternalNewInput = (props) => {
   const selfRef = useRef(null)
-  const optionContainerRef = useRef(null)
   const [areOptionsOpen, setAreOptionsOpen] = useState(false)
   const [searchText, setSearchText] = useState('')
   const [placeholder, setPlacholder] = useState(props.text.placeholder)
   const [optionHighlighted, setOptionHighlighted] = useState()
-  const rect = useRefRect(selfRef, [searchText, props.selection, props.options])
-  const optionContainerRect = useRefRect(optionContainerRef, [searchText, props.selection, props.options])
-  const placeOptionsAbove = usePlaceAbove(areOptionsOpen, rect, optionContainerRect, [searchText, props.selection, props.options])
 
   let hasOptions = !!props.options.length
   let hasSelection = !!props.selection.length
@@ -49,9 +45,7 @@ let InternalNewInput = (props) => {
   let showSelection = props.multiple || !areOptionsOpen // Multiple: always show. Single: show when options are closed
   let showSearch = props.multiple || areOptionsOpen || !props.selection.length // Multiple: always show. Single: show when options are open or when nothing is selected (placeholder should be shown)
   let styles = {
-    rect,
-    optionContainerRect,
-    placeOptionsAbove,
+    width: selfRef && selfRef.current ? selfRef.current.offsetWidth : 0,
     ...props.styles
   }
 
@@ -63,8 +57,6 @@ let InternalNewInput = (props) => {
     let newOptionHighlighted = filteredOptions.length ? filteredOptions[0].value : undefined
     if (newOptionHighlighted !== optionHighlighted) setOptionHighlighted(newOptionHighlighted)
   }
-
-  if (placeOptionsAbove) filteredOptions = filteredOptions.reverse()
 
   let callOnChange = (value) => {
     props.onChange({
@@ -189,8 +181,18 @@ let InternalNewInput = (props) => {
     SelectionContainer,
     OptionContainer,
     AppendToBodyOptionsContainer,
-    NoOptions,
+    StyledAppendToBodyOptionsContainer,
   } = props.components
+
+  let optionList = <OptionList
+    itemList={filteredOptions}
+    multiple={props.multiple}
+    onClick={onOptionClick}
+    onMouseOver={onHoverOption}
+    Item={Option}
+    noItemsText={props.text.noOptions}
+    optionHighlighted={optionHighlighted}
+    styles={styles} />
 
   return <Container styles={styles} ref={selfRef}>
     <HtmlFieldData
@@ -225,29 +227,17 @@ let InternalNewInput = (props) => {
           styles={styles} />
       } />
 
-    {!props.appendToBody && <DivRelative><OptionContainer styles={styles}>
-      {areOptionsOpen && !!filteredOptions.length && <OptionList
-        itemList={filteredOptions}
-        multiple={props.multiple}
-        onClick={onOptionClick}
-        onMouseOver={onHoverOption}
-        Item={Option}
-        optionHighlighted={optionHighlighted}
-        styles={styles} />}
+    {!props.appendToBody && areOptionsOpen &&
+      <DivRelative><OptionContainer styles={styles}>{optionList}</OptionContainer></DivRelative>}
 
-      {areOptionsOpen && !filteredOptions.length && <NoOptions styles={styles}>{props.text.noOptions}</NoOptions>}</OptionContainer></DivRelative>}
-
-    {props.appendToBody && ReactDOM.createPortal(<AppendToBodyOptionsContainer styles={styles} ref={optionContainerRef}>
-      {areOptionsOpen && !!filteredOptions.length && <OptionList
-        itemList={filteredOptions}
-        multiple={props.multiple}
-        onClick={onOptionClick}
-        onMouseOver={onHoverOption}
-        Item={Option}
-        optionHighlighted={optionHighlighted}
-        styles={styles} />}
-
-      {areOptionsOpen && !filteredOptions.length && <NoOptions styles={styles}>{props.text.noOptions}</NoOptions>}</AppendToBodyOptionsContainer>,
+    {props.appendToBody && areOptionsOpen && ReactDOM.createPortal(
+      <AppendToBodyOptionsContainer
+        styles={styles}
+        parentRef={selfRef}
+        filteredOptions={filteredOptions}
+        updateOn={[searchText, props.selection, filteredOptions]}
+        StyledAppendToBodyOptionsContainer={StyledAppendToBodyOptionsContainer}>
+      {optionList}</AppendToBodyOptionsContainer>,
       document.body)}</Container>
 }
 
@@ -280,7 +270,7 @@ InternalNewInput.propTypes = {
     SelectionContainer: AppPropTypes.element.isRequired,
     OptionContainer: AppPropTypes.element.isRequired,
     AppendToBodyOptionsContainer: AppPropTypes.element.isRequired,
-    NoOptions: AppPropTypes.element.isRequired,
+    StyledAppendToBodyOptionsContainer: AppPropTypes.element.isRequired,
   }).isRequired,
 
   styles: AppPropTypes.styles.isRequired,

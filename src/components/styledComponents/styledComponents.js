@@ -3,7 +3,7 @@ import Item from '../Item/Item'
 import ItemList from '../ItemList/ItemList'
 import RawSearch from '../Search/Search'
 import RawSelectionContainer from '../SelectionContainer/SelectionContainer'
-import RawAppendToBodyOptionsContainer from '../AppendToBodyOptionsContainer/AppendToBodyOptionsContainer'
+import { StyledAppendToBodyOptionsContainer as RawStyledAppendToBodyOptionsContainer } from '../AppendToBodyOptionsContainer/AppendToBodyOptionsContainer'
 import Container from '../Container/Container'
 
 const Selection = styled(Item)`
@@ -147,27 +147,21 @@ const OptionContainer = styled(Container)`
   top: 0;
   left: 0;
   background-color: ${props => props.styles.colors.background};
-  width: ${props => props.styles.rect.width}px;
+  width: ${props => props.styles.width}px;
 `
 
-const AppendToBodyOptionsContainer = styled(RawAppendToBodyOptionsContainer)`
+const StyledAppendToBodyOptionsContainer = styled(RawStyledAppendToBodyOptionsContainer)`
   position: absolute;
   background-color: ${props => props.styles.colors.background};
-  width: ${props => props.styles.rect.width}px;
+  width: ${props => props.styles.width}px;
 
-  ${props => props.styles.placeOptionsAbove ? `
-      top: ${props.styles.rect.y - props.styles.optionContainerRect.height}px;
-      left: ${props.styles.rect.x}px;
+  ${props => props.placeOptionsAbove ? `
+      top: ${props.parentRect.y - props.optionContainerRect.height}px;
+      left: ${props.parentRect.x}px;
     ` : `
-      top: ${props.styles.rect.y + props.styles.rect.height}px;
-      left: ${props.styles.rect.x}px;
+      top: ${props.parentRect.y + props.parentRect.height}px;
+      left: ${props.parentRect.x}px;
     `}
-`
-
-const NoOptions = styled(Container)`
-  padding: .25em;
-  text-align: center;
-  border: 1px solid ${props => props.styles.colors.secondary};
 `
 
 export {
@@ -179,6 +173,5 @@ export {
   Search,
   SelectionContainer,
   OptionContainer,
-  AppendToBodyOptionsContainer,
-  NoOptions,
+  StyledAppendToBodyOptionsContainer,
 }

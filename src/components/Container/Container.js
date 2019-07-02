@@ -4,7 +4,7 @@ import AppPropTypes from '../../utils/AppPropTypes'
 let Container = (props, ref) => {
   let {className, children, ...otherProps} = props
 
-  return <div className={props.className} ref={ref} {...otherProps}>{props.children}</div>
+  return <div className={className} ref={ref} {...otherProps}>{children}</div>
 }
 
 Container = forwardRef(Container)

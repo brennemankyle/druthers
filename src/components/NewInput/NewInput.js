@@ -4,7 +4,8 @@ import AppPropTypes from '../../utils/AppPropTypes'
 import InternalNewInput from '../InternalNewInput/InternalNewInput'
 import HtmlFieldData from '../HtmlFieldData/HtmlFieldData'
 import Container from '../Container/Container'
-import { Selection, SelectionList, OptionList, Option, Search, SelectionContainer, OptionContainer, AppendToBodyOptionsContainer, NoOptions } from '../styledComponents/styledComponents'
+import AppendToBodyOptionsContainer from '../AppendToBodyOptionsContainer/AppendToBodyOptionsContainer'
+import { Selection, SelectionList, OptionList, Option, Search, SelectionContainer, OptionContainer, StyledAppendToBodyOptionsContainer } from '../styledComponents/styledComponents'
 import castArray from 'lodash/castArray'
 import filterOptions from '../../utils/filterOptions'
 
@@ -59,7 +60,7 @@ NewInput.defaultProps = {
     SelectionContainer,
     OptionContainer,
     AppendToBodyOptionsContainer,
-    NoOptions,
+    StyledAppendToBodyOptionsContainer,
   },
 
   styles: {
@@ -108,7 +109,7 @@ NewInput.propTypes = {
     SelectionContainer: AppPropTypes.element.isRequired,
     OptionContainer: AppPropTypes.element.isRequired,
     AppendToBodyOptionsContainer: AppPropTypes.element.isRequired,
-    NoOptions: AppPropTypes.element.isRequired,
+    StyledAppendToBodyOptionsContainer: AppPropTypes.element.isRequired,
   }).isRequired,
 
   styles: AppPropTypes.styles.isRequired,
