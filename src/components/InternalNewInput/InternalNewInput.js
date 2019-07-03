@@ -53,7 +53,7 @@ let InternalNewInput = (props) => {
     ...props.styles
   }
 
-  if (props.creatable && searchText) {
+  if (props.creatable && searchText && !filteredOptions.some(item => item.value === searchText)) {
     filteredOptions.push({value: searchText, label: props.text.create + ` "${searchText}"`})
   }
 

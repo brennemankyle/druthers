@@ -1,43 +1,27 @@
-import {
-  pipe,
-  without,
-  filter,
-  props,
-  toLower,
-  any,
-  contains,
-  curry,
-  equals,
-  sortWith,
-  comparator,
-  isEmpty,
-  startsWith,
-  endsWith,
-} from 'ramda'
-
-let containsIgnoreCase = curry((a, b) => contains(toLower(a), toLower(b)))
-let equalsIgnoreCase = curry((a, b) => equals(toLower(a), toLower(b)))
-let startsWithIgnoreCase = curry((a, b) => startsWith(toLower(a), toLower(b)))
-let endsWithIgnoreCase = curry((a, b) => endsWith(toLower(a), toLower(b)))
+import _isEmpty from 'lodash/isEmpty'
+import _without from 'lodash/without'
+import _sortBy from 'lodash/sortBy'
 
 let filterOptions = (searchTerm, selection, options, searchProps = ['label', 'value']) => {
-  if (isEmpty(searchTerm)) return without(selection, options)
+  options = _without(options, ...selection)
+  if (_isEmpty(searchTerm)) return options
 
-  let checkOption = (func) => pipe(props(searchProps), any(func))
-  let containsSearch = containsIgnoreCase(searchTerm)
-  let equalsSearch = equalsIgnoreCase(searchTerm)
-  let startsWithSearch = startsWithIgnoreCase(searchTerm)
-  let endsWithSearch = endsWithIgnoreCase(searchTerm)
+  searchTerm = searchTerm.toLowerCase()
 
-  let optionsContainsSearch = filter(checkOption(containsSearch))
+  options = options.filter(item =>
+    item.label.toLowerCase().includes(searchTerm)
+    || item.value.toLowerCase() === searchTerm)
 
-  let searchSort = sortWith([
-    comparator(checkOption(equalsSearch)),
-    comparator(checkOption(startsWithSearch)),
-    comparator(checkOption(endsWithSearch)),
-  ])
+  options = _sortBy(options, [
+    item => item.label.toLowerCase() === searchTerm,
+    item => item.value.toLowerCase() === searchTerm,
+    item => item.label.toLowerCase().startsWith(searchTerm),
+    item => item.label.toLowerCase().endsWith(searchTerm),
+  ]).reverse()
 
-  return pipe(without(selection), optionsContainsSearch, searchSort)(options)
+  // fuzzy search? https://fusejs.io/
+
+  return options
 }
 
 export default filterOptions
