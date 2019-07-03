@@ -3,9 +3,8 @@ import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
 import InternalNewInput from '../InternalNewInput/InternalNewInput'
 import HtmlFieldData from '../HtmlFieldData/HtmlFieldData'
-import Container from '../Container/Container'
 import AppendToBodyOptionsContainer from '../AppendToBodyOptionsContainer/AppendToBodyOptionsContainer'
-import { Selection, SelectionList, OptionList, Option, Search, SelectionContainer, OptionContainer, StyledAppendToBodyOptionsContainer } from '../styledComponents/styledComponents'
+import { Container, Selection, SelectionList, OptionList, Option, Search, SelectionContainer, OptionContainer, StyledAppendToBodyOptionsContainer } from '../styledComponents/styledComponents'
 import castArray from 'lodash/castArray'
 import filterOptions from '../../utils/filterOptions'
 
@@ -41,6 +40,7 @@ NewInput.defaultProps = {
   creatable: false,
   removable: true,
   appendToBody: false,
+  rightToLeft: false,
   filterOptions: filterOptions,
   optionKeys: ['value', 'label'],
   text: {
@@ -89,6 +89,7 @@ NewInput.propTypes = {
   creatable: PropTypes.bool.isRequired,
   removable: PropTypes.bool.isRequired,
   appendToBody: PropTypes.bool.isRequired,
+  rightToLeft: PropTypes.bool.isRequired,
   filterOptions: PropTypes.func.isRequired,
   optionKeys: PropTypes.arrayOf(PropTypes.string).isRequired,
 

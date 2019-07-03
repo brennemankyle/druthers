@@ -49,6 +49,7 @@ let InternalNewInput = (props) => {
     hasSelection: hasSelection,
     hasOptions: hasOptions,
     optionHighlighted: optionHighlighted,
+    rightToLeft: props.rightToLeft,
     ...props.styles
   }
 
@@ -246,6 +247,7 @@ InternalNewInput.propTypes = {
   creatable: PropTypes.bool.isRequired,
   removable: PropTypes.bool.isRequired,
   appendToBody: PropTypes.bool.isRequired,
+  rightToLeft: PropTypes.bool.isRequired,
   filterOptions: PropTypes.func,
 
   text: PropTypes.shape({

@@ -21,6 +21,7 @@ let App = () => {
   const [selectionSingleCreate, setSelectionSingleCreate] = useState('1')
   const [selectionMultipleCreate, setSelectionMultipleCreate] = useState(['1'])
   const [selectionAppendToBody, setSelectionAppendToBody] = useState(['1'])
+  const [selectionRightToLeft, setSelectionRightToLeft] = useState()
 
   return (
     <div className="App">
@@ -38,6 +39,9 @@ let App = () => {
 
       <h1>Append to body</h1>
       <NewInput selection={selectionAppendToBody} onChange={(e) => setSelectionAppendToBody(e.target.value)} options={options} creatable={true} multiple={true} appendToBody={true} />
+
+      <h1>Right to left</h1>
+      <NewInput selection={selectionRightToLeft} onChange={(e) => setSelectionRightToLeft(e.target.value)} options={options} rightToLeft={true} />
 
       <h1>Single Disabled</h1>
       <NewInput selection={['1']} onChange={(e) => setSelectionSingle(e.target.value)} options={options} disabled={true} />

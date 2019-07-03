@@ -40,7 +40,7 @@ AppendToBodyOptionsContainer.defaultProps = {
 AppendToBodyOptionsContainer.propTypes = {
   parentRef: PropTypes.object.isRequired,
   filteredOptions: AppPropTypes.itemList.isRequired,
-  updateOn: PropTypes.array,
+  updateOn: PropTypes.array.isRequired,
   StyledAppendToBodyOptionsContainer: AppPropTypes.element.isRequired,
   styles: AppPropTypes.styles.isRequired,
 }

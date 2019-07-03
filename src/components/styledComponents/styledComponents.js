@@ -4,7 +4,13 @@ import ItemList from '../ItemList/ItemList'
 import RawSearch from '../Search/Search'
 import RawSelectionContainer from '../SelectionContainer/SelectionContainer'
 import { StyledAppendToBodyOptionsContainer as RawStyledAppendToBodyOptionsContainer } from '../AppendToBodyOptionsContainer/AppendToBodyOptionsContainer'
-import Container from '../Container/Container'
+import RawContainer from '../Container/Container'
+
+const Container = styled(RawContainer)`
+  ${props => props.styles.rightToLeft && `
+    transform: scaleX(-1);`
+  }
+`
 
 const Selection = styled(Item)`
   border-radius: .2em;
@@ -38,6 +44,9 @@ const Selection = styled(Item)`
     : `
       display: flex;`
   }
+  ${props => props.styles.rightToLeft && `
+    transform: scaleX(-1);`
+  }
 `
 
 const Option = styled(Item)`
@@ -46,6 +55,10 @@ const Option = styled(Item)`
   ${props => props.styles.optionHighlighted === props.item.value
     ? `background-color: ${props.styles.colors.highlight};`
     : ``
+  }
+  ${props => props.styles.rightToLeft && `
+    transform: scaleX(-1);
+    text-align: right;`
   }
 `
 
@@ -70,6 +83,10 @@ const Search = styled(RawSearch)`
   font-size: 1em;
   font-family: inherit;
   background-color: transparent;
+  ${props => props.styles.rightToLeft && `
+    transform: scaleX(-1);
+    text-align: right;`
+  }
 `
 
 const SelectionContainer = styled(RawSelectionContainer)`
@@ -142,7 +159,7 @@ const DivRelative = styled.div`
   position: relative
 `
 
-const OptionContainer = styled(Container)`
+const OptionContainer = styled(RawContainer)`
   position: absolute;
   top: 0;
   left: 0;
@@ -162,6 +179,9 @@ const StyledAppendToBodyOptionsContainer = styled(RawStyledAppendToBodyOptionsCo
       top: ${props.parentRect.y + props.parentRect.height}px;
       left: ${props.parentRect.x}px;
     `}
+  ${props => props.styles.rightToLeft && `
+    transform: scaleX(-1);`
+  }
 `
 
 export {
@@ -174,4 +194,5 @@ export {
   SelectionContainer,
   OptionContainer,
   StyledAppendToBodyOptionsContainer,
+  Container,
 }
