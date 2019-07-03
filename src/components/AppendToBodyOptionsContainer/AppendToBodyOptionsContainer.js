@@ -25,8 +25,6 @@ let AppendToBodyOptionsContainer = (props) => {
     children = React.cloneElement(children, {itemList: filteredOptions})
   }
 
-  console.log(parentRect.y, window.innerHeight, window.scrollY)
-
   return <StyledAppendToBodyOptionsContainer
     className={className}
     ref={ref}
