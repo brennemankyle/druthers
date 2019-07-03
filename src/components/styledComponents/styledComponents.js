@@ -156,7 +156,7 @@ const StyledAppendToBodyOptionsContainer = styled(RawStyledAppendToBodyOptionsCo
   width: ${props => props.styles.width}px;
 
   ${props => props.placeOptionsAbove ? `
-      top: ${props.parentRect.y - props.optionContainerRect.height}px;
+      bottom: ${window.innerHeight - props.parentRect.y}px;
       left: ${props.parentRect.x}px;
     ` : `
       top: ${props.parentRect.y + props.parentRect.height}px;

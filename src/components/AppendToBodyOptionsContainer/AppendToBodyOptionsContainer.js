@@ -6,7 +6,7 @@ import usePlaceAbove from '../../hooks/usePlaceAbove/usePlaceAbove'
 import Container from '../Container/Container'
 
 let StyledAppendToBodyOptionsContainer = (props, ref) => {
-  let {className, children, placeOptionsAbove, parentRect, optionContainerRect, ...otherProps} = props
+  let {className, children, placeOptionsAbove, parentRect, ...otherProps} = props
 
   return <Container className={className} ref={ref} {...otherProps}>{children}</Container>
 }
@@ -25,19 +25,24 @@ let AppendToBodyOptionsContainer = (props) => {
     children = React.cloneElement(children, {itemList: filteredOptions})
   }
 
+  console.log(parentRect.y, window.innerHeight, window.scrollY)
+
   return <StyledAppendToBodyOptionsContainer
     className={className}
     ref={ref}
     placeOptionsAbove={placeOptionsAbove}
     parentRect={parentRect}
-    optionContainerRect={optionContainerRect}
     {...otherProps}>{children}</StyledAppendToBodyOptionsContainer>
+}
+
+AppendToBodyOptionsContainer.defaultProps = {
+  updateOn: [],
 }
 
 AppendToBodyOptionsContainer.propTypes = {
   parentRef: PropTypes.object.isRequired,
   filteredOptions: AppPropTypes.itemList.isRequired,
-  updateOn: PropTypes.array.isRequired,
+  updateOn: PropTypes.array,
   StyledAppendToBodyOptionsContainer: AppPropTypes.element.isRequired,
   styles: AppPropTypes.styles.isRequired,
 }

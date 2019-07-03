@@ -2,8 +2,6 @@ import React, { useState, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
-import useRefRect from '../../hooks/useRefRect/useRefRect'
-import usePlaceAbove from '../../hooks/usePlaceAbove/usePlaceAbove'
 import _last from 'lodash/last'
 import _inRange from 'lodash/inRange'
 import { DivRelative } from '../styledComponents/styledComponents'
@@ -233,7 +231,6 @@ let InternalNewInput = (props) => {
         styles={styles}
         parentRef={selfRef}
         filteredOptions={filteredOptions}
-        updateOn={[searchText, props.selection, filteredOptions]}
         StyledAppendToBodyOptionsContainer={StyledAppendToBodyOptionsContainer}>
       {optionList}</AppendToBodyOptionsContainer>,
       document.body)}</Container>
