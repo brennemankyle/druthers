@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<li
+  val="42"
+>
+  Meaning of life
+</li>
+`;
+
+exports[`renders removable 1`] = `
+<li
+  val="42"
+>
+  Meaning of life
+  <button
+    className="remove"
+    tabIndex="-1"
+    type="button"
+    val="42"
+  >
+    <img
+      alt="remove"
+      className="remove"
+      src="remove.png"
+      val="42"
+    />
+  </button>
+</li>
+`;
