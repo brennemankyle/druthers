@@ -1,3 +1,1 @@
-TODO
-
-Other name ideas: New Input
+Demo: https://brennemankyle.github.io/react-new-input/
