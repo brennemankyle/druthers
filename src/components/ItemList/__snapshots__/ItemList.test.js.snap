@@ -1,0 +1,183 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<ul>
+  <mockElement
+    item={
+      Object {
+        "label": "Item 1",
+        "value": "1",
+      }
+    }
+    key="1"
+    removable={false}
+    styles={
+      Object {
+        "colors": Object {},
+      }
+    }
+  />
+  <mockElement
+    item={
+      Object {
+        "label": "Item 2",
+        "value": "2",
+      }
+    }
+    key="2"
+    removable={false}
+    styles={
+      Object {
+        "colors": Object {},
+      }
+    }
+  />
+  <mockElement
+    item={
+      Object {
+        "label": "Item 3",
+        "value": "3",
+      }
+    }
+    key="3"
+    removable={false}
+    styles={
+      Object {
+        "colors": Object {},
+      }
+    }
+  />
+  <mockElement
+    item={
+      Object {
+        "label": "Item 4",
+        "value": "4",
+      }
+    }
+    key="4"
+    removable={false}
+    styles={
+      Object {
+        "colors": Object {},
+      }
+    }
+  />
+  <mockElement
+    item={
+      Object {
+        "label": "Item 5",
+        "value": "5",
+      }
+    }
+    key="5"
+    removable={false}
+    styles={
+      Object {
+        "colors": Object {},
+      }
+    }
+  />
+</ul>
+`;
+
+exports[`renders no items 1`] = `
+<ul
+  onMouseDown={[Function]}
+  onMouseOver={[Function]}
+>
+  <mockElement
+    item={
+      Object {
+        "label": "None",
+        "value": "",
+      }
+    }
+    removable={false}
+    styles={
+      Object {
+        "colors": Object {},
+      }
+    }
+  />
+</ul>
+`;
+
+exports[`renders removable 1`] = `
+<ul>
+  <mockElement
+    item={
+      Object {
+        "label": "Item 1",
+        "value": "1",
+      }
+    }
+    key="1"
+    removable={true}
+    styles={
+      Object {
+        "colors": Object {},
+      }
+    }
+  />
+  <mockElement
+    item={
+      Object {
+        "label": "Item 2",
+        "value": "2",
+      }
+    }
+    key="2"
+    removable={true}
+    styles={
+      Object {
+        "colors": Object {},
+      }
+    }
+  />
+  <mockElement
+    item={
+      Object {
+        "label": "Item 3",
+        "value": "3",
+      }
+    }
+    key="3"
+    removable={true}
+    styles={
+      Object {
+        "colors": Object {},
+      }
+    }
+  />
+  <mockElement
+    item={
+      Object {
+        "label": "Item 4",
+        "value": "4",
+      }
+    }
+    key="4"
+    removable={true}
+    styles={
+      Object {
+        "colors": Object {},
+      }
+    }
+  />
+  <mockElement
+    item={
+      Object {
+        "label": "Item 5",
+        "value": "5",
+      }
+    }
+    key="5"
+    removable={true}
+    styles={
+      Object {
+        "colors": Object {},
+      }
+    }
+  />
+</ul>
+`;

@@ -1,3 +1,5 @@
+import React from 'react'
+
 let mockStyles = {
   colors: {}
 }
@@ -15,4 +17,6 @@ let mockItemList = [
   {value: '5', label: 'Item 5'},
 ]
 
-export { mockStyles, mockItem, mockItemList }
+let mockElement = (props) => <div {...props} />
+
+export { mockStyles, mockItem, mockItemList, mockElement }

@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<input
+  className="test search"
+  onChange={[MockFunction]}
+  onKeyDown={[MockFunction]}
+  placeholder="Placeholder"
+  style={Object {}}
+  type="text"
+/>
+`;
+
+exports[`renders disabled 1`] = `
+<input
+  className="test search"
+  disabled={true}
+  onChange={[MockFunction]}
+  onKeyDown={[MockFunction]}
+  placeholder="Placeholder"
+  style={Object {}}
+  type="text"
+/>
+`;
+
+exports[`renders hidden 1`] = `
+<input
+  className="test search"
+  onChange={[MockFunction]}
+  onKeyDown={[MockFunction]}
+  placeholder="Placeholder"
+  style={
+    Object {
+      "opacity": 0,
+      "width": 0,
+    }
+  }
+  type="text"
+/>
+`;
+
+exports[`renders searchText 1`] = `
+<input
+  className="test search"
+  onChange={[MockFunction]}
+  onKeyDown={[MockFunction]}
+  placeholder="Placeholder"
+  style={Object {}}
+  type="text"
+  value="search text"
+/>
+`;
