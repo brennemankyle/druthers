@@ -6,6 +6,7 @@ let SelectionContainer = (props) => {
   const searchRef = useRef(null)
 
   let onFocus = (e) => {
+    console.log('focus')
     if (!props.areOptionsOpen) {
       props.onFocus(e)
 
@@ -26,7 +27,6 @@ let SelectionContainer = (props) => {
       // Call blur on search click
       e.preventDefault()
       searchRef.current.blur()
-      console.log('here')
     }
   }
 

@@ -13,7 +13,21 @@ exports[`renders 1`] = `
     removable={false}
     styles={
       Object {
-        "colors": Object {},
+        "colors": Object {
+          "background": "white",
+          "disabled": "#ECECEC",
+          "highlight": "lightblue",
+          "primary": "black",
+          "secondary": "lightgray",
+          "warning": "#CD5C5C",
+        },
+        "disabled": false,
+        "hasOptions": true,
+        "hasSelection": false,
+        "multiple": false,
+        "optionHighlighted": Array [],
+        "rightToLeft": false,
+        "width": "600px",
       }
     }
   />
@@ -28,7 +42,21 @@ exports[`renders 1`] = `
     removable={false}
     styles={
       Object {
-        "colors": Object {},
+        "colors": Object {
+          "background": "white",
+          "disabled": "#ECECEC",
+          "highlight": "lightblue",
+          "primary": "black",
+          "secondary": "lightgray",
+          "warning": "#CD5C5C",
+        },
+        "disabled": false,
+        "hasOptions": true,
+        "hasSelection": false,
+        "multiple": false,
+        "optionHighlighted": Array [],
+        "rightToLeft": false,
+        "width": "600px",
       }
     }
   />
@@ -43,7 +71,21 @@ exports[`renders 1`] = `
     removable={false}
     styles={
       Object {
-        "colors": Object {},
+        "colors": Object {
+          "background": "white",
+          "disabled": "#ECECEC",
+          "highlight": "lightblue",
+          "primary": "black",
+          "secondary": "lightgray",
+          "warning": "#CD5C5C",
+        },
+        "disabled": false,
+        "hasOptions": true,
+        "hasSelection": false,
+        "multiple": false,
+        "optionHighlighted": Array [],
+        "rightToLeft": false,
+        "width": "600px",
       }
     }
   />
@@ -58,7 +100,21 @@ exports[`renders 1`] = `
     removable={false}
     styles={
       Object {
-        "colors": Object {},
+        "colors": Object {
+          "background": "white",
+          "disabled": "#ECECEC",
+          "highlight": "lightblue",
+          "primary": "black",
+          "secondary": "lightgray",
+          "warning": "#CD5C5C",
+        },
+        "disabled": false,
+        "hasOptions": true,
+        "hasSelection": false,
+        "multiple": false,
+        "optionHighlighted": Array [],
+        "rightToLeft": false,
+        "width": "600px",
       }
     }
   />
@@ -73,7 +129,21 @@ exports[`renders 1`] = `
     removable={false}
     styles={
       Object {
-        "colors": Object {},
+        "colors": Object {
+          "background": "white",
+          "disabled": "#ECECEC",
+          "highlight": "lightblue",
+          "primary": "black",
+          "secondary": "lightgray",
+          "warning": "#CD5C5C",
+        },
+        "disabled": false,
+        "hasOptions": true,
+        "hasSelection": false,
+        "multiple": false,
+        "optionHighlighted": Array [],
+        "rightToLeft": false,
+        "width": "600px",
       }
     }
   />
@@ -95,7 +165,21 @@ exports[`renders no items 1`] = `
     removable={false}
     styles={
       Object {
-        "colors": Object {},
+        "colors": Object {
+          "background": "white",
+          "disabled": "#ECECEC",
+          "highlight": "lightblue",
+          "primary": "black",
+          "secondary": "lightgray",
+          "warning": "#CD5C5C",
+        },
+        "disabled": false,
+        "hasOptions": true,
+        "hasSelection": false,
+        "multiple": false,
+        "optionHighlighted": Array [],
+        "rightToLeft": false,
+        "width": "600px",
       }
     }
   />
@@ -115,7 +199,21 @@ exports[`renders removable 1`] = `
     removable={true}
     styles={
       Object {
-        "colors": Object {},
+        "colors": Object {
+          "background": "white",
+          "disabled": "#ECECEC",
+          "highlight": "lightblue",
+          "primary": "black",
+          "secondary": "lightgray",
+          "warning": "#CD5C5C",
+        },
+        "disabled": false,
+        "hasOptions": true,
+        "hasSelection": false,
+        "multiple": false,
+        "optionHighlighted": Array [],
+        "rightToLeft": false,
+        "width": "600px",
       }
     }
   />
@@ -130,7 +228,21 @@ exports[`renders removable 1`] = `
     removable={true}
     styles={
       Object {
-        "colors": Object {},
+        "colors": Object {
+          "background": "white",
+          "disabled": "#ECECEC",
+          "highlight": "lightblue",
+          "primary": "black",
+          "secondary": "lightgray",
+          "warning": "#CD5C5C",
+        },
+        "disabled": false,
+        "hasOptions": true,
+        "hasSelection": false,
+        "multiple": false,
+        "optionHighlighted": Array [],
+        "rightToLeft": false,
+        "width": "600px",
       }
     }
   />
@@ -145,7 +257,21 @@ exports[`renders removable 1`] = `
     removable={true}
     styles={
       Object {
-        "colors": Object {},
+        "colors": Object {
+          "background": "white",
+          "disabled": "#ECECEC",
+          "highlight": "lightblue",
+          "primary": "black",
+          "secondary": "lightgray",
+          "warning": "#CD5C5C",
+        },
+        "disabled": false,
+        "hasOptions": true,
+        "hasSelection": false,
+        "multiple": false,
+        "optionHighlighted": Array [],
+        "rightToLeft": false,
+        "width": "600px",
       }
     }
   />
@@ -160,7 +286,21 @@ exports[`renders removable 1`] = `
     removable={true}
     styles={
       Object {
-        "colors": Object {},
+        "colors": Object {
+          "background": "white",
+          "disabled": "#ECECEC",
+          "highlight": "lightblue",
+          "primary": "black",
+          "secondary": "lightgray",
+          "warning": "#CD5C5C",
+        },
+        "disabled": false,
+        "hasOptions": true,
+        "hasSelection": false,
+        "multiple": false,
+        "optionHighlighted": Array [],
+        "rightToLeft": false,
+        "width": "600px",
       }
     }
   />
@@ -175,7 +315,21 @@ exports[`renders removable 1`] = `
     removable={true}
     styles={
       Object {
-        "colors": Object {},
+        "colors": Object {
+          "background": "white",
+          "disabled": "#ECECEC",
+          "highlight": "lightblue",
+          "primary": "black",
+          "secondary": "lightgray",
+          "warning": "#CD5C5C",
+        },
+        "disabled": false,
+        "hasOptions": true,
+        "hasSelection": false,
+        "multiple": false,
+        "optionHighlighted": Array [],
+        "rightToLeft": false,
+        "width": "600px",
       }
     }
   />

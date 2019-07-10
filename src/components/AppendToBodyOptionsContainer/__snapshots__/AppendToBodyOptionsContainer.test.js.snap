@@ -35,7 +35,21 @@ exports[`renders 1`] = `
   }
   styles={
     Object {
-      "colors": Object {},
+      "colors": Object {
+        "background": "white",
+        "disabled": "#ECECEC",
+        "highlight": "lightblue",
+        "primary": "black",
+        "secondary": "lightgray",
+        "warning": "#CD5C5C",
+      },
+      "disabled": false,
+      "hasOptions": true,
+      "hasSelection": false,
+      "multiple": false,
+      "optionHighlighted": Array [],
+      "rightToLeft": false,
+      "width": "600px",
     }
   }
   updateOn={Array []}
@@ -57,7 +71,21 @@ exports[`renders 1`] = `
     placeOptionsAbove={true}
     styles={
       Object {
-        "colors": Object {},
+        "colors": Object {
+          "background": "white",
+          "disabled": "#ECECEC",
+          "highlight": "lightblue",
+          "primary": "black",
+          "secondary": "lightgray",
+          "warning": "#CD5C5C",
+        },
+        "disabled": false,
+        "hasOptions": true,
+        "hasSelection": false,
+        "multiple": false,
+        "optionHighlighted": Array [],
+        "rightToLeft": false,
+        "width": "600px",
       }
     }
   >
@@ -103,7 +131,21 @@ exports[`renders 1`] = `
           },
           "placeOptionsAbove": true,
           "styles": Object {
-            "colors": Object {},
+            "colors": Object {
+              "background": "white",
+              "disabled": "#ECECEC",
+              "highlight": "lightblue",
+              "primary": "black",
+              "secondary": "lightgray",
+              "warning": "#CD5C5C",
+            },
+            "disabled": false,
+            "hasOptions": true,
+            "hasSelection": false,
+            "multiple": false,
+            "optionHighlighted": Array [],
+            "rightToLeft": false,
+            "width": "600px",
           },
         }
       }

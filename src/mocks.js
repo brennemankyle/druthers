@@ -1,9 +1,17 @@
 import React from 'react'
+import defaultProps from './utils/defaultProps'
 
 let noop = () => {}
 
 let mockStyles = {
-  colors: {}
+  width: '600px',
+  multiple: false,
+  disabled: false,
+  hasSelection: false,
+  hasOptions: true,
+  optionHighlighted: [],
+  rightToLeft: false,
+  colors: defaultProps.styles.colors,
 }
 
 let mockItem = {

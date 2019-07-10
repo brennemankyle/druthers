@@ -22,8 +22,8 @@ it('renders', () => {
 
 it('renders disabled', () => {
   let styles = {
+    ...mockStyles,
     disabled: true,
-    ...mockStyles
   }
 
   const wrapper = shallow(<SelectionContainer

@@ -2,11 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
 import InternalNewInput from '../InternalNewInput/InternalNewInput'
-import HtmlFieldData from '../HtmlFieldData/HtmlFieldData'
-import AppendToBodyOptionsContainer from '../AppendToBodyOptionsContainer/AppendToBodyOptionsContainer'
-import { Container, Selection, SelectionList, OptionList, Option, Search, SelectionContainer, OptionContainer, StyledAppendToBodyOptionsContainer } from '../styledComponents/styledComponents'
 import castArray from 'lodash/castArray'
-import filterOptions from '../../utils/filterOptions'
+import defaultProps from '../../utils/defaultProps'
 
 let NewInput = (props) => {
   let {selection, options, placeholder, ...otherProps} = props
@@ -30,50 +27,7 @@ let NewInput = (props) => {
     {...otherProps} />
 }
 
-NewInput.defaultProps = {
-  name: '',
-  selection: [],
-  options: [],
-  placeholder: 'Select...',
-  multiple: false,
-  disabled: false,
-  creatable: false,
-  removable: true,
-  appendToBody: false,
-  rightToLeft: false,
-  filterOptions: filterOptions,
-  optionKeys: ['value', 'label'],
-  text: {
-    placeholder: '',
-    noOptions: 'No Options',
-    create: 'Create',
-  },
-
-  components: {
-    HtmlFieldData,
-    Container,
-    Selection,
-    SelectionList,
-    OptionList,
-    Option,
-    Search,
-    SelectionContainer,
-    OptionContainer,
-    AppendToBodyOptionsContainer,
-    StyledAppendToBodyOptionsContainer,
-  },
-
-  styles: {
-    colors: {
-      primary: 'black',
-      secondary: 'lightgray',
-      highlight: 'lightblue',
-      warning: '#CD5C5C',
-      disabled: '#ECECEC',
-      background: 'white',
-    }
-  }
-}
+NewInput.defaultProps = defaultProps
 
 NewInput.propTypes = {
   onChange: PropTypes.func.isRequired,

@@ -3,6 +3,7 @@
 exports[`renders 1`] = `
 <input
   className="test search"
+  disabled={false}
   onChange={[MockFunction]}
   onKeyDown={[MockFunction]}
   placeholder="Placeholder"
@@ -26,6 +27,7 @@ exports[`renders disabled 1`] = `
 exports[`renders hidden 1`] = `
 <input
   className="test search"
+  disabled={false}
   onChange={[MockFunction]}
   onKeyDown={[MockFunction]}
   placeholder="Placeholder"
@@ -42,6 +44,7 @@ exports[`renders hidden 1`] = `
 exports[`renders searchText 1`] = `
 <input
   className="test search"
+  disabled={false}
   onChange={[MockFunction]}
   onKeyDown={[MockFunction]}
   placeholder="Placeholder"
