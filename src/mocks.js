@@ -1,5 +1,7 @@
 import React from 'react'
 
+let noop = () => {}
+
 let mockStyles = {
   colors: {}
 }
@@ -17,6 +19,17 @@ let mockItemList = [
   {value: '5', label: 'Item 5'},
 ]
 
-let mockElement = (props) => <div {...props} />
+let mockEvent = {
+  preventDefault: noop
+}
 
-export { mockStyles, mockItem, mockItemList, mockElement }
+let mockElement = (props) => <div data-props={props} />
+let mockInput = (props) => <input data-props={props} />
+
+export {
+  mockStyles,
+  mockItem,
+  mockItemList,
+  mockEvent,
+  mockElement,
+  mockInput, }

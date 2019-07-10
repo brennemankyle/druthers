@@ -4,7 +4,9 @@ import { mockStyles } from '../../mocks'
 import Container from './Container'
 
 it('adds className', () => {
-  const wrapper = shallow(<Container styles={mockStyles} className="test"></Container>)
+  const wrapper = shallow(<Container
+    styles={mockStyles}
+    className="test" />)
 
   expect(wrapper.hasClass('test')).toBe(true)
 })
@@ -16,14 +18,18 @@ it('renders children', () => {
 })
 
 it('pass props', () => {
-  const wrapper = shallow(<Container styles={mockStyles} otherProp="otherProp"></Container>)
+  const wrapper = shallow(<Container
+    styles={mockStyles}
+    otherProp="otherProp" />)
 
   expect(wrapper.props().otherProp).toBe('otherProp')
 })
 
 it('forwards ref', () => {
   const ref = React.createRef()
-  const wrapper = mount(<Container styles={mockStyles} ref={ref}></Container>)
+  const wrapper = mount(<Container
+    styles={mockStyles}
+    ref={ref} />)
 
   expect(ref.current).toBeDefined()
 })

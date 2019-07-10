@@ -5,13 +5,19 @@ import { mockStyles, mockItem } from '../../mocks'
 import Item from './Item'
 
 it('renders', () => {
-  const wrapper = shallow(<Item styles={mockStyles} item={mockItem} removable={false}></Item>)
+  const wrapper = shallow(<Item
+    styles={mockStyles}
+    item={mockItem}
+    removable={false} />)
 
   expect(toJson(wrapper)).toMatchSnapshot()
 })
 
 it('renders removable', () => {
-  const wrapper = shallow(<Item styles={mockStyles} item={mockItem} removable={true}></Item>)
+  const wrapper = shallow(<Item
+    styles={mockStyles}
+    item={mockItem}
+    removable={true} />)
 
   expect(toJson(wrapper)).toMatchSnapshot()
 })

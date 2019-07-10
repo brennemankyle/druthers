@@ -8,19 +8,33 @@ const onClick = jest.fn()
 const onMouseOver = jest.fn()
 
 it('renders', () => {
-  const wrapper = shallow(<ItemList styles={mockStyles} itemList={mockItemList} Item={mockElement}></ItemList>)
+  const wrapper = shallow(<ItemList
+    styles={mockStyles}
+    itemList={mockItemList}
+    Item={mockElement} />)
 
   expect(toJson(wrapper)).toMatchSnapshot()
 })
 
 it('renders removable', () => {
-  const wrapper = shallow(<ItemList styles={mockStyles} itemList={mockItemList} Item={mockElement} removable={true}></ItemList>)
+  const wrapper = shallow(<ItemList
+    styles={mockStyles}
+    itemList={mockItemList}
+    Item={mockElement}
+    removable={true} />)
 
   expect(toJson(wrapper)).toMatchSnapshot()
 })
 
 it('renders no items', () => {
-  const wrapper = shallow(<ItemList styles={mockStyles} itemList={[]} Item={mockElement} removable={true} noItemsText="None" onClick={onClick} onMouseOver={onMouseOver}></ItemList>)
+  const wrapper = shallow(<ItemList
+    styles={mockStyles}
+    itemList={[]}
+    Item={mockElement}
+    removable={true}
+    noItemsText="None"
+    onClick={onClick}
+    onMouseOver={onMouseOver} />)
 
   wrapper.find('ul').simulate('mouseDown')
   wrapper.find('ul').simulate('mouseOver')
@@ -31,7 +45,11 @@ it('renders no items', () => {
 })
 
 it('should click', () => {
-  const wrapper = shallow(<ItemList styles={mockStyles} itemList={mockItemList} Item={mockElement} onClick={onClick}></ItemList>)
+  const wrapper = shallow(<ItemList
+    styles={mockStyles}
+    itemList={mockItemList}
+    Item={mockElement}
+    onClick={onClick} />)
 
   wrapper.find('ul').simulate('mouseDown')
 
@@ -39,7 +57,11 @@ it('should click', () => {
 })
 
 it('should mouseOver', () => {
-  const wrapper = shallow(<ItemList styles={mockStyles} itemList={mockItemList} Item={mockElement} onMouseOver={onMouseOver}></ItemList>)
+  const wrapper = shallow(<ItemList
+    styles={mockStyles}
+    itemList={mockItemList}
+    Item={mockElement}
+    onMouseOver={onMouseOver} />)
 
   wrapper.find('ul').simulate('mouseOver')
 

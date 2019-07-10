@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<AppendToBodyOptionsContainer
+  StyledAppendToBodyOptionsContainer={[Function]}
+  className="test"
+  filteredOptions={
+    Array [
+      Object {
+        "label": "Item 5",
+        "value": "5",
+      },
+      Object {
+        "label": "Item 4",
+        "value": "4",
+      },
+      Object {
+        "label": "Item 3",
+        "value": "3",
+      },
+      Object {
+        "label": "Item 2",
+        "value": "2",
+      },
+      Object {
+        "label": "Item 1",
+        "value": "1",
+      },
+    ]
+  }
+  parentRef={
+    Object {
+      "current": null,
+    }
+  }
+  styles={
+    Object {
+      "colors": Object {},
+    }
+  }
+  updateOn={Array []}
+>
+  <mockElement
+    className="test"
+    parentRect={
+      Object {
+        "bottom": 80,
+        "height": 80,
+        "left": 0,
+        "right": 200,
+        "top": 0,
+        "width": 200,
+        "x": 0,
+        "y": 600,
+      }
+    }
+    placeOptionsAbove={true}
+    styles={
+      Object {
+        "colors": Object {},
+      }
+    }
+  >
+    <div
+      data-props={
+        Object {
+          "children": <mockElement
+            itemList={
+              Array [
+                Object {
+                  "label": "Item 5",
+                  "value": "5",
+                },
+                Object {
+                  "label": "Item 4",
+                  "value": "4",
+                },
+                Object {
+                  "label": "Item 3",
+                  "value": "3",
+                },
+                Object {
+                  "label": "Item 2",
+                  "value": "2",
+                },
+                Object {
+                  "label": "Item 1",
+                  "value": "1",
+                },
+              ]
+            }
+          />,
+          "className": "test",
+          "parentRect": Object {
+            "bottom": 80,
+            "height": 80,
+            "left": 0,
+            "right": 200,
+            "top": 0,
+            "width": 200,
+            "x": 0,
+            "y": 600,
+          },
+          "placeOptionsAbove": true,
+          "styles": Object {
+            "colors": Object {},
+          },
+        }
+      }
+    />
+  </mockElement>
+</AppendToBodyOptionsContainer>
+`;

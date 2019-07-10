@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<div
+  className="test"
+  onBlur={[Function]}
+  onFocus={[Function]}
+  tabIndex="-1"
+>
+  <Component />
+  <Component
+    onClick={[Function]}
+  />
+  <span
+    className="divider"
+  />
+  <img
+    alt="expand"
+    className="expand"
+    src="expand.png"
+  />
+</div>
+`;
+
+exports[`renders disabled 1`] = `
+<div
+  className="test"
+  onBlur={[Function]}
+  onFocus={[Function]}
+  tabIndex="false"
+>
+  <Component />
+  <Component
+    onClick={[Function]}
+  />
+  <span
+    className="divider"
+  />
+  <img
+    alt="expand"
+    className="expand"
+    src="expand.png"
+  />
+</div>
+`;

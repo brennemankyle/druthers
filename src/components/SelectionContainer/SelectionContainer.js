@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
+import AppPropTypes from '../../utils/AppPropTypes'
 
 let SelectionContainer = (props) => {
   const searchRef = useRef(null)
@@ -25,6 +26,7 @@ let SelectionContainer = (props) => {
       // Call blur on search click
       e.preventDefault()
       searchRef.current.blur()
+      console.log('here')
     }
   }
 
@@ -48,6 +50,9 @@ SelectionContainer.propTypes = {
   onFocus: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
   areOptionsOpen: PropTypes.bool.isRequired,
+  Search: AppPropTypes.element.isRequired,
+  SelectionList: AppPropTypes.element.isRequired,
+  styles: AppPropTypes.styles.isRequired,
 }
 
 export default SelectionContainer

@@ -5,7 +5,9 @@ import { mockItemList } from '../../mocks'
 import HtmlFieldData from './HtmlFieldData'
 
 it('renders', () => {
-  const wrapper = shallow(<HtmlFieldData name="test" itemList={mockItemList}></HtmlFieldData>)
+  const wrapper = shallow(<HtmlFieldData
+    name="test"
+    itemList={mockItemList} />)
 
   expect(toJson(wrapper)).toMatchSnapshot()
 })
