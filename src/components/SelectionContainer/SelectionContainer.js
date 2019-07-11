@@ -6,7 +6,6 @@ let SelectionContainer = (props) => {
   const searchRef = useRef(null)
 
   let onFocus = (e) => {
-    console.log('focus')
     if (!props.areOptionsOpen) {
       props.onFocus(e)
 
@@ -51,7 +50,7 @@ SelectionContainer.propTypes = {
   onBlur: PropTypes.func.isRequired,
   areOptionsOpen: PropTypes.bool.isRequired,
   Search: AppPropTypes.element.isRequired,
-  SelectionList: AppPropTypes.element.isRequired,
+  SelectionList: PropTypes.oneOfType([AppPropTypes.element.isRequired, PropTypes.bool]),
   styles: AppPropTypes.styles.isRequired,
 }
 

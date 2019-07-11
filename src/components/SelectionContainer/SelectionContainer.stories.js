@@ -20,17 +20,13 @@ let search = <Search
   styles={mockStyles} />
 
 storiesOf('(Internal) SelectionContainer', module)
-  .add('closed', () => {
-    let story = <SelectionContainer
-      onFocus={action('onFocus')}
-      onBlur={action('onBlur')}
-      styles={mockStyles}
-      areOptionsOpen={false}
-      SelectionList={selectionList}
-      Search={search} />
-
-    return story
-  })
+  .add('closed', () => <SelectionContainer
+    onFocus={action('onFocus')}
+    onBlur={action('onBlur')}
+    styles={mockStyles}
+    areOptionsOpen={false}
+    SelectionList={selectionList}
+    Search={search} />)
 
 storiesOf('(Internal) SelectionContainer', module)
   .add('open', () => <SelectionContainer

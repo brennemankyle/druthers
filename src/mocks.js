@@ -31,13 +31,13 @@ let mockEvent = {
   preventDefault: noop
 }
 
-let mockElement = (props) => <div data-props={props} />
-let mockInput = (props) => <input data-props={props} />
+let MockElement = (props) => <div data-props={props} />
+let MockInput = (props) => <input data-props={props} />
 
 export {
   mockStyles,
   mockItem,
   mockItemList,
   mockEvent,
-  mockElement,
-  mockInput, }
+  MockElement,
+  MockInput, }

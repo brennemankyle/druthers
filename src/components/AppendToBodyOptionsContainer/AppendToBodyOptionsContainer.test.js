@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import { mockStyles, mockElement, mockItemList } from '../../mocks'
+import { mockStyles, MockElement, mockItemList } from '../../mocks'
 import AppendToBodyOptionsContainer from './AppendToBodyOptionsContainer'
 import useRefRect from '../../hooks/useRefRect/useRefRect'
 import usePlaceAbove from '../../hooks/usePlaceAbove/usePlaceAbove'
@@ -36,7 +36,7 @@ it('renders', () => {
     className="test"
     parentRef={parentRef}
     filteredOptions={mockItemList}
-    StyledAppendToBodyOptionsContainer={mockElement}><mockElement /></AppendToBodyOptionsContainer>)
+    StyledAppendToBodyOptionsContainer={MockElement}><MockElement /></AppendToBodyOptionsContainer>)
 
   expect(toJson(wrapper)).toMatchSnapshot()
 })
@@ -48,7 +48,7 @@ it('forwards ref', () => {
     className="test"
     parentRef={parentRef}
     filteredOptions={[]}
-    StyledAppendToBodyOptionsContainer={mockElement} />)
+    StyledAppendToBodyOptionsContainer={MockElement} />)
 
   expect(parentRef.current).toBeDefined()
 })

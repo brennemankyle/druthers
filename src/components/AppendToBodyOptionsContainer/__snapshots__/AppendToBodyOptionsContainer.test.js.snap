@@ -54,7 +54,7 @@ exports[`renders 1`] = `
   }
   updateOn={Array []}
 >
-  <mockElement
+  <MockElement
     className="test"
     parentRect={
       Object {
@@ -92,7 +92,7 @@ exports[`renders 1`] = `
     <div
       data-props={
         Object {
-          "children": <mockElement
+          "children": <MockElement
             itemList={
               Array [
                 Object {
@@ -150,6 +150,6 @@ exports[`renders 1`] = `
         }
       }
     />
-  </mockElement>
+  </MockElement>
 </AppendToBodyOptionsContainer>
 `;

@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import { mockStyles, mockItemList, mockElement } from '../../mocks'
+import { mockStyles, mockItemList, MockElement } from '../../mocks'
 import ItemList from './ItemList'
 
 const onClick = jest.fn()
@@ -11,7 +11,7 @@ it('renders', () => {
   const wrapper = shallow(<ItemList
     styles={mockStyles}
     itemList={mockItemList}
-    Item={mockElement} />)
+    Item={MockElement} />)
 
   expect(toJson(wrapper)).toMatchSnapshot()
 })
@@ -20,7 +20,7 @@ it('renders removable', () => {
   const wrapper = shallow(<ItemList
     styles={mockStyles}
     itemList={mockItemList}
-    Item={mockElement}
+    Item={MockElement}
     removable={true} />)
 
   expect(toJson(wrapper)).toMatchSnapshot()
@@ -30,7 +30,7 @@ it('renders no items', () => {
   const wrapper = shallow(<ItemList
     styles={mockStyles}
     itemList={[]}
-    Item={mockElement}
+    Item={MockElement}
     removable={true}
     noItemsText="None"
     onClick={onClick}
@@ -48,7 +48,7 @@ it('should click', () => {
   const wrapper = shallow(<ItemList
     styles={mockStyles}
     itemList={mockItemList}
-    Item={mockElement}
+    Item={MockElement}
     onClick={onClick} />)
 
   wrapper.find('ul').simulate('mouseDown')
@@ -60,7 +60,7 @@ it('should mouseOver', () => {
   const wrapper = shallow(<ItemList
     styles={mockStyles}
     itemList={mockItemList}
-    Item={mockElement}
+    Item={MockElement}
     onMouseOver={onMouseOver} />)
 
   wrapper.find('ul').simulate('mouseOver')

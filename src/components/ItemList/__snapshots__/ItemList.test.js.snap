@@ -2,7 +2,7 @@
 
 exports[`renders 1`] = `
 <ul>
-  <mockElement
+  <MockElement
     item={
       Object {
         "label": "Item 1",
@@ -31,7 +31,7 @@ exports[`renders 1`] = `
       }
     }
   />
-  <mockElement
+  <MockElement
     item={
       Object {
         "label": "Item 2",
@@ -60,7 +60,7 @@ exports[`renders 1`] = `
       }
     }
   />
-  <mockElement
+  <MockElement
     item={
       Object {
         "label": "Item 3",
@@ -89,7 +89,7 @@ exports[`renders 1`] = `
       }
     }
   />
-  <mockElement
+  <MockElement
     item={
       Object {
         "label": "Item 4",
@@ -118,7 +118,7 @@ exports[`renders 1`] = `
       }
     }
   />
-  <mockElement
+  <MockElement
     item={
       Object {
         "label": "Item 5",
@@ -155,7 +155,7 @@ exports[`renders no items 1`] = `
   onMouseDown={[Function]}
   onMouseOver={[Function]}
 >
-  <mockElement
+  <MockElement
     item={
       Object {
         "label": "None",
@@ -188,7 +188,7 @@ exports[`renders no items 1`] = `
 
 exports[`renders removable 1`] = `
 <ul>
-  <mockElement
+  <MockElement
     item={
       Object {
         "label": "Item 1",
@@ -217,7 +217,7 @@ exports[`renders removable 1`] = `
       }
     }
   />
-  <mockElement
+  <MockElement
     item={
       Object {
         "label": "Item 2",
@@ -246,7 +246,7 @@ exports[`renders removable 1`] = `
       }
     }
   />
-  <mockElement
+  <MockElement
     item={
       Object {
         "label": "Item 3",
@@ -275,7 +275,7 @@ exports[`renders removable 1`] = `
       }
     }
   />
-  <mockElement
+  <MockElement
     item={
       Object {
         "label": "Item 4",
@@ -304,7 +304,7 @@ exports[`renders removable 1`] = `
       }
     }
   />
-  <mockElement
+  <MockElement
     item={
       Object {
         "label": "Item 5",
