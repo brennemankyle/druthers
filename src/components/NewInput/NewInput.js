@@ -31,6 +31,8 @@ NewInput.defaultProps = defaultProps
 
 NewInput.propTypes = {
   onChange: PropTypes.func.isRequired,
+  onBlur: PropTypes.func.isRequired,
+  onFocus: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   selection: PropTypes.oneOfType([
     AppPropTypes.rawValue.isRequired,

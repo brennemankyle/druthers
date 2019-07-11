@@ -78,10 +78,14 @@ let InternalNewInput = (props) => {
     setPlacholder(!props.multiple && props.selection.length
       ? props.selection[0].label // Set placeholder to current selection on single select
       : props.text.placeholder)
+
+    props.onFocus(e)
   }
   let onBlur = (e) => {
     setAreOptionsOpen(false)
     setSearchText('')
+
+    props.onBlur(e)
   }
   let onOptionClick = (e) => {
     let value = targetValue(e)

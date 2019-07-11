@@ -3,7 +3,11 @@ import AppendToBodyOptionsWrapper from '../components/AppendToBodyOptionsWrapper
 import { Wrapper, Selection, SelectionList, OptionList, Option, Search, SelectionWrapper, OptionWrapper, StyledAppendToBodyOptionsWrapper } from '../components/styledComponents/styledComponents'
 import filterOptions from './filterOptions'
 
+const noop = () => {}
+
 let defaultProps = {
+  onBlur: noop,
+  onFocus: noop,
   name: '',
   selection: [],
   options: [],
