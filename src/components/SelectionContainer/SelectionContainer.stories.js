@@ -5,31 +5,61 @@ import { mockStyles } from '../../mocks'
 import props from '../../utils/defaultProps'
 import { SelectionContainer, SelectionList, Search, Selection } from '../styledComponents/styledComponents'
 
-let showSelection = true
-let showSearch = true
-let areOptionsOpen = false
-let searchText = ''
+let selectionList = <SelectionList
+  itemList={props.selection}
+  onClick={action('onRemove')}
+  removable={!props.disabled && props.removable}
+  Item={Selection}
+  styles={mockStyles} />
+let search = <Search
+  hide={false}
+  placeholder={props.placeholder}
+  searchText={''}
+  onKeyDown={action('onKeyDown')}
+  onChange={action('onChange')}
+  styles={mockStyles} />
 
 storiesOf('(Internal) SelectionContainer', module)
-  .add('with text', () => <SelectionContainer
+  .add('closed', () => {
+    let story = <SelectionContainer
+      onFocus={action('onFocus')}
+      onBlur={action('onBlur')}
+      styles={mockStyles}
+      areOptionsOpen={false}
+      SelectionList={selectionList}
+      Search={search} />
+
+    return story
+  })
+
+storiesOf('(Internal) SelectionContainer', module)
+  .add('open', () => <SelectionContainer
     onFocus={action('onFocus')}
     onBlur={action('onBlur')}
     styles={mockStyles}
-    areOptionsOpen={areOptionsOpen}
-    SelectionList={
-      showSelection && <SelectionList
-        itemList={props.selection}
-        onClick={action('onRemove')}
-        removable={!props.disabled && props.removable}
-        Item={Selection}
-        styles={mockStyles} />
-    }
-    Search={
-      <Search
-        hide={!showSearch}
-        placeholder={props.placeholder}
-        searchText={searchText}
-        onKeyDown={action('onKeyDown')}
-        onChange={action('onChange')}
-        styles={mockStyles} />
-    } />)
+    areOptionsOpen={true}
+    SelectionList={selectionList}
+    Search={search} />)
+
+let styles = {
+  ...mockStyles,
+  disabled: true,
+}
+storiesOf('(Internal) SelectionContainer', module)
+  .add('disabled', () => <SelectionContainer
+    onFocus={action('onFocus')}
+    onBlur={action('onBlur')}
+    styles={styles}
+    areOptionsOpen={false}
+    SelectionList={<SelectionList
+      itemList={props.selection}
+      onClick={action('onRemove')}
+      removable={!props.disabled && props.removable}
+      Item={Selection}
+      styles={styles} />}
+    Search={<Search
+      placeholder={props.placeholder}
+      searchText={''}
+      onKeyDown={action('onKeyDown')}
+      onChange={action('onChange')}
+      styles={styles} />} />)
