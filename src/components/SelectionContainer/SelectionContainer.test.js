@@ -42,7 +42,7 @@ it('renders disabled', () => {
 })
 
 // ref searchRef.current.blur() doesn't continue event propogation
-// it('should close', () => {
+// it('should close', (done) => {
 //   const wrapper = mount(<SelectionContainer
 //     styles={mockStyles}
 //     className="test"
@@ -52,6 +52,9 @@ it('renders disabled', () => {
 //     SelectionList={<SelectionList />}
 //     Search={<Input />} />)
 //
-//   wrapper.find('input').simulate('click')
-//   expect(onBlur).toBeCalled()
+//   setTimeout(() => {
+//     wrapper.find('input').simulate('click')
+//     expect(onBlur).toBeCalled()
+//     done()
+//   })
 // })
