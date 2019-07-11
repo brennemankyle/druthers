@@ -2,11 +2,11 @@ import styled from 'styled-components'
 import Item from '../Item/Item'
 import ItemList from '../ItemList/ItemList'
 import RawSearch from '../Search/Search'
-import RawSelectionContainer from '../SelectionContainer/SelectionContainer'
-import { StyledAppendToBodyOptionsContainer as RawStyledAppendToBodyOptionsContainer } from '../AppendToBodyOptionsContainer/AppendToBodyOptionsContainer'
-import RawContainer from '../Container/Container'
+import RawSelectionWrapper from '../SelectionWrapper/SelectionWrapper'
+import { StyledAppendToBodyOptionsWrapper as RawStyledAppendToBodyOptionsWrapper } from '../AppendToBodyOptionsWrapper/AppendToBodyOptionsWrapper'
+import RawWrapper from '../Wrapper/Wrapper'
 
-const Container = styled(RawContainer)`
+const Wrapper = styled(RawWrapper)`
   ${props => props.styles.rightToLeft && `
     transform: scaleX(-1);`
   }
@@ -89,7 +89,7 @@ const Search = styled(RawSearch)`
   }
 `
 
-const SelectionContainer = styled(RawSelectionContainer)`
+const SelectionWrapper = styled(RawSelectionWrapper)`
   border: 1px solid ${props => props.styles.colors.secondary};
   border-radius: .2em;
   display: flex;
@@ -159,7 +159,7 @@ const DivRelative = styled.div`
   position: relative
 `
 
-const OptionContainer = styled(RawContainer)`
+const OptionWrapper = styled(RawWrapper)`
   position: absolute;
   top: 0;
   left: 0;
@@ -167,7 +167,7 @@ const OptionContainer = styled(RawContainer)`
   width: ${props => props.styles.width}px;
 `
 
-const StyledAppendToBodyOptionsContainer = styled(RawStyledAppendToBodyOptionsContainer)`
+const StyledAppendToBodyOptionsWrapper = styled(RawStyledAppendToBodyOptionsWrapper)`
   position: absolute;
   background-color: ${props => props.styles.colors.background};
   width: ${props => props.styles.width}px;
@@ -191,8 +191,8 @@ export {
   OptionList,
   Option,
   Search,
-  SelectionContainer,
-  OptionContainer,
-  StyledAppendToBodyOptionsContainer,
-  Container,
+  SelectionWrapper,
+  OptionWrapper,
+  StyledAppendToBodyOptionsWrapper,
+  Wrapper,
 }

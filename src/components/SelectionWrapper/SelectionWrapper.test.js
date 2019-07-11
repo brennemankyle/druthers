@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import { mockStyles, mockEvent, MockElement, MockInput } from '../../mocks'
-import SelectionContainer from './SelectionContainer'
+import SelectionWrapper from './SelectionWrapper'
 
 let SelectionList = (props) => <div {...props} />
 let Input = (props, ref) => <input {...props} ref={ref} />
@@ -11,7 +11,7 @@ let onFocus = jest.fn()
 let onBlur = jest.fn()
 
 it('renders', () => {
-  const wrapper = shallow(<SelectionContainer
+  const wrapper = shallow(<SelectionWrapper
     styles={mockStyles}
     className="test"
     areOptionsOpen={false}
@@ -29,7 +29,7 @@ it('renders disabled', () => {
     disabled: true,
   }
 
-  const wrapper = shallow(<SelectionContainer
+  const wrapper = shallow(<SelectionWrapper
     styles={styles}
     className="test"
     areOptionsOpen={false}
@@ -43,7 +43,7 @@ it('renders disabled', () => {
 
 // ref searchRef.current.blur() doesn't continue event propogation
 // it('should close', (done) => {
-//   const wrapper = mount(<SelectionContainer
+//   const wrapper = mount(<SelectionWrapper
 //     styles={mockStyles}
 //     className="test"
 //     areOptionsOpen={true}

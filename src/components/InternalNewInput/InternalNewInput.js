@@ -176,16 +176,16 @@ let InternalNewInput = (props) => {
 
   let {
     HtmlFieldData,
-    Container,
+    Wrapper,
     Selection,
     SelectionList,
     OptionList,
     Option,
     Search,
-    SelectionContainer,
-    OptionContainer,
-    AppendToBodyOptionsContainer,
-    StyledAppendToBodyOptionsContainer,
+    SelectionWrapper,
+    OptionWrapper,
+    AppendToBodyOptionsWrapper,
+    StyledAppendToBodyOptionsWrapper,
   } = props.components
 
   let optionList = <OptionList
@@ -196,12 +196,12 @@ let InternalNewInput = (props) => {
     noItemsText={props.text.noOptions}
     styles={styles} />
 
-  return <Container styles={styles} ref={selfRef}>
+  return <Wrapper styles={styles} ref={selfRef}>
     <HtmlFieldData
       name={props.name}
       itemList={props.selection} />
 
-    <SelectionContainer
+    <SelectionWrapper
       onFocus={onFocus}
       onBlur={onBlur}
       styles={styles}
@@ -225,16 +225,16 @@ let InternalNewInput = (props) => {
       } />
 
     {!props.appendToBody && areOptionsOpen &&
-      <DivRelative><OptionContainer styles={styles}>{optionList}</OptionContainer></DivRelative>}
+      <DivRelative><OptionWrapper styles={styles}>{optionList}</OptionWrapper></DivRelative>}
 
     {props.appendToBody && areOptionsOpen && ReactDOM.createPortal(
-      <AppendToBodyOptionsContainer
+      <AppendToBodyOptionsWrapper
         styles={styles}
         parentRef={selfRef}
         filteredOptions={filteredOptions}
-        StyledAppendToBodyOptionsContainer={StyledAppendToBodyOptionsContainer}>
-      {optionList}</AppendToBodyOptionsContainer>,
-      document.body)}</Container>
+        StyledAppendToBodyOptionsWrapper={StyledAppendToBodyOptionsWrapper}>
+      {optionList}</AppendToBodyOptionsWrapper>,
+      document.body)}</Wrapper>
 }
 
 InternalNewInput.propTypes = {
@@ -258,16 +258,16 @@ InternalNewInput.propTypes = {
 
   components: PropTypes.shape({
     HtmlFieldData: AppPropTypes.element.isRequired,
-    Container: AppPropTypes.element.isRequired,
+    Wrapper: AppPropTypes.element.isRequired,
     Selection: AppPropTypes.element.isRequired,
     SelectionList: AppPropTypes.element.isRequired,
     OptionList: AppPropTypes.element.isRequired,
     Option: AppPropTypes.element.isRequired,
     Search: AppPropTypes.element.isRequired,
-    SelectionContainer: AppPropTypes.element.isRequired,
-    OptionContainer: AppPropTypes.element.isRequired,
-    AppendToBodyOptionsContainer: AppPropTypes.element.isRequired,
-    StyledAppendToBodyOptionsContainer: AppPropTypes.element.isRequired,
+    SelectionWrapper: AppPropTypes.element.isRequired,
+    OptionWrapper: AppPropTypes.element.isRequired,
+    AppendToBodyOptionsWrapper: AppPropTypes.element.isRequired,
+    StyledAppendToBodyOptionsWrapper: AppPropTypes.element.isRequired,
   }).isRequired,
 
   styles: AppPropTypes.styles.isRequired,

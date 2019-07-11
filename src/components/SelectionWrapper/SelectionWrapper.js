@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
 
-let SelectionContainer = (props) => {
+let SelectionWrapper = (props) => {
   const searchRef = useRef(null)
 
   let onFocus = (e) => {
@@ -45,7 +45,7 @@ let SelectionContainer = (props) => {
       <img className="expand" src="expand.png" alt="expand" /></div>
 }
 
-SelectionContainer.propTypes = {
+SelectionWrapper.propTypes = {
   onFocus: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
   areOptionsOpen: PropTypes.bool.isRequired,
@@ -54,4 +54,4 @@ SelectionContainer.propTypes = {
   styles: AppPropTypes.styles.isRequired,
 }
 
-export default SelectionContainer
+export default SelectionWrapper

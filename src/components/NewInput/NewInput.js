@@ -55,16 +55,16 @@ NewInput.propTypes = {
 
   components: PropTypes.shape({
     HtmlFieldData: AppPropTypes.element.isRequired,
-    Container: AppPropTypes.element.isRequired,
+    Wrapper: AppPropTypes.element.isRequired,
     Selection: AppPropTypes.element.isRequired,
     SelectionList: AppPropTypes.element.isRequired,
     OptionList: AppPropTypes.element.isRequired,
     Option: AppPropTypes.element.isRequired,
     Search: AppPropTypes.element.isRequired,
-    SelectionContainer: AppPropTypes.element.isRequired,
-    OptionContainer: AppPropTypes.element.isRequired,
-    AppendToBodyOptionsContainer: AppPropTypes.element.isRequired,
-    StyledAppendToBodyOptionsContainer: AppPropTypes.element.isRequired,
+    SelectionWrapper: AppPropTypes.element.isRequired,
+    OptionWrapper: AppPropTypes.element.isRequired,
+    AppendToBodyOptionsWrapper: AppPropTypes.element.isRequired,
+    StyledAppendToBodyOptionsWrapper: AppPropTypes.element.isRequired,
   }).isRequired,
 
   styles: AppPropTypes.styles.isRequired,

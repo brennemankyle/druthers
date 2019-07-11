@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { mockStyles } from '../../mocks'
 import props from '../../utils/defaultProps'
-import { SelectionContainer, SelectionList, Search, Selection } from '../styledComponents/styledComponents'
+import { SelectionWrapper, SelectionList, Search, Selection } from '../styledComponents/styledComponents'
 
 let selectionList = <SelectionList
   itemList={props.selection}
@@ -19,8 +19,8 @@ let search = <Search
   onChange={action('onChange')}
   styles={mockStyles} />
 
-storiesOf('(Internal) SelectionContainer', module)
-  .add('closed', () => <SelectionContainer
+storiesOf('(Internal) SelectionWrapper', module)
+  .add('closed', () => <SelectionWrapper
     onFocus={action('onFocus')}
     onBlur={action('onBlur')}
     styles={mockStyles}
@@ -28,8 +28,8 @@ storiesOf('(Internal) SelectionContainer', module)
     SelectionList={selectionList}
     Search={search} />)
 
-storiesOf('(Internal) SelectionContainer', module)
-  .add('open', () => <SelectionContainer
+storiesOf('(Internal) SelectionWrapper', module)
+  .add('open', () => <SelectionWrapper
     onFocus={action('onFocus')}
     onBlur={action('onBlur')}
     styles={mockStyles}
@@ -41,8 +41,8 @@ let styles = {
   ...mockStyles,
   disabled: true,
 }
-storiesOf('(Internal) SelectionContainer', module)
-  .add('disabled', () => <SelectionContainer
+storiesOf('(Internal) SelectionWrapper', module)
+  .add('disabled', () => <SelectionWrapper
     onFocus={action('onFocus')}
     onBlur={action('onBlur')}
     styles={styles}

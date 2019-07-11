@@ -5,4 +5,4 @@ import { linkTo } from '@storybook/addon-links'
 import { Welcome } from '@storybook/react/demo'
 
 import './welcome.stories'
-import '../components/SelectionContainer/SelectionContainer.stories'
+import '../components/SelectionWrapper/SelectionWrapper.stories'

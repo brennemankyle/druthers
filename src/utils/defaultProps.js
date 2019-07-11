@@ -1,6 +1,6 @@
 import HtmlFieldData from '../components/HtmlFieldData/HtmlFieldData'
-import AppendToBodyOptionsContainer from '../components/AppendToBodyOptionsContainer/AppendToBodyOptionsContainer'
-import { Container, Selection, SelectionList, OptionList, Option, Search, SelectionContainer, OptionContainer, StyledAppendToBodyOptionsContainer } from '../components/styledComponents/styledComponents'
+import AppendToBodyOptionsWrapper from '../components/AppendToBodyOptionsWrapper/AppendToBodyOptionsWrapper'
+import { Wrapper, Selection, SelectionList, OptionList, Option, Search, SelectionWrapper, OptionWrapper, StyledAppendToBodyOptionsWrapper } from '../components/styledComponents/styledComponents'
 import filterOptions from './filterOptions'
 
 let defaultProps = {
@@ -24,16 +24,16 @@ let defaultProps = {
 
   components: {
     HtmlFieldData,
-    Container,
+    Wrapper,
     Selection,
     SelectionList,
     OptionList,
     Option,
     Search,
-    SelectionContainer,
-    OptionContainer,
-    AppendToBodyOptionsContainer,
-    StyledAppendToBodyOptionsContainer,
+    SelectionWrapper,
+    OptionWrapper,
+    AppendToBodyOptionsWrapper,
+    StyledAppendToBodyOptionsWrapper,
   },
 
   styles: {

@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders 1`] = `
-<AppendToBodyOptionsContainer
-  StyledAppendToBodyOptionsContainer={[Function]}
+<AppendToBodyOptionsWrapper
+  StyledAppendToBodyOptionsWrapper={[Function]}
   className="test"
   filteredOptions={
     Array [
@@ -151,5 +151,5 @@ exports[`renders 1`] = `
       }
     />
   </MockElement>
-</AppendToBodyOptionsContainer>
+</AppendToBodyOptionsWrapper>
 `;

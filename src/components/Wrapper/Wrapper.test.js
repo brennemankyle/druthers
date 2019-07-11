@@ -1,10 +1,10 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 import { mockStyles } from '../../mocks'
-import Container from './Container'
+import Wrapper from './Wrapper'
 
 it('adds className', () => {
-  const wrapper = shallow(<Container
+  const wrapper = shallow(<Wrapper
     styles={mockStyles}
     className="test" />)
 
@@ -12,13 +12,13 @@ it('adds className', () => {
 })
 
 it('renders children', () => {
-  const wrapper = shallow(<Container styles={mockStyles}><div className="unique" /></Container>)
+  const wrapper = shallow(<Wrapper styles={mockStyles}><div className="unique" /></Wrapper>)
 
   expect(wrapper.contains(<div className="unique" />)).toBe(true)
 })
 
 it('pass props', () => {
-  const wrapper = shallow(<Container
+  const wrapper = shallow(<Wrapper
     styles={mockStyles}
     otherProp="otherProp" />)
 
@@ -27,7 +27,7 @@ it('pass props', () => {
 
 it('forwards ref', () => {
   const ref = React.createRef()
-  const wrapper = mount(<Container
+  const wrapper = mount(<Wrapper
     styles={mockStyles}
     ref={ref} />)
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import { mockStyles, MockElement, mockItemList } from '../../mocks'
-import AppendToBodyOptionsContainer from './AppendToBodyOptionsContainer'
+import AppendToBodyOptionsWrapper from './AppendToBodyOptionsWrapper'
 import useRefRect from '../../hooks/useRefRect/useRefRect'
 import usePlaceAbove from '../../hooks/usePlaceAbove/usePlaceAbove'
 
@@ -31,24 +31,24 @@ global.console.error = jest.fn()
 
 it('renders', () => {
   const parentRef = React.createRef()
-  const wrapper = mount(<AppendToBodyOptionsContainer
+  const wrapper = mount(<AppendToBodyOptionsWrapper
     styles={mockStyles}
     className="test"
     parentRef={parentRef}
     filteredOptions={mockItemList}
-    StyledAppendToBodyOptionsContainer={MockElement}><MockElement /></AppendToBodyOptionsContainer>)
+    StyledAppendToBodyOptionsWrapper={MockElement}><MockElement /></AppendToBodyOptionsWrapper>)
 
   expect(toJson(wrapper)).toMatchSnapshot()
 })
 
 it('forwards ref', () => {
   const parentRef = React.createRef()
-  const wrapper = shallow(<AppendToBodyOptionsContainer
+  const wrapper = shallow(<AppendToBodyOptionsWrapper
     styles={mockStyles}
     className="test"
     parentRef={parentRef}
     filteredOptions={[]}
-    StyledAppendToBodyOptionsContainer={MockElement} />)
+    StyledAppendToBodyOptionsWrapper={MockElement} />)
 
   expect(parentRef.current).toBeDefined()
 })
