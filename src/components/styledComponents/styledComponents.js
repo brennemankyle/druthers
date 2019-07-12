@@ -30,7 +30,6 @@ const Selection = styled(Item)`
 
     img {
       width: ${props => props.styles.icon.width};
-      vertical-align: middle;
     }
 
     &:hover {
@@ -46,9 +45,19 @@ const Selection = styled(Item)`
       padding-bottom: ${props.styles.selection.paddingBottom};
       margin-right: ${props.styles.selection.paddingRight};
       padding-left: ${props.styles.selection.paddingLeft};
-      padding-right: ${props.removable ? '0' : props.styles.selection.paddingRight}`
+      padding-right: ${props.removable ? '0' : props.styles.selection.paddingRight}
+      .remove {
+        img {
+          vertical-align: text-bottom;
+        }
+      }`
     : `
-      display: flex;`
+      display: flex;
+      .remove {
+        img {
+          vertical-align: middle;
+        }
+      }`
   }
   ${props => props.styles.rightToLeft && `
     transform: scaleX(-1);`
