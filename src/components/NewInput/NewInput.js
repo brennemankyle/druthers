@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import AppPropTypes, { simpleNewInputPropTypes } from '../../utils/AppPropTypes'
 import defaultProps from '../../utils/defaultProps'
 import SimpleNewInput from '../SimpleNewInput/SimpleNewInput'
+import { CheckRadio, CheckBox, Radio } from '../styledComponents/styledComponents'
 
 let NewInput = (props) => {
   const [canCheckRadio, setCanCheckRadio] = useState(props.options.length < props.checkRadioMaxCount && !props.creatable)
@@ -13,10 +14,10 @@ let NewInput = (props) => {
 
   let massagedProps = props.massageData(props)
 
-  let { DivHidden, CheckRadio, SimpleNewInput } = massagedProps.components
+  let { CheckRadio, SimpleNewInput } = massagedProps.components
 
-  if (isLoading) {
-    return <DivHidden styles={massagedProps.styles} />
+  if (isLoading && canCheckRadio) {
+    return <CheckRadio hide={true} {...massagedProps} massaged={true} />
   } else if (canCheckRadio) {
     return <CheckRadio {...massagedProps} massaged={true} />
   } else {
@@ -29,6 +30,9 @@ NewInput.defaultProps = {
   components: {
     ...defaultProps.components,
     SimpleNewInput,
+    CheckRadio,
+    CheckBox,
+    Radio,
   },
 }
 
@@ -37,6 +41,9 @@ NewInput.propTypes = {
   components: PropTypes.shape({
     ...simpleNewInputPropTypes.components,
     SimpleNewInput: AppPropTypes.element.isRequired,
+    CheckRadio: AppPropTypes.element.isRequired,
+    CheckBox: AppPropTypes.element.isRequired,
+    Radio: AppPropTypes.element.isRequired,
   }).isRequired,
 }
 

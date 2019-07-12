@@ -3,15 +3,9 @@ import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
 
 let Search = (props, ref) => {
-  let style = props.hide ? {
-    opacity: 0,
-    width: 0,
-  } : {}
-
   return <input
     className={props.className + ' search'}
     ref={ref}
-    style={style}
     disabled={props.styles.disabled}
     type="text"
     placeholder={props.placeholder}

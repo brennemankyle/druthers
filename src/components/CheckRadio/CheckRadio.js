@@ -2,19 +2,25 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
 
-let Radio = (props) => {
+let CheckRadio = (props) => {
   let massagedProps = props.massaged ? props : props.massageData(props)
 
-  let type = massagedProps.multiple ? 'checkbox' : 'radio'
+  let { CheckBox, Radio } = props.components
 
-  return massagedProps.options.map((option) => <label key={option.value}>
-    <input type={type} name={massagedProps.name} value={option.value} />{option.label}</label>)
+  return <div className={props.className}>{massagedProps.multiple
+    ? <CheckBox name={props.name} multiple={props.multiple} options={props.options} styles={props.styles} />
+    : <Radio name={props.name} multiple={props.multiple} options={props.options} styles={props.styles} />}</div>
 }
 
-Radio.propTypes = {
+CheckRadio.defaultProps = {
+  hide: false,
+}
+
+CheckRadio.propTypes = {
+  hide: PropTypes.bool.isRequired,
   multiple: PropTypes.bool.isRequired,
   options: AppPropTypes.itemList.isRequired,
   styles: AppPropTypes.styles.isRequired,
 }
 
-export default Radio
+export default CheckRadio

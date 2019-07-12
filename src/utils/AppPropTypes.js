@@ -93,8 +93,6 @@ let simpleNewInputPropTypes = {
 
   components: PropTypes.shape({
     InternalNewInput: AppPropTypes.element.isRequired,
-    CheckRadio: AppPropTypes.element.isRequired,
-    DivHidden: AppPropTypes.element.isRequired,
     HtmlFieldData: AppPropTypes.element.isRequired,
     Wrapper: AppPropTypes.element.isRequired,
     Selection: AppPropTypes.element.isRequired,

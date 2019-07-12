@@ -1,8 +1,7 @@
 import InternalNewInput from '../components/InternalNewInput/InternalNewInput'
 import HtmlFieldData from '../components/HtmlFieldData/HtmlFieldData'
 import AppendToBodyOptionsWrapper from '../components/AppendToBodyOptionsWrapper/AppendToBodyOptionsWrapper'
-import { Wrapper, Selection, SelectionList, OptionList, Option, Search, SelectionWrapper, OptionWrapper, StyledAppendToBodyOptionsWrapper, DivHidden } from '../components/styledComponents/styledComponents'
-import CheckRadio from '../components/CheckRadio/CheckRadio'
+import { Wrapper, Selection, SelectionList, OptionList, Option, Search, SelectionWrapper, OptionWrapper, StyledAppendToBodyOptionsWrapper } from '../components/styledComponents/styledComponents'
 import filterOptions from './filterOptions'
 import massageData from './massageData'
 
@@ -35,9 +34,10 @@ let defaultProps = {
 
   components: {
     SimpleNewInput: undefined,
+    CheckRadio: undefined,
+    CheckBox: undefined,
+    Radio: undefined,
     InternalNewInput,
-    CheckRadio,
-    DivHidden,
     HtmlFieldData,
     Wrapper,
     Selection,

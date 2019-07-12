@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import Item from '../Item/Item'
 import ItemList from '../ItemList/ItemList'
 import RawSearch from '../Search/Search'
+import RawCheckRadio from '../CheckRadio/CheckRadio'
+import InternalCheckRadio from '../InternalCheckRadio/InternalCheckRadio'
 import RawSelectionWrapper from '../SelectionWrapper/SelectionWrapper'
 import { StyledAppendToBodyOptionsWrapper as RawStyledAppendToBodyOptionsWrapper } from '../AppendToBodyOptionsWrapper/AppendToBodyOptionsWrapper'
 import RawWrapper from '../Wrapper/Wrapper'
@@ -97,7 +99,6 @@ const Search = styled(RawSearch)`
   border: none;
   outline: 0;
   padding: 0;
-  width: ${props => props.styles.search.width};
   font-size: 1em;
   font-family: inherit;
   background-color: transparent;
@@ -105,6 +106,25 @@ const Search = styled(RawSearch)`
     transform: scaleX(-1);
     text-align: right;`
   }
+  ${props => props.hide
+    ? `
+      opacity: 0;
+      width: 0;
+    ` : `
+      width: ${props.styles.search.width};
+    `}
+`
+
+const CheckRadio = styled(RawCheckRadio)`
+  ${props => props.hide && `
+    opacity: 0;`
+  }
+`
+
+const CheckBox = styled(InternalCheckRadio)`
+`
+
+const Radio = styled(InternalCheckRadio)`
 `
 
 const SelectionWrapper = styled(RawSelectionWrapper)`
@@ -180,18 +200,6 @@ const DivRelative = styled.div`
   position: relative
 `
 
-const DivHidden = styled.div`
-  opacity: 0;
-  border: 1px solid ${props => props.styles.colors.secondary};
-  padding-top: ${props => props.styles.paddingTop};
-  padding-bottom: ${props => props.styles.paddingBottom};
-  padding-right: ${props => props.styles.paddingRight};
-  padding-left: ${props => props.styles.paddingLeft};
-  &::before {
-    content: "---";
-  }
-`
-
 const OptionWrapper = styled(RawWrapper)`
   position: absolute;
   top: 0;
@@ -219,7 +227,6 @@ const StyledAppendToBodyOptionsWrapper = styled(RawStyledAppendToBodyOptionsWrap
 
 export {
   DivRelative,
-  DivHidden,
   Selection,
   SelectionList,
   OptionList,
@@ -229,4 +236,7 @@ export {
   OptionWrapper,
   StyledAppendToBodyOptionsWrapper,
   Wrapper,
+  CheckRadio,
+  CheckBox,
+  Radio,
 }
