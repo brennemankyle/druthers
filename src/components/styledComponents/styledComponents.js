@@ -109,15 +109,16 @@ const Search = styled(RawSearch)`
   ${props => props.hide
     ? `
       opacity: 0;
-      width: 0;
-    ` : `
-      width: ${props.styles.search.width};
-    `}
+      width: 0;`
+    : `
+      width: ${props.styles.search.width};`
+  }
 `
 
 const CheckRadio = styled(RawCheckRadio)`
   ${props => props.hide && `
-    opacity: 0;`
+    opacity: 0;
+    white-space: nowrap;`
   }
 `
 
@@ -154,12 +155,11 @@ const SelectionWrapper = styled(RawSelectionWrapper)`
     ? `
       & > *:nth-last-child(4) {
         flex-grow: 1;
-      }
-    ` : `
+      }`
+    : `
       & > *:nth-last-child(3) {
         flex-grow: 1;
-      }
-    `
+      }`
   }
 
   ${props => props.styles.hasOptions
@@ -215,11 +215,11 @@ const StyledAppendToBodyOptionsWrapper = styled(RawStyledAppendToBodyOptionsWrap
 
   ${props => props.placeOptionsAbove ? `
       bottom: ${window.innerHeight - props.parentRect.y}px;
-      left: ${props.parentRect.x}px;
-    ` : `
+      left: ${props.parentRect.x}px;`
+    : `
       top: ${props.parentRect.y + props.parentRect.height}px;
-      left: ${props.parentRect.x}px;
-    `}
+      left: ${props.parentRect.x}px;`
+  }
   ${props => props.styles.rightToLeft && `
     transform: scaleX(-1);`
   }

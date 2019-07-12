@@ -1,14 +1,19 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes, { simpleNewInputPropTypes } from '../../utils/AppPropTypes'
 import defaultProps from '../../utils/defaultProps'
 import SimpleNewInput from '../SimpleNewInput/SimpleNewInput'
 import { CheckRadio, CheckBox, Radio } from '../styledComponents/styledComponents'
 
+let hasOverflown = (element) =>
+  element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth
+
 let NewInput = (props) => {
+  const checkRadioRef = useRef(null)
   const [canCheckRadio, setCanCheckRadio] = useState(props.options.length < props.checkRadioMaxCount && !props.creatable)
   const [isLoading, setIsLoading] = useState(canCheckRadio)
   useEffect(() => {
+    if (hasOverflown(checkRadioRef.current)) setCanCheckRadio(false)
     setIsLoading(false)
   }, [props.options, props.creatable])
 
@@ -16,10 +21,8 @@ let NewInput = (props) => {
 
   let { CheckRadio, SimpleNewInput } = massagedProps.components
 
-  if (isLoading && canCheckRadio) {
-    return <CheckRadio hide={true} {...massagedProps} massaged={true} />
-  } else if (canCheckRadio) {
-    return <CheckRadio {...massagedProps} massaged={true} />
+  if (canCheckRadio) {
+    return <CheckRadio ref={checkRadioRef} hide={isLoading} {...massagedProps} massaged={true} />
   } else {
     return <SimpleNewInput {...massagedProps} massaged={true} />
   }
