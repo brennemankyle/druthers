@@ -4,6 +4,7 @@ import AppendToBodyOptionsWrapper from '../components/AppendToBodyOptionsWrapper
 import { Wrapper, Selection, SelectionList, OptionList, Option, Search, SelectionWrapper, OptionWrapper, StyledAppendToBodyOptionsWrapper, DivHidden } from '../components/styledComponents/styledComponents'
 import CheckRadio from '../components/CheckRadio/CheckRadio'
 import filterOptions from './filterOptions'
+import massageData from './massageData'
 
 const noop = () => {}
 
@@ -22,6 +23,7 @@ let defaultProps = {
   appendToBody: false,
   rightToLeft: false,
   filterOptions: filterOptions,
+  massageData: massageData,
   optionKeys: ['value', 'label'],
   checkRadioMaxCount: 20,
 

@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
-import massageData from '../../utils/massageData'
 
 let Radio = (props) => {
-  let massagedProps = props.massaged ? props : massageData(props)
+  let massagedProps = props.massaged ? props : props.massageData(props)
 
   let type = massagedProps.multiple ? 'checkbox' : 'radio'
 

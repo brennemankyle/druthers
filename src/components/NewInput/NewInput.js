@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes, { simpleNewInputPropTypes } from '../../utils/AppPropTypes'
 import defaultProps from '../../utils/defaultProps'
-import massageData from '../../utils/massageData'
 import SimpleNewInput from '../SimpleNewInput/SimpleNewInput'
 
 let NewInput = (props) => {
@@ -12,7 +11,7 @@ let NewInput = (props) => {
     setIsLoading(false)
   }, [props.options, props.creatable])
 
-  let massagedProps = massageData(props)
+  let massagedProps = props.massageData(props)
 
   let { DivHidden, CheckRadio, SimpleNewInput } = massagedProps.components
 
