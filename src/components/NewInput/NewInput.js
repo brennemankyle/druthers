@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
-import InternalNewInput from '../InternalNewInput/InternalNewInput'
 import castArray from 'lodash/castArray'
 import defaultProps from '../../utils/defaultProps'
 
@@ -20,6 +19,8 @@ let NewInput = (props) => {
   })
 
   otherProps.text.placeholder = otherProps.text.placeholder ? otherProps.text.placeholder : placeholder
+
+  let { InternalNewInput } = props.components
 
   return <InternalNewInput
     selection={massagedSelection}
@@ -56,6 +57,7 @@ NewInput.propTypes = {
   }).isRequired,
 
   components: PropTypes.shape({
+    InternalNewInput: AppPropTypes.element.isRequired,
     HtmlFieldData: AppPropTypes.element.isRequired,
     Wrapper: AppPropTypes.element.isRequired,
     Selection: AppPropTypes.element.isRequired,

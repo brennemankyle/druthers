@@ -1,3 +1,4 @@
+import InternalNewInput from '../components/InternalNewInput/InternalNewInput'
 import HtmlFieldData from '../components/HtmlFieldData/HtmlFieldData'
 import AppendToBodyOptionsWrapper from '../components/AppendToBodyOptionsWrapper/AppendToBodyOptionsWrapper'
 import { Wrapper, Selection, SelectionList, OptionList, Option, Search, SelectionWrapper, OptionWrapper, StyledAppendToBodyOptionsWrapper } from '../components/styledComponents/styledComponents'
@@ -27,6 +28,7 @@ let defaultProps = {
   },
 
   components: {
+    InternalNewInput,
     HtmlFieldData,
     Wrapper,
     Selection,
