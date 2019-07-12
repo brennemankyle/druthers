@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { mockStyles } from '../../mocks'
 import props from '../../utils/defaultProps'
-import NewInput from './NewInput'
+import SimpleNewInput from './SimpleNewInput'
 
 let options = [
   {value: '1', label: 'Option 1'},
@@ -21,7 +21,7 @@ let options = [
 let State = () => {
   const [selectionMultipleCreate, setSelectionMultipleCreate] = useState([])
 
-  return <NewInput
+  return <SimpleNewInput
     selection={selectionMultipleCreate}
     onFocus={action('onFocus')}
     onBlur={action('onBlur')}
@@ -31,5 +31,5 @@ let State = () => {
     multiple={true} />
 }
 
-storiesOf('NewInput', module)
+storiesOf('SimpleNewInput', module)
   .add('Multi Select Creatable', () => <State />)

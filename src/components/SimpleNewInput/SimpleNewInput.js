@@ -4,7 +4,7 @@ import AppPropTypes from '../../utils/AppPropTypes'
 import castArray from 'lodash/castArray'
 import defaultProps from '../../utils/defaultProps'
 
-let NewInput = (props) => {
+let SimpleNewInput = (props) => {
   let {selection, options, placeholder, ...otherProps} = props
 
   // Stringify
@@ -28,9 +28,9 @@ let NewInput = (props) => {
     {...otherProps} />
 }
 
-NewInput.defaultProps = defaultProps
+SimpleNewInput.defaultProps = defaultProps
 
-NewInput.propTypes = {
+SimpleNewInput.propTypes = {
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
   onFocus: PropTypes.func.isRequired,
@@ -74,4 +74,4 @@ NewInput.propTypes = {
   styles: AppPropTypes.styles.isRequired,
 }
 
-export default NewInput
+export default SimpleNewInput
