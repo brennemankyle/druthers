@@ -11,7 +11,7 @@ let mockStyles = {
   hasOptions: true,
   optionHighlighted: [],
   rightToLeft: false,
-  colors: defaultProps.styles.colors,
+  ...defaultProps.styles,
 }
 
 let mockItem = {

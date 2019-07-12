@@ -41,6 +41,30 @@ let defaultProps = {
   },
 
   styles: {
+    fontSize: '1em',
+    borderRadius: '.2em',
+    paddingTop: '.25em',
+    paddingBottom: '.25em',
+    paddingLeft: '.25em',
+    paddingRight: '.25em',
+    selection: {
+      paddingTop: '0',
+      paddingBottom: '0',
+      paddingLeft: '.2em',
+      paddingRight: '.2em',
+    },
+    option: {
+      paddingTop: '.25em',
+      paddingBottom: '.25em',
+      paddingLeft: '.25em',
+      paddingRight: '.25em',
+    },
+    search: {
+      width: '10em',
+    },
+    icon: {
+      width: '1em',
+    },
     colors: {
       primary: 'black',
       secondary: 'lightgray',

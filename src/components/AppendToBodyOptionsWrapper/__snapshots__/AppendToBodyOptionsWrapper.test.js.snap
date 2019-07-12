@@ -35,6 +35,7 @@ exports[`renders 1`] = `
   }
   styles={
     Object {
+      "borderRadius": ".2em",
       "colors": Object {
         "background": "white",
         "disabled": "#ECECEC",
@@ -44,11 +45,34 @@ exports[`renders 1`] = `
         "warning": "#CD5C5C",
       },
       "disabled": false,
+      "fontSize": "1em",
       "hasOptions": true,
       "hasSelection": false,
+      "icon": Object {
+        "width": "1em",
+      },
       "multiple": false,
+      "option": Object {
+        "paddingBottom": ".25em",
+        "paddingLeft": ".25em",
+        "paddingRight": ".25em",
+        "paddingTop": ".25em",
+      },
       "optionHighlighted": Array [],
+      "paddingBottom": ".25em",
+      "paddingLeft": ".25em",
+      "paddingRight": ".25em",
+      "paddingTop": ".25em",
       "rightToLeft": false,
+      "search": Object {
+        "width": "10em",
+      },
+      "selection": Object {
+        "paddingBottom": "0",
+        "paddingLeft": ".2em",
+        "paddingRight": ".2em",
+        "paddingTop": "0",
+      },
       "width": "600px",
     }
   }
@@ -71,6 +95,7 @@ exports[`renders 1`] = `
     placeOptionsAbove={true}
     styles={
       Object {
+        "borderRadius": ".2em",
         "colors": Object {
           "background": "white",
           "disabled": "#ECECEC",
@@ -80,11 +105,34 @@ exports[`renders 1`] = `
           "warning": "#CD5C5C",
         },
         "disabled": false,
+        "fontSize": "1em",
         "hasOptions": true,
         "hasSelection": false,
+        "icon": Object {
+          "width": "1em",
+        },
         "multiple": false,
+        "option": Object {
+          "paddingBottom": ".25em",
+          "paddingLeft": ".25em",
+          "paddingRight": ".25em",
+          "paddingTop": ".25em",
+        },
         "optionHighlighted": Array [],
+        "paddingBottom": ".25em",
+        "paddingLeft": ".25em",
+        "paddingRight": ".25em",
+        "paddingTop": ".25em",
         "rightToLeft": false,
+        "search": Object {
+          "width": "10em",
+        },
+        "selection": Object {
+          "paddingBottom": "0",
+          "paddingLeft": ".2em",
+          "paddingRight": ".2em",
+          "paddingTop": "0",
+        },
         "width": "600px",
       }
     }
@@ -131,6 +179,7 @@ exports[`renders 1`] = `
           },
           "placeOptionsAbove": true,
           "styles": Object {
+            "borderRadius": ".2em",
             "colors": Object {
               "background": "white",
               "disabled": "#ECECEC",
@@ -140,11 +189,34 @@ exports[`renders 1`] = `
               "warning": "#CD5C5C",
             },
             "disabled": false,
+            "fontSize": "1em",
             "hasOptions": true,
             "hasSelection": false,
+            "icon": Object {
+              "width": "1em",
+            },
             "multiple": false,
+            "option": Object {
+              "paddingBottom": ".25em",
+              "paddingLeft": ".25em",
+              "paddingRight": ".25em",
+              "paddingTop": ".25em",
+            },
             "optionHighlighted": Array [],
+            "paddingBottom": ".25em",
+            "paddingLeft": ".25em",
+            "paddingRight": ".25em",
+            "paddingTop": ".25em",
             "rightToLeft": false,
+            "search": Object {
+              "width": "10em",
+            },
+            "selection": Object {
+              "paddingBottom": "0",
+              "paddingLeft": ".2em",
+              "paddingRight": ".2em",
+              "paddingTop": "0",
+            },
             "width": "600px",
           },
         }

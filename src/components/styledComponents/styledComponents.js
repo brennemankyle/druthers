@@ -7,25 +7,29 @@ import { StyledAppendToBodyOptionsWrapper as RawStyledAppendToBodyOptionsWrapper
 import RawWrapper from '../Wrapper/Wrapper'
 
 const Wrapper = styled(RawWrapper)`
+  font-size: ${props => props.styles.fontSize};
   ${props => props.styles.rightToLeft && `
     transform: scaleX(-1);`
   }
 `
 
 const Selection = styled(Item)`
-  border-radius: .2em;
+  border-radius: ${props => props.styles.borderRadius};
   align-items: center;
   justify-content: space-between;
 
   .remove {
     border: none;
-    border-radius: .2em;
+    border-radius: ${props => props.styles.borderRadius};
     background-color: transparent;
-    padding: 0 .2em;
+    padding-top: ${props => props.styles.selection.paddingTop};
+    padding-bottom: ${props => props.styles.selection.paddingBottom};
+    padding-right: ${props => props.styles.selection.paddingRight};
+    padding-left: ${props => props.styles.selection.paddingLeft};
     font-size: 1em;
 
     img {
-      width: 1em;
+      width: ${props => props.styles.icon.width};
       vertical-align: middle;
     }
 
@@ -38,9 +42,11 @@ const Selection = styled(Item)`
     ? `
       display: inline-flex;
       background-color: ${props.styles.colors.secondary};
-      margin-right: .2em;
-      padding-left: .2em;
-      padding-right: ${props.removable ? '0' : '.2em'}`
+      padding-top: ${props.styles.selection.paddingTop};
+      padding-bottom: ${props.styles.selection.paddingBottom};
+      margin-right: ${props.styles.selection.paddingRight};
+      padding-left: ${props.styles.selection.paddingLeft};
+      padding-right: ${props.removable ? '0' : props.styles.selection.paddingRight}`
     : `
       display: flex;`
   }
@@ -50,7 +56,10 @@ const Selection = styled(Item)`
 `
 
 const Option = styled(Item)`
-  padding: .25em;
+  padding-top: ${props => props.styles.option.paddingTop};
+  padding-bottom: ${props => props.styles.option.paddingBottom};
+  padding-right: ${props => props.styles.option.paddingRight};
+  padding-left: ${props => props.styles.option.paddingLeft};
 
   ${props => props.styles.optionHighlighted === props.item.value
     ? `background-color: ${props.styles.colors.highlight};`
@@ -79,7 +88,7 @@ const Search = styled(RawSearch)`
   border: none;
   outline: none;
   padding: 0;
-  width: 10em;
+  width: ${props => props.styles.search.width};
   font-size: 1em;
   font-family: inherit;
   background-color: transparent;
@@ -91,11 +100,14 @@ const Search = styled(RawSearch)`
 
 const SelectionWrapper = styled(RawSelectionWrapper)`
   border: 1px solid ${props => props.styles.colors.secondary};
-  border-radius: .2em;
+  border-radius: ${props => props.styles.borderRadius};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: .25em;
+  padding-top: ${props => props.styles.paddingTop};
+  padding-bottom: ${props => props.styles.paddingBottom};
+  padding-right: ${props => props.styles.paddingRight};
+  padding-left: ${props => props.styles.paddingLeft};
 
   ${props => !props.styles.disabled && `
     &:hover {
@@ -131,7 +143,7 @@ const SelectionWrapper = styled(RawSelectionWrapper)`
       }
 
       .expand {
-        width: 1em;
+        width: ${props.styles.icon.width};
         vertical-align: middle;
 
         ${!props.styles.disabled && `

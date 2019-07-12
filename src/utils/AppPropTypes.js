@@ -24,7 +24,38 @@ let AppPropTypes = {
   rawItem: rawItem,
   rawItemList: PropTypes.arrayOf(rawItem),
   styles: PropTypes.shape({
-    colors: PropTypes.object.isRequired,
+    fontSize: PropTypes.string.isRequired,
+    borderRadius: PropTypes.string.isRequired,
+    paddingTop: PropTypes.string.isRequired,
+    paddingBottom: PropTypes.string.isRequired,
+    paddingLeft: PropTypes.string.isRequired,
+    paddingRight: PropTypes.string.isRequired,
+    selection: PropTypes.shape({
+      paddingTop: PropTypes.string.isRequired,
+      paddingBottom: PropTypes.string.isRequired,
+      paddingLeft: PropTypes.string.isRequired,
+      paddingRight: PropTypes.string.isRequired,
+    }).isRequired,
+    option: PropTypes.shape({
+      paddingTop: PropTypes.string.isRequired,
+      paddingBottom: PropTypes.string.isRequired,
+      paddingLeft: PropTypes.string.isRequired,
+      paddingRight: PropTypes.string.isRequired,
+    }).isRequired,
+    search: PropTypes.shape({
+      width: PropTypes.string.isRequired,
+    }).isRequired,
+    icon: PropTypes.shape({
+      width: PropTypes.string.isRequired,
+    }).isRequired,
+    colors: PropTypes.shape({
+      primary: PropTypes.string.isRequired,
+      secondary: PropTypes.string.isRequired,
+      highlight: PropTypes.string.isRequired,
+      warning: PropTypes.string.isRequired,
+      disabled: PropTypes.string.isRequired,
+      background: PropTypes.string.isRequired,
+    }).isRequired,
   })
 }
 
