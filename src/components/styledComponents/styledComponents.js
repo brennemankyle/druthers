@@ -86,7 +86,7 @@ const OptionList = styled(ItemList)`
 
 const Search = styled(RawSearch)`
   border: none;
-  outline: none;
+  outline: 0;
   padding: 0;
   width: ${props => props.styles.search.width};
   font-size: 1em;
