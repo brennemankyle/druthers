@@ -1,15 +1,17 @@
 import InternalNewInput from '../components/InternalNewInput/InternalNewInput'
 import HtmlFieldData from '../components/HtmlFieldData/HtmlFieldData'
 import AppendToBodyOptionsWrapper from '../components/AppendToBodyOptionsWrapper/AppendToBodyOptionsWrapper'
-import { Wrapper, Selection, SelectionList, OptionList, Option, Search, SelectionWrapper, OptionWrapper, StyledAppendToBodyOptionsWrapper } from '../components/styledComponents/styledComponents'
+import { Wrapper, Selection, SelectionList, OptionList, Option, Search, SelectionWrapper, OptionWrapper, StyledAppendToBodyOptionsWrapper, DivHidden } from '../components/styledComponents/styledComponents'
+import CheckRadio from '../components/CheckRadio/CheckRadio'
 import filterOptions from './filterOptions'
 
 const noop = () => {}
 
 let defaultProps = {
+  onChange: undefined,
   onBlur: noop,
   onFocus: noop,
-  name: '',
+  name: undefined,
   selection: [],
   options: [],
   placeholder: 'Select...',
@@ -28,7 +30,10 @@ let defaultProps = {
   },
 
   components: {
+    SimpleNewInput: undefined,
     InternalNewInput,
+    CheckRadio,
+    DivHidden,
     HtmlFieldData,
     Wrapper,
     Selection,

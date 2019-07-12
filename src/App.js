@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './App.css'
 import SimpleNewInput from './components/SimpleNewInput/SimpleNewInput'
+import NewInput from './components/NewInput/NewInput'
 
 let options = [
   {value: '1', label: 'Option 1'},
@@ -22,32 +23,40 @@ let App = () => {
   const [selectionMultipleCreate, setSelectionMultipleCreate] = useState(['1'])
   const [selectionAppendToBody, setSelectionAppendToBody] = useState(['1'])
   const [selectionRightToLeft, setSelectionRightToLeft] = useState()
+  const [selectionRadio, setSelectionRadio] = useState()
+  const [selectionCheck, setSelectionCheck] = useState()
 
   return (
     <div className="App">
       <h1>Single</h1>
-      <SimpleNewInput selection={selectionSingle} onChange={(e) => setSelectionSingle(e.target.value)} options={options} />
+      <SimpleNewInput name="Single" selection={selectionSingle} onChange={(e) => setSelectionSingle(e.target.value)} options={options} />
 
       <h1>Multiple</h1>
-      <SimpleNewInput selection={selectionMultiple} onChange={(e) => setSelectionMultiple(e.target.value)} options={options} multiple={true} />
+      <SimpleNewInput name="Multiple" selection={selectionMultiple} onChange={(e) => setSelectionMultiple(e.target.value)} options={options} multiple={true} />
 
       <h1>Create Single</h1>
-      <SimpleNewInput selection={selectionSingleCreate} onChange={(e) => setSelectionSingleCreate(e.target.value)} options={options} creatable={true} />
+      <SimpleNewInput name="SingleCreate" selection={selectionSingleCreate} onChange={(e) => setSelectionSingleCreate(e.target.value)} options={options} creatable={true} />
 
       <h1>Create Multiple</h1>
-      <SimpleNewInput selection={selectionMultipleCreate} onChange={(e) => setSelectionMultipleCreate(e.target.value)} options={options} creatable={true} multiple={true} />
+      <SimpleNewInput name="MultipleCreate" selection={selectionMultipleCreate} onChange={(e) => setSelectionMultipleCreate(e.target.value)} options={options} creatable={true} multiple={true} />
 
       <h1>Append to body</h1>
-      <SimpleNewInput selection={selectionAppendToBody} onChange={(e) => setSelectionAppendToBody(e.target.value)} options={options} creatable={true} multiple={true} appendToBody={true} />
+      <SimpleNewInput name="AppendToBody" selection={selectionAppendToBody} onChange={(e) => setSelectionAppendToBody(e.target.value)} options={options} creatable={true} multiple={true} appendToBody={true} />
 
       <h1>Right to left</h1>
-      <SimpleNewInput selection={selectionRightToLeft} onChange={(e) => setSelectionRightToLeft(e.target.value)} options={options} rightToLeft={true} />
+      <SimpleNewInput name="RightToLeft" selection={selectionRightToLeft} onChange={(e) => setSelectionRightToLeft(e.target.value)} options={options} rightToLeft={true} />
+
+      <h1>Radios</h1>
+      <NewInput name="RadioCheck" selection={selectionRadio} onChange={(e) => setSelectionRadio(e.target.value)} options={options} />
+
+      <h1>Checkboxes</h1>
+      <NewInput name="RadioCheck" selection={selectionCheck} onChange={(e) => setSelectionCheck(e.target.value)} options={options} multiple={true} />
 
       <h1>Single Disabled</h1>
-      <SimpleNewInput selection={['1']} onChange={(e) => setSelectionSingle(e.target.value)} options={options} disabled={true} />
+      <SimpleNewInput name="SingleDisabled" selection={['1']} onChange={(e) => setSelectionSingle(e.target.value)} options={options} disabled={true} />
 
       <h1>Multiple Disabled</h1>
-      <SimpleNewInput selection={['1', '2']} onChange={(e) => setSelectionMultiple(e.target.value)} options={options} multiple={true} disabled={true} />
+      <SimpleNewInput name="MultipleDisabled" selection={['1', '2']} onChange={(e) => setSelectionMultiple(e.target.value)} options={options} multiple={true} disabled={true} />
     </div>
   )
 }

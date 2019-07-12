@@ -180,6 +180,18 @@ const DivRelative = styled.div`
   position: relative
 `
 
+const DivHidden = styled.div`
+  opacity: 0;
+  border: 1px solid ${props => props.styles.colors.secondary};
+  padding-top: ${props => props.styles.paddingTop};
+  padding-bottom: ${props => props.styles.paddingBottom};
+  padding-right: ${props => props.styles.paddingRight};
+  padding-left: ${props => props.styles.paddingLeft};
+  &::before {
+    content: "---";
+  }
+`
+
 const OptionWrapper = styled(RawWrapper)`
   position: absolute;
   top: 0;
@@ -207,6 +219,7 @@ const StyledAppendToBodyOptionsWrapper = styled(RawStyledAppendToBodyOptionsWrap
 
 export {
   DivRelative,
+  DivHidden,
   Selection,
   SelectionList,
   OptionList,

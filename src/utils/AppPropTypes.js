@@ -59,4 +59,51 @@ let AppPropTypes = {
   })
 }
 
+let simpleNewInputPropTypes = {
+  onChange: PropTypes.func.isRequired,
+  onBlur: PropTypes.func.isRequired,
+  onFocus: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  selection: PropTypes.oneOfType([
+    AppPropTypes.rawValue.isRequired,
+    PropTypes.arrayOf(AppPropTypes.rawValue).isRequired,
+  ]).isRequired,
+  options: AppPropTypes.rawItemList.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  multiple: PropTypes.bool.isRequired,
+  disabled: PropTypes.bool.isRequired,
+  creatable: PropTypes.bool.isRequired,
+  removable: PropTypes.bool.isRequired,
+  appendToBody: PropTypes.bool.isRequired,
+  rightToLeft: PropTypes.bool.isRequired,
+  filterOptions: PropTypes.func.isRequired,
+  optionKeys: PropTypes.arrayOf(PropTypes.string).isRequired,
+
+  text: PropTypes.shape({
+    placeholder: PropTypes.string.isRequired,
+    noOptions: PropTypes.string.isRequired,
+    create: PropTypes.string.isRequired,
+  }).isRequired,
+
+  components: PropTypes.shape({
+    InternalNewInput: AppPropTypes.element.isRequired,
+    CheckRadio: AppPropTypes.element.isRequired,
+    DivHidden: AppPropTypes.element.isRequired,
+    HtmlFieldData: AppPropTypes.element.isRequired,
+    Wrapper: AppPropTypes.element.isRequired,
+    Selection: AppPropTypes.element.isRequired,
+    SelectionList: AppPropTypes.element.isRequired,
+    OptionList: AppPropTypes.element.isRequired,
+    Option: AppPropTypes.element.isRequired,
+    Search: AppPropTypes.element.isRequired,
+    SelectionWrapper: AppPropTypes.element.isRequired,
+    OptionWrapper: AppPropTypes.element.isRequired,
+    AppendToBodyOptionsWrapper: AppPropTypes.element.isRequired,
+    StyledAppendToBodyOptionsWrapper: AppPropTypes.element.isRequired,
+  }).isRequired,
+
+  styles: AppPropTypes.styles.isRequired,
+}
+
+export { simpleNewInputPropTypes }
 export default AppPropTypes
