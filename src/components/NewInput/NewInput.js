@@ -6,7 +6,8 @@ import massageData from '../../utils/massageData'
 import SimpleNewInput from '../SimpleNewInput/SimpleNewInput'
 
 let NewInput = (props) => {
-  const [isLoading, setIsLoading] = useState(true)
+  const [canCheckRadio, setCanCheckRadio] = useState(props.options.length < props.checkRadioMaxCount && !props.creatable)
+  const [isLoading, setIsLoading] = useState(canCheckRadio)
   useEffect(() => {
     setIsLoading(false)
   }, [props.options, props.creatable])
@@ -17,8 +18,10 @@ let NewInput = (props) => {
 
   if (isLoading) {
     return <DivHidden styles={massagedProps.styles} />
-  } else {
+  } else if (canCheckRadio) {
     return <CheckRadio {...massagedProps} massaged={true} />
+  } else {
+    return <SimpleNewInput {...massagedProps} massaged={true} />
   }
 }
 

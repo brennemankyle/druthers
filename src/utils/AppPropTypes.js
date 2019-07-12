@@ -67,8 +67,12 @@ let simpleNewInputPropTypes = {
   selection: PropTypes.oneOfType([
     AppPropTypes.rawValue.isRequired,
     PropTypes.arrayOf(AppPropTypes.rawValue).isRequired,
+    AppPropTypes.itemList.isRequired,
   ]).isRequired,
-  options: AppPropTypes.rawItemList.isRequired,
+  options: PropTypes.oneOfType([
+    AppPropTypes.rawItemList.isRequired,
+    AppPropTypes.itemList.isRequired,
+  ]).isRequired,
   placeholder: PropTypes.string.isRequired,
   multiple: PropTypes.bool.isRequired,
   disabled: PropTypes.bool.isRequired,
@@ -78,6 +82,7 @@ let simpleNewInputPropTypes = {
   rightToLeft: PropTypes.bool.isRequired,
   filterOptions: PropTypes.func.isRequired,
   optionKeys: PropTypes.arrayOf(PropTypes.string).isRequired,
+  checkRadioMaxCount: PropTypes.number.isRequired,
 
   text: PropTypes.shape({
     placeholder: PropTypes.string.isRequired,

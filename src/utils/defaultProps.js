@@ -23,6 +23,8 @@ let defaultProps = {
   rightToLeft: false,
   filterOptions: filterOptions,
   optionKeys: ['value', 'label'],
+  checkRadioMaxCount: 20,
+
   text: {
     placeholder: '',
     noOptions: 'No Options',
