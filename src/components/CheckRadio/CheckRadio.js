@@ -25,11 +25,25 @@ let CheckRadio = (props, ref) => {
     })
   }
 
-  let { CheckBox, Radio } = massagedProps.components
+  let type = massagedProps.multiple ? 'checkbox' : 'radio'
+  let values = massagedProps.selection.map(item => item.value)
+  let Checkable = massagedProps.multiple
+    ? massagedProps.components.CheckBox
+    : massagedProps.components.Radio
 
-  return <div className={massagedProps.className} style={massagedProps.style} ref={ref}>{massagedProps.multiple
-    ? <CheckBox name={massagedProps.name} multiple={massagedProps.multiple} options={massagedProps.options} selection={massagedProps.selection} styles={massagedProps.styles} onChange={onChange} />
-    : <Radio name={massagedProps.name} multiple={massagedProps.multiple} options={massagedProps.options} selection={massagedProps.selection} styles={massagedProps.styles} onChange={onChange} />}</div>
+  return <div className={massagedProps.className} style={massagedProps.style} ref={ref}>
+    {massagedProps.options.map((option) =>
+      <Checkable
+        type={type}
+        name={massagedProps.name}
+        value={option.value}
+        onChange={onChange}
+        checked={values.includes(option.value)}
+        label={option.label}
+        title={option.label}
+        multiple={massagedProps.multiple}
+        styles={massagedProps.styles}
+        key={option.value} />)}</div>
 }
 
 CheckRadio = forwardRef(CheckRadio)
@@ -44,7 +58,8 @@ CheckRadio.propTypes = {
   multiple: PropTypes.bool.isRequired,
   options: AppPropTypes.itemList.isRequired,
   selection: AppPropTypes.itemList.isRequired,
-  massageData: PropTypes.func,
+  massageData: PropTypes.func.isRequired,
+  massaged: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
   style: PropTypes.object.isRequired,
   styles: AppPropTypes.styles.isRequired,
