@@ -117,8 +117,8 @@ const Search = styled(RawSearch)`
 
 const CheckRadio = styled(RawCheckRadio)`
   ${props => props.hide && `
-    opacity: 0;
-    white-space: nowrap;`
+    opacity: 1;
+    height: 0;`
   }
 `
 

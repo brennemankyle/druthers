@@ -24,7 +24,7 @@ let defaultProps = {
   filterOptions: filterOptions,
   massageData: massageData,
   optionKeys: ['value', 'label'],
-  checkRadioMaxCount: 20,
+  checkRadioMaxCount: 10,
 
   text: {
     placeholder: '',

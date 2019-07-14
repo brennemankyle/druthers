@@ -16,6 +16,14 @@ let options = [
   {value: '10', label: 'a Pickle is not Pie'},
 ]
 
+let checkRadioOptions = [
+  {value: '1', label: 'Purple'},
+  {value: '2', label: 'Green'},
+  {value: '3', label: 'Blue'},
+  {value: '4', label: 'Pink'},
+  {value: '5', label: 'All The Colors in The Rainbow'},
+]
+
 let App = () => {
   const [selectionSingle, setSelectionSingle] = useState()
   const [selectionMultiple, setSelectionMultiple] = useState([])
@@ -47,10 +55,12 @@ let App = () => {
       <SimpleNewInput name="RightToLeft" selection={selectionRightToLeft} onChange={(e) => setSelectionRightToLeft(e.target.value)} options={options} rightToLeft={true} />
 
       <h1>Radios</h1>
-      <NewInput name="RadioCheck" selection={selectionRadio} onChange={(e) => setSelectionRadio(e.target.value)} options={options} />
+      <p>(Only visible if fits on one line, resize window to see)</p>
+      <NewInput name="RadioCheck" selection={selectionRadio} onChange={(e) => setSelectionRadio(e.target.value)} options={checkRadioOptions} />
 
       <h1>Checkboxes</h1>
-      <NewInput name="RadioCheck" selection={selectionCheck} onChange={(e) => setSelectionCheck(e.target.value)} options={options} multiple={true} />
+      <p>(Only visible if fits on one line, resize window to see)</p>
+      <NewInput name="RadioCheck" selection={selectionCheck} onChange={(e) => setSelectionCheck(e.target.value)} options={checkRadioOptions} multiple={true} />
 
       <h1>Single Disabled</h1>
       <SimpleNewInput name="SingleDisabled" selection={['1']} onChange={(e) => setSelectionSingle(e.target.value)} options={options} disabled={true} />
