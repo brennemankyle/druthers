@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import Item from '../Item/Item'
 import ItemList from '../ItemList/ItemList'
 import RawSearch from '../Search/Search'
-import RawCheckRadio from '../CheckRadio/CheckRadio'
 import InternalCheckRadio from '../InternalCheckRadio/InternalCheckRadio'
 import RawSelectionWrapper from '../SelectionWrapper/SelectionWrapper'
 import { StyledAppendToBodyOptionsWrapper as RawStyledAppendToBodyOptionsWrapper } from '../AppendToBodyOptionsWrapper/AppendToBodyOptionsWrapper'
@@ -112,13 +111,6 @@ const Search = styled(RawSearch)`
       width: 0;`
     : `
       width: ${props.styles.search.width};`
-  }
-`
-
-const CheckRadio = styled(RawCheckRadio)`
-  ${props => props.hide && `
-    opacity: 1;
-    height: 0;`
   }
 `
 
@@ -239,7 +231,6 @@ export {
   OptionWrapper,
   StyledAppendToBodyOptionsWrapper,
   Wrapper,
-  CheckRadio,
   CheckBox,
   Radio,
   Switch,

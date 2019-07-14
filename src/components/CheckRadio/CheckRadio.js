@@ -2,6 +2,7 @@ import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
 import defaultProps from '../../utils/defaultProps'
+import { CheckBox, Radio, Switch } from '../styledComponents/styledComponents'
 
 let CheckRadio = (rawProps, ref) => {
   let props = rawProps.massaged ? rawProps : rawProps.massageData(rawProps)
@@ -48,6 +49,7 @@ let CheckRadio = (rawProps, ref) => {
         type={type}
         name={props.name}
         value={option.value}
+        disabled={props.disabled}
         onChange={onChange}
         checked={values.includes(option.value)}
         label={option.label}
@@ -62,13 +64,18 @@ CheckRadio = forwardRef(CheckRadio)
 
 CheckRadio.defaultProps = {
   ...defaultProps,
-  hide: false,
   style: {},
+  components: {
+    ...defaultProps.components,
+    CheckBox,
+    Radio,
+    Switch,
+  },
 }
 
 CheckRadio.propTypes = {
-  hide: PropTypes.bool,
   style: PropTypes.object.isRequired,
+  disabled: PropTypes.bool,
   multiple: PropTypes.bool.isRequired,
   selection: PropTypes.oneOfType([
     AppPropTypes.rawValue.isRequired,
@@ -83,6 +90,11 @@ CheckRadio.propTypes = {
   massaged: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
   styles: AppPropTypes.styles.isRequired,
+  components: PropTypes.shape({
+    CheckBox: AppPropTypes.element.isRequired,
+    Radio: AppPropTypes.element.isRequired,
+    Switch: AppPropTypes.element.isRequired,
+  }).isRequired,
 }
 
 export default CheckRadio

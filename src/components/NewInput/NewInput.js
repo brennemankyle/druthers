@@ -4,7 +4,8 @@ import AppPropTypes, { simpleNewInputPropTypes } from '../../utils/AppPropTypes'
 import defaultProps from '../../utils/defaultProps'
 import useWindowWidth from '../../hooks/useWindowWidth/useWindowWidth'
 import SimpleNewInput from '../SimpleNewInput/SimpleNewInput'
-import { CheckRadio, CheckBox, Radio, Switch } from '../styledComponents/styledComponents'
+import CheckRadio from '../CheckRadio/CheckRadio'
+import { CheckBox, Radio, Switch } from '../styledComponents/styledComponents'
 
 let hasOverflownX = (element) => element.scrollWidth > element.clientWidth
 
@@ -20,15 +21,26 @@ let NewInput = (rawProps) => {
     if (isLoading) setIsLoading(false)
   }, [props.options, props.creatable, windowWidth, canCheckRadio, isLoading])
 
-  let overflowStyle = {whiteSpace: 'nowrap', overflowX: 'visible', overflowY: 'hidden'}
+  let hideCheckRadio = isLoading || isOverflown
+  let checkRadioStyle = {whiteSpace: 'nowrap', overflowX: 'visible', overflowY: 'hidden'}
+
+  if (hideCheckRadio) {
+    checkRadioStyle = {
+      ...checkRadioStyle,
+      opacity: 1,
+      height: 0,
+    }
+  }
 
   let { CheckRadio, SimpleNewInput } = props.components
 
   return [
-    canCheckRadio && <CheckRadio style={overflowStyle} ref={checkRadioRef} hide={isLoading || isOverflown} {...props} massaged={true} key='CheckRadio' />,
+    canCheckRadio && <CheckRadio style={checkRadioStyle} ref={checkRadioRef} {...props} massaged={true} key='CheckRadio' />,
     (!canCheckRadio || isOverflown) && <SimpleNewInput {...props} massaged={true} key='SimpleNewInput' />,
   ]
 }
+
+console.log(defaultProps)
 
 NewInput.defaultProps = {
   ...defaultProps,

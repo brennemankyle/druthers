@@ -9,12 +9,19 @@ let InternalCheckRadio = (props) => {
   let label = props.label || props.title
 
   return <label className={props.className} key={props.value}>
-    <input type={type} name={props.name} value={props.value} onChange={props.onChange} checked={props.checked} />{label}</label>
+    <input
+      type={type}
+      name={props.name}
+      value={props.value}
+      onChange={props.onChange}
+      disabled={props.disabled}
+      checked={props.checked} />{label}</label>
 }
 
 InternalCheckRadio.propTypes = {
   name: PropTypes.string.isRequired,
   checked: PropTypes.bool.isRequired,
+  disabled: PropTypes.bool.isRequired,
   toggle: PropTypes.bool.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,

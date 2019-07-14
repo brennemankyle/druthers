@@ -10,6 +10,8 @@ let SimpleNewInput = (rawProps) => {
   return <InternalNewInput {...props} />
 }
 
+console.log(defaultProps)
+
 SimpleNewInput.defaultProps = defaultProps
 
 SimpleNewInput.propTypes = simpleNewInputPropTypes

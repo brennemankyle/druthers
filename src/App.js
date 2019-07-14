@@ -62,21 +62,25 @@ let App = () => {
 
       <h1>Radios</h1>
       <p>(Only visible if fits on one line, resize window to see)</p>
-      <NewInput name="RadioCheck" selection={selectionRadio} onChange={(e) => setSelectionRadio(e.target.value)} options={checkRadioOptions} />
+      <NewInput name="Radios" selection={selectionRadio} onChange={(e) => setSelectionRadio(e.target.value)} options={checkRadioOptions} />
 
       <h1>Checkboxes</h1>
       <p>(Only visible if fits on one line, resize window to see)</p>
-      <NewInput name="RadioCheck" selection={selectionCheck} onChange={(e) => setSelectionCheck(e.target.value)} options={checkRadioOptions} multiple={true} />
+      <NewInput name="Checkboxes" selection={selectionCheck} onChange={(e) => setSelectionCheck(e.target.value)} options={checkRadioOptions} multiple={true} />
 
       <h1>Switch</h1>
       <p>(Only visible if fits on one line, resize window to see)</p>
-      <NewInput name="RadioCheck" selection={selectionSwitch} onChange={(e) => setSelectionSwitch(e.target.value)} options={switchOptions} />
+      <NewInput name="Switch" selection={selectionSwitch} onChange={(e) => setSelectionSwitch(e.target.value)} options={switchOptions} />
 
       <h1>Single Disabled</h1>
       <SimpleNewInput name="SingleDisabled" selection={['1']} onChange={(e) => setSelectionSingle(e.target.value)} options={options} disabled={true} />
 
       <h1>Multiple Disabled</h1>
       <SimpleNewInput name="MultipleDisabled" selection={['1', '2']} onChange={(e) => setSelectionMultiple(e.target.value)} options={options} multiple={true} disabled={true} />
+
+      <h1>Checkboxes</h1>
+      <p>(Only visible if fits on one line, resize window to see)</p>
+      <NewInput name="DisabledRadioCheck" selection={['1']} onChange={(e) => setSelectionCheck(e.target.value)} options={checkRadioOptions} multiple={true} disabled={true} />
     </div>
   )
 }
