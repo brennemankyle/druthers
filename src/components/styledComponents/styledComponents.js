@@ -125,6 +125,9 @@ const CheckRadio = styled(RawCheckRadio)`
 const CheckBox = styled(InternalCheckRadio)`
 `
 
+const Switch = styled(InternalCheckRadio)`
+`
+
 const Radio = styled(InternalCheckRadio)`
 `
 
@@ -239,4 +242,5 @@ export {
   CheckRadio,
   CheckBox,
   Radio,
+  Switch,
 }

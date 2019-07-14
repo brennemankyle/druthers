@@ -2,12 +2,12 @@ import React from 'react'
 import { simpleNewInputPropTypes } from '../../utils/AppPropTypes'
 import defaultProps from '../../utils/defaultProps'
 
-let SimpleNewInput = (props) => {
-  let massagedProps = props.massaged ? props : props.massageData(props)
+let SimpleNewInput = (rawProps) => {
+  let props = rawProps.massaged ? rawProps : rawProps.massageData(rawProps)
 
-  let { InternalNewInput } = massagedProps.components
+  let { InternalNewInput } = props.components
 
-  return <InternalNewInput {...massagedProps} />
+  return <InternalNewInput {...props} />
 }
 
 SimpleNewInput.defaultProps = defaultProps

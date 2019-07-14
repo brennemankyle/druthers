@@ -24,6 +24,11 @@ let checkRadioOptions = [
   {value: '5', label: 'All The Colors in The Rainbow'},
 ]
 
+let switchOptions = [
+  {value: true, label: 'On (some really long label here)'},
+  {value: false, label: 'Off'},
+]
+
 let App = () => {
   const [selectionSingle, setSelectionSingle] = useState()
   const [selectionMultiple, setSelectionMultiple] = useState([])
@@ -33,6 +38,7 @@ let App = () => {
   const [selectionRightToLeft, setSelectionRightToLeft] = useState()
   const [selectionRadio, setSelectionRadio] = useState()
   const [selectionCheck, setSelectionCheck] = useState()
+  const [selectionSwitch, setSelectionSwitch] = useState()
 
   return (
     <div className="App">
@@ -61,6 +67,10 @@ let App = () => {
       <h1>Checkboxes</h1>
       <p>(Only visible if fits on one line, resize window to see)</p>
       <NewInput name="RadioCheck" selection={selectionCheck} onChange={(e) => setSelectionCheck(e.target.value)} options={checkRadioOptions} multiple={true} />
+
+      <h1>Switch</h1>
+      <p>(Only visible if fits on one line, resize window to see)</p>
+      <NewInput name="RadioCheck" selection={selectionSwitch} onChange={(e) => setSelectionSwitch(e.target.value)} options={switchOptions} />
 
       <h1>Single Disabled</h1>
       <SimpleNewInput name="SingleDisabled" selection={['1']} onChange={(e) => setSelectionSingle(e.target.value)} options={options} disabled={true} />

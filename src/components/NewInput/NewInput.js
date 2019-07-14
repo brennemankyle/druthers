@@ -4,29 +4,29 @@ import AppPropTypes, { simpleNewInputPropTypes } from '../../utils/AppPropTypes'
 import defaultProps from '../../utils/defaultProps'
 import useWindowWidth from '../../hooks/useWindowWidth/useWindowWidth'
 import SimpleNewInput from '../SimpleNewInput/SimpleNewInput'
-import { CheckRadio, CheckBox, Radio } from '../styledComponents/styledComponents'
+import { CheckRadio, CheckBox, Radio, Switch } from '../styledComponents/styledComponents'
 
 let hasOverflownX = (element) => element.scrollWidth > element.clientWidth
 
-let NewInput = (props) => {
-  let massagedProps = props.massageData(props)
+let NewInput = (rawProps) => {
+  let props = rawProps.massageData(rawProps)
   const checkRadioRef = useRef(null)
   const windowWidth = useWindowWidth()
-  const [canCheckRadio] = useState(massagedProps.options.length < massagedProps.checkRadioMaxCount && !massagedProps.creatable)
+  const [canCheckRadio] = useState(props.options.length < props.checkRadioMaxCount && !props.creatable)
   const [isLoading, setIsLoading] = useState(canCheckRadio)
   const [isOverflown, setIsOverflown] = useState(false)
   useEffect(() => {
     if (canCheckRadio) setIsOverflown(hasOverflownX(checkRadioRef.current, windowWidth))
     if (isLoading) setIsLoading(false)
-  }, [massagedProps.options, massagedProps.creatable, windowWidth, canCheckRadio, isLoading])
+  }, [props.options, props.creatable, windowWidth, canCheckRadio, isLoading])
 
   let overflowStyle = {whiteSpace: 'nowrap', overflowX: 'visible', overflowY: 'hidden'}
 
-  let { CheckRadio, SimpleNewInput } = massagedProps.components
+  let { CheckRadio, SimpleNewInput } = props.components
 
   return [
-    canCheckRadio && <CheckRadio style={overflowStyle} ref={checkRadioRef} hide={isLoading || isOverflown} {...massagedProps} massaged={true} key='CheckRadio' />,
-    (!canCheckRadio || isOverflown) && <SimpleNewInput {...massagedProps} massaged={true} key='SimpleNewInput' />,
+    canCheckRadio && <CheckRadio style={overflowStyle} ref={checkRadioRef} hide={isLoading || isOverflown} {...props} massaged={true} key='CheckRadio' />,
+    (!canCheckRadio || isOverflown) && <SimpleNewInput {...props} massaged={true} key='SimpleNewInput' />,
   ]
 }
 
@@ -38,6 +38,7 @@ NewInput.defaultProps = {
     CheckRadio,
     CheckBox,
     Radio,
+    Switch,
   },
 }
 
@@ -49,6 +50,7 @@ NewInput.propTypes = {
     CheckRadio: AppPropTypes.element.isRequired,
     CheckBox: AppPropTypes.element.isRequired,
     Radio: AppPropTypes.element.isRequired,
+    Switch: AppPropTypes.element.isRequired,
   }).isRequired,
 }
 

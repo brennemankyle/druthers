@@ -3,7 +3,9 @@ import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
 
 let InternalCheckRadio = (props) => {
-  let type = props.type || props.multiple ? 'checkbox' : 'radio'
+  let type = props.toggle
+    ? 'checkbox'
+    : props.type || (props.multiple ? 'checkbox' : 'radio')
   let label = props.label || props.title
 
   return <label className={props.className} key={props.value}>
@@ -13,6 +15,7 @@ let InternalCheckRadio = (props) => {
 InternalCheckRadio.propTypes = {
   name: PropTypes.string.isRequired,
   checked: PropTypes.bool.isRequired,
+  toggle: PropTypes.bool.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   multiple: PropTypes.bool,
