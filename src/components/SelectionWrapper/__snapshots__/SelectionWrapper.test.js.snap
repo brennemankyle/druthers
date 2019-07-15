@@ -7,10 +7,12 @@ exports[`renders 1`] = `
   onFocus={[Function]}
   tabIndex="-1"
 >
-  <Component />
-  <Component
-    onClick={[Function]}
-  />
+  <div>
+    <Component />
+    <Component
+      onClick={[Function]}
+    />
+  </div>
   <span
     className="divider"
   />
@@ -29,10 +31,12 @@ exports[`renders disabled 1`] = `
   onFocus={[Function]}
   tabIndex="false"
 >
-  <Component />
-  <Component
-    onClick={[Function]}
-  />
+  <div>
+    <Component />
+    <Component
+      onClick={[Function]}
+    />
+  </div>
   <span
     className="divider"
   />

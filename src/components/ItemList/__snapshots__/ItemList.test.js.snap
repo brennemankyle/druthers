@@ -14,12 +14,21 @@ exports[`renders 1`] = `
     styles={
       Object {
         "borderRadius": ".2em",
+        "checkRadio": Object {
+          "borderWidth": "2px",
+          "labelMargin": ".2em",
+          "marginBetween": "1em",
+          "paddingBottom": ".2em",
+          "paddingLeft": ".2em",
+          "paddingRight": ".2em",
+          "paddingTop": ".2em",
+        },
         "colors": Object {
           "background": "white",
           "disabled": "#ECECEC",
           "highlight": "lightblue",
           "primary": "black",
-          "secondary": "lightgray",
+          "secondary": "#C3C3C3",
           "warning": "#CD5C5C",
         },
         "disabled": false,
@@ -67,12 +76,21 @@ exports[`renders 1`] = `
     styles={
       Object {
         "borderRadius": ".2em",
+        "checkRadio": Object {
+          "borderWidth": "2px",
+          "labelMargin": ".2em",
+          "marginBetween": "1em",
+          "paddingBottom": ".2em",
+          "paddingLeft": ".2em",
+          "paddingRight": ".2em",
+          "paddingTop": ".2em",
+        },
         "colors": Object {
           "background": "white",
           "disabled": "#ECECEC",
           "highlight": "lightblue",
           "primary": "black",
-          "secondary": "lightgray",
+          "secondary": "#C3C3C3",
           "warning": "#CD5C5C",
         },
         "disabled": false,
@@ -120,12 +138,21 @@ exports[`renders 1`] = `
     styles={
       Object {
         "borderRadius": ".2em",
+        "checkRadio": Object {
+          "borderWidth": "2px",
+          "labelMargin": ".2em",
+          "marginBetween": "1em",
+          "paddingBottom": ".2em",
+          "paddingLeft": ".2em",
+          "paddingRight": ".2em",
+          "paddingTop": ".2em",
+        },
         "colors": Object {
           "background": "white",
           "disabled": "#ECECEC",
           "highlight": "lightblue",
           "primary": "black",
-          "secondary": "lightgray",
+          "secondary": "#C3C3C3",
           "warning": "#CD5C5C",
         },
         "disabled": false,
@@ -173,12 +200,21 @@ exports[`renders 1`] = `
     styles={
       Object {
         "borderRadius": ".2em",
+        "checkRadio": Object {
+          "borderWidth": "2px",
+          "labelMargin": ".2em",
+          "marginBetween": "1em",
+          "paddingBottom": ".2em",
+          "paddingLeft": ".2em",
+          "paddingRight": ".2em",
+          "paddingTop": ".2em",
+        },
         "colors": Object {
           "background": "white",
           "disabled": "#ECECEC",
           "highlight": "lightblue",
           "primary": "black",
-          "secondary": "lightgray",
+          "secondary": "#C3C3C3",
           "warning": "#CD5C5C",
         },
         "disabled": false,
@@ -226,12 +262,21 @@ exports[`renders 1`] = `
     styles={
       Object {
         "borderRadius": ".2em",
+        "checkRadio": Object {
+          "borderWidth": "2px",
+          "labelMargin": ".2em",
+          "marginBetween": "1em",
+          "paddingBottom": ".2em",
+          "paddingLeft": ".2em",
+          "paddingRight": ".2em",
+          "paddingTop": ".2em",
+        },
         "colors": Object {
           "background": "white",
           "disabled": "#ECECEC",
           "highlight": "lightblue",
           "primary": "black",
-          "secondary": "lightgray",
+          "secondary": "#C3C3C3",
           "warning": "#CD5C5C",
         },
         "disabled": false,
@@ -286,12 +331,21 @@ exports[`renders no items 1`] = `
     styles={
       Object {
         "borderRadius": ".2em",
+        "checkRadio": Object {
+          "borderWidth": "2px",
+          "labelMargin": ".2em",
+          "marginBetween": "1em",
+          "paddingBottom": ".2em",
+          "paddingLeft": ".2em",
+          "paddingRight": ".2em",
+          "paddingTop": ".2em",
+        },
         "colors": Object {
           "background": "white",
           "disabled": "#ECECEC",
           "highlight": "lightblue",
           "primary": "black",
-          "secondary": "lightgray",
+          "secondary": "#C3C3C3",
           "warning": "#CD5C5C",
         },
         "disabled": false,
@@ -344,12 +398,21 @@ exports[`renders removable 1`] = `
     styles={
       Object {
         "borderRadius": ".2em",
+        "checkRadio": Object {
+          "borderWidth": "2px",
+          "labelMargin": ".2em",
+          "marginBetween": "1em",
+          "paddingBottom": ".2em",
+          "paddingLeft": ".2em",
+          "paddingRight": ".2em",
+          "paddingTop": ".2em",
+        },
         "colors": Object {
           "background": "white",
           "disabled": "#ECECEC",
           "highlight": "lightblue",
           "primary": "black",
-          "secondary": "lightgray",
+          "secondary": "#C3C3C3",
           "warning": "#CD5C5C",
         },
         "disabled": false,
@@ -397,12 +460,21 @@ exports[`renders removable 1`] = `
     styles={
       Object {
         "borderRadius": ".2em",
+        "checkRadio": Object {
+          "borderWidth": "2px",
+          "labelMargin": ".2em",
+          "marginBetween": "1em",
+          "paddingBottom": ".2em",
+          "paddingLeft": ".2em",
+          "paddingRight": ".2em",
+          "paddingTop": ".2em",
+        },
         "colors": Object {
           "background": "white",
           "disabled": "#ECECEC",
           "highlight": "lightblue",
           "primary": "black",
-          "secondary": "lightgray",
+          "secondary": "#C3C3C3",
           "warning": "#CD5C5C",
         },
         "disabled": false,
@@ -450,12 +522,21 @@ exports[`renders removable 1`] = `
     styles={
       Object {
         "borderRadius": ".2em",
+        "checkRadio": Object {
+          "borderWidth": "2px",
+          "labelMargin": ".2em",
+          "marginBetween": "1em",
+          "paddingBottom": ".2em",
+          "paddingLeft": ".2em",
+          "paddingRight": ".2em",
+          "paddingTop": ".2em",
+        },
         "colors": Object {
           "background": "white",
           "disabled": "#ECECEC",
           "highlight": "lightblue",
           "primary": "black",
-          "secondary": "lightgray",
+          "secondary": "#C3C3C3",
           "warning": "#CD5C5C",
         },
         "disabled": false,
@@ -503,12 +584,21 @@ exports[`renders removable 1`] = `
     styles={
       Object {
         "borderRadius": ".2em",
+        "checkRadio": Object {
+          "borderWidth": "2px",
+          "labelMargin": ".2em",
+          "marginBetween": "1em",
+          "paddingBottom": ".2em",
+          "paddingLeft": ".2em",
+          "paddingRight": ".2em",
+          "paddingTop": ".2em",
+        },
         "colors": Object {
           "background": "white",
           "disabled": "#ECECEC",
           "highlight": "lightblue",
           "primary": "black",
-          "secondary": "lightgray",
+          "secondary": "#C3C3C3",
           "warning": "#CD5C5C",
         },
         "disabled": false,
@@ -556,12 +646,21 @@ exports[`renders removable 1`] = `
     styles={
       Object {
         "borderRadius": ".2em",
+        "checkRadio": Object {
+          "borderWidth": "2px",
+          "labelMargin": ".2em",
+          "marginBetween": "1em",
+          "paddingBottom": ".2em",
+          "paddingLeft": ".2em",
+          "paddingRight": ".2em",
+          "paddingTop": ".2em",
+        },
         "colors": Object {
           "background": "white",
           "disabled": "#ECECEC",
           "highlight": "lightblue",
           "primary": "black",
-          "secondary": "lightgray",
+          "secondary": "#C3C3C3",
           "warning": "#CD5C5C",
         },
         "disabled": false,
