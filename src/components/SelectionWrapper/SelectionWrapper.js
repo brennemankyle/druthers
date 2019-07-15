@@ -39,8 +39,10 @@ let SelectionWrapper = (props) => {
     tabIndex={props.styles.disabled ? 'false' : '-1'}
     onFocus={onFocus}
     onBlur={onBlur}>
-      {props.SelectionList}
-      {Search}
+      <div>
+        {props.SelectionList}
+        {Search}
+      </div>
       <span className="divider"></span>
       <img className="expand" src="expand.png" alt="expand" /></div>
 }

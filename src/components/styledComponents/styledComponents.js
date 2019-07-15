@@ -82,7 +82,15 @@ const Option = styled(Item)`
 `
 
 const SelectionList = styled(ItemList)`
-  display: ${props => props.styles.multiple ? 'inline' : 'block' };
+  ${props => props.styles.multiple
+    ? `
+      display: inline;`
+    : `
+      display: inline-block;
+      &:not(:empty) {
+        width: 100%;
+      }`
+  }
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -276,6 +284,9 @@ const SelectionWrapper = styled(RawSelectionWrapper)`
   padding-bottom: ${props => props.styles.paddingBottom};
   padding-right: ${props => props.styles.paddingRight};
   padding-left: ${props => props.styles.paddingLeft};
+  & > *:first-child {
+    flex-grow: 1;
+  }
 
   ${props => !props.styles.disabled && `
     &:hover {
@@ -288,17 +299,6 @@ const SelectionWrapper = styled(RawSelectionWrapper)`
       transform: scaleY(-1);
     }
     border-color: ${props.styles.colors.primary};`}
-
-  ${props => !props.styles.multiple && !props.areOptionsOpen && props.styles.hasSelection
-    ? `
-      & > *:nth-last-child(4) {
-        flex-grow: 1;
-      }`
-    : `
-      & > *:nth-last-child(3) {
-        flex-grow: 1;
-      }`
-  }
 
   ${props => props.styles.hasOptions
     ? `
