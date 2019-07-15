@@ -9,13 +9,21 @@ let InternalCheckRadio = (props) => {
   let label = props.label || props.title
 
   return <label className={props.className} key={props.value}>
+    <div className="check-radio-display">
+      <img src={props.imgSrc} alt="remove" />
+    </div>
     <input
       type={type}
       name={props.name}
       value={props.value}
       onChange={props.onChange}
       disabled={props.disabled}
-      checked={props.checked} />{label}</label>
+      checked={props.checked} />
+    {label}</label>
+}
+
+InternalCheckRadio.defaultProps = {
+  imgSrc: 'checkmark.png',
 }
 
 InternalCheckRadio.propTypes = {
@@ -24,6 +32,7 @@ InternalCheckRadio.propTypes = {
   disabled: PropTypes.bool.isRequired,
   toggle: PropTypes.bool.isRequired,
   value: PropTypes.string.isRequired,
+  imgSrc: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   multiple: PropTypes.bool,
   type: PropTypes.string,

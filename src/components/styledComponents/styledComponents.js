@@ -115,12 +115,69 @@ const Search = styled(RawSearch)`
 `
 
 const CheckBox = styled(InternalCheckRadio)`
-`
+  margin-right: 1em;
+  display: inline-flex;
+  align-items: center;
 
-const Switch = styled(InternalCheckRadio)`
+  .check-radio-display {
+    border-radius: ${props => props.styles.borderRadius};
+    margin-right: .2em;
+    padding: .2em;
+    border: 1px solid ${props => props.styles.colors.secondary};
+    width: 16px;
+    height: 16px;
+    ${props => !props.disabled && `
+      &:hover {
+        border-color: ${props.styles.colors.primary};
+      }`
+    }
+
+    img {
+      ${props => !props.checked && `
+        visibility: hidden;`
+      }
+      width: ${props => props.styles.icon.width};
+      height: ${props => props.styles.icon.width};
+    }
+  }
+
+  input {
+    display: none;
+  }
 `
 
 const Radio = styled(InternalCheckRadio)`
+  .check-radio-display {
+    display: inline-block;
+    border-radius: ${props => props.styles.borderRadius};
+    border: 1px solid ${props => props.styles.colors.secondary};
+    ${props => !props.disabled && `
+      &:hover {
+        border-color: ${props.styles.colors.primary};
+      }`
+    }
+
+    img {
+      display: none;
+    }
+  }
+`
+
+const Switch = styled(InternalCheckRadio)`
+  .check-radio-display {
+    display: inline-block;
+    border-radius: ${props => props.styles.borderRadius};
+    border: 1px solid ${props => props.styles.colors.secondary};
+    ${props => !props.disabled && `
+      &:hover {
+        border-color: ${props.styles.colors.primary};
+      }`
+    }
+
+    img {
+      display: none;
+    }
+  }
 `
 
 const SelectionWrapper = styled(RawSelectionWrapper)`

@@ -40,8 +40,6 @@ let NewInput = (rawProps) => {
   ]
 }
 
-console.log(defaultProps)
-
 NewInput.defaultProps = {
   ...defaultProps,
   components: {
