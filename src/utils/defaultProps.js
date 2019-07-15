@@ -76,7 +76,7 @@ let defaultProps = {
     },
     colors: {
       primary: 'black',
-      secondary: 'lightgray',
+      secondary: '#C3C3C3',
       highlight: 'lightblue',
       warning: '#CD5C5C',
       disabled: '#ECECEC',

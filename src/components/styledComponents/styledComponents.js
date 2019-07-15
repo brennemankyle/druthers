@@ -112,20 +112,29 @@ const Search = styled(RawSearch)`
     : `
       width: ${props.styles.search.width};`
   }
+  ${props => props.styles.disabled && `
+    cursor: not-allowed;`
+  }
 `
 
 const CheckBox = styled(InternalCheckRadio)`
   margin-right: 1em;
   display: inline-flex;
   align-items: center;
-  cursor: pointer;
-  ${props => !props.disabled && `
-    &:hover .check-radio-display {
-      border-color: ${props.styles.colors.primary};
-    }
-    &.focus .check-radio-display {
-      border-color: ${props.styles.colors.primary};
-    }`
+  user-select: none;
+  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
+  ${props => props.disabled
+    ? `
+      && .check-radio-display {
+        border-color: ${props.styles.colors.disabled};
+      }`
+    : `
+      &:hover .check-radio-display {
+        border-color: ${props.styles.colors.primary};
+      }
+      &.focus .check-radio-display {
+        border-color: ${props.styles.colors.primary};
+      }`
   }
 
   .check-radio-display {
@@ -135,6 +144,7 @@ const CheckBox = styled(InternalCheckRadio)`
     border: 1px solid ${props => props.styles.colors.secondary};
     width: ${props => props.styles.icon.width};
     height: ${props => props.styles.icon.width};
+    background-color: ${props => props.disabled ? props.styles.colors.disabled : props.styles.colors.background};
 
     img {
       width: ${props => props.styles.icon.width};
@@ -155,13 +165,20 @@ const Radio = styled(InternalCheckRadio)`
   display: inline-flex;
   align-items: center;
   cursor: pointer;
-  ${props => !props.disabled && `
-    &:hover .check-radio-display {
-      border-color: ${props.styles.colors.primary};
-    }
-    &.focus .check-radio-display {
-      border-color: ${props.styles.colors.primary};
-    }`
+  user-select: none;
+  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
+  ${props => props.disabled
+    ? `
+      && .check-radio-display {
+        border-color: ${props.styles.colors.disabled};
+      }`
+    : `
+      &:hover .check-radio-display {
+        border-color: ${props.styles.colors.primary};
+      }
+      &.focus .check-radio-display {
+        border-color: ${props.styles.colors.primary};
+      }`
   }
 
   .check-radio-display {
@@ -172,6 +189,7 @@ const Radio = styled(InternalCheckRadio)`
     border: 1px solid ${props => props.styles.colors.secondary};
     width: ${props => props.styles.icon.width};
     height: ${props => props.styles.icon.width};
+    background-color: ${props => props.disabled ? props.styles.colors.disabled : props.styles.colors.background};
     ${props => props.checked && `
       background-color: ${props.styles.colors.secondary};`
     }
@@ -190,13 +208,20 @@ const Radio = styled(InternalCheckRadio)`
 
 const Switch = styled(InternalCheckRadio)`
   cursor: pointer;
-  ${props => !props.disabled && `
-    &:hover .check-radio-display {
-      border-color: ${props.styles.colors.primary};
-    }
-    &.focus .check-radio-display {
-      border-color: ${props.styles.colors.primary};
-    }`
+  user-select: none;
+  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
+  ${props => props.disabled
+    ? `
+      && .check-radio-display {
+        border-color: ${props.styles.colors.disabled};
+      }`
+    : `
+      &:hover .check-radio-display {
+        border-color: ${props.styles.colors.primary};
+      }
+      &.focus .check-radio-display {
+        border-color: ${props.styles.colors.primary};
+      }`
   }
 
   .check-radio-display {
@@ -207,6 +232,7 @@ const Switch = styled(InternalCheckRadio)`
     border: 1px solid ${props => props.styles.colors.secondary};
     width: calc(${props => props.styles.icon.width} * 2);
     height: ${props => props.styles.icon.width};
+    background-color: ${props => props.disabled ? props.styles.colors.disabled : props.styles.colors.background};
 
     img {
       width: ${props => props.styles.icon.width};
@@ -291,8 +317,9 @@ const SelectionWrapper = styled(RawSelectionWrapper)`
       }`
   }
 
+  background-color: ${props => props.styles.disabled ? props.styles.colors.disabled : props.styles.colors.background};
   ${props => props.styles.disabled && `
-    background-color: ${props.styles.colors.disabled}`
+    cursor: not-allowed;`
   }
 `
 

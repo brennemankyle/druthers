@@ -39,6 +39,10 @@ let CheckRadio = (rawProps, ref) => {
     ? [props.options.find(option => option.value.toLowerCase() === 'true')]
     : props.options
 
+  if (props.disabled) {
+    onChange = () => {}
+  }
+
   let Checkable = props.multiple
     ? props.components.CheckBox
     : useSwitch ? props.components.Switch : props.components.Radio
