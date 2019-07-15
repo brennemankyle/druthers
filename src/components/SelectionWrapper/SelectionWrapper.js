@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
+import src from "./expand.png"
 
 let SelectionWrapper = (props) => {
   const searchRef = useRef(null)
@@ -44,12 +45,17 @@ let SelectionWrapper = (props) => {
         {Search}
       </div>
       <span className="divider"></span>
-      <img className="expand" src="expand.png" alt="expand" /></div>
+      <img className="expand" src={props.expandSrc} alt="expand" /></div>
+}
+
+SelectionWrapper.defaultProps = {
+  expandSrc: src,
 }
 
 SelectionWrapper.propTypes = {
   onFocus: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
+  expandSrc: PropTypes.string.isRequired,
   areOptionsOpen: PropTypes.bool.isRequired,
   Search: AppPropTypes.element.isRequired,
   SelectionList: PropTypes.oneOfType([AppPropTypes.element.isRequired, PropTypes.bool]),

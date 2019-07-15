@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
+import src from "./checkmark.png"
 
 let InternalCheckRadio = (props) => {
   let [hasFocus, setHasFocus] = useState(false)
@@ -30,7 +31,7 @@ let InternalCheckRadio = (props) => {
 }
 
 InternalCheckRadio.defaultProps = {
-  imgSrc: 'checkmark.png',
+  imgSrc: src,
 }
 
 InternalCheckRadio.propTypes = {
