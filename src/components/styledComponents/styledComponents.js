@@ -118,26 +118,24 @@ const CheckBox = styled(InternalCheckRadio)`
   margin-right: 1em;
   display: inline-flex;
   align-items: center;
+  cursor: pointer;
+  ${props => !props.disabled && `
+    &:hover .check-radio-display {
+      border-color: ${props.styles.colors.primary};
+    }`
+  }
 
   .check-radio-display {
     border-radius: ${props => props.styles.borderRadius};
     margin-right: .2em;
     padding: .2em;
     border: 1px solid ${props => props.styles.colors.secondary};
-    width: 16px;
-    height: 16px;
-    ${props => !props.disabled && `
-      &:hover {
-        border-color: ${props.styles.colors.primary};
-      }`
-    }
 
     img {
+      width: ${props => props.styles.icon.width};
       ${props => !props.checked && `
         visibility: hidden;`
       }
-      width: ${props => props.styles.icon.width};
-      height: ${props => props.styles.icon.width};
     }
   }
 
@@ -147,32 +145,49 @@ const CheckBox = styled(InternalCheckRadio)`
 `
 
 const Radio = styled(InternalCheckRadio)`
+  margin-right: 1em;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  ${props => !props.disabled && `
+    &:hover .check-radio-display {
+      border-color: ${props.styles.colors.primary};
+    }`
+  }
+
   .check-radio-display {
-    display: inline-block;
-    border-radius: ${props => props.styles.borderRadius};
+    border-radius: 100%;
+    margin-right: .2em;
+    padding: .2em;
+    background-size: .1em;
     border: 1px solid ${props => props.styles.colors.secondary};
-    ${props => !props.disabled && `
-      &:hover {
-        border-color: ${props.styles.colors.primary};
-      }`
+    ${props => props.checked && `
+      background-color: ${props.styles.colors.secondary};`
     }
 
     img {
-      display: none;
+      visibility: hidden;
+      width: ${props => props.styles.icon.width};
     }
+  }
+
+  input {
+    display: none;
   }
 `
 
 const Switch = styled(InternalCheckRadio)`
+  cursor: pointer;
+  ${props => !props.disabled && `
+    &:hover .check-radio-display {
+      border-color: ${props.styles.colors.primary};
+    }`
+  }
+
   .check-radio-display {
     display: inline-block;
     border-radius: ${props => props.styles.borderRadius};
     border: 1px solid ${props => props.styles.colors.secondary};
-    ${props => !props.disabled && `
-      &:hover {
-        border-color: ${props.styles.colors.primary};
-      }`
-    }
 
     img {
       display: none;
