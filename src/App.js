@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import './App.css'
 import NewInput from './components/NewInput/NewInput'
 
 let options = [
