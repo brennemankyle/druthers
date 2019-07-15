@@ -142,7 +142,8 @@ const CheckBox = styled(InternalCheckRadio)`
   }
 
   input {
-    display: none;
+    opacity: 0;
+    width: 0;
   }
 `
 
@@ -176,7 +177,8 @@ const Radio = styled(InternalCheckRadio)`
   }
 
   input {
-    display: none;
+    opacity: 0;
+    width: 0;
   }
 `
 
@@ -212,7 +214,8 @@ const Switch = styled(InternalCheckRadio)`
   }
 
   input {
-    display: none;
+    opacity: 0;
+    width: 0;
   }
 `
 
