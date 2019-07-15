@@ -331,6 +331,7 @@ const OptionWrapper = styled(RawWrapper)`
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 999;
   background-color: ${props => props.styles.colors.background};
   width: ${props => props.styles.width}px;
 `
