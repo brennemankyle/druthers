@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
+import { simpleNewInputPropTypes } from '../../utils/AppPropTypes'
+import defaultProps from '../../utils/defaultProps'
 import ReactDOM from 'react-dom'
-import PropTypes from 'prop-types'
-import AppPropTypes from '../../utils/AppPropTypes'
 import _last from 'lodash/last'
 import _inRange from 'lodash/inRange'
 import { DivRelative } from '../styledComponents/styledComponents'
@@ -30,7 +30,8 @@ const SINGLE_QUOTE = 222
 
 let targetValue = (e) => String(e.target.value || e.target.getAttribute('val') || '')
 
-let InternalNewInput = (props) => {
+let Select = (rawProps) => {
+  let props = rawProps.massaged ? rawProps : rawProps.massageData(rawProps)
   const selfRef = useRef(null)
   const [areOptionsOpen, setAreOptionsOpen] = useState(false)
   const [searchText, setSearchText] = useState('')
@@ -241,40 +242,8 @@ let InternalNewInput = (props) => {
       document.body)}</Wrapper>
 }
 
-InternalNewInput.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
-  selection: AppPropTypes.itemList.isRequired,
-  options: AppPropTypes.itemList.isRequired,
-  multiple: PropTypes.bool.isRequired,
-  disabled: PropTypes.bool.isRequired,
-  creatable: PropTypes.bool.isRequired,
-  removable: PropTypes.bool.isRequired,
-  appendToBody: PropTypes.bool.isRequired,
-  rightToLeft: PropTypes.bool.isRequired,
-  filterOptions: PropTypes.func,
+Select.defaultProps = defaultProps
 
-  text: PropTypes.shape({
-    placeholder: PropTypes.string.isRequired,
-    noOptions: PropTypes.string.isRequired,
-    create: PropTypes.string.isRequired,
-  }).isRequired,
+Select.propTypes = simpleNewInputPropTypes
 
-  components: PropTypes.shape({
-    HtmlFieldData: AppPropTypes.element.isRequired,
-    Wrapper: AppPropTypes.element.isRequired,
-    Selection: AppPropTypes.element.isRequired,
-    SelectionList: AppPropTypes.element.isRequired,
-    OptionList: AppPropTypes.element.isRequired,
-    Option: AppPropTypes.element.isRequired,
-    Search: AppPropTypes.element.isRequired,
-    SelectionWrapper: AppPropTypes.element.isRequired,
-    OptionWrapper: AppPropTypes.element.isRequired,
-    AppendToBodyOptionsWrapper: AppPropTypes.element.isRequired,
-    StyledAppendToBodyOptionsWrapper: AppPropTypes.element.isRequired,
-  }).isRequired,
-
-  styles: AppPropTypes.styles.isRequired,
-}
-
-export default InternalNewInput
+export default Select

@@ -92,7 +92,6 @@ let simpleNewInputPropTypes = {
   }).isRequired,
 
   components: PropTypes.shape({
-    InternalNewInput: AppPropTypes.element.isRequired,
     HtmlFieldData: AppPropTypes.element.isRequired,
     Wrapper: AppPropTypes.element.isRequired,
     Selection: AppPropTypes.element.isRequired,
