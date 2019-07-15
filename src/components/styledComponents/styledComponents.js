@@ -118,7 +118,7 @@ const Search = styled(RawSearch)`
 `
 
 const CheckBox = styled(InternalCheckRadio)`
-  margin-right: 1em;
+  margin-right: ${props => props.styles.checkRadio.marginBetween};
   display: inline-flex;
   align-items: center;
   user-select: none;
@@ -139,9 +139,12 @@ const CheckBox = styled(InternalCheckRadio)`
 
   .check-radio-display {
     border-radius: ${props => props.styles.borderRadius};
-    margin-right: .2em;
-    padding: .2em;
-    border: 1px solid ${props => props.styles.colors.secondary};
+    margin-right: ${props => props.styles.checkRadio.labelMargin};
+    padding-top: ${props => props.styles.checkRadio.paddingTop};
+    padding-bottom: ${props => props.styles.checkRadio.paddingBottom};
+    padding-right: ${props => props.styles.checkRadio.paddingRight};
+    padding-left: ${props => props.styles.checkRadio.paddingLeft};
+    border: ${props => props.styles.checkRadio.borderWidth} solid ${props => props.styles.colors.secondary};
     width: ${props => props.styles.icon.width};
     height: ${props => props.styles.icon.width};
     background-color: ${props => props.disabled ? props.styles.colors.disabled : props.styles.colors.background};
@@ -161,7 +164,7 @@ const CheckBox = styled(InternalCheckRadio)`
 `
 
 const Radio = styled(InternalCheckRadio)`
-  margin-right: 1em;
+  margin-right: ${props => props.styles.checkRadio.marginBetween};
   display: inline-flex;
   align-items: center;
   cursor: pointer;
@@ -183,10 +186,13 @@ const Radio = styled(InternalCheckRadio)`
 
   .check-radio-display {
     border-radius: 100%;
-    margin-right: .2em;
-    padding: .2em;
+    margin-right: ${props => props.styles.checkRadio.labelMargin};
+    padding-top: ${props => props.styles.checkRadio.paddingTop};
+    padding-bottom: ${props => props.styles.checkRadio.paddingBottom};
+    padding-right: ${props => props.styles.checkRadio.paddingRight};
+    padding-left: ${props => props.styles.checkRadio.paddingLeft};
     background-size: .1em;
-    border: 1px solid ${props => props.styles.colors.secondary};
+    border: ${props => props.styles.checkRadio.borderWidth} solid ${props => props.styles.colors.secondary};
     width: ${props => props.styles.icon.width};
     height: ${props => props.styles.icon.width};
     background-color: ${props => props.disabled ? props.styles.colors.disabled : props.styles.colors.background};
@@ -207,6 +213,8 @@ const Radio = styled(InternalCheckRadio)`
 `
 
 const Switch = styled(InternalCheckRadio)`
+  display: inline-flex;
+  align-items: center;
   cursor: pointer;
   user-select: none;
   cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
@@ -225,11 +233,15 @@ const Switch = styled(InternalCheckRadio)`
   }
 
   .check-radio-display {
+    margin-right: ${props => props.styles.checkRadio.labelMargin};
     display: inline-flex;
     align-items: center;
     border-radius: 1em;
-    padding: .2em;
-    border: 1px solid ${props => props.styles.colors.secondary};
+    padding-top: ${props => props.styles.checkRadio.paddingTop};
+    padding-bottom: ${props => props.styles.checkRadio.paddingBottom};
+    padding-right: ${props => props.styles.checkRadio.paddingRight};
+    padding-left: ${props => props.styles.checkRadio.paddingLeft};
+    border: ${props => props.styles.checkRadio.borderWidth} solid ${props => props.styles.colors.secondary};
     width: calc(${props => props.styles.icon.width} * 2);
     height: ${props => props.styles.icon.width};
     background-color: ${props => props.disabled ? props.styles.colors.disabled : props.styles.colors.background};

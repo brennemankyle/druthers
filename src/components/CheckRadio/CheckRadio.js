@@ -93,12 +93,12 @@ CheckRadio.propTypes = {
   massageData: PropTypes.func.isRequired,
   massaged: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
-  styles: AppPropTypes.styles.isRequired,
   components: PropTypes.shape({
     CheckBox: AppPropTypes.element.isRequired,
     Radio: AppPropTypes.element.isRequired,
     Switch: AppPropTypes.element.isRequired,
   }).isRequired,
+  styles: AppPropTypes.styles.isRequired,
 }
 
 export default CheckRadio

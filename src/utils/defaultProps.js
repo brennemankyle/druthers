@@ -68,6 +68,15 @@ let defaultProps = {
       paddingLeft: '.25em',
       paddingRight: '.25em',
     },
+    checkRadio: {
+      borderWidth: '2px',
+      marginBetween: '1em',
+      labelMargin: '.2em',
+      paddingTop: '.2em',
+      paddingBottom: '.2em',
+      paddingLeft: '.2em',
+      paddingRight: '.2em',
+    },
     search: {
       width: '10em',
     },

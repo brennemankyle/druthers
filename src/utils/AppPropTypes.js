@@ -42,6 +42,15 @@ let AppPropTypes = {
       paddingLeft: PropTypes.string.isRequired,
       paddingRight: PropTypes.string.isRequired,
     }).isRequired,
+    checkRadio: PropTypes.shape({
+      borderWidth: PropTypes.string.isRequired,
+      marginBetween: PropTypes.string.isRequired,
+      labelMargin: PropTypes.string.isRequired,
+      paddingTop: PropTypes.string.isRequired,
+      paddingBottom: PropTypes.string.isRequired,
+      paddingLeft: PropTypes.string.isRequired,
+      paddingRight: PropTypes.string.isRequired,
+    }).isRequired,
     search: PropTypes.shape({
       width: PropTypes.string.isRequired,
     }).isRequired,
