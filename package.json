@@ -1,7 +1,7 @@
 {
   "name": "react-new-input",
   "homepage": "https://brennemankyle.github.io/react-new-input/",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React Multi-Select with automatic checkboxes/radios",
   "main": "dist/index.js",
   "private": false,
@@ -16,7 +16,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "transpile": "babel ./src --out-dir ./dist",
+    "transpile": "babel ./src --out-dir ./dist --copy-files",
     "prepare": "npm run transpile",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
