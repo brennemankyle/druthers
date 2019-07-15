@@ -79,15 +79,15 @@ let App = () => {
 
       <h1>Radios Disabled</h1>
       <p>(Only visible if fits on one line, resize window to see)</p>
-      <NewInput name="Radios" selection={['1']} onChange={(e) => setSelectionRadio(e.target.value)} options={checkRadioOptions} disabled={true} />
+      <NewInput name="RadiosDisabled" selection={['1']} onChange={(e) => setSelectionRadio(e.target.value)} options={checkRadioOptions} disabled={true} />
 
       <h1>Checkboxes Disabled</h1>
       <p>(Only visible if fits on one line, resize window to see)</p>
-      <NewInput name="Checkboxes" selection={['1', '2']} onChange={(e) => setSelectionCheck(e.target.value)} options={checkRadioOptions} multiple={true} disabled={true} />
+      <NewInput name="CheckboxesDisabled" selection={['1', '2']} onChange={(e) => setSelectionCheck(e.target.value)} options={checkRadioOptions} multiple={true} disabled={true} />
 
       <h1>Switch Disabled</h1>
       <p>(Only visible if fits on one line, resize window to see)</p>
-      <NewInput name="Switch" selection={['true']} onChange={(e) => setSelectionSwitch(e.target.value)} options={switchOptions} disabled={true} />
+      <NewInput name="SwitchDisabled" selection={['true']} onChange={(e) => setSelectionSwitch(e.target.value)} options={switchOptions} disabled={true} />
     </div>
   )
 }
