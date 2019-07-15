@@ -22,13 +22,14 @@ let NewInput = (rawProps) => {
   }, [props.options, props.creatable, windowWidth, canCheckRadio, isLoading])
 
   let hideCheckRadio = isLoading || isOverflown
-  let checkRadioStyle = {whiteSpace: 'nowrap', overflowX: 'visible', overflowY: 'hidden'}
+  let checkRadioStyle = {whiteSpace: 'nowrap', overflow: 'visible'}
 
   if (hideCheckRadio) {
     checkRadioStyle = {
       ...checkRadioStyle,
       opacity: 1,
       height: 0,
+      overflowY: 'hidden',
     }
   }
 
