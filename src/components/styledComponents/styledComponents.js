@@ -122,6 +122,9 @@ const CheckBox = styled(InternalCheckRadio)`
   ${props => !props.disabled && `
     &:hover .check-radio-display {
       border-color: ${props.styles.colors.primary};
+    }
+    &.focus .check-radio-display {
+      border-color: ${props.styles.colors.primary};
     }`
   }
 
@@ -155,6 +158,9 @@ const Radio = styled(InternalCheckRadio)`
   ${props => !props.disabled && `
     &:hover .check-radio-display {
       border-color: ${props.styles.colors.primary};
+    }
+    &.focus .check-radio-display {
+      border-color: ${props.styles.colors.primary};
     }`
   }
 
@@ -186,6 +192,9 @@ const Switch = styled(InternalCheckRadio)`
   cursor: pointer;
   ${props => !props.disabled && `
     &:hover .check-radio-display {
+      border-color: ${props.styles.colors.primary};
+    }
+    &.focus .check-radio-display {
       border-color: ${props.styles.colors.primary};
     }`
   }
