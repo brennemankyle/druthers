@@ -130,6 +130,8 @@ const CheckBox = styled(InternalCheckRadio)`
     margin-right: .2em;
     padding: .2em;
     border: 1px solid ${props => props.styles.colors.secondary};
+    width: ${props => props.styles.icon.width};
+    height: ${props => props.styles.icon.width};
 
     img {
       width: ${props => props.styles.icon.width};
@@ -161,6 +163,8 @@ const Radio = styled(InternalCheckRadio)`
     padding: .2em;
     background-size: .1em;
     border: 1px solid ${props => props.styles.colors.secondary};
+    width: ${props => props.styles.icon.width};
+    height: ${props => props.styles.icon.width};
     ${props => props.checked && `
       background-color: ${props.styles.colors.secondary};`
     }
@@ -185,13 +189,30 @@ const Switch = styled(InternalCheckRadio)`
   }
 
   .check-radio-display {
-    display: inline-block;
-    border-radius: ${props => props.styles.borderRadius};
+    display: inline-flex;
+    align-items: center;
+    border-radius: 1em;
+    padding: .2em;
     border: 1px solid ${props => props.styles.colors.secondary};
+    width: calc(${props => props.styles.icon.width} * 2);
+    height: ${props => props.styles.icon.width};
 
     img {
-      display: none;
+      width: ${props => props.styles.icon.width};
+      border-radius: 100%;
+      ${props => props.checked
+        ? `
+          margin-left: ${props.styles.icon.width};
+          background-color: ${props.styles.colors.primary};`
+        : `
+          background-color: ${props.styles.colors.secondary};`
+      }
+      object-position: -99999px 99999px;
     }
+  }
+
+  input {
+    display: none;
   }
 `
 
