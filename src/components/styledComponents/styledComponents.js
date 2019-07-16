@@ -20,6 +20,7 @@ const Selection = styled(Item)`
   justify-content: space-between;
 
   .remove {
+    display: flex;
     border: none;
     border-radius: ${props => props.styles.borderRadius};
     background-color: transparent;
@@ -46,19 +47,9 @@ const Selection = styled(Item)`
       padding-bottom: ${props.styles.selection.paddingBottom};
       margin-right: ${props.styles.selection.paddingRight};
       padding-left: ${props.styles.selection.paddingLeft};
-      padding-right: ${props.removable ? '0' : props.styles.selection.paddingRight}
-      .remove {
-        img {
-          vertical-align: text-bottom;
-        }
-      }`
+      padding-right: ${props.removable ? '0' : props.styles.selection.paddingRight}`
     : `
-      display: flex;
-      .remove {
-        img {
-          vertical-align: middle;
-        }
-      }`
+      display: flex;`
   }
   ${props => props.styles.rightToLeft && `
     transform: scaleX(-1);`
@@ -311,7 +302,7 @@ const SelectionWrapper = styled(RawSelectionWrapper)`
 
       .expand {
         width: ${props.styles.icon.width};
-        vertical-align: middle;
+        margin-top: -1px;
 
         ${!props.styles.disabled && `
           &:hover {
