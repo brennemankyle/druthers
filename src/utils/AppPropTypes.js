@@ -35,6 +35,7 @@ let AppPropTypes = {
       paddingBottom: PropTypes.string.isRequired,
       paddingLeft: PropTypes.string.isRequired,
       paddingRight: PropTypes.string.isRequired,
+      margin: PropTypes.string.isRequired,
     }).isRequired,
     option: PropTypes.shape({
       paddingTop: PropTypes.string.isRequired,

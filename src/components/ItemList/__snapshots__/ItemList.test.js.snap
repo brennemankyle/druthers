@@ -55,6 +55,7 @@ exports[`renders 1`] = `
           "width": "10em",
         },
         "selection": Object {
+          "margin": ".1em",
           "paddingBottom": "0",
           "paddingLeft": ".2em",
           "paddingRight": ".2em",
@@ -117,6 +118,7 @@ exports[`renders 1`] = `
           "width": "10em",
         },
         "selection": Object {
+          "margin": ".1em",
           "paddingBottom": "0",
           "paddingLeft": ".2em",
           "paddingRight": ".2em",
@@ -179,6 +181,7 @@ exports[`renders 1`] = `
           "width": "10em",
         },
         "selection": Object {
+          "margin": ".1em",
           "paddingBottom": "0",
           "paddingLeft": ".2em",
           "paddingRight": ".2em",
@@ -241,6 +244,7 @@ exports[`renders 1`] = `
           "width": "10em",
         },
         "selection": Object {
+          "margin": ".1em",
           "paddingBottom": "0",
           "paddingLeft": ".2em",
           "paddingRight": ".2em",
@@ -303,6 +307,7 @@ exports[`renders 1`] = `
           "width": "10em",
         },
         "selection": Object {
+          "margin": ".1em",
           "paddingBottom": "0",
           "paddingLeft": ".2em",
           "paddingRight": ".2em",
@@ -372,6 +377,7 @@ exports[`renders no items 1`] = `
           "width": "10em",
         },
         "selection": Object {
+          "margin": ".1em",
           "paddingBottom": "0",
           "paddingLeft": ".2em",
           "paddingRight": ".2em",
@@ -439,6 +445,7 @@ exports[`renders removable 1`] = `
           "width": "10em",
         },
         "selection": Object {
+          "margin": ".1em",
           "paddingBottom": "0",
           "paddingLeft": ".2em",
           "paddingRight": ".2em",
@@ -501,6 +508,7 @@ exports[`renders removable 1`] = `
           "width": "10em",
         },
         "selection": Object {
+          "margin": ".1em",
           "paddingBottom": "0",
           "paddingLeft": ".2em",
           "paddingRight": ".2em",
@@ -563,6 +571,7 @@ exports[`renders removable 1`] = `
           "width": "10em",
         },
         "selection": Object {
+          "margin": ".1em",
           "paddingBottom": "0",
           "paddingLeft": ".2em",
           "paddingRight": ".2em",
@@ -625,6 +634,7 @@ exports[`renders removable 1`] = `
           "width": "10em",
         },
         "selection": Object {
+          "margin": ".1em",
           "paddingBottom": "0",
           "paddingLeft": ".2em",
           "paddingRight": ".2em",
@@ -687,6 +697,7 @@ exports[`renders removable 1`] = `
           "width": "10em",
         },
         "selection": Object {
+          "margin": ".1em",
           "paddingBottom": "0",
           "paddingLeft": ".2em",
           "paddingRight": ".2em",

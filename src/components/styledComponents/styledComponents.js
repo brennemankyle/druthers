@@ -15,6 +15,7 @@ const Wrapper = styled(RawWrapper)`
 `
 
 const Selection = styled(Item)`
+  box-sizing: border-box;
   border-radius: ${props => props.styles.borderRadius};
   align-items: center;
   justify-content: space-between;
@@ -43,9 +44,9 @@ const Selection = styled(Item)`
     ? `
       display: inline-flex;
       background-color: ${props.styles.colors.secondary};
+      margin-right: ${props.styles.selection.margin};
       padding-top: ${props.styles.selection.paddingTop};
       padding-bottom: ${props.styles.selection.paddingBottom};
-      margin-right: ${props.styles.selection.paddingRight};
       padding-left: ${props.styles.selection.paddingLeft};
       padding-right: ${props.removable ? '0' : props.styles.selection.paddingRight}`
     : `
