@@ -55,11 +55,11 @@ exports[`renders 1`] = `
           "width": "10em",
         },
         "selection": Object {
-          "margin": ".1em",
-          "paddingBottom": "0",
+          "margin": ".2em",
+          "paddingBottom": ".1em",
           "paddingLeft": ".2em",
           "paddingRight": ".2em",
-          "paddingTop": "0",
+          "paddingTop": ".1em",
         },
         "width": "600px",
       }
@@ -118,11 +118,11 @@ exports[`renders 1`] = `
           "width": "10em",
         },
         "selection": Object {
-          "margin": ".1em",
-          "paddingBottom": "0",
+          "margin": ".2em",
+          "paddingBottom": ".1em",
           "paddingLeft": ".2em",
           "paddingRight": ".2em",
-          "paddingTop": "0",
+          "paddingTop": ".1em",
         },
         "width": "600px",
       }
@@ -181,11 +181,11 @@ exports[`renders 1`] = `
           "width": "10em",
         },
         "selection": Object {
-          "margin": ".1em",
-          "paddingBottom": "0",
+          "margin": ".2em",
+          "paddingBottom": ".1em",
           "paddingLeft": ".2em",
           "paddingRight": ".2em",
-          "paddingTop": "0",
+          "paddingTop": ".1em",
         },
         "width": "600px",
       }
@@ -244,11 +244,11 @@ exports[`renders 1`] = `
           "width": "10em",
         },
         "selection": Object {
-          "margin": ".1em",
-          "paddingBottom": "0",
+          "margin": ".2em",
+          "paddingBottom": ".1em",
           "paddingLeft": ".2em",
           "paddingRight": ".2em",
-          "paddingTop": "0",
+          "paddingTop": ".1em",
         },
         "width": "600px",
       }
@@ -307,11 +307,11 @@ exports[`renders 1`] = `
           "width": "10em",
         },
         "selection": Object {
-          "margin": ".1em",
-          "paddingBottom": "0",
+          "margin": ".2em",
+          "paddingBottom": ".1em",
           "paddingLeft": ".2em",
           "paddingRight": ".2em",
-          "paddingTop": "0",
+          "paddingTop": ".1em",
         },
         "width": "600px",
       }
@@ -377,11 +377,11 @@ exports[`renders no items 1`] = `
           "width": "10em",
         },
         "selection": Object {
-          "margin": ".1em",
-          "paddingBottom": "0",
+          "margin": ".2em",
+          "paddingBottom": ".1em",
           "paddingLeft": ".2em",
           "paddingRight": ".2em",
-          "paddingTop": "0",
+          "paddingTop": ".1em",
         },
         "width": "600px",
       }
@@ -445,11 +445,11 @@ exports[`renders removable 1`] = `
           "width": "10em",
         },
         "selection": Object {
-          "margin": ".1em",
-          "paddingBottom": "0",
+          "margin": ".2em",
+          "paddingBottom": ".1em",
           "paddingLeft": ".2em",
           "paddingRight": ".2em",
-          "paddingTop": "0",
+          "paddingTop": ".1em",
         },
         "width": "600px",
       }
@@ -508,11 +508,11 @@ exports[`renders removable 1`] = `
           "width": "10em",
         },
         "selection": Object {
-          "margin": ".1em",
-          "paddingBottom": "0",
+          "margin": ".2em",
+          "paddingBottom": ".1em",
           "paddingLeft": ".2em",
           "paddingRight": ".2em",
-          "paddingTop": "0",
+          "paddingTop": ".1em",
         },
         "width": "600px",
       }
@@ -571,11 +571,11 @@ exports[`renders removable 1`] = `
           "width": "10em",
         },
         "selection": Object {
-          "margin": ".1em",
-          "paddingBottom": "0",
+          "margin": ".2em",
+          "paddingBottom": ".1em",
           "paddingLeft": ".2em",
           "paddingRight": ".2em",
-          "paddingTop": "0",
+          "paddingTop": ".1em",
         },
         "width": "600px",
       }
@@ -634,11 +634,11 @@ exports[`renders removable 1`] = `
           "width": "10em",
         },
         "selection": Object {
-          "margin": ".1em",
-          "paddingBottom": "0",
+          "margin": ".2em",
+          "paddingBottom": ".1em",
           "paddingLeft": ".2em",
           "paddingRight": ".2em",
-          "paddingTop": "0",
+          "paddingTop": ".1em",
         },
         "width": "600px",
       }
@@ -697,11 +697,11 @@ exports[`renders removable 1`] = `
           "width": "10em",
         },
         "selection": Object {
-          "margin": ".1em",
-          "paddingBottom": "0",
+          "margin": ".2em",
+          "paddingBottom": ".1em",
           "paddingLeft": ".2em",
           "paddingRight": ".2em",
-          "paddingTop": "0",
+          "paddingTop": ".1em",
         },
         "width": "600px",
       }

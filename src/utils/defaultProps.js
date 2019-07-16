@@ -57,8 +57,8 @@ let defaultProps = {
     paddingLeft: '.25em',
     paddingRight: '.25em',
     selection: {
-      paddingTop: '0',
-      paddingBottom: '0',
+      paddingTop: '.1em',
+      paddingBottom: '.1em',
       paddingLeft: '.2em',
       paddingRight: '.2em',
       margin: '.2em',

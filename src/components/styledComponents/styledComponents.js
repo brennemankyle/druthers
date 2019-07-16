@@ -15,20 +15,27 @@ const Wrapper = styled(RawWrapper)`
 `
 
 const Selection = styled(Item)`
-  box-sizing: border-box;
   border-radius: ${props => props.styles.borderRadius};
   align-items: center;
   justify-content: space-between;
+  margin-top: calc(${props => props.styles.selection.margin} / 2);
+  margin-bottom: calc(${props => props.styles.selection.margin} / 2);
+  padding-top: ${props => props.styles.selection.paddingTop};
+  padding-bottom: ${props => props.styles.selection.paddingBottom};
+  padding-left: ${props => props.styles.selection.paddingLeft};
+  padding-right: ${props => props.removable ? '0' : props.styles.selection.paddingRight};
 
   .remove {
     display: flex;
     border: none;
     border-radius: ${props => props.styles.borderRadius};
-    background-color: transparent;
+    margin-top: -${props => props.styles.selection.paddingTop};
+    margin-bottom: -${props => props.styles.selection.paddingBottom};
     padding-top: ${props => props.styles.selection.paddingTop};
     padding-bottom: ${props => props.styles.selection.paddingBottom};
-    padding-right: ${props => props.styles.selection.paddingRight};
     padding-left: ${props => props.styles.selection.paddingLeft};
+    padding-right: ${props => props.styles.selection.paddingRight};
+    background-color: transparent;
     font-size: 1em;
 
     img {
@@ -44,11 +51,7 @@ const Selection = styled(Item)`
     ? `
       display: inline-flex;
       background-color: ${props.styles.colors.secondary};
-      margin-right: ${props.styles.selection.margin};
-      padding-top: ${props.styles.selection.paddingTop};
-      padding-bottom: ${props.styles.selection.paddingBottom};
-      padding-left: ${props.styles.selection.paddingLeft};
-      padding-right: ${props.removable ? '0' : props.styles.selection.paddingRight}`
+      margin-right: ${props.styles.selection.margin};`
     : `
       display: flex;`
   }
@@ -97,10 +100,15 @@ const OptionList = styled(ItemList)`
 const Search = styled(RawSearch)`
   border: none;
   outline: 0;
-  padding: 0;
   font-size: 1em;
   font-family: inherit;
   background-color: transparent;
+  margin-top: calc(${props => props.styles.selection.margin} / 2);
+  margin-bottom: calc(${props => props.styles.selection.margin} / 2);
+  padding-top: ${props => props.styles.selection.paddingTop};
+  padding-bottom: ${props => props.styles.selection.paddingBottom};
+  padding-right: ${props => props.styles.selection.paddingRight};
+  padding-left: ${props => props.styles.selection.paddingLeft};
   ${props => props.styles.rightToLeft && `
     transform: scaleX(-1);
     text-align: right;`
@@ -108,7 +116,9 @@ const Search = styled(RawSearch)`
   ${props => props.hide
     ? `
       opacity: 0;
-      width: 0;`
+      width: 0;
+      padding: 0;
+      margin: 0;`
     : `
       width: ${props.styles.search.width};`
   }
