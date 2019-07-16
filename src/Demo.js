@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import NewInput from './components/NewInput/NewInput'
+import { NewInput } from './index'
 
 let options = [
   {value: '1', label: 'Option 1'},
