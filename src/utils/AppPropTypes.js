@@ -95,11 +95,9 @@ let simpleNewInputPropTypes = {
   optionKeys: PropTypes.arrayOf(PropTypes.string).isRequired,
   checkRadioMaxCount: PropTypes.number.isRequired,
 
-  text: PropTypes.shape({
-    placeholder: PropTypes.string.isRequired,
-    noOptions: PropTypes.string.isRequired,
-    create: PropTypes.string.isRequired,
-  }).isRequired,
+  text_placeholder: PropTypes.string.isRequired,
+  text_noOptions: PropTypes.string.isRequired,
+  text_create: PropTypes.string.isRequired,
 
   components: PropTypes.shape({
     HtmlFieldData: AppPropTypes.element.isRequired,

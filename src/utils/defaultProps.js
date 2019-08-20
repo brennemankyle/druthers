@@ -25,11 +25,9 @@ let defaultProps = {
   optionKeys: ['value', 'label'],
   checkRadioMaxCount: 10,
 
-  text: {
-    placeholder: '',
-    noOptions: 'No Options',
-    create: 'Create',
-  },
+  text_placeholder: '',
+  text_noOptions: 'No Options',
+  text_create: 'Create',
 
   components: {
     Select: undefined,

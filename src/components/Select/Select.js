@@ -35,7 +35,7 @@ let Select = (rawProps) => {
   const selfRef = useRef(null)
   const [areOptionsOpen, setAreOptionsOpen] = useState(false)
   const [searchText, setSearchText] = useState('')
-  const [placeholder, setPlacholder] = useState(props.text.placeholder)
+  const [placeholder, setPlacholder] = useState(props.text_placeholder)
   const [optionHighlighted, setOptionHighlighted] = useState()
 
   let hasOptions = !!props.options.length
@@ -55,7 +55,7 @@ let Select = (rawProps) => {
   }
 
   if (props.creatable && searchText && !filteredOptions.some(item => item.value === searchText)) {
-    filteredOptions.push({value: searchText, label: props.text.create + ` "${searchText}"`})
+    filteredOptions.push({value: searchText, label: props.text_create + ` "${searchText}"`})
   }
 
   if (!filteredOptions.map((option) => option.value).includes(optionHighlighted)) {
@@ -78,7 +78,7 @@ let Select = (rawProps) => {
 
     setPlacholder(!props.multiple && props.selection.length
       ? props.selection[0].label // Set placeholder to current selection on single select
-      : props.text.placeholder)
+      : props.text_placeholder)
 
     props.onFocus(e)
   }
@@ -102,7 +102,7 @@ let Select = (rawProps) => {
   let onRemove = (e) => {
     if (props.removable && e.target.classList.contains('remove')) {
       e.preventDefault() // Prevent click from opening options
-      setPlacholder(props.text.placeholder) // Reset placeholder for single select
+      setPlacholder(props.text_placeholder) // Reset placeholder for single select
       let value = []
 
       if (props.multiple) {
@@ -198,7 +198,7 @@ let Select = (rawProps) => {
     onClick={onOptionClick}
     onMouseOver={onHoverOption}
     Item={Option}
-    noItemsText={props.text.noOptions}
+    noItemsText={props.text_noOptions}
     styles={styles} />
 
   return <Wrapper styles={styles} ref={selfRef}>

@@ -14,16 +14,13 @@ let massageData = (props) => {
     return option == null ? {value: value, label: value} : option
   })
 
-  placeholder = otherProps.text.placeholder ? otherProps.text.placeholder : placeholder
+  placeholder = otherProps.text_placeholder ? otherProps.text_placeholder : placeholder
 
   return {
     ...otherProps,
     selection: massagedSelection,
     options,
-    text: {
-      ...otherProps.text,
-      placeholder,
-    },
+    text_placeholder: placeholder,
   }
 }
 
