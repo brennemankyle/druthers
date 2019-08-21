@@ -8,76 +8,76 @@ import { StyledAppendToBodyOptionsWrapper as RawStyledAppendToBodyOptionsWrapper
 import RawWrapper from '../Wrapper/Wrapper'
 
 const Wrapper = styled(RawWrapper)`
-  font-size: ${props => props.styles.fontSize};
-  ${props => props.styles.rightToLeft && `
+  font-size: ${props => props.styles_fontSize};
+  ${props => props.styles_rightToLeft && `
     transform: scaleX(-1);`
   }
 `
 
 const Selection = styled(Item)`
-  border-radius: ${props => props.styles.borderRadius};
+  border-radius: ${props => props.styles_borderRadius};
   align-items: center;
   justify-content: space-between;
-  margin-top: calc(${props => props.styles.selection.margin} / 2);
-  margin-bottom: calc(${props => props.styles.selection.margin} / 2);
-  padding-top: ${props => props.styles.selection.paddingTop};
-  padding-bottom: ${props => props.styles.selection.paddingBottom};
-  padding-left: ${props => props.styles.selection.paddingLeft};
-  padding-right: ${props => props.removable ? '0' : props.styles.selection.paddingRight};
+  margin-top: calc(${props => props.styles_selection_margin} / 2);
+  margin-bottom: calc(${props => props.styles_selection_margin} / 2);
+  padding-top: ${props => props.styles_selection_paddingTop};
+  padding-bottom: ${props => props.styles_selection_paddingBottom};
+  padding-left: ${props => props.styles_selection_paddingLeft};
+  padding-right: ${props => props.removable ? '0' : props.styles_selection_paddingRight};
 
   .remove {
     display: flex;
     border: none;
-    border-radius: ${props => props.styles.borderRadius};
-    margin-top: -${props => props.styles.selection.paddingTop};
-    margin-bottom: -${props => props.styles.selection.paddingBottom};
-    padding-top: ${props => props.styles.selection.paddingTop};
-    padding-bottom: ${props => props.styles.selection.paddingBottom};
-    padding-left: ${props => props.styles.selection.paddingLeft};
-    padding-right: ${props => props.styles.selection.paddingRight};
+    border-radius: ${props => props.styles_borderRadius};
+    margin-top: -${props => props.styles_selection_paddingTop};
+    margin-bottom: -${props => props.styles_selection_paddingBottom};
+    padding-top: ${props => props.styles_selection_paddingTop};
+    padding-bottom: ${props => props.styles_selection_paddingBottom};
+    padding-left: ${props => props.styles_selection_paddingLeft};
+    padding-right: ${props => props.styles_selection_paddingRight};
     background-color: transparent;
     font-size: 1em;
 
     img {
-      width: ${props => props.styles.icon.width};
+      width: ${props => props.styles_icon_width};
     }
 
     &:hover {
-      background-color: ${props => props.styles.colors.warning};
+      background-color: ${props => props.styles_colors_warning};
     }
   }
 
-  ${props => props.styles.multiple
+  ${props => props.styles_multiple
     ? `
       display: inline-flex;
-      background-color: ${props.styles.colors.secondary};
-      margin-right: ${props.styles.selection.margin};`
+      background-color: ${props.styles_colors_secondary};
+      margin-right: ${props.styles_selection_margin};`
     : `
       display: flex;`
   }
-  ${props => props.styles.rightToLeft && `
+  ${props => props.styles_rightToLeft && `
     transform: scaleX(-1);`
   }
 `
 
 const Option = styled(Item)`
-  padding-top: ${props => props.styles.option.paddingTop};
-  padding-bottom: ${props => props.styles.option.paddingBottom};
-  padding-right: ${props => props.styles.option.paddingRight};
-  padding-left: ${props => props.styles.option.paddingLeft};
+  padding-top: ${props => props.styles_option_paddingTop};
+  padding-bottom: ${props => props.styles_option_paddingBottom};
+  padding-right: ${props => props.styles_option_paddingRight};
+  padding-left: ${props => props.styles_option_paddingLeft};
 
-  ${props => props.styles.optionHighlighted === props.item.value
-    ? `background-color: ${props.styles.colors.highlight};`
+  ${props => props.styles_optionHighlighted === props.item.value
+    ? `background-color: ${props.styles_colors_highlight};`
     : ``
   }
-  ${props => props.styles.rightToLeft && `
+  ${props => props.styles_rightToLeft && `
     transform: scaleX(-1);
     text-align: right;`
   }
 `
 
 const SelectionList = styled(ItemList)`
-  ${props => props.styles.multiple
+  ${props => props.styles_multiple
     ? `
       display: inline;`
     : `
@@ -94,7 +94,7 @@ const OptionList = styled(ItemList)`
   list-style-type: none;
   padding: 0;
   margin: 0;
-  border: 1px solid ${props => props.styles.colors.secondary};
+  border: 1px solid ${props => props.styles_colors_secondary};
 `
 
 const Search = styled(RawSearch)`
@@ -103,13 +103,13 @@ const Search = styled(RawSearch)`
   font-size: 1em;
   font-family: inherit;
   background-color: transparent;
-  margin-top: calc(${props => props.styles.selection.margin} / 2);
-  margin-bottom: calc(${props => props.styles.selection.margin} / 2);
-  padding-top: ${props => props.styles.selection.paddingTop};
-  padding-bottom: ${props => props.styles.selection.paddingBottom};
-  padding-right: ${props => props.styles.selection.paddingRight};
-  padding-left: ${props => props.styles.selection.paddingLeft};
-  ${props => props.styles.rightToLeft && `
+  margin-top: calc(${props => props.styles_selection_margin} / 2);
+  margin-bottom: calc(${props => props.styles_selection_margin} / 2);
+  padding-top: ${props => props.styles_selection_paddingTop};
+  padding-bottom: ${props => props.styles_selection_paddingBottom};
+  padding-right: ${props => props.styles_selection_paddingRight};
+  padding-left: ${props => props.styles_selection_paddingLeft};
+  ${props => props.styles_rightToLeft && `
     transform: scaleX(-1);
     text-align: right;`
   }
@@ -120,15 +120,15 @@ const Search = styled(RawSearch)`
       padding: 0;
       margin: 0;`
     : `
-      width: ${props.styles.search.width};`
+      width: ${props.styles_search_width};`
   }
-  ${props => props.styles.disabled && `
+  ${props => props.styles_disabled && `
     cursor: not-allowed;`
   }
 `
 
 const CheckBox = styled(InternalCheckRadio)`
-  margin-right: ${props => props.styles.checkRadio.marginBetween};
+  margin-right: ${props => props.styles_checkRadio_marginBetween};
   display: inline-flex;
   align-items: center;
   user-select: none;
@@ -136,31 +136,31 @@ const CheckBox = styled(InternalCheckRadio)`
   ${props => props.disabled
     ? `
       && .check-radio-display {
-        border-color: ${props.styles.colors.disabled};
+        border-color: ${props.styles_colors_disabled};
       }`
     : `
       &:hover .check-radio-display {
-        border-color: ${props.styles.colors.primary};
+        border-color: ${props.styles_colors_primary};
       }
       &.focus .check-radio-display {
-        border-color: ${props.styles.colors.primary};
+        border-color: ${props.styles_colors_primary};
       }`
   }
 
   .check-radio-display {
-    border-radius: ${props => props.styles.borderRadius};
-    margin-right: ${props => props.styles.checkRadio.labelMargin};
-    padding-top: ${props => props.styles.checkRadio.paddingTop};
-    padding-bottom: ${props => props.styles.checkRadio.paddingBottom};
-    padding-right: ${props => props.styles.checkRadio.paddingRight};
-    padding-left: ${props => props.styles.checkRadio.paddingLeft};
-    border: ${props => props.styles.checkRadio.borderWidth} solid ${props => props.styles.colors.secondary};
-    width: ${props => props.styles.icon.width};
-    height: ${props => props.styles.icon.width};
-    background-color: ${props => props.disabled ? props.styles.colors.disabled : props.styles.colors.background};
+    border-radius: ${props => props.styles_borderRadius};
+    margin-right: ${props => props.styles_checkRadio_labelMargin};
+    padding-top: ${props => props.styles_checkRadio_paddingTop};
+    padding-bottom: ${props => props.styles_checkRadio_paddingBottom};
+    padding-right: ${props => props.styles_checkRadio_paddingRight};
+    padding-left: ${props => props.styles_checkRadio_paddingLeft};
+    border: ${props => props.styles_checkRadio_borderWidth} solid ${props => props.styles_colors_secondary};
+    width: ${props => props.styles_icon_width};
+    height: ${props => props.styles_icon_width};
+    background-color: ${props => props.disabled ? props.styles_colors_disabled : props.styles_colors_background};
 
     img {
-      width: ${props => props.styles.icon.width};
+      width: ${props => props.styles_icon_width};
       ${props => !props.checked && `
         visibility: hidden;`
       }
@@ -174,7 +174,7 @@ const CheckBox = styled(InternalCheckRadio)`
 `
 
 const Radio = styled(InternalCheckRadio)`
-  margin-right: ${props => props.styles.checkRadio.marginBetween};
+  margin-right: ${props => props.styles_checkRadio_marginBetween};
   display: inline-flex;
   align-items: center;
   cursor: pointer;
@@ -183,36 +183,36 @@ const Radio = styled(InternalCheckRadio)`
   ${props => props.disabled
     ? `
       && .check-radio-display {
-        border-color: ${props.styles.colors.disabled};
+        border-color: ${props.styles_colors_disabled};
       }`
     : `
       &:hover .check-radio-display {
-        border-color: ${props.styles.colors.primary};
+        border-color: ${props.styles_colors_primary};
       }
       &.focus .check-radio-display {
-        border-color: ${props.styles.colors.primary};
+        border-color: ${props.styles_colors_primary};
       }`
   }
 
   .check-radio-display {
     border-radius: 100%;
-    margin-right: ${props => props.styles.checkRadio.labelMargin};
-    padding-top: ${props => props.styles.checkRadio.paddingTop};
-    padding-bottom: ${props => props.styles.checkRadio.paddingBottom};
-    padding-right: ${props => props.styles.checkRadio.paddingRight};
-    padding-left: ${props => props.styles.checkRadio.paddingLeft};
+    margin-right: ${props => props.styles_checkRadio_labelMargin};
+    padding-top: ${props => props.styles_checkRadio_paddingTop};
+    padding-bottom: ${props => props.styles_checkRadio_paddingBottom};
+    padding-right: ${props => props.styles_checkRadio_paddingRight};
+    padding-left: ${props => props.styles_checkRadio_paddingLeft};
     background-size: .1em;
-    border: ${props => props.styles.checkRadio.borderWidth} solid ${props => props.styles.colors.secondary};
-    width: ${props => props.styles.icon.width};
-    height: ${props => props.styles.icon.width};
-    background-color: ${props => props.disabled ? props.styles.colors.disabled : props.styles.colors.background};
+    border: ${props => props.styles_checkRadio_borderWidth} solid ${props => props.styles_colors_secondary};
+    width: ${props => props.styles_icon_width};
+    height: ${props => props.styles_icon_width};
+    background-color: ${props => props.disabled ? props.styles_colors_disabled : props.styles_colors_background};
     ${props => props.checked && `
-      background-color: ${props.styles.colors.secondary};`
+      background-color: ${props.styles_colors_secondary};`
     }
 
     img {
       visibility: hidden;
-      width: ${props => props.styles.icon.width};
+      width: ${props => props.styles_icon_width};
     }
   }
 
@@ -231,40 +231,40 @@ const Switch = styled(InternalCheckRadio)`
   ${props => props.disabled
     ? `
       && .check-radio-display {
-        border-color: ${props.styles.colors.disabled};
+        border-color: ${props.styles_colors_disabled};
       }`
     : `
       &:hover .check-radio-display {
-        border-color: ${props.styles.colors.primary};
+        border-color: ${props.styles_colors_primary};
       }
       &.focus .check-radio-display {
-        border-color: ${props.styles.colors.primary};
+        border-color: ${props.styles_colors_primary};
       }`
   }
 
   .check-radio-display {
-    margin-right: ${props => props.styles.checkRadio.labelMargin};
+    margin-right: ${props => props.styles_checkRadio_labelMargin};
     display: inline-flex;
     align-items: center;
     border-radius: 1em;
-    padding-top: ${props => props.styles.checkRadio.paddingTop};
-    padding-bottom: ${props => props.styles.checkRadio.paddingBottom};
-    padding-right: ${props => props.styles.checkRadio.paddingRight};
-    padding-left: ${props => props.styles.checkRadio.paddingLeft};
-    border: ${props => props.styles.checkRadio.borderWidth} solid ${props => props.styles.colors.secondary};
-    width: calc(${props => props.styles.icon.width} * 2);
-    height: ${props => props.styles.icon.width};
-    background-color: ${props => props.disabled ? props.styles.colors.disabled : props.styles.colors.background};
+    padding-top: ${props => props.styles_checkRadio_paddingTop};
+    padding-bottom: ${props => props.styles_checkRadio_paddingBottom};
+    padding-right: ${props => props.styles_checkRadio_paddingRight};
+    padding-left: ${props => props.styles_checkRadio_paddingLeft};
+    border: ${props => props.styles_checkRadio_borderWidth} solid ${props => props.styles_colors_secondary};
+    width: calc(${props => props.styles_icon_width} * 2);
+    height: ${props => props.styles_icon_width};
+    background-color: ${props => props.disabled ? props.styles_colors_disabled : props.styles_colors_background};
 
     img {
-      width: ${props => props.styles.icon.width};
+      width: ${props => props.styles_icon_width};
       border-radius: 100%;
       ${props => props.checked
         ? `
-          margin-left: ${props.styles.icon.width};
-          background-color: ${props.styles.colors.primary};`
+          margin-left: ${props.styles_icon_width};
+          background-color: ${props.styles_colors_primary};`
         : `
-          background-color: ${props.styles.colors.secondary};`
+          background-color: ${props.styles_colors_secondary};`
       }
       object-position: -99999px 99999px;
     }
@@ -277,22 +277,22 @@ const Switch = styled(InternalCheckRadio)`
 `
 
 const SelectionWrapper = styled(RawSelectionWrapper)`
-  border: 1px solid ${props => props.styles.colors.secondary};
-  border-radius: ${props => props.styles.borderRadius};
+  border: 1px solid ${props => props.styles_colors_secondary};
+  border-radius: ${props => props.styles_borderRadius};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: ${props => props.styles.paddingTop};
-  padding-bottom: ${props => props.styles.paddingBottom};
-  padding-right: ${props => props.styles.paddingRight};
-  padding-left: ${props => props.styles.paddingLeft};
+  padding-top: ${props => props.styles_paddingTop};
+  padding-bottom: ${props => props.styles_paddingBottom};
+  padding-right: ${props => props.styles_paddingRight};
+  padding-left: ${props => props.styles_paddingLeft};
   & > *:first-child {
     flex-grow: 1;
   }
 
-  ${props => !props.styles.disabled && `
+  ${props => !props.styles_disabled && `
     &:hover {
-      border-color: ${props.styles.colors.primary};
+      border-color: ${props.styles_colors_primary};
     }`
   }
 
@@ -300,22 +300,22 @@ const SelectionWrapper = styled(RawSelectionWrapper)`
     img {
       transform: scaleY(-1);
     }
-    border-color: ${props.styles.colors.primary};`}
+    border-color: ${props.styles_colors_primary};`}
 
-  ${props => props.styles.hasOptions
+  ${props => props.styles_hasOptions
     ? `
       .divider {
         width: 1px;
         align-self: stretch;
-        background-color: ${props.styles.colors.secondary};
+        background-color: ${props.styles_colors_secondary};
         margin: 0 .4em;
       }
 
       .expand {
-        width: ${props.styles.icon.width};
+        width: ${props.styles_icon_width};
         margin-top: -1px;
 
-        ${!props.styles.disabled && `
+        ${!props.styles_disabled && `
           &:hover {
             opacity: 0.5;
           }`
@@ -331,8 +331,8 @@ const SelectionWrapper = styled(RawSelectionWrapper)`
       }`
   }
 
-  background-color: ${props => props.styles.disabled ? props.styles.colors.disabled : props.styles.colors.background};
-  ${props => props.styles.disabled && `
+  background-color: ${props => props.styles_disabled ? props.styles_colors_disabled : props.styles_colors_background};
+  ${props => props.styles_disabled && `
     cursor: not-allowed;`
   }
 `
@@ -346,14 +346,14 @@ const OptionWrapper = styled(RawWrapper)`
   top: 0;
   left: 0;
   z-index: 999;
-  background-color: ${props => props.styles.colors.background};
-  width: ${props => props.styles.width}px;
+  background-color: ${props => props.styles_colors_background};
+  width: ${props => props.styles_width}px;
 `
 
 const StyledAppendToBodyOptionsWrapper = styled(RawStyledAppendToBodyOptionsWrapper)`
   position: absolute;
-  background-color: ${props => props.styles.colors.background};
-  width: ${props => props.styles.width}px;
+  background-color: ${props => props.styles_colors_background};
+  width: ${props => props.styles_width}px;
 
   ${props => props.placeOptionsAbove ? `
       bottom: ${window.innerHeight - props.parentRect.y}px;
@@ -362,7 +362,7 @@ const StyledAppendToBodyOptionsWrapper = styled(RawStyledAppendToBodyOptionsWrap
       top: ${props.parentRect.y + props.parentRect.height}px;
       left: ${props.parentRect.x}px;`
   }
-  ${props => props.styles.rightToLeft && `
+  ${props => props.styles_rightToLeft && `
     transform: scaleX(-1);`
   }
 `

@@ -2,6 +2,7 @@ import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
 import defaultProps from '../../utils/defaultProps'
+import withKeys from '../../utils/withKeys'
 import { CheckBox, Radio, Switch } from '../styledComponents/styledComponents'
 
 let CheckRadio = (rawProps, ref) => {
@@ -60,7 +61,7 @@ let CheckRadio = (rawProps, ref) => {
         title={option.label}
         multiple={props.multiple}
         toggle={useSwitch}
-        styles={props.styles}
+        {...withKeys(props, 'styles_')}
         key={option.value} />)}</div>
 }
 
@@ -98,7 +99,7 @@ CheckRadio.propTypes = {
     Radio: AppPropTypes.element.isRequired,
     Switch: AppPropTypes.element.isRequired,
   }).isRequired,
-  styles: AppPropTypes.styles.isRequired,
+  ...AppPropTypes.styles,
 }
 
 export default CheckRadio

@@ -9,7 +9,7 @@ const onMouseOver = jest.fn()
 
 it('renders', () => {
   const wrapper = shallow(<ItemList
-    styles={mockStyles}
+    {...mockStyles}
     itemList={mockItemList}
     Item={MockElement} />)
 
@@ -18,7 +18,7 @@ it('renders', () => {
 
 it('renders removable', () => {
   const wrapper = shallow(<ItemList
-    styles={mockStyles}
+    {...mockStyles}
     itemList={mockItemList}
     Item={MockElement}
     removable={true} />)
@@ -28,7 +28,7 @@ it('renders removable', () => {
 
 it('renders no items', () => {
   const wrapper = shallow(<ItemList
-    styles={mockStyles}
+    {...mockStyles}
     itemList={[]}
     Item={MockElement}
     removable={true}
@@ -46,7 +46,7 @@ it('renders no items', () => {
 
 it('should click', () => {
   const wrapper = shallow(<ItemList
-    styles={mockStyles}
+    {...mockStyles}
     itemList={mockItemList}
     Item={MockElement}
     onClick={onClick} />)
@@ -58,7 +58,7 @@ it('should click', () => {
 
 it('should mouseOver', () => {
   const wrapper = shallow(<ItemList
-    styles={mockStyles}
+    {...mockStyles}
     itemList={mockItemList}
     Item={MockElement}
     onMouseOver={onMouseOver} />)

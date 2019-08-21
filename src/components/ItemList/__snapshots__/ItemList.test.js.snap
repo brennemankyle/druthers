@@ -11,59 +11,43 @@ exports[`renders 1`] = `
     }
     key="1"
     removable={false}
-    styles={
-      Object {
-        "borderRadius": ".2em",
-        "checkRadio": Object {
-          "borderWidth": "2px",
-          "labelMargin": ".2em",
-          "marginBetween": "1em",
-          "paddingBottom": ".2em",
-          "paddingLeft": ".2em",
-          "paddingRight": ".2em",
-          "paddingTop": ".2em",
-        },
-        "colors": Object {
-          "background": "white",
-          "disabled": "#ECECEC",
-          "highlight": "lightblue",
-          "primary": "black",
-          "secondary": "#C3C3C3",
-          "warning": "#CD5C5C",
-        },
-        "disabled": false,
-        "fontSize": "1em",
-        "hasOptions": true,
-        "hasSelection": false,
-        "icon": Object {
-          "width": "1em",
-        },
-        "multiple": false,
-        "option": Object {
-          "paddingBottom": ".25em",
-          "paddingLeft": ".25em",
-          "paddingRight": ".25em",
-          "paddingTop": ".25em",
-        },
-        "optionHighlighted": Array [],
-        "paddingBottom": ".25em",
-        "paddingLeft": ".25em",
-        "paddingRight": ".25em",
-        "paddingTop": ".25em",
-        "rightToLeft": false,
-        "search": Object {
-          "width": "10em",
-        },
-        "selection": Object {
-          "margin": ".2em",
-          "paddingBottom": ".1em",
-          "paddingLeft": ".2em",
-          "paddingRight": ".2em",
-          "paddingTop": ".1em",
-        },
-        "width": "600px",
-      }
-    }
+    styles_borderRadius=".2em"
+    styles_checkRadio_borderWidth="2px"
+    styles_checkRadio_labelMargin=".2em"
+    styles_checkRadio_marginBetween="1em"
+    styles_checkRadio_paddingBottom=".2em"
+    styles_checkRadio_paddingLeft=".2em"
+    styles_checkRadio_paddingRight=".2em"
+    styles_checkRadio_paddingTop=".2em"
+    styles_colors_background="white"
+    styles_colors_disabled="#ECECEC"
+    styles_colors_highlight="lightblue"
+    styles_colors_primary="black"
+    styles_colors_secondary="#C3C3C3"
+    styles_colors_warning="#CD5C5C"
+    styles_disabled={false}
+    styles_fontSize="1em"
+    styles_hasOptions={true}
+    styles_hasSelection={false}
+    styles_icon_width="1em"
+    styles_multiple={false}
+    styles_optionHighlighted={Array []}
+    styles_option_paddingBottom=".25em"
+    styles_option_paddingLeft=".25em"
+    styles_option_paddingRight=".25em"
+    styles_option_paddingTop=".25em"
+    styles_paddingBottom=".25em"
+    styles_paddingLeft=".25em"
+    styles_paddingRight=".25em"
+    styles_paddingTop=".25em"
+    styles_rightToLeft={false}
+    styles_search_width="10em"
+    styles_selection_margin=".2em"
+    styles_selection_paddingBottom=".1em"
+    styles_selection_paddingLeft=".2em"
+    styles_selection_paddingRight=".2em"
+    styles_selection_paddingTop=".1em"
+    styles_width="600px"
   />
   <MockElement
     item={
@@ -74,59 +58,43 @@ exports[`renders 1`] = `
     }
     key="2"
     removable={false}
-    styles={
-      Object {
-        "borderRadius": ".2em",
-        "checkRadio": Object {
-          "borderWidth": "2px",
-          "labelMargin": ".2em",
-          "marginBetween": "1em",
-          "paddingBottom": ".2em",
-          "paddingLeft": ".2em",
-          "paddingRight": ".2em",
-          "paddingTop": ".2em",
-        },
-        "colors": Object {
-          "background": "white",
-          "disabled": "#ECECEC",
-          "highlight": "lightblue",
-          "primary": "black",
-          "secondary": "#C3C3C3",
-          "warning": "#CD5C5C",
-        },
-        "disabled": false,
-        "fontSize": "1em",
-        "hasOptions": true,
-        "hasSelection": false,
-        "icon": Object {
-          "width": "1em",
-        },
-        "multiple": false,
-        "option": Object {
-          "paddingBottom": ".25em",
-          "paddingLeft": ".25em",
-          "paddingRight": ".25em",
-          "paddingTop": ".25em",
-        },
-        "optionHighlighted": Array [],
-        "paddingBottom": ".25em",
-        "paddingLeft": ".25em",
-        "paddingRight": ".25em",
-        "paddingTop": ".25em",
-        "rightToLeft": false,
-        "search": Object {
-          "width": "10em",
-        },
-        "selection": Object {
-          "margin": ".2em",
-          "paddingBottom": ".1em",
-          "paddingLeft": ".2em",
-          "paddingRight": ".2em",
-          "paddingTop": ".1em",
-        },
-        "width": "600px",
-      }
-    }
+    styles_borderRadius=".2em"
+    styles_checkRadio_borderWidth="2px"
+    styles_checkRadio_labelMargin=".2em"
+    styles_checkRadio_marginBetween="1em"
+    styles_checkRadio_paddingBottom=".2em"
+    styles_checkRadio_paddingLeft=".2em"
+    styles_checkRadio_paddingRight=".2em"
+    styles_checkRadio_paddingTop=".2em"
+    styles_colors_background="white"
+    styles_colors_disabled="#ECECEC"
+    styles_colors_highlight="lightblue"
+    styles_colors_primary="black"
+    styles_colors_secondary="#C3C3C3"
+    styles_colors_warning="#CD5C5C"
+    styles_disabled={false}
+    styles_fontSize="1em"
+    styles_hasOptions={true}
+    styles_hasSelection={false}
+    styles_icon_width="1em"
+    styles_multiple={false}
+    styles_optionHighlighted={Array []}
+    styles_option_paddingBottom=".25em"
+    styles_option_paddingLeft=".25em"
+    styles_option_paddingRight=".25em"
+    styles_option_paddingTop=".25em"
+    styles_paddingBottom=".25em"
+    styles_paddingLeft=".25em"
+    styles_paddingRight=".25em"
+    styles_paddingTop=".25em"
+    styles_rightToLeft={false}
+    styles_search_width="10em"
+    styles_selection_margin=".2em"
+    styles_selection_paddingBottom=".1em"
+    styles_selection_paddingLeft=".2em"
+    styles_selection_paddingRight=".2em"
+    styles_selection_paddingTop=".1em"
+    styles_width="600px"
   />
   <MockElement
     item={
@@ -137,59 +105,43 @@ exports[`renders 1`] = `
     }
     key="3"
     removable={false}
-    styles={
-      Object {
-        "borderRadius": ".2em",
-        "checkRadio": Object {
-          "borderWidth": "2px",
-          "labelMargin": ".2em",
-          "marginBetween": "1em",
-          "paddingBottom": ".2em",
-          "paddingLeft": ".2em",
-          "paddingRight": ".2em",
-          "paddingTop": ".2em",
-        },
-        "colors": Object {
-          "background": "white",
-          "disabled": "#ECECEC",
-          "highlight": "lightblue",
-          "primary": "black",
-          "secondary": "#C3C3C3",
-          "warning": "#CD5C5C",
-        },
-        "disabled": false,
-        "fontSize": "1em",
-        "hasOptions": true,
-        "hasSelection": false,
-        "icon": Object {
-          "width": "1em",
-        },
-        "multiple": false,
-        "option": Object {
-          "paddingBottom": ".25em",
-          "paddingLeft": ".25em",
-          "paddingRight": ".25em",
-          "paddingTop": ".25em",
-        },
-        "optionHighlighted": Array [],
-        "paddingBottom": ".25em",
-        "paddingLeft": ".25em",
-        "paddingRight": ".25em",
-        "paddingTop": ".25em",
-        "rightToLeft": false,
-        "search": Object {
-          "width": "10em",
-        },
-        "selection": Object {
-          "margin": ".2em",
-          "paddingBottom": ".1em",
-          "paddingLeft": ".2em",
-          "paddingRight": ".2em",
-          "paddingTop": ".1em",
-        },
-        "width": "600px",
-      }
-    }
+    styles_borderRadius=".2em"
+    styles_checkRadio_borderWidth="2px"
+    styles_checkRadio_labelMargin=".2em"
+    styles_checkRadio_marginBetween="1em"
+    styles_checkRadio_paddingBottom=".2em"
+    styles_checkRadio_paddingLeft=".2em"
+    styles_checkRadio_paddingRight=".2em"
+    styles_checkRadio_paddingTop=".2em"
+    styles_colors_background="white"
+    styles_colors_disabled="#ECECEC"
+    styles_colors_highlight="lightblue"
+    styles_colors_primary="black"
+    styles_colors_secondary="#C3C3C3"
+    styles_colors_warning="#CD5C5C"
+    styles_disabled={false}
+    styles_fontSize="1em"
+    styles_hasOptions={true}
+    styles_hasSelection={false}
+    styles_icon_width="1em"
+    styles_multiple={false}
+    styles_optionHighlighted={Array []}
+    styles_option_paddingBottom=".25em"
+    styles_option_paddingLeft=".25em"
+    styles_option_paddingRight=".25em"
+    styles_option_paddingTop=".25em"
+    styles_paddingBottom=".25em"
+    styles_paddingLeft=".25em"
+    styles_paddingRight=".25em"
+    styles_paddingTop=".25em"
+    styles_rightToLeft={false}
+    styles_search_width="10em"
+    styles_selection_margin=".2em"
+    styles_selection_paddingBottom=".1em"
+    styles_selection_paddingLeft=".2em"
+    styles_selection_paddingRight=".2em"
+    styles_selection_paddingTop=".1em"
+    styles_width="600px"
   />
   <MockElement
     item={
@@ -200,59 +152,43 @@ exports[`renders 1`] = `
     }
     key="4"
     removable={false}
-    styles={
-      Object {
-        "borderRadius": ".2em",
-        "checkRadio": Object {
-          "borderWidth": "2px",
-          "labelMargin": ".2em",
-          "marginBetween": "1em",
-          "paddingBottom": ".2em",
-          "paddingLeft": ".2em",
-          "paddingRight": ".2em",
-          "paddingTop": ".2em",
-        },
-        "colors": Object {
-          "background": "white",
-          "disabled": "#ECECEC",
-          "highlight": "lightblue",
-          "primary": "black",
-          "secondary": "#C3C3C3",
-          "warning": "#CD5C5C",
-        },
-        "disabled": false,
-        "fontSize": "1em",
-        "hasOptions": true,
-        "hasSelection": false,
-        "icon": Object {
-          "width": "1em",
-        },
-        "multiple": false,
-        "option": Object {
-          "paddingBottom": ".25em",
-          "paddingLeft": ".25em",
-          "paddingRight": ".25em",
-          "paddingTop": ".25em",
-        },
-        "optionHighlighted": Array [],
-        "paddingBottom": ".25em",
-        "paddingLeft": ".25em",
-        "paddingRight": ".25em",
-        "paddingTop": ".25em",
-        "rightToLeft": false,
-        "search": Object {
-          "width": "10em",
-        },
-        "selection": Object {
-          "margin": ".2em",
-          "paddingBottom": ".1em",
-          "paddingLeft": ".2em",
-          "paddingRight": ".2em",
-          "paddingTop": ".1em",
-        },
-        "width": "600px",
-      }
-    }
+    styles_borderRadius=".2em"
+    styles_checkRadio_borderWidth="2px"
+    styles_checkRadio_labelMargin=".2em"
+    styles_checkRadio_marginBetween="1em"
+    styles_checkRadio_paddingBottom=".2em"
+    styles_checkRadio_paddingLeft=".2em"
+    styles_checkRadio_paddingRight=".2em"
+    styles_checkRadio_paddingTop=".2em"
+    styles_colors_background="white"
+    styles_colors_disabled="#ECECEC"
+    styles_colors_highlight="lightblue"
+    styles_colors_primary="black"
+    styles_colors_secondary="#C3C3C3"
+    styles_colors_warning="#CD5C5C"
+    styles_disabled={false}
+    styles_fontSize="1em"
+    styles_hasOptions={true}
+    styles_hasSelection={false}
+    styles_icon_width="1em"
+    styles_multiple={false}
+    styles_optionHighlighted={Array []}
+    styles_option_paddingBottom=".25em"
+    styles_option_paddingLeft=".25em"
+    styles_option_paddingRight=".25em"
+    styles_option_paddingTop=".25em"
+    styles_paddingBottom=".25em"
+    styles_paddingLeft=".25em"
+    styles_paddingRight=".25em"
+    styles_paddingTop=".25em"
+    styles_rightToLeft={false}
+    styles_search_width="10em"
+    styles_selection_margin=".2em"
+    styles_selection_paddingBottom=".1em"
+    styles_selection_paddingLeft=".2em"
+    styles_selection_paddingRight=".2em"
+    styles_selection_paddingTop=".1em"
+    styles_width="600px"
   />
   <MockElement
     item={
@@ -263,59 +199,43 @@ exports[`renders 1`] = `
     }
     key="5"
     removable={false}
-    styles={
-      Object {
-        "borderRadius": ".2em",
-        "checkRadio": Object {
-          "borderWidth": "2px",
-          "labelMargin": ".2em",
-          "marginBetween": "1em",
-          "paddingBottom": ".2em",
-          "paddingLeft": ".2em",
-          "paddingRight": ".2em",
-          "paddingTop": ".2em",
-        },
-        "colors": Object {
-          "background": "white",
-          "disabled": "#ECECEC",
-          "highlight": "lightblue",
-          "primary": "black",
-          "secondary": "#C3C3C3",
-          "warning": "#CD5C5C",
-        },
-        "disabled": false,
-        "fontSize": "1em",
-        "hasOptions": true,
-        "hasSelection": false,
-        "icon": Object {
-          "width": "1em",
-        },
-        "multiple": false,
-        "option": Object {
-          "paddingBottom": ".25em",
-          "paddingLeft": ".25em",
-          "paddingRight": ".25em",
-          "paddingTop": ".25em",
-        },
-        "optionHighlighted": Array [],
-        "paddingBottom": ".25em",
-        "paddingLeft": ".25em",
-        "paddingRight": ".25em",
-        "paddingTop": ".25em",
-        "rightToLeft": false,
-        "search": Object {
-          "width": "10em",
-        },
-        "selection": Object {
-          "margin": ".2em",
-          "paddingBottom": ".1em",
-          "paddingLeft": ".2em",
-          "paddingRight": ".2em",
-          "paddingTop": ".1em",
-        },
-        "width": "600px",
-      }
-    }
+    styles_borderRadius=".2em"
+    styles_checkRadio_borderWidth="2px"
+    styles_checkRadio_labelMargin=".2em"
+    styles_checkRadio_marginBetween="1em"
+    styles_checkRadio_paddingBottom=".2em"
+    styles_checkRadio_paddingLeft=".2em"
+    styles_checkRadio_paddingRight=".2em"
+    styles_checkRadio_paddingTop=".2em"
+    styles_colors_background="white"
+    styles_colors_disabled="#ECECEC"
+    styles_colors_highlight="lightblue"
+    styles_colors_primary="black"
+    styles_colors_secondary="#C3C3C3"
+    styles_colors_warning="#CD5C5C"
+    styles_disabled={false}
+    styles_fontSize="1em"
+    styles_hasOptions={true}
+    styles_hasSelection={false}
+    styles_icon_width="1em"
+    styles_multiple={false}
+    styles_optionHighlighted={Array []}
+    styles_option_paddingBottom=".25em"
+    styles_option_paddingLeft=".25em"
+    styles_option_paddingRight=".25em"
+    styles_option_paddingTop=".25em"
+    styles_paddingBottom=".25em"
+    styles_paddingLeft=".25em"
+    styles_paddingRight=".25em"
+    styles_paddingTop=".25em"
+    styles_rightToLeft={false}
+    styles_search_width="10em"
+    styles_selection_margin=".2em"
+    styles_selection_paddingBottom=".1em"
+    styles_selection_paddingLeft=".2em"
+    styles_selection_paddingRight=".2em"
+    styles_selection_paddingTop=".1em"
+    styles_width="600px"
   />
 </ul>
 `;
@@ -333,59 +253,43 @@ exports[`renders no items 1`] = `
       }
     }
     removable={false}
-    styles={
-      Object {
-        "borderRadius": ".2em",
-        "checkRadio": Object {
-          "borderWidth": "2px",
-          "labelMargin": ".2em",
-          "marginBetween": "1em",
-          "paddingBottom": ".2em",
-          "paddingLeft": ".2em",
-          "paddingRight": ".2em",
-          "paddingTop": ".2em",
-        },
-        "colors": Object {
-          "background": "white",
-          "disabled": "#ECECEC",
-          "highlight": "lightblue",
-          "primary": "black",
-          "secondary": "#C3C3C3",
-          "warning": "#CD5C5C",
-        },
-        "disabled": false,
-        "fontSize": "1em",
-        "hasOptions": true,
-        "hasSelection": false,
-        "icon": Object {
-          "width": "1em",
-        },
-        "multiple": false,
-        "option": Object {
-          "paddingBottom": ".25em",
-          "paddingLeft": ".25em",
-          "paddingRight": ".25em",
-          "paddingTop": ".25em",
-        },
-        "optionHighlighted": Array [],
-        "paddingBottom": ".25em",
-        "paddingLeft": ".25em",
-        "paddingRight": ".25em",
-        "paddingTop": ".25em",
-        "rightToLeft": false,
-        "search": Object {
-          "width": "10em",
-        },
-        "selection": Object {
-          "margin": ".2em",
-          "paddingBottom": ".1em",
-          "paddingLeft": ".2em",
-          "paddingRight": ".2em",
-          "paddingTop": ".1em",
-        },
-        "width": "600px",
-      }
-    }
+    styles_borderRadius=".2em"
+    styles_checkRadio_borderWidth="2px"
+    styles_checkRadio_labelMargin=".2em"
+    styles_checkRadio_marginBetween="1em"
+    styles_checkRadio_paddingBottom=".2em"
+    styles_checkRadio_paddingLeft=".2em"
+    styles_checkRadio_paddingRight=".2em"
+    styles_checkRadio_paddingTop=".2em"
+    styles_colors_background="white"
+    styles_colors_disabled="#ECECEC"
+    styles_colors_highlight="lightblue"
+    styles_colors_primary="black"
+    styles_colors_secondary="#C3C3C3"
+    styles_colors_warning="#CD5C5C"
+    styles_disabled={false}
+    styles_fontSize="1em"
+    styles_hasOptions={true}
+    styles_hasSelection={false}
+    styles_icon_width="1em"
+    styles_multiple={false}
+    styles_optionHighlighted={Array []}
+    styles_option_paddingBottom=".25em"
+    styles_option_paddingLeft=".25em"
+    styles_option_paddingRight=".25em"
+    styles_option_paddingTop=".25em"
+    styles_paddingBottom=".25em"
+    styles_paddingLeft=".25em"
+    styles_paddingRight=".25em"
+    styles_paddingTop=".25em"
+    styles_rightToLeft={false}
+    styles_search_width="10em"
+    styles_selection_margin=".2em"
+    styles_selection_paddingBottom=".1em"
+    styles_selection_paddingLeft=".2em"
+    styles_selection_paddingRight=".2em"
+    styles_selection_paddingTop=".1em"
+    styles_width="600px"
   />
 </ul>
 `;
@@ -401,59 +305,43 @@ exports[`renders removable 1`] = `
     }
     key="1"
     removable={true}
-    styles={
-      Object {
-        "borderRadius": ".2em",
-        "checkRadio": Object {
-          "borderWidth": "2px",
-          "labelMargin": ".2em",
-          "marginBetween": "1em",
-          "paddingBottom": ".2em",
-          "paddingLeft": ".2em",
-          "paddingRight": ".2em",
-          "paddingTop": ".2em",
-        },
-        "colors": Object {
-          "background": "white",
-          "disabled": "#ECECEC",
-          "highlight": "lightblue",
-          "primary": "black",
-          "secondary": "#C3C3C3",
-          "warning": "#CD5C5C",
-        },
-        "disabled": false,
-        "fontSize": "1em",
-        "hasOptions": true,
-        "hasSelection": false,
-        "icon": Object {
-          "width": "1em",
-        },
-        "multiple": false,
-        "option": Object {
-          "paddingBottom": ".25em",
-          "paddingLeft": ".25em",
-          "paddingRight": ".25em",
-          "paddingTop": ".25em",
-        },
-        "optionHighlighted": Array [],
-        "paddingBottom": ".25em",
-        "paddingLeft": ".25em",
-        "paddingRight": ".25em",
-        "paddingTop": ".25em",
-        "rightToLeft": false,
-        "search": Object {
-          "width": "10em",
-        },
-        "selection": Object {
-          "margin": ".2em",
-          "paddingBottom": ".1em",
-          "paddingLeft": ".2em",
-          "paddingRight": ".2em",
-          "paddingTop": ".1em",
-        },
-        "width": "600px",
-      }
-    }
+    styles_borderRadius=".2em"
+    styles_checkRadio_borderWidth="2px"
+    styles_checkRadio_labelMargin=".2em"
+    styles_checkRadio_marginBetween="1em"
+    styles_checkRadio_paddingBottom=".2em"
+    styles_checkRadio_paddingLeft=".2em"
+    styles_checkRadio_paddingRight=".2em"
+    styles_checkRadio_paddingTop=".2em"
+    styles_colors_background="white"
+    styles_colors_disabled="#ECECEC"
+    styles_colors_highlight="lightblue"
+    styles_colors_primary="black"
+    styles_colors_secondary="#C3C3C3"
+    styles_colors_warning="#CD5C5C"
+    styles_disabled={false}
+    styles_fontSize="1em"
+    styles_hasOptions={true}
+    styles_hasSelection={false}
+    styles_icon_width="1em"
+    styles_multiple={false}
+    styles_optionHighlighted={Array []}
+    styles_option_paddingBottom=".25em"
+    styles_option_paddingLeft=".25em"
+    styles_option_paddingRight=".25em"
+    styles_option_paddingTop=".25em"
+    styles_paddingBottom=".25em"
+    styles_paddingLeft=".25em"
+    styles_paddingRight=".25em"
+    styles_paddingTop=".25em"
+    styles_rightToLeft={false}
+    styles_search_width="10em"
+    styles_selection_margin=".2em"
+    styles_selection_paddingBottom=".1em"
+    styles_selection_paddingLeft=".2em"
+    styles_selection_paddingRight=".2em"
+    styles_selection_paddingTop=".1em"
+    styles_width="600px"
   />
   <MockElement
     item={
@@ -464,59 +352,43 @@ exports[`renders removable 1`] = `
     }
     key="2"
     removable={true}
-    styles={
-      Object {
-        "borderRadius": ".2em",
-        "checkRadio": Object {
-          "borderWidth": "2px",
-          "labelMargin": ".2em",
-          "marginBetween": "1em",
-          "paddingBottom": ".2em",
-          "paddingLeft": ".2em",
-          "paddingRight": ".2em",
-          "paddingTop": ".2em",
-        },
-        "colors": Object {
-          "background": "white",
-          "disabled": "#ECECEC",
-          "highlight": "lightblue",
-          "primary": "black",
-          "secondary": "#C3C3C3",
-          "warning": "#CD5C5C",
-        },
-        "disabled": false,
-        "fontSize": "1em",
-        "hasOptions": true,
-        "hasSelection": false,
-        "icon": Object {
-          "width": "1em",
-        },
-        "multiple": false,
-        "option": Object {
-          "paddingBottom": ".25em",
-          "paddingLeft": ".25em",
-          "paddingRight": ".25em",
-          "paddingTop": ".25em",
-        },
-        "optionHighlighted": Array [],
-        "paddingBottom": ".25em",
-        "paddingLeft": ".25em",
-        "paddingRight": ".25em",
-        "paddingTop": ".25em",
-        "rightToLeft": false,
-        "search": Object {
-          "width": "10em",
-        },
-        "selection": Object {
-          "margin": ".2em",
-          "paddingBottom": ".1em",
-          "paddingLeft": ".2em",
-          "paddingRight": ".2em",
-          "paddingTop": ".1em",
-        },
-        "width": "600px",
-      }
-    }
+    styles_borderRadius=".2em"
+    styles_checkRadio_borderWidth="2px"
+    styles_checkRadio_labelMargin=".2em"
+    styles_checkRadio_marginBetween="1em"
+    styles_checkRadio_paddingBottom=".2em"
+    styles_checkRadio_paddingLeft=".2em"
+    styles_checkRadio_paddingRight=".2em"
+    styles_checkRadio_paddingTop=".2em"
+    styles_colors_background="white"
+    styles_colors_disabled="#ECECEC"
+    styles_colors_highlight="lightblue"
+    styles_colors_primary="black"
+    styles_colors_secondary="#C3C3C3"
+    styles_colors_warning="#CD5C5C"
+    styles_disabled={false}
+    styles_fontSize="1em"
+    styles_hasOptions={true}
+    styles_hasSelection={false}
+    styles_icon_width="1em"
+    styles_multiple={false}
+    styles_optionHighlighted={Array []}
+    styles_option_paddingBottom=".25em"
+    styles_option_paddingLeft=".25em"
+    styles_option_paddingRight=".25em"
+    styles_option_paddingTop=".25em"
+    styles_paddingBottom=".25em"
+    styles_paddingLeft=".25em"
+    styles_paddingRight=".25em"
+    styles_paddingTop=".25em"
+    styles_rightToLeft={false}
+    styles_search_width="10em"
+    styles_selection_margin=".2em"
+    styles_selection_paddingBottom=".1em"
+    styles_selection_paddingLeft=".2em"
+    styles_selection_paddingRight=".2em"
+    styles_selection_paddingTop=".1em"
+    styles_width="600px"
   />
   <MockElement
     item={
@@ -527,59 +399,43 @@ exports[`renders removable 1`] = `
     }
     key="3"
     removable={true}
-    styles={
-      Object {
-        "borderRadius": ".2em",
-        "checkRadio": Object {
-          "borderWidth": "2px",
-          "labelMargin": ".2em",
-          "marginBetween": "1em",
-          "paddingBottom": ".2em",
-          "paddingLeft": ".2em",
-          "paddingRight": ".2em",
-          "paddingTop": ".2em",
-        },
-        "colors": Object {
-          "background": "white",
-          "disabled": "#ECECEC",
-          "highlight": "lightblue",
-          "primary": "black",
-          "secondary": "#C3C3C3",
-          "warning": "#CD5C5C",
-        },
-        "disabled": false,
-        "fontSize": "1em",
-        "hasOptions": true,
-        "hasSelection": false,
-        "icon": Object {
-          "width": "1em",
-        },
-        "multiple": false,
-        "option": Object {
-          "paddingBottom": ".25em",
-          "paddingLeft": ".25em",
-          "paddingRight": ".25em",
-          "paddingTop": ".25em",
-        },
-        "optionHighlighted": Array [],
-        "paddingBottom": ".25em",
-        "paddingLeft": ".25em",
-        "paddingRight": ".25em",
-        "paddingTop": ".25em",
-        "rightToLeft": false,
-        "search": Object {
-          "width": "10em",
-        },
-        "selection": Object {
-          "margin": ".2em",
-          "paddingBottom": ".1em",
-          "paddingLeft": ".2em",
-          "paddingRight": ".2em",
-          "paddingTop": ".1em",
-        },
-        "width": "600px",
-      }
-    }
+    styles_borderRadius=".2em"
+    styles_checkRadio_borderWidth="2px"
+    styles_checkRadio_labelMargin=".2em"
+    styles_checkRadio_marginBetween="1em"
+    styles_checkRadio_paddingBottom=".2em"
+    styles_checkRadio_paddingLeft=".2em"
+    styles_checkRadio_paddingRight=".2em"
+    styles_checkRadio_paddingTop=".2em"
+    styles_colors_background="white"
+    styles_colors_disabled="#ECECEC"
+    styles_colors_highlight="lightblue"
+    styles_colors_primary="black"
+    styles_colors_secondary="#C3C3C3"
+    styles_colors_warning="#CD5C5C"
+    styles_disabled={false}
+    styles_fontSize="1em"
+    styles_hasOptions={true}
+    styles_hasSelection={false}
+    styles_icon_width="1em"
+    styles_multiple={false}
+    styles_optionHighlighted={Array []}
+    styles_option_paddingBottom=".25em"
+    styles_option_paddingLeft=".25em"
+    styles_option_paddingRight=".25em"
+    styles_option_paddingTop=".25em"
+    styles_paddingBottom=".25em"
+    styles_paddingLeft=".25em"
+    styles_paddingRight=".25em"
+    styles_paddingTop=".25em"
+    styles_rightToLeft={false}
+    styles_search_width="10em"
+    styles_selection_margin=".2em"
+    styles_selection_paddingBottom=".1em"
+    styles_selection_paddingLeft=".2em"
+    styles_selection_paddingRight=".2em"
+    styles_selection_paddingTop=".1em"
+    styles_width="600px"
   />
   <MockElement
     item={
@@ -590,59 +446,43 @@ exports[`renders removable 1`] = `
     }
     key="4"
     removable={true}
-    styles={
-      Object {
-        "borderRadius": ".2em",
-        "checkRadio": Object {
-          "borderWidth": "2px",
-          "labelMargin": ".2em",
-          "marginBetween": "1em",
-          "paddingBottom": ".2em",
-          "paddingLeft": ".2em",
-          "paddingRight": ".2em",
-          "paddingTop": ".2em",
-        },
-        "colors": Object {
-          "background": "white",
-          "disabled": "#ECECEC",
-          "highlight": "lightblue",
-          "primary": "black",
-          "secondary": "#C3C3C3",
-          "warning": "#CD5C5C",
-        },
-        "disabled": false,
-        "fontSize": "1em",
-        "hasOptions": true,
-        "hasSelection": false,
-        "icon": Object {
-          "width": "1em",
-        },
-        "multiple": false,
-        "option": Object {
-          "paddingBottom": ".25em",
-          "paddingLeft": ".25em",
-          "paddingRight": ".25em",
-          "paddingTop": ".25em",
-        },
-        "optionHighlighted": Array [],
-        "paddingBottom": ".25em",
-        "paddingLeft": ".25em",
-        "paddingRight": ".25em",
-        "paddingTop": ".25em",
-        "rightToLeft": false,
-        "search": Object {
-          "width": "10em",
-        },
-        "selection": Object {
-          "margin": ".2em",
-          "paddingBottom": ".1em",
-          "paddingLeft": ".2em",
-          "paddingRight": ".2em",
-          "paddingTop": ".1em",
-        },
-        "width": "600px",
-      }
-    }
+    styles_borderRadius=".2em"
+    styles_checkRadio_borderWidth="2px"
+    styles_checkRadio_labelMargin=".2em"
+    styles_checkRadio_marginBetween="1em"
+    styles_checkRadio_paddingBottom=".2em"
+    styles_checkRadio_paddingLeft=".2em"
+    styles_checkRadio_paddingRight=".2em"
+    styles_checkRadio_paddingTop=".2em"
+    styles_colors_background="white"
+    styles_colors_disabled="#ECECEC"
+    styles_colors_highlight="lightblue"
+    styles_colors_primary="black"
+    styles_colors_secondary="#C3C3C3"
+    styles_colors_warning="#CD5C5C"
+    styles_disabled={false}
+    styles_fontSize="1em"
+    styles_hasOptions={true}
+    styles_hasSelection={false}
+    styles_icon_width="1em"
+    styles_multiple={false}
+    styles_optionHighlighted={Array []}
+    styles_option_paddingBottom=".25em"
+    styles_option_paddingLeft=".25em"
+    styles_option_paddingRight=".25em"
+    styles_option_paddingTop=".25em"
+    styles_paddingBottom=".25em"
+    styles_paddingLeft=".25em"
+    styles_paddingRight=".25em"
+    styles_paddingTop=".25em"
+    styles_rightToLeft={false}
+    styles_search_width="10em"
+    styles_selection_margin=".2em"
+    styles_selection_paddingBottom=".1em"
+    styles_selection_paddingLeft=".2em"
+    styles_selection_paddingRight=".2em"
+    styles_selection_paddingTop=".1em"
+    styles_width="600px"
   />
   <MockElement
     item={
@@ -653,59 +493,43 @@ exports[`renders removable 1`] = `
     }
     key="5"
     removable={true}
-    styles={
-      Object {
-        "borderRadius": ".2em",
-        "checkRadio": Object {
-          "borderWidth": "2px",
-          "labelMargin": ".2em",
-          "marginBetween": "1em",
-          "paddingBottom": ".2em",
-          "paddingLeft": ".2em",
-          "paddingRight": ".2em",
-          "paddingTop": ".2em",
-        },
-        "colors": Object {
-          "background": "white",
-          "disabled": "#ECECEC",
-          "highlight": "lightblue",
-          "primary": "black",
-          "secondary": "#C3C3C3",
-          "warning": "#CD5C5C",
-        },
-        "disabled": false,
-        "fontSize": "1em",
-        "hasOptions": true,
-        "hasSelection": false,
-        "icon": Object {
-          "width": "1em",
-        },
-        "multiple": false,
-        "option": Object {
-          "paddingBottom": ".25em",
-          "paddingLeft": ".25em",
-          "paddingRight": ".25em",
-          "paddingTop": ".25em",
-        },
-        "optionHighlighted": Array [],
-        "paddingBottom": ".25em",
-        "paddingLeft": ".25em",
-        "paddingRight": ".25em",
-        "paddingTop": ".25em",
-        "rightToLeft": false,
-        "search": Object {
-          "width": "10em",
-        },
-        "selection": Object {
-          "margin": ".2em",
-          "paddingBottom": ".1em",
-          "paddingLeft": ".2em",
-          "paddingRight": ".2em",
-          "paddingTop": ".1em",
-        },
-        "width": "600px",
-      }
-    }
+    styles_borderRadius=".2em"
+    styles_checkRadio_borderWidth="2px"
+    styles_checkRadio_labelMargin=".2em"
+    styles_checkRadio_marginBetween="1em"
+    styles_checkRadio_paddingBottom=".2em"
+    styles_checkRadio_paddingLeft=".2em"
+    styles_checkRadio_paddingRight=".2em"
+    styles_checkRadio_paddingTop=".2em"
+    styles_colors_background="white"
+    styles_colors_disabled="#ECECEC"
+    styles_colors_highlight="lightblue"
+    styles_colors_primary="black"
+    styles_colors_secondary="#C3C3C3"
+    styles_colors_warning="#CD5C5C"
+    styles_disabled={false}
+    styles_fontSize="1em"
+    styles_hasOptions={true}
+    styles_hasSelection={false}
+    styles_icon_width="1em"
+    styles_multiple={false}
+    styles_optionHighlighted={Array []}
+    styles_option_paddingBottom=".25em"
+    styles_option_paddingLeft=".25em"
+    styles_option_paddingRight=".25em"
+    styles_option_paddingTop=".25em"
+    styles_paddingBottom=".25em"
+    styles_paddingLeft=".25em"
+    styles_paddingRight=".25em"
+    styles_paddingTop=".25em"
+    styles_rightToLeft={false}
+    styles_search_width="10em"
+    styles_selection_margin=".2em"
+    styles_selection_paddingBottom=".1em"
+    styles_selection_paddingLeft=".2em"
+    styles_selection_paddingRight=".2em"
+    styles_selection_paddingTop=".1em"
+    styles_width="600px"
   />
 </ul>
 `;

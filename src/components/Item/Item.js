@@ -21,7 +21,7 @@ Item.propTypes = {
   removable: PropTypes.bool.isRequired,
   item: AppPropTypes.item,
   removeSrc: PropTypes.string.isRequired,
-  styles: AppPropTypes.styles.isRequired,
+  ...AppPropTypes.styles,
 }
 
 export default Item

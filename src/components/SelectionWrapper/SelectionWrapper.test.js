@@ -12,7 +12,7 @@ let onBlur = jest.fn()
 
 it('renders', () => {
   const wrapper = shallow(<SelectionWrapper
-    styles={mockStyles}
+    {...mockStyles}
     className="test"
     areOptionsOpen={false}
     onFocus={onFocus}
@@ -26,11 +26,11 @@ it('renders', () => {
 it('renders disabled', () => {
   let styles = {
     ...mockStyles,
-    disabled: true,
+    styles_disabled: true,
   }
 
   const wrapper = shallow(<SelectionWrapper
-    styles={styles}
+    {...styles}
     className="test"
     areOptionsOpen={false}
     onFocus={onFocus}
@@ -44,7 +44,7 @@ it('renders disabled', () => {
 // ref searchRef.current.blur() doesn't continue event propogation
 // it('should close', (done) => {
 //   const wrapper = mount(<SelectionWrapper
-//     styles={mockStyles}
+//     {...mockStyles}
 //     className="test"
 //     areOptionsOpen={true}
 //     onFocus={onFocus}

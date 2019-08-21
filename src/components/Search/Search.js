@@ -6,7 +6,7 @@ let Search = (props, ref) => {
   return <input
     className={props.className + ' search'}
     ref={ref}
-    disabled={props.styles.disabled}
+    disabled={props.styles_disabled}
     type="text"
     placeholder={props.placeholder}
     onChange={props.onChange}
@@ -24,7 +24,7 @@ Search.propTypes = {
   searchText: PropTypes.string,
   onKeyDown: PropTypes.func.isRequired,
   hide: PropTypes.bool.isRequired,
-  styles: AppPropTypes.styles.isRequired,
+  ...AppPropTypes.styles,
 }
 
 export default Search

@@ -11,7 +11,7 @@ const onKeyDown = jest.fn()
 
 it('renders', () => {
   const wrapper = shallow(<Search
-    styles={mockStyles}
+    {...mockStyles}
     placeholder={placeholder}
     onChange={onChange}
     onKeyDown={onKeyDown}
@@ -24,11 +24,11 @@ it('renders', () => {
 it('renders disabled', () => {
   let styles = {
     ...mockStyles,
-    disabled: true,
+    styles_disabled: true,
   }
-  
+
   const wrapper = shallow(<Search
-    styles={styles}
+    {...styles}
     placeholder={placeholder}
     onChange={onChange}
     onKeyDown={onKeyDown}
@@ -40,7 +40,7 @@ it('renders disabled', () => {
 
 it('renders searchText', () => {
   const wrapper = shallow(<Search
-    styles={mockStyles}
+    {...mockStyles}
     placeholder={placeholder}
     onChange={onChange}
     onKeyDown={onKeyDown}
@@ -52,7 +52,7 @@ it('renders searchText', () => {
 
 it('renders hidden', () => {
   const wrapper = shallow(<Search
-    styles={mockStyles}
+    {...mockStyles}
     placeholder={placeholder}
     onChange={onChange}
     onKeyDown={onKeyDown}
@@ -65,7 +65,7 @@ it('renders hidden', () => {
 it('forwards ref', () => {
   const ref = React.createRef()
   const wrapper = mount(<Search
-    styles={mockStyles}
+    {...mockStyles}
     placeholder={placeholder}
     onChange={onChange}
     onKeyDown={onKeyDown}
@@ -77,7 +77,7 @@ it('forwards ref', () => {
 
 it('should click', () => {
   const wrapper = shallow(<Search
-    styles={mockStyles}
+    {...mockStyles}
     placeholder={placeholder}
     onChange={onChange}
     onKeyDown={onKeyDown}
@@ -91,7 +91,7 @@ it('should click', () => {
 
 it('should keyDown', () => {
   const wrapper = shallow(<Search
-    styles={mockStyles}
+    {...mockStyles}
     placeholder={placeholder}
     onChange={onChange}
     onKeyDown={onKeyDown}
@@ -104,7 +104,7 @@ it('should keyDown', () => {
 
 it('should change', () => {
   const wrapper = shallow(<Search
-    styles={mockStyles}
+    {...mockStyles}
     placeholder={placeholder}
     onChange={onChange}
     onKeyDown={onKeyDown}

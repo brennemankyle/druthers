@@ -1,17 +1,18 @@
 import React from 'react'
 import defaultProps from './utils/defaultProps'
+import withKeys from './utils/withKeys'
 
 let noop = () => {}
 
 let mockStyles = {
-  width: '600px',
-  multiple: false,
-  disabled: false,
-  hasSelection: false,
-  hasOptions: true,
-  optionHighlighted: [],
-  rightToLeft: false,
-  ...defaultProps.styles,
+  styles_width: '600px',
+  styles_multiple: false,
+  styles_disabled: false,
+  styles_hasSelection: false,
+  styles_hasOptions: true,
+  styles_optionHighlighted: [],
+  styles_rightToLeft: false,
+  ...withKeys(defaultProps, 'styles_'),
 }
 
 let mockItem = {

@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom'
 import _last from 'lodash/last'
 import _inRange from 'lodash/inRange'
 import { DivRelative } from '../styledComponents/styledComponents'
+import withKeys from '../../utils/withKeys'
 
 const ENTER_KEY = 13
 const ESCAPE = 27
@@ -44,14 +45,14 @@ let Select = (rawProps) => {
   let showSelection = props.multiple || !areOptionsOpen // Multiple: always show. Single: show when options are closed
   let showSearch = props.multiple || areOptionsOpen || !props.selection.length // Multiple: always show. Single: show when options are open or when nothing is selected (placeholder should be shown)
   let styles = {
-    width: selfRef && selfRef.current ? selfRef.current.offsetWidth : 0,
-    multiple: props.multiple,
-    disabled: props.disabled,
-    hasSelection: hasSelection,
-    hasOptions: hasOptions,
-    optionHighlighted: optionHighlighted,
-    rightToLeft: props.rightToLeft,
-    ...props.styles
+    styles_width: selfRef && selfRef.current ? selfRef.current.offsetWidth : 0,
+    styles_multiple: props.multiple,
+    styles_disabled: props.disabled,
+    styles_hasSelection: hasSelection,
+    styles_hasOptions: hasOptions,
+    styles_optionHighlighted: optionHighlighted,
+    styles_rightToLeft: props.rightToLeft,
+    ...withKeys(props, 'styles_')
   }
 
   if (props.creatable && searchText && !filteredOptions.some(item => item.value === searchText)) {
@@ -199,9 +200,9 @@ let Select = (rawProps) => {
     onMouseOver={onHoverOption}
     Item={Option}
     noItemsText={props.text_noOptions}
-    styles={styles} />
+    {...styles} />
 
-  return <Wrapper styles={styles} ref={selfRef}>
+  return <Wrapper {...styles} ref={selfRef}>
     <HtmlFieldData
       name={props.name}
       itemList={props.selection} />
@@ -209,7 +210,7 @@ let Select = (rawProps) => {
     <SelectionWrapper
       onFocus={onFocus}
       onBlur={onBlur}
-      styles={styles}
+      {...styles}
       areOptionsOpen={areOptionsOpen}
       SelectionList={
         showSelection && <SelectionList
@@ -217,7 +218,7 @@ let Select = (rawProps) => {
           onClick={onRemove}
           removable={!props.disabled && props.removable}
           Item={Selection}
-          styles={styles} />
+          {...styles} />
       }
       Search={
         <Search
@@ -226,15 +227,15 @@ let Select = (rawProps) => {
           searchText={searchText}
           onKeyDown={onKeyDown}
           onChange={(e) => setSearchText(targetValue(e))}
-          styles={styles} />
+          {...styles} />
       } />
 
     {!props.appendToBody && areOptionsOpen &&
-      <DivRelative><OptionWrapper styles={styles}>{optionList}</OptionWrapper></DivRelative>}
+      <DivRelative><OptionWrapper {...styles}>{optionList}</OptionWrapper></DivRelative>}
 
     {props.appendToBody && areOptionsOpen && ReactDOM.createPortal(
       <AppendToBodyOptionsWrapper
-        styles={styles}
+        {...styles}
         parentRef={selfRef}
         filteredOptions={filteredOptions}
         StyledAppendToBodyOptionsWrapper={StyledAppendToBodyOptionsWrapper}>

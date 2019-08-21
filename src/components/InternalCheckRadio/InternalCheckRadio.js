@@ -46,7 +46,7 @@ InternalCheckRadio.propTypes = {
   type: PropTypes.string,
   label: PropTypes.string,
   title: PropTypes.string,
-  styles: AppPropTypes.styles.isRequired,
+  ...AppPropTypes.styles,
 }
 
 export default InternalCheckRadio

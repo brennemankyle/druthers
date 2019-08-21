@@ -23,50 +23,38 @@ let AppPropTypes = {
   rawValue: rawValue,
   rawItem: rawItem,
   rawItemList: PropTypes.arrayOf(rawItem),
-  styles: PropTypes.shape({
-    fontSize: PropTypes.string.isRequired,
-    borderRadius: PropTypes.string.isRequired,
-    paddingTop: PropTypes.string.isRequired,
-    paddingBottom: PropTypes.string.isRequired,
-    paddingLeft: PropTypes.string.isRequired,
-    paddingRight: PropTypes.string.isRequired,
-    selection: PropTypes.shape({
-      paddingTop: PropTypes.string.isRequired,
-      paddingBottom: PropTypes.string.isRequired,
-      paddingLeft: PropTypes.string.isRequired,
-      paddingRight: PropTypes.string.isRequired,
-      margin: PropTypes.string.isRequired,
-    }).isRequired,
-    option: PropTypes.shape({
-      paddingTop: PropTypes.string.isRequired,
-      paddingBottom: PropTypes.string.isRequired,
-      paddingLeft: PropTypes.string.isRequired,
-      paddingRight: PropTypes.string.isRequired,
-    }).isRequired,
-    checkRadio: PropTypes.shape({
-      borderWidth: PropTypes.string.isRequired,
-      marginBetween: PropTypes.string.isRequired,
-      labelMargin: PropTypes.string.isRequired,
-      paddingTop: PropTypes.string.isRequired,
-      paddingBottom: PropTypes.string.isRequired,
-      paddingLeft: PropTypes.string.isRequired,
-      paddingRight: PropTypes.string.isRequired,
-    }).isRequired,
-    search: PropTypes.shape({
-      width: PropTypes.string.isRequired,
-    }).isRequired,
-    icon: PropTypes.shape({
-      width: PropTypes.string.isRequired,
-    }).isRequired,
-    colors: PropTypes.shape({
-      primary: PropTypes.string.isRequired,
-      secondary: PropTypes.string.isRequired,
-      highlight: PropTypes.string.isRequired,
-      warning: PropTypes.string.isRequired,
-      disabled: PropTypes.string.isRequired,
-      background: PropTypes.string.isRequired,
-    }).isRequired,
-  })
+  styles: {
+    styles_fontSize: PropTypes.string.isRequired,
+    styles_borderRadius: PropTypes.string.isRequired,
+    styles_paddingTop: PropTypes.string.isRequired,
+    styles_paddingBottom: PropTypes.string.isRequired,
+    styles_paddingLeft: PropTypes.string.isRequired,
+    styles_paddingRight: PropTypes.string.isRequired,
+    styles_selection_paddingTop: PropTypes.string.isRequired,
+    styles_selection_paddingBottom: PropTypes.string.isRequired,
+    styles_selection_paddingLeft: PropTypes.string.isRequired,
+    styles_selection_paddingRight: PropTypes.string.isRequired,
+    styles_selection_margin: PropTypes.string.isRequired,
+    styles_option_paddingTop: PropTypes.string.isRequired,
+    styles_option_paddingBottom: PropTypes.string.isRequired,
+    styles_option_paddingLeft: PropTypes.string.isRequired,
+    styles_option_paddingRight: PropTypes.string.isRequired,
+    styles_checkRadio_borderWidth: PropTypes.string.isRequired,
+    styles_checkRadio_marginBetween: PropTypes.string.isRequired,
+    styles_checkRadio_labelMargin: PropTypes.string.isRequired,
+    styles_checkRadio_paddingTop: PropTypes.string.isRequired,
+    styles_checkRadio_paddingBottom: PropTypes.string.isRequired,
+    styles_checkRadio_paddingLeft: PropTypes.string.isRequired,
+    styles_checkRadio_paddingRight: PropTypes.string.isRequired,
+    styles_search_width: PropTypes.string.isRequired,
+    styles_icon_width: PropTypes.string.isRequired,
+    styles_colors_primary: PropTypes.string.isRequired,
+    styles_colors_secondary: PropTypes.string.isRequired,
+    styles_colors_highlight: PropTypes.string.isRequired,
+    styles_colors_warning: PropTypes.string.isRequired,
+    styles_colors_disabled: PropTypes.string.isRequired,
+    styles_colors_background: PropTypes.string.isRequired,
+  }
 }
 
 let simpleNewInputPropTypes = {
@@ -113,7 +101,7 @@ let simpleNewInputPropTypes = {
     StyledAppendToBodyOptionsWrapper: AppPropTypes.element.isRequired,
   }).isRequired,
 
-  styles: AppPropTypes.styles.isRequired,
+  ...AppPropTypes.styles,
 }
 
 export { simpleNewInputPropTypes }

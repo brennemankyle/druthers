@@ -37,7 +37,7 @@ let SelectionWrapper = (props) => {
 
   return <div
     className={props.className}
-    tabIndex={props.styles.disabled ? 'false' : '-1'}
+    tabIndex={props.styles_disabled ? 'false' : '-1'}
     onFocus={onFocus}
     onBlur={onBlur}>
       <div>
@@ -59,7 +59,7 @@ SelectionWrapper.propTypes = {
   areOptionsOpen: PropTypes.bool.isRequired,
   Search: AppPropTypes.element.isRequired,
   SelectionList: PropTypes.oneOfType([AppPropTypes.element.isRequired, PropTypes.bool]),
-  styles: AppPropTypes.styles.isRequired,
+  ...AppPropTypes.styles,
 }
 
 export default SelectionWrapper

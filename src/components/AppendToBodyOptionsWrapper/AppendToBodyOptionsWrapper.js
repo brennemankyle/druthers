@@ -42,7 +42,7 @@ AppendToBodyOptionsWrapper.propTypes = {
   filteredOptions: AppPropTypes.itemList.isRequired,
   updateOn: PropTypes.array.isRequired,
   StyledAppendToBodyOptionsWrapper: AppPropTypes.element.isRequired,
-  styles: AppPropTypes.styles.isRequired,
+  ...AppPropTypes.styles,
 }
 
 export { StyledAppendToBodyOptionsWrapper }

@@ -6,7 +6,7 @@ import Item from './Item'
 
 it('renders', () => {
   const wrapper = shallow(<Item
-    styles={mockStyles}
+    {...mockStyles}
     item={mockItem}
     removable={false} />)
 
@@ -15,7 +15,7 @@ it('renders', () => {
 
 it('renders removable', () => {
   const wrapper = shallow(<Item
-    styles={mockStyles}
+    {...mockStyles}
     item={mockItem}
     removable={true} />)
 

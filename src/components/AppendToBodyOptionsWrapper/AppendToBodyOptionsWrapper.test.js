@@ -32,7 +32,7 @@ global.console.error = jest.fn()
 it('renders', () => {
   const parentRef = React.createRef()
   const wrapper = mount(<AppendToBodyOptionsWrapper
-    styles={mockStyles}
+    {...mockStyles}
     className="test"
     parentRef={parentRef}
     filteredOptions={mockItemList}
@@ -44,7 +44,7 @@ it('renders', () => {
 it('forwards ref', () => {
   const parentRef = React.createRef()
   const wrapper = shallow(<AppendToBodyOptionsWrapper
-    styles={mockStyles}
+    {...mockStyles}
     className="test"
     parentRef={parentRef}
     filteredOptions={[]}
