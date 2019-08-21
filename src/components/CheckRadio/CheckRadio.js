@@ -45,8 +45,8 @@ let CheckRadio = (rawProps, ref) => {
   }
 
   let Checkable = props.multiple
-    ? props.components.CheckBox
-    : useSwitch ? props.components.Switch : props.components.Radio
+    ? props.component_CheckBox
+    : useSwitch ? props.component_Switch : props.component_Radio
 
   return <div className={props.className} style={props.style} ref={ref}>
     {options.map(option =>
@@ -70,12 +70,9 @@ CheckRadio = forwardRef(CheckRadio)
 CheckRadio.defaultProps = {
   ...defaultProps,
   style: {},
-  components: {
-    ...defaultProps.components,
-    CheckBox,
-    Radio,
-    Switch,
-  },
+  component_CheckBox: CheckBox,
+  component_Radio: Radio,
+  component_Switch: Switch,
 }
 
 CheckRadio.propTypes = {
@@ -94,11 +91,9 @@ CheckRadio.propTypes = {
   massageData: PropTypes.func.isRequired,
   massaged: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
-  components: PropTypes.shape({
-    CheckBox: AppPropTypes.element.isRequired,
-    Radio: AppPropTypes.element.isRequired,
-    Switch: AppPropTypes.element.isRequired,
-  }).isRequired,
+  component_CheckBox: AppPropTypes.element.isRequired,
+  component_Radio: AppPropTypes.element.isRequired,
+  component_Switch: AppPropTypes.element.isRequired,
   ...AppPropTypes.styles,
 }
 

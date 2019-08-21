@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react'
-import PropTypes from 'prop-types'
 import AppPropTypes, { simpleNewInputPropTypes } from '../../utils/AppPropTypes'
 import defaultProps from '../../utils/defaultProps'
 import useWindowWidth from '../../hooks/useWindowWidth/useWindowWidth'
@@ -33,7 +32,7 @@ let NewInput = (rawProps) => {
     }
   }
 
-  let { CheckRadio, Select } = props.components
+  let { component_CheckRadio: CheckRadio, component_Select: Select } = props
 
   return [
     canCheckRadio && <CheckRadio style={checkRadioStyle} ref={checkRadioRef} {...props} massaged={true} key='CheckRadio' />,
@@ -43,26 +42,20 @@ let NewInput = (rawProps) => {
 
 NewInput.defaultProps = {
   ...defaultProps,
-  components: {
-    ...defaultProps.components,
-    Select,
-    CheckRadio,
-    CheckBox,
-    Radio,
-    Switch,
-  },
+  component_Select: Select,
+  component_CheckRadio: CheckRadio,
+  component_CheckBox: CheckBox,
+  component_Radio: Radio,
+  component_Switch: Switch,
 }
 
 NewInput.propTypes = {
   ...simpleNewInputPropTypes,
-  components: PropTypes.shape({
-    ...simpleNewInputPropTypes.components,
-    Select: AppPropTypes.element.isRequired,
-    CheckRadio: AppPropTypes.element.isRequired,
-    CheckBox: AppPropTypes.element.isRequired,
-    Radio: AppPropTypes.element.isRequired,
-    Switch: AppPropTypes.element.isRequired,
-  }).isRequired,
+  component_Select: AppPropTypes.element.isRequired,
+  component_CheckRadio: AppPropTypes.element.isRequired,
+  component_CheckBox: AppPropTypes.element.isRequired,
+  component_Radio: AppPropTypes.element.isRequired,
+  component_Switch: AppPropTypes.element.isRequired,
 }
 
 export default NewInput

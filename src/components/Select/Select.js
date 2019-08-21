@@ -181,18 +181,18 @@ let Select = (rawProps) => {
   }
 
   let {
-    HtmlFieldData,
-    Wrapper,
-    Selection,
-    SelectionList,
-    OptionList,
-    Option,
-    Search,
-    SelectionWrapper,
-    OptionWrapper,
-    AppendToBodyOptionsWrapper,
-    StyledAppendToBodyOptionsWrapper,
-  } = props.components
+    component_HtmlFieldData: HtmlFieldData,
+    component_Wrapper: Wrapper,
+    component_Selection: Selection,
+    component_SelectionList: SelectionList,
+    component_OptionList: OptionList,
+    component_Option: Option,
+    component_Search: Search,
+    component_SelectionWrapper: SelectionWrapper,
+    component_OptionWrapper: OptionWrapper,
+    component_AppendToBodyOptionsWrapper: AppendToBodyOptionsWrapper,
+    component_StyledAppendToBodyOptionsWrapper: StyledAppendToBodyOptionsWrapper,
+  } = props
 
   let optionList = <OptionList
     itemList={filteredOptions}
