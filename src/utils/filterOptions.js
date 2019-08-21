@@ -1,10 +1,8 @@
-import _isEmpty from 'lodash/isEmpty'
-import _without from 'lodash/without'
-import _sortBy from 'lodash/sortBy'
+import { isEmpty, without, sortBy } from './essentialLodash'
 
 let filterOptions = (searchTerm, selection, options, searchProps = ['label', 'value']) => {
-  options = _without(options, ...selection)
-  if (_isEmpty(searchTerm)) return options
+  options = without(options, ...selection)
+  if (isEmpty(searchTerm)) return options
 
   searchTerm = searchTerm.toLowerCase()
 
@@ -12,7 +10,7 @@ let filterOptions = (searchTerm, selection, options, searchProps = ['label', 'va
     item.label.toLowerCase().includes(searchTerm)
     || item.value.toLowerCase() === searchTerm)
 
-  options = _sortBy(options, [
+  options = sortBy(options, [
     item => item.label.toLowerCase() === searchTerm,
     item => item.value.toLowerCase() === searchTerm,
     item => item.label.toLowerCase().startsWith(searchTerm),

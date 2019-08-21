@@ -1,4 +1,4 @@
-import castArray from 'lodash/castArray'
+import { castArray } from './essentialLodash'
 
 let massageData = (props) => {
   let { selection, options, placeholder, ...otherProps } = props

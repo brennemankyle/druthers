@@ -21,6 +21,7 @@ let CheckRadio = (rawProps, ref) => {
 
     if (props.multiple) {
       value = props.selection.map((option) => option.value)
+      
       if (e.target.checked) {
         value.push(String(e.target.value))
       } else {
