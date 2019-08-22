@@ -1,7 +1,7 @@
 import { isEmpty, without, sortBy } from './essentialLodash'
 
 let filterOptions = (searchTerm, selection, options, searchProps = ['label', 'value']) => {
-  options = without(options, ...selection)
+  options = without(options, selection)
   if (isEmpty(searchTerm)) return options
 
   searchTerm = searchTerm.toLowerCase()
@@ -15,7 +15,7 @@ let filterOptions = (searchTerm, selection, options, searchProps = ['label', 'va
     item => item.value.toLowerCase() === searchTerm,
     item => item.label.toLowerCase().startsWith(searchTerm),
     item => item.label.toLowerCase().endsWith(searchTerm),
-  ]).reverse()
+  ])
 
   // fuzzy search? https://fusejs.io/
 
