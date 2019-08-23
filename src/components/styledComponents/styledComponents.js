@@ -56,7 +56,10 @@ const Selection = styled(Item)`
       display: flex;`
   }
   ${props => props.styles_rightToLeft && `
-    transform: scaleX(-1);`
+    transform: scaleX(-1);
+    flex-direction: row-reverse;
+    padding-left: ${props.removable ? '0' : props.styles_selection_paddingRight};
+    padding-right: ${props.styles_selection_paddingLeft};`
   }
 `
 
