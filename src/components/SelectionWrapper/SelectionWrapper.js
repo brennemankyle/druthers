@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
-import src from "./expand.png"
+import src from "./expand.svg"
 
 let SelectionWrapper = (props) => {
   const searchRef = useRef(null)

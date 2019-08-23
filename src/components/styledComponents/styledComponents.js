@@ -25,7 +25,7 @@ const Selection = styled(Item)`
   padding-left: ${props => props.styles_selection_paddingLeft};
   padding-right: ${props => props.removable ? '0' : props.styles_selection_paddingRight};
 
-  .remove {
+  & > .remove:not(img) {
     display: flex;
     border: none;
     border-radius: ${props => props.styles_borderRadius};
@@ -297,7 +297,7 @@ const SelectionWrapper = styled(RawSelectionWrapper)`
   }
 
   ${props => props.areOptionsOpen && `
-    img {
+    img.expand {
       transform: scaleY(-1);
     }
     border-color: ${props.styles_colors_primary};`}

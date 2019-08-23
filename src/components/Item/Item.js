@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
-import src from "./remove.png"
+import src from "./remove.svg"
 
 let Item = (props) => {
   return (

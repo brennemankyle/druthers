@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
-import src from "./checkmark.png"
+import src from "./checkmark.svg"
 
 let InternalCheckRadio = (props) => {
   let [hasFocus, setHasFocus] = useState(false)
