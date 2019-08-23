@@ -79,7 +79,8 @@ let simpleNewInputPropTypes = {
   appendToBody: PropTypes.bool.isRequired,
   rightToLeft: PropTypes.bool.isRequired,
   filterOptions: PropTypes.func.isRequired,
-  massageData: PropTypes.func.isRequired,
+  massageDataIn: PropTypes.func.isRequired,
+  massageDataOut: PropTypes.func.isRequired,
   optionKeys: PropTypes.arrayOf(PropTypes.string).isRequired,
   checkRadioMaxCount: PropTypes.number.isRequired,
 

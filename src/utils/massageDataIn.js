@@ -1,6 +1,6 @@
 import { castArray } from './essentialLodash'
 
-let massageData = (props) => {
+let massageDataIn = (props) => {
   let { selection, options, placeholder, ...otherProps } = props
 
   // Stringify
@@ -24,4 +24,4 @@ let massageData = (props) => {
   }
 }
 
-export default massageData
+export default massageDataIn

@@ -9,7 +9,7 @@ import { CheckBox, Radio, Switch } from '../styledComponents/styledComponents'
 let hasOverflownX = (element) => element.scrollWidth > element.clientWidth
 
 let NewInput = (rawProps) => {
-  let props = rawProps.massageData(rawProps)
+  let props = rawProps.massageDataIn(rawProps)
   const checkRadioRef = useRef(null)
   const windowWidth = useWindowWidth()
   const [canCheckRadio] = useState(props.options.length < props.checkRadioMaxCount && !props.creatable)

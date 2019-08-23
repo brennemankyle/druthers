@@ -31,7 +31,7 @@ const SINGLE_QUOTE = 222
 let targetValue = (e) => String(e.target.value || e.target.getAttribute('val') || '')
 
 let Select = (rawProps) => {
-  let props = rawProps.massaged ? rawProps : rawProps.massageData(rawProps)
+  let props = rawProps.massaged ? rawProps : rawProps.massageDataIn(rawProps)
   const selfRef = useRef(null)
   const [areOptionsOpen, setAreOptionsOpen] = useState(false)
   const [searchText, setSearchText] = useState('')
@@ -66,7 +66,7 @@ let Select = (rawProps) => {
   let callOnChange = (value) => {
     props.onChange({
       target: {
-        value: value,
+        value: props.massageDataOut(value),
         name: props.name,
       }
     })

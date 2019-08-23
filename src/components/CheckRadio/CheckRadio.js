@@ -6,7 +6,7 @@ import withKeys from '../../utils/withKeys'
 import { CheckBox, Radio, Switch } from '../styledComponents/styledComponents'
 
 let CheckRadio = (rawProps, ref) => {
-  let props = rawProps.massaged ? rawProps : rawProps.massageData(rawProps)
+  let props = rawProps.massaged ? rawProps : rawProps.massageDataIn(rawProps)
 
   let type = props.multiple ? 'checkbox' : 'radio'
   let values = props.selection.map(item => item.value)
@@ -21,7 +21,7 @@ let CheckRadio = (rawProps, ref) => {
 
     if (props.multiple) {
       value = props.selection.map((option) => option.value)
-      
+
       if (e.target.checked) {
         value.push(String(e.target.value))
       } else {
@@ -31,7 +31,7 @@ let CheckRadio = (rawProps, ref) => {
 
     props.onChange({
       target: {
-        value: value,
+        value: props.massageDataOut(value),
         name: props.name,
       }
     })
@@ -89,7 +89,7 @@ CheckRadio.propTypes = {
     AppPropTypes.rawItemList.isRequired,
     AppPropTypes.itemList.isRequired,
   ]).isRequired,
-  massageData: PropTypes.func.isRequired,
+  massageDataIn: PropTypes.func.isRequired,
   massaged: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
   component_CheckBox: AppPropTypes.element.isRequired,
