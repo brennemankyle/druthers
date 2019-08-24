@@ -12,6 +12,7 @@ let InternalCheckRadio = (props) => {
     : props.type || (props.multiple ? 'checkbox' : 'radio')
   let label = props.label || props.title
   let className = props.className + ' ' + (hasFocus ? 'focus' : '')
+  let Checkmark = props.svg_Checkmark
 
   return <label className={className} key={props.value}>
     <input
@@ -24,9 +25,7 @@ let InternalCheckRadio = (props) => {
       onBlur={onBlur}
       checked={props.checked} />
     <div className="check-radio-display">
-      <svg aria-labelledby="remove" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-        <path d="M8.5 12.5L8.5 12.5 5.5 16 0 9.5 3 6 5.5 9 13 0 16 3.5 8.5 12.5Z"/>
-      </svg>
+      <Checkmark />
     </div>
     {label}</label>
 }
@@ -42,6 +41,7 @@ InternalCheckRadio.propTypes = {
   type: PropTypes.string,
   label: PropTypes.string,
   title: PropTypes.string,
+  svg_Checkmark: AppPropTypes.element.isRequired,
   ...AppPropTypes.styles,
 }
 

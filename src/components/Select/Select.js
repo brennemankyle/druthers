@@ -209,6 +209,7 @@ let Select = (rawProps) => {
     <SelectionWrapper
       onFocus={onFocus}
       onBlur={onBlur}
+      svg_Expand={props.svg_Expand}
       {...styles}
       areOptionsOpen={areOptionsOpen}
       SelectionList={
@@ -216,6 +217,7 @@ let Select = (rawProps) => {
           itemList={props.selection}
           onClick={onRemove}
           removable={!props.disabled && props.removable}
+          svg_Remove={props.svg_Remove}
           Item={Selection}
           {...styles} />
       }

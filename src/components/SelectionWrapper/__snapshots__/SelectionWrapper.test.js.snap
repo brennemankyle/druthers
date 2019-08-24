@@ -16,16 +16,7 @@ exports[`renders 1`] = `
   <span
     className="divider"
   />
-  <svg
-    aria-labelledby="expand"
-    className="expand"
-    viewBox="0 0 16 8"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M4 4L0 0 8 0 16 0 12 4 8 8 4 4Z"
-    />
-  </svg>
+  <MockSvg />
 </div>
 `;
 
@@ -45,15 +36,6 @@ exports[`renders disabled 1`] = `
   <span
     className="divider"
   />
-  <svg
-    aria-labelledby="expand"
-    className="expand"
-    viewBox="0 0 16 8"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M4 4L0 0 8 0 16 0 12 4 8 8 4 4Z"
-    />
-  </svg>
+  <MockSvg />
 </div>
 `;

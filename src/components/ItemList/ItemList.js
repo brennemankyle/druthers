@@ -7,12 +7,14 @@ const noop = () => {}
 
 let ItemList = (props) => {
   let styles = withKeys(props, 'styles_')
+  let Item = props.Item
 
   let renderItem = (item) =>
-    <props.Item
+    <Item
       item={item}
       removable={props.removable}
       key={item.value}
+      svg_Remove={props.svg_Remove}
       {...styles} />
 
   let hasItems = !!props.itemList.length
@@ -22,7 +24,7 @@ let ItemList = (props) => {
   return (
     <ul className={props.className} onMouseDown={onMouseDown} onMouseOver={onMouseOver}>
       {props.itemList.map(renderItem)}
-      {!hasItems && props.noItemsText && <props.Item
+      {!hasItems && props.noItemsText && <Item
         item={{value: '', label: props.noItemsText}}
         removable={false}
         {...styles} />}
@@ -41,6 +43,7 @@ ItemList.propTypes = {
   noItemsText: PropTypes.string,
   onMouseOver: PropTypes.func,
   Item: AppPropTypes.element.isRequired,
+  svg_Remove: AppPropTypes.element,
   ...AppPropTypes.styles,
 }
 

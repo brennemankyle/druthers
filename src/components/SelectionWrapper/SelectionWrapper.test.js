@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import { mockStyles, mockEvent, MockElement, MockInput } from '../../mocks'
+import { mockStyles, mockEvent, MockElement, MockInput, MockSvg } from '../../mocks'
 import SelectionWrapper from './SelectionWrapper'
 
 let SelectionList = (props) => <div {...props} />
@@ -18,7 +18,8 @@ it('renders', () => {
     onFocus={onFocus}
     onBlur={onBlur}
     SelectionList={MockElement}
-    Search={MockInput} />)
+    Search={MockInput}
+    svg_Expand={MockSvg} />)
 
   expect(toJson(wrapper)).toMatchSnapshot()
 })
@@ -36,7 +37,8 @@ it('renders disabled', () => {
     onFocus={onFocus}
     onBlur={onBlur}
     SelectionList={MockElement}
-    Search={MockInput} />)
+    Search={MockInput}
+    svg_Expand={MockSvg} />)
 
   expect(toJson(wrapper)).toMatchSnapshot()
 })

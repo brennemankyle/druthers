@@ -33,6 +33,7 @@ let SelectionWrapper = (props) => {
     onClick: onSearchClick,
     ref: searchRef,
   })
+  let Expand = props.svg_Expand
 
   return <div
     className={props.className}
@@ -44,9 +45,7 @@ let SelectionWrapper = (props) => {
         {Search}
       </div>
       <span className="divider"></span>
-      <svg className="expand" aria-labelledby="expand" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 8">
-        <path d="M4 4L0 0 8 0 16 0 12 4 8 8 4 4Z"/>
-      </svg></div>
+      <Expand /></div>
 }
 
 SelectionWrapper.propTypes = {
@@ -55,6 +54,7 @@ SelectionWrapper.propTypes = {
   areOptionsOpen: PropTypes.bool.isRequired,
   Search: AppPropTypes.element.isRequired,
   SelectionList: PropTypes.oneOfType([AppPropTypes.element.isRequired, PropTypes.bool]),
+  svg_Expand: AppPropTypes.element.isRequired,
   ...AppPropTypes.styles,
 }
 

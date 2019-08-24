@@ -34,6 +34,7 @@ let mockEvent = {
 
 let MockElement = (props) => <div data-props={props} />
 let MockInput = (props) => <input data-props={props} />
+let MockSvg = () => <svg><path d="M0 0L5 5Z"/></svg>
 
 export {
   mockStyles,
@@ -41,4 +42,5 @@ export {
   mockItemList,
   mockEvent,
   MockElement,
-  MockInput, }
+  MockInput,
+  MockSvg, }

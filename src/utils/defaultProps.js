@@ -1,6 +1,7 @@
 import HtmlFieldData from '../components/HtmlFieldData/HtmlFieldData'
 import AppendToBodyOptionsWrapper from '../components/AppendToBodyOptionsWrapper/AppendToBodyOptionsWrapper'
 import { Wrapper, Selection, SelectionList, OptionList, Option, Search, SelectionWrapper, OptionWrapper, StyledAppendToBodyOptionsWrapper } from '../components/styledComponents/styledComponents'
+import { Expand, Remove, Checkmark } from '../components/svg/svg'
 import filterOptions from './filterOptions'
 import massageDataIn from './massageDataIn'
 import massageDataOut from './massageDataOut'
@@ -46,6 +47,10 @@ let defaultProps = {
   component_OptionWrapper: OptionWrapper,
   component_AppendToBodyOptionsWrapper: AppendToBodyOptionsWrapper,
   component_StyledAppendToBodyOptionsWrapper: StyledAppendToBodyOptionsWrapper,
+
+  svg_Checkmark: Checkmark,
+  svg_Remove: Remove,
+  svg_Expand: Expand,
 
   styles_fontSize: '1em',
   styles_borderRadius: '.2em',

@@ -101,6 +101,10 @@ let simpleNewInputPropTypes = {
   component_AppendToBodyOptionsWrapper: AppPropTypes.element.isRequired,
   component_StyledAppendToBodyOptionsWrapper: AppPropTypes.element.isRequired,
 
+  svg_Checkmark: AppPropTypes.element.isRequired,
+  svg_Remove: AppPropTypes.element.isRequired,
+  svg_Expand: AppPropTypes.element.isRequired,
+
   ...AppPropTypes.styles,
 }
 

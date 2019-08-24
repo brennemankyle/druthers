@@ -62,6 +62,7 @@ let CheckRadio = (rawProps, ref) => {
         title={option.label}
         multiple={props.multiple}
         toggle={useSwitch}
+        svg_Checkmark={props.svg_Checkmark}
         {...withKeys(props, 'styles_')}
         key={option.value} />)}</div>
 }
@@ -95,6 +96,7 @@ CheckRadio.propTypes = {
   component_CheckBox: AppPropTypes.element.isRequired,
   component_Radio: AppPropTypes.element.isRequired,
   component_Switch: AppPropTypes.element.isRequired,
+  svg_Checkmark: AppPropTypes.element.isRequired,
   ...AppPropTypes.styles,
 }
 
