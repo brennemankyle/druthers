@@ -297,6 +297,10 @@ const SelectionWrapper = styled(RawSelectionWrapper)`
   padding-left: ${props => props.styles_paddingLeft};
   & > div:first-of-type {
     flex-grow: 1;
+    flex-shrink: 1;
+  }
+  & > * {
+    flex-shrink: 0;
   }
 
   svg.expand {
