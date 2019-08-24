@@ -23,7 +23,7 @@ let CheckRadio = (rawProps, ref) => {
       value = props.selection.map((option) => option.value)
 
       if (e.target.checked) {
-        value.push(String(e.target.value))
+        value.push(String(e.target.value)) // Add
       } else {
         value.splice(value.indexOf(String(e.target.value)), 1) // Remove
       }
@@ -38,7 +38,7 @@ let CheckRadio = (rawProps, ref) => {
   }
 
   let options = useSwitch
-    ? [props.options.find(option => option.value.toLowerCase() === 'true')]
+    ? [props.options.find(option => option.value.toLowerCase() === 'true')] // Only 'true' item
     : props.options
 
   if (props.disabled) {
