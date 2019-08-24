@@ -1,16 +1,18 @@
 {
   "name": "react-new-input",
   "homepage": "https://brennemankyle.github.io/react-new-input/",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "React Multi-Select with automatic checkboxes/radios",
   "main": "dist/index.js",
   "private": false,
   "dependencies": {
     "debounce": "^1.2.0",
     "fuzzyset.js": "0.0.8",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
     "styled-components": "^5.0.0-beta.3"
+  },
+  "peerDependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "scripts": {
     "start": "node scripts/start.js",
