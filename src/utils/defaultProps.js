@@ -74,7 +74,8 @@ let defaultProps = {
   styles_colors_primary: 'black',
   styles_colors_secondary: '#C3C3C3',
   styles_colors_highlight: 'lightblue',
-  styles_colors_warning: '#CD5C5C',
+  styles_colors_warning: '#FABAAC',
+  styles_colors_warningBold: '#FA2222',
   styles_colors_disabled: '#ECECEC',
   styles_colors_background: 'white',
 }

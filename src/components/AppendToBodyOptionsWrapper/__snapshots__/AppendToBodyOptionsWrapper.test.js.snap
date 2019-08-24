@@ -46,7 +46,8 @@ exports[`renders 1`] = `
   styles_colors_highlight="lightblue"
   styles_colors_primary="black"
   styles_colors_secondary="#C3C3C3"
-  styles_colors_warning="#CD5C5C"
+  styles_colors_warning="#FABAAC"
+  styles_colors_warningBold="#FA2222"
   styles_disabled={false}
   styles_fontSize="1em"
   styles_hasOptions={true}
@@ -65,10 +66,10 @@ exports[`renders 1`] = `
   styles_rightToLeft={false}
   styles_search_width="10em"
   styles_selection_margin=".2em"
-  styles_selection_paddingBottom=".1em"
-  styles_selection_paddingLeft=".2em"
-  styles_selection_paddingRight=".2em"
-  styles_selection_paddingTop=".1em"
+  styles_selection_paddingBottom=".2em"
+  styles_selection_paddingLeft=".4em"
+  styles_selection_paddingRight=".4em"
+  styles_selection_paddingTop=".2em"
   styles_width="600px"
   updateOn={Array []}
 >
@@ -100,7 +101,8 @@ exports[`renders 1`] = `
     styles_colors_highlight="lightblue"
     styles_colors_primary="black"
     styles_colors_secondary="#C3C3C3"
-    styles_colors_warning="#CD5C5C"
+    styles_colors_warning="#FABAAC"
+    styles_colors_warningBold="#FA2222"
     styles_disabled={false}
     styles_fontSize="1em"
     styles_hasOptions={true}
@@ -119,10 +121,10 @@ exports[`renders 1`] = `
     styles_rightToLeft={false}
     styles_search_width="10em"
     styles_selection_margin=".2em"
-    styles_selection_paddingBottom=".1em"
-    styles_selection_paddingLeft=".2em"
-    styles_selection_paddingRight=".2em"
-    styles_selection_paddingTop=".1em"
+    styles_selection_paddingBottom=".2em"
+    styles_selection_paddingLeft=".4em"
+    styles_selection_paddingRight=".4em"
+    styles_selection_paddingTop=".2em"
     styles_width="600px"
   >
     <div
@@ -179,7 +181,8 @@ exports[`renders 1`] = `
           "styles_colors_highlight": "lightblue",
           "styles_colors_primary": "black",
           "styles_colors_secondary": "#C3C3C3",
-          "styles_colors_warning": "#CD5C5C",
+          "styles_colors_warning": "#FABAAC",
+          "styles_colors_warningBold": "#FA2222",
           "styles_disabled": false,
           "styles_fontSize": "1em",
           "styles_hasOptions": true,
@@ -198,10 +201,10 @@ exports[`renders 1`] = `
           "styles_rightToLeft": false,
           "styles_search_width": "10em",
           "styles_selection_margin": ".2em",
-          "styles_selection_paddingBottom": ".1em",
-          "styles_selection_paddingLeft": ".2em",
-          "styles_selection_paddingRight": ".2em",
-          "styles_selection_paddingTop": ".1em",
+          "styles_selection_paddingBottom": ".2em",
+          "styles_selection_paddingLeft": ".4em",
+          "styles_selection_paddingRight": ".4em",
+          "styles_selection_paddingTop": ".2em",
           "styles_width": "600px",
         }
       }

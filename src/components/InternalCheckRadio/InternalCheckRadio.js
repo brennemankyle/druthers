@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
-import src from "./checkmark.svg"
 
 let InternalCheckRadio = (props) => {
   let [hasFocus, setHasFocus] = useState(false)
@@ -25,13 +24,11 @@ let InternalCheckRadio = (props) => {
       onBlur={onBlur}
       checked={props.checked} />
     <div className="check-radio-display">
-      <img src={props.imgSrc} alt="remove" />
+      <svg aria-labelledby="remove" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+        <path d="M8.5 12.5L8.5 12.5 5.5 16 0 9.5 3 6 5.5 9 13 0 16 3.5 8.5 12.5Z"/>
+      </svg>
     </div>
     {label}</label>
-}
-
-InternalCheckRadio.defaultProps = {
-  imgSrc: src,
 }
 
 InternalCheckRadio.propTypes = {
@@ -40,7 +37,6 @@ InternalCheckRadio.propTypes = {
   disabled: PropTypes.bool.isRequired,
   toggle: PropTypes.bool.isRequired,
   value: PropTypes.string.isRequired,
-  imgSrc: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   multiple: PropTypes.bool,
   type: PropTypes.string,

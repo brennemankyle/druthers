@@ -25,7 +25,7 @@ const Selection = styled(Item)`
   padding-left: ${props => props.styles_selection_paddingLeft};
   padding-right: ${props => props.removable ? '0' : props.styles_selection_paddingRight};
 
-  & > .remove:not(img) {
+  & .remove:not(svg):not(path) {
     display: flex;
     border: none;
     border-radius: ${props => props.styles_borderRadius};
@@ -38,12 +38,17 @@ const Selection = styled(Item)`
     background-color: transparent;
     font-size: 1em;
 
-    img {
+    svg {
+      fill: ${props => props.styles_colors_primary};
       width: ${props => props.styles_icon_width};
     }
 
     &:hover {
       background-color: ${props => props.styles_colors_warning};
+
+      svg {
+        fill: ${props => props.styles_colors_warningBold};
+      }
     }
   }
 
@@ -162,7 +167,8 @@ const CheckBox = styled(InternalCheckRadio)`
     height: ${props => props.styles_icon_width};
     background-color: ${props => props.disabled ? props.styles_colors_disabled : props.styles_colors_background};
 
-    img {
+    svg {
+      fill: ${props => props.styles_colors_primary};
       width: ${props => props.styles_icon_width};
       ${props => !props.checked && `
         visibility: hidden;`
@@ -213,7 +219,7 @@ const Radio = styled(InternalCheckRadio)`
       background-color: ${props.styles_colors_secondary};`
     }
 
-    img {
+    svg {
       visibility: hidden;
       width: ${props => props.styles_icon_width};
     }
@@ -259,7 +265,7 @@ const Switch = styled(InternalCheckRadio)`
     height: ${props => props.styles_icon_width};
     background-color: ${props => props.disabled ? props.styles_colors_disabled : props.styles_colors_background};
 
-    img {
+    svg {
       width: ${props => props.styles_icon_width};
       border-radius: 100%;
       ${props => props.checked
@@ -269,7 +275,7 @@ const Switch = styled(InternalCheckRadio)`
         : `
           background-color: ${props.styles_colors_secondary};`
       }
-      object-position: -99999px 99999px;
+      fill-opacity: 0;
     }
   }
 
@@ -293,6 +299,10 @@ const SelectionWrapper = styled(RawSelectionWrapper)`
     flex-grow: 1;
   }
 
+  svg.expand {
+    fill: ${props => props.styles_colors_primary};
+  }
+
   ${props => !props.styles_disabled && `
     &:hover {
       border-color: ${props.styles_colors_primary};
@@ -300,7 +310,7 @@ const SelectionWrapper = styled(RawSelectionWrapper)`
   }
 
   ${props => props.areOptionsOpen && `
-    img.expand {
+    svg.expand {
       transform: scaleY(-1);
     }
     border-color: ${props.styles_colors_primary};`}

@@ -52,6 +52,7 @@ let AppPropTypes = {
     styles_colors_secondary: PropTypes.string.isRequired,
     styles_colors_highlight: PropTypes.string.isRequired,
     styles_colors_warning: PropTypes.string.isRequired,
+    styles_colors_warningBold: PropTypes.string.isRequired,
     styles_colors_disabled: PropTypes.string.isRequired,
     styles_colors_background: PropTypes.string.isRequired,
   }

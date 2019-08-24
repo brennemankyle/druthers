@@ -1,7 +1,6 @@
 import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
-import src from "./expand.svg"
 
 let SelectionWrapper = (props) => {
   const searchRef = useRef(null)
@@ -45,17 +44,14 @@ let SelectionWrapper = (props) => {
         {Search}
       </div>
       <span className="divider"></span>
-      <img className="expand" src={props.expandSrc} alt="expand" /></div>
-}
-
-SelectionWrapper.defaultProps = {
-  expandSrc: src,
+      <svg className="expand" aria-labelledby="expand" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 8">
+        <path d="M4 4L0 0 8 0 16 0 12 4 8 8 4 4Z"/>
+      </svg></div>
 }
 
 SelectionWrapper.propTypes = {
   onFocus: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
-  expandSrc: PropTypes.string.isRequired,
   areOptionsOpen: PropTypes.bool.isRequired,
   Search: AppPropTypes.element.isRequired,
   SelectionList: PropTypes.oneOfType([AppPropTypes.element.isRequired, PropTypes.bool]),

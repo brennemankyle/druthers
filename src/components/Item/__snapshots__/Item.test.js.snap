@@ -19,12 +19,19 @@ exports[`renders removable 1`] = `
     type="button"
     val="42"
   >
-    <img
-      alt="remove"
+    <svg
+      aria-labelledby="remove"
       className="remove"
-      src="remove.png"
       val="42"
-    />
+      viewBox="0 0 16 16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        className="remove"
+        d="M10.9 8L16 13.1 13.1 16 8 10.9 2.9 16 0 13.1 5.1 8 0 2.9 2.9 0 8 5.1 13.1 0 16 2.9 10.9 8Z"
+        val="42"
+      />
+    </svg>
   </button>
 </li>
 `;
