@@ -5,41 +5,28 @@ import AppPropTypes from '../../utils/AppPropTypes'
 let SelectionWrapper = (props) => {
   const searchRef = useRef(null)
 
-  let onFocus = (e) => {
-    if (!props.areOptionsOpen) {
-      props.onFocus(e)
+  let onClick = (e) => {
+    let isSearch = e.target.classList.contains('search')
 
+    if (!isSearch && !props.areOptionsOpen) {
+      e.preventDefault()
       searchRef.current.focus()
-    } else {
-      e.target.blur() // Close if already open options
-    }
-  }
-  let onBlur = (e) => {
-    if (e.target.classList.contains('search')) {
-      setTimeout(() => { // Call blur after focus event
-        props.onBlur(e)
-      })
-    }
-  }
-  let onSearchClick = (e) => {
-    if (props.areOptionsOpen) {
-      // Call blur on search click
+    } else if (isSearch && props.areOptionsOpen) {
       e.preventDefault()
       searchRef.current.blur()
     }
   }
 
   const Search = React.cloneElement(props.Search, {
-    onClick: onSearchClick,
     ref: searchRef,
+    onFocus: props.onFocus,
+    onBlur: props.onBlur,
   })
   let Expand = props.svg_Expand
 
   return <div
     className={props.className}
-    tabIndex={props.styles_disabled ? 'false' : '-1'}
-    onFocus={onFocus}
-    onBlur={onBlur}>
+    onMouseDown={onClick}>
       <div>
         {props.SelectionList}
         {Search}

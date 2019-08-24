@@ -4,7 +4,9 @@ exports[`renders 1`] = `
 <input
   className="test search"
   disabled={false}
+  onBlur={[MockFunction]}
   onChange={[MockFunction]}
+  onFocus={[MockFunction]}
   onKeyDown={[MockFunction]}
   placeholder="Placeholder"
   type="text"
@@ -15,7 +17,9 @@ exports[`renders disabled 1`] = `
 <input
   className="test search"
   disabled={true}
+  onBlur={[MockFunction]}
   onChange={[MockFunction]}
+  onFocus={[MockFunction]}
   onKeyDown={[MockFunction]}
   placeholder="Placeholder"
   type="text"
@@ -26,7 +30,9 @@ exports[`renders hidden 1`] = `
 <input
   className="test search"
   disabled={false}
+  onBlur={[MockFunction]}
   onChange={[MockFunction]}
+  onFocus={[MockFunction]}
   onKeyDown={[MockFunction]}
   placeholder="Placeholder"
   type="text"
@@ -37,7 +43,9 @@ exports[`renders searchText 1`] = `
 <input
   className="test search"
   disabled={false}
+  onBlur={[MockFunction]}
   onChange={[MockFunction]}
+  onFocus={[MockFunction]}
   onKeyDown={[MockFunction]}
   placeholder="Placeholder"
   type="text"

@@ -7,6 +7,8 @@ import Search from './Search'
 const placeholder = 'Placeholder'
 const onChange = jest.fn()
 const onClick = jest.fn()
+const onFocus = jest.fn()
+const onBlur = jest.fn()
 const onKeyDown = jest.fn()
 
 it('renders', () => {
@@ -15,6 +17,8 @@ it('renders', () => {
     placeholder={placeholder}
     onChange={onChange}
     onKeyDown={onKeyDown}
+    onFocus={onFocus}
+    onBlur={onBlur}
     hide={false}
     className="test" />)
 
@@ -32,6 +36,8 @@ it('renders disabled', () => {
     placeholder={placeholder}
     onChange={onChange}
     onKeyDown={onKeyDown}
+    onFocus={onFocus}
+    onBlur={onBlur}
     hide={false}
     className="test" />)
 
@@ -44,6 +50,8 @@ it('renders searchText', () => {
     placeholder={placeholder}
     onChange={onChange}
     onKeyDown={onKeyDown}
+    onFocus={onFocus}
+    onBlur={onBlur}
     hide={false}
     className="test" searchText="search text" />)
 
@@ -56,6 +64,8 @@ it('renders hidden', () => {
     placeholder={placeholder}
     onChange={onChange}
     onKeyDown={onKeyDown}
+    onFocus={onFocus}
+    onBlur={onBlur}
     hide={true}
     className="test" />)
 
@@ -69,6 +79,8 @@ it('forwards ref', () => {
     placeholder={placeholder}
     onChange={onChange}
     onKeyDown={onKeyDown}
+    onFocus={onFocus}
+    onBlur={onBlur}
     hide={false}
     ref={ref} />)
 
@@ -81,6 +93,8 @@ it('should click', () => {
     placeholder={placeholder}
     onChange={onChange}
     onKeyDown={onKeyDown}
+    onFocus={onFocus}
+    onBlur={onBlur}
     hide={false}
     onClick={onClick} />)
 
@@ -95,6 +109,8 @@ it('should keyDown', () => {
     placeholder={placeholder}
     onChange={onChange}
     onKeyDown={onKeyDown}
+    onFocus={onFocus}
+    onBlur={onBlur}
     hide={false} />)
 
   wrapper.find('input').simulate('keyDown')
@@ -108,6 +124,8 @@ it('should change', () => {
     placeholder={placeholder}
     onChange={onChange}
     onKeyDown={onKeyDown}
+    onFocus={onFocus}
+    onBlur={onBlur}
     hide={false} />)
 
   wrapper.find('input').simulate('change')

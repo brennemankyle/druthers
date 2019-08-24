@@ -12,6 +12,8 @@ let Search = (props, ref) => {
     onChange={props.onChange}
     onMouseDown={props.onClick}
     onKeyDown={props.onKeyDown}
+    onFocus={props.onFocus}
+    onBlur={props.onBlur}
     value={props.searchText} />
 }
 
@@ -23,6 +25,8 @@ Search.propTypes = {
   onClick: PropTypes.func,
   searchText: PropTypes.string,
   onKeyDown: PropTypes.func.isRequired,
+  onFocus: PropTypes.func.isRequired,
+  onBlur: PropTypes.func.isRequired,
   hide: PropTypes.bool.isRequired,
   ...AppPropTypes.styles,
 }

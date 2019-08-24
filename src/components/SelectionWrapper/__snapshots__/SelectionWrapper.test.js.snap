@@ -3,14 +3,13 @@
 exports[`renders 1`] = `
 <div
   className="test"
-  onBlur={[Function]}
-  onFocus={[Function]}
-  tabIndex="-1"
+  onMouseDown={[Function]}
 >
   <div>
     <Component />
     <Component
-      onClick={[Function]}
+      onBlur={[MockFunction]}
+      onFocus={[MockFunction]}
     />
   </div>
   <span
@@ -23,14 +22,13 @@ exports[`renders 1`] = `
 exports[`renders disabled 1`] = `
 <div
   className="test"
-  onBlur={[Function]}
-  onFocus={[Function]}
-  tabIndex="false"
+  onMouseDown={[Function]}
 >
   <div>
     <Component />
     <Component
-      onClick={[Function]}
+      onBlur={[MockFunction]}
+      onFocus={[MockFunction]}
     />
   </div>
   <span
