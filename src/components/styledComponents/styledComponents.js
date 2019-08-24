@@ -295,7 +295,7 @@ const SelectionWrapper = styled(RawSelectionWrapper)`
   padding-bottom: ${props => props.styles_paddingBottom};
   padding-right: ${props => props.styles_paddingRight};
   padding-left: ${props => props.styles_paddingLeft};
-  & > *:first-child {
+  & > div:first-of-type {
     flex-grow: 1;
   }
 
