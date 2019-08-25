@@ -34,7 +34,7 @@ let Select = (rawProps) => {
   }
 
   if (props.creatable && searchText && !filteredOptions.some(option => option.value === searchText)
-    && (props.allowDuplicates || (!props.allowDuplicates && !props.selection.some(item => item.value === searchText)))) // Don't allow duplicates
+    && (props.allowDuplicates || !props.selection.some(item => item.value === searchText))) // Don't allow duplicates
   {
     filteredOptions.push({value: searchText, label: props.text_create + ` "${searchText}"`})
   }
