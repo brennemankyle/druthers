@@ -14,6 +14,12 @@ let massageDataIn = (props) => {
     return option == null ? {value: value, label: value} : option
   })
 
+  // Distinct
+  if (!props.allowDuplicates) {
+    let values = options.map(option => option.value)
+    options = options.filter((option, index) => values.indexOf(option.value) === index)
+  }
+
   placeholder = otherProps.text_placeholder ? otherProps.text_placeholder : placeholder
 
   return {

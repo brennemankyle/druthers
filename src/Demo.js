@@ -14,6 +14,12 @@ let options = [
   {value: '10', label: 'a Pickle is not Pie'},
 ]
 
+let duplicateOptions = [
+  {value: '1', label: 'Option 1'},
+  {value: '1', label: 'Option 1'},
+  {value: '2', label: 'Option 2'},
+]
+
 let checkRadioOptions = [
   {value: '1', label: 'Purple'},
   {value: '2', label: 'Green'},
@@ -37,6 +43,7 @@ let App = () => {
   const [selectionRadio, setSelectionRadio] = useState()
   const [selectionCheck, setSelectionCheck] = useState()
   const [selectionSwitch, setSelectionSwitch] = useState()
+  const [selectionNoDuplicates, setSelectionNoDuplicates] = useState([])
 
   return (
     <div className="App">
@@ -87,6 +94,9 @@ let App = () => {
       <h1>Switch Disabled</h1>
       <p>(Only visible if fits on one line, resize window to see)</p>
       <NewInput name="SwitchDisabled" selection={['true']} onChange={(e) => setSelectionSwitch(e.target.value)} options={switchOptions} disabled={true} />
+
+      <h1>No Duplicates</h1>
+      <NewInput name="NoDuplicates" selection={selectionNoDuplicates} onChange={(e) => setSelectionNoDuplicates(e.target.value)} options={duplicateOptions} creatable={true} multiple={true} allowDuplicates={false} />
     </div>
   )
 }

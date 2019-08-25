@@ -22,6 +22,7 @@ let defaultProps = {
   removable: true,
   appendToBody: false,
   rightToLeft: false,
+  allowDuplicates: true,
   filterOptions,
   massageDataIn,
   massageDataOut,

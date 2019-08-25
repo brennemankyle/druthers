@@ -79,6 +79,7 @@ let simpleNewInputPropTypes = {
   removable: PropTypes.bool.isRequired,
   appendToBody: PropTypes.bool.isRequired,
   rightToLeft: PropTypes.bool.isRequired,
+  allowDuplicates: PropTypes.bool.isRequired,
   filterOptions: PropTypes.func.isRequired,
   massageDataIn: PropTypes.func.isRequired,
   massageDataOut: PropTypes.func.isRequired,
