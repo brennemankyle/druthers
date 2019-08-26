@@ -32,6 +32,14 @@ let Select = (rawProps) => {
     styles_rightToLeft: props.rightToLeft,
     ...withKeys(props, 'styles_')
   }
+  let moveHighlighted = (filteredOptions, optionHighlighted, distance) => {
+    if (filteredOptions.length === 0) { setOptionHighlighted(); return }
+
+    let index = filteredOptions.map((option) => option.value).indexOf(optionHighlighted) + distance
+    index = index >= 0 ? index : 0
+    index = index < filteredOptions.length ? index : filteredOptions.length - 1
+    setOptionHighlighted(filteredOptions[index].value)
+  }
 
   if (props.creatable && searchText && !filteredOptions.some(option => option.value === searchText)
     && (props.allowDuplicates || !props.selection.some(item => item.value === searchText))) // Don't allow duplicates
@@ -116,7 +124,7 @@ let Select = (rawProps) => {
             },
             preventDefault: e.preventDefault,
           })
-          setOptionHighlighted()
+          moveHighlighted(filteredOptions, optionHighlighted, 1)
           setSearchText('')
 
           if (!props.multiple) e.target.blur() // Close options on single select
@@ -124,14 +132,12 @@ let Select = (rawProps) => {
         break
       case ARROW_UP:
         if (areOptionsOpen && filteredOptions.length && optionHighlighted) {
-          let index = filteredOptions.map((option) => option.value).indexOf(optionHighlighted) - 1
-          if (index >= 0) setOptionHighlighted(filteredOptions[index].value)
+          moveHighlighted(filteredOptions, optionHighlighted, -1)
         }
         break
       case ARROW_DOWN:
         if (areOptionsOpen && filteredOptions.length && optionHighlighted) {
-          let index = filteredOptions.map((option) => option.value).indexOf(optionHighlighted) + 1
-          if (index < filteredOptions.length) setOptionHighlighted(filteredOptions[index].value)
+          moveHighlighted(filteredOptions, optionHighlighted, 1)
         }
         break
       case ESCAPE:
