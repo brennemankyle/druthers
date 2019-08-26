@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { simpleNewInputPropTypes } from '../../utils/AppPropTypes'
 import defaultProps from '../../utils/defaultProps'
 import { last, inRange } from '../../utils/essentialLodash'
@@ -16,6 +16,9 @@ let Select = (rawProps) => {
   const [searchText, setSearchText] = useState('')
   const [placeholder, setPlacholder] = useState(props.text_placeholder)
   const [optionHighlighted, setOptionHighlighted] = useState()
+  useEffect(() => {
+    setOptionHighlighted() // If Search changes highlight first option
+  }, [searchText])
 
   let hasOptions = !!props.options.length
   let hasSelection = !!props.selection.length
@@ -32,7 +35,7 @@ let Select = (rawProps) => {
     styles_rightToLeft: props.rightToLeft,
     ...withKeys(props, 'styles_')
   }
-  let moveHighlighted = (filteredOptions, optionHighlighted, distance) => {
+  let moveHighlighted = (filteredOptions, distance) => {
     if (filteredOptions.length === 0) { setOptionHighlighted(); return }
 
     let index = filteredOptions.map((option) => option.value).indexOf(optionHighlighted) + distance
@@ -124,7 +127,7 @@ let Select = (rawProps) => {
             },
             preventDefault: e.preventDefault,
           })
-          moveHighlighted(filteredOptions, optionHighlighted, 1)
+          moveHighlighted(filteredOptions, 1)
           setSearchText('')
 
           if (!props.multiple) e.target.blur() // Close options on single select
@@ -132,12 +135,12 @@ let Select = (rawProps) => {
         break
       case ARROW_UP:
         if (areOptionsOpen && filteredOptions.length && optionHighlighted) {
-          moveHighlighted(filteredOptions, optionHighlighted, -1)
+          moveHighlighted(filteredOptions, -1)
         }
         break
       case ARROW_DOWN:
         if (areOptionsOpen && filteredOptions.length && optionHighlighted) {
-          moveHighlighted(filteredOptions, optionHighlighted, 1)
+          moveHighlighted(filteredOptions, 1)
         }
         break
       case ESCAPE:
