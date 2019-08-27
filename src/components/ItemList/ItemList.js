@@ -20,9 +20,10 @@ let ItemList = (props) => {
   let hasItems = !!props.itemList.length
   let onMouseDown = hasItems ? props.onClick : noop
   let onMouseOver = hasItems ? props.onMouseOver : noop
+  let onMouseOut = hasItems ? props.onMouseOut : noop
 
   return (
-    <ul className={props.className} onMouseDown={onMouseDown} onMouseOver={onMouseOver}>
+    <ul className={props.className} onMouseDown={onMouseDown} onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
       {props.itemList.map(renderItem)}
       {!hasItems && props.noItemsText && <Item
         item={{value: '', label: props.noItemsText}}
@@ -42,6 +43,7 @@ ItemList.propTypes = {
   onClick: PropTypes.func,
   noItemsText: PropTypes.string,
   onMouseOver: PropTypes.func,
+  onMouseOut: PropTypes.func,
   Item: AppPropTypes.element.isRequired,
   svg_Remove: AppPropTypes.element,
   ...AppPropTypes.styles,

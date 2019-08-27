@@ -43,12 +43,12 @@ const Selection = styled(Item)`
       width: ${props => props.styles_icon_width};
     }
 
-    &:hover {
-      background-color: ${props => props.styles_colors_warning};
+    ${props => props.styles_selectionHighlighted === props.item.value && `
+      background-color: ${props.styles_colors_warning};
 
       svg {
-        fill: ${props => props.styles_colors_warningBold};
-      }
+        fill: ${props.styles_colors_warningBold};
+      }`
     }
   }
 
@@ -74,9 +74,8 @@ const Option = styled(Item)`
   padding-right: ${props => props.styles_option_paddingRight};
   padding-left: ${props => props.styles_option_paddingLeft};
 
-  ${props => props.styles_optionHighlighted === props.item.value
-    ? `background-color: ${props.styles_colors_highlight};`
-    : ``
+  ${props => props.styles_optionHighlighted === props.item.value && `
+    background-color: ${props.styles_colors_highlight};`
   }
   ${props => props.styles_rightToLeft && `
     transform: scaleX(-1);

@@ -16,9 +16,11 @@ let Select = (rawProps) => {
   const [searchText, setSearchText] = useState('')
   const [placeholder, setPlacholder] = useState(props.text_placeholder)
   const [optionHighlighted, setOptionHighlighted] = useState()
+  const [selectionHighlighted, setSelectionHighlighted] = useState('option')
   useEffect(() => {
-    setOptionHighlighted() // If Search changes highlight first option
-  }, [searchText])
+    setOptionHighlighted()
+    setSelectionHighlighted()
+  }, [searchText]) // If Search changes remove highlight
 
   let hasOptions = !!props.options.length
   let hasSelection = !!props.selection.length
@@ -32,16 +34,31 @@ let Select = (rawProps) => {
     styles_hasSelection: hasSelection,
     styles_hasOptions: hasOptions,
     styles_optionHighlighted: optionHighlighted,
+    styles_selectionHighlighted: selectionHighlighted,
     styles_rightToLeft: props.rightToLeft,
     ...withKeys(props, 'styles_')
   }
-  let moveHighlighted = (filteredOptions, distance) => {
-    if (filteredOptions.length === 0) { setOptionHighlighted(); return }
+  let moveHighlighted = (items, type, distance) => {
+    if (items.length === 0) {
+      setOptionHighlighted()
+      setSelectionHighlighted()
+      return
+    }
 
-    let index = filteredOptions.map((option) => option.value).indexOf(optionHighlighted) + distance
+    let highlighted = type === 'option' ? optionHighlighted : selectionHighlighted
+    let index = highlighted == null && type === 'selection'
+      ? items.length - 1
+      : items.map((item) => item.value).indexOf(highlighted) + distance
     index = index >= 0 ? index : 0
-    index = index < filteredOptions.length ? index : filteredOptions.length - 1
-    setOptionHighlighted(filteredOptions[index].value)
+    index = index < items.length ? index : items.length - 1
+
+    if (type === 'option') {
+      setOptionHighlighted(items[index].value)
+      setSelectionHighlighted()
+    } else {
+      setOptionHighlighted()
+      setSelectionHighlighted(items[index].value)
+    }
   }
 
   if (props.creatable && searchText && !filteredOptions.some(option => option.value === searchText)
@@ -50,7 +67,7 @@ let Select = (rawProps) => {
     filteredOptions.push({value: searchText, label: props.text_create + ` "${searchText}"`})
   }
 
-  if (!filteredOptions.map((option) => option.value).includes(optionHighlighted)) {
+  if (selectionHighlighted == null && !filteredOptions.map((option) => option.value).includes(optionHighlighted)) {
     let newOptionHighlighted = filteredOptions.length ? filteredOptions[0].value : undefined
     if (newOptionHighlighted !== optionHighlighted) setOptionHighlighted(newOptionHighlighted)
   }
@@ -77,6 +94,7 @@ let Select = (rawProps) => {
   let onBlur = (e) => {
     setAreOptionsOpen(false)
     setSearchText('')
+    setSelectionHighlighted()
 
     props.onBlur(e)
   }
@@ -110,7 +128,21 @@ let Select = (rawProps) => {
 
     if (value && value !== optionHighlighted) {
       setOptionHighlighted(value)
+      setSelectionHighlighted()
     }
+  }
+  let onHoverSelection = (e) => {
+    if (!e.target.classList.contains('remove')) return
+
+    let value = targetValue(e)
+
+    if (value && value !== optionHighlighted) {
+      setOptionHighlighted()
+      setSelectionHighlighted(value)
+    }
+  }
+  let onSelectionOut = (e) => {
+    if (!areOptionsOpen) setSelectionHighlighted()
   }
   let onKeyDown = (e) => {
     let openKeys = [ENTER_KEY, ARROW_UP, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, SPACE, SEMI_COLON,
@@ -120,40 +152,55 @@ let Select = (rawProps) => {
 
     switch (e.keyCode) {
       case ENTER_KEY:
-        if (areOptionsOpen && optionHighlighted) {
+        if (areOptionsOpen && optionHighlighted != null) {
           onOptionClick({
             target: {
               value: optionHighlighted
             },
             preventDefault: e.preventDefault,
           })
-          moveHighlighted(filteredOptions, 1)
+          moveHighlighted(filteredOptions, 'option', 1)
           setSearchText('')
 
           if (!props.multiple) e.target.blur() // Close options on single select
         }
         break
       case ARROW_UP:
-        if (areOptionsOpen && filteredOptions.length && optionHighlighted) {
-          moveHighlighted(filteredOptions, -1)
+        if (areOptionsOpen && filteredOptions.length) {
+          moveHighlighted(filteredOptions, 'option', -1)
         }
         break
       case ARROW_DOWN:
-        if (areOptionsOpen && filteredOptions.length && optionHighlighted) {
-          moveHighlighted(filteredOptions, 1)
+        if (areOptionsOpen && filteredOptions.length) {
+          moveHighlighted(filteredOptions, 'option', 1)
+        }
+        break
+      case ARROW_LEFT:
+        if (props.selection.length) {
+          moveHighlighted(props.selection, 'selection', -1)
+        }
+        break
+      case ARROW_RIGHT:
+        if (props.selection.length) {
+          moveHighlighted(props.selection, 'selection', 1)
         }
         break
       case ESCAPE:
         if (areOptionsOpen) setAreOptionsOpen(false)
         setSearchText('')
+        setOptionHighlighted()
+        setSelectionHighlighted()
         break
       case BACKSPACE:
       case DELETE:
         if (!searchText && props.selection.length) {
           let input = document.createElement("input")
-          input.value = last(props.selection).value
+          input.value = selectionHighlighted == null
+            ? last(props.selection).value
+            : selectionHighlighted
           input.classList.add('remove')
 
+          moveHighlighted(props.selection, 'selection', 1)
           onRemove({
             target: input,
             preventDefault: e.preventDefault,
@@ -206,6 +253,8 @@ let Select = (rawProps) => {
         showSelection && <SelectionList
           itemList={props.selection}
           onClick={onRemove}
+          onMouseOver={onHoverSelection}
+          onMouseOut={onSelectionOut}
           removable={!props.disabled && props.removable}
           svg_Remove={props.svg_Remove}
           Item={Selection}

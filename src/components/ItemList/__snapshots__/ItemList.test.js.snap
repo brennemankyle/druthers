@@ -248,6 +248,7 @@ exports[`renders 1`] = `
 exports[`renders no items 1`] = `
 <ul
   onMouseDown={[Function]}
+  onMouseOut={[Function]}
   onMouseOver={[Function]}
 >
   <MockElement
