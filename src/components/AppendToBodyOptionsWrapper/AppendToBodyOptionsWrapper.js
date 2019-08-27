@@ -17,8 +17,8 @@ let AppendToBodyOptionsWrapper = (props) => {
   let {className, children, parentRef, filteredOptions, updateOn, StyledAppendToBodyOptionsWrapper, ...otherProps} = props
   const ref = useRef(null)
   const parentRect = useRefRect(parentRef, updateOn)
-  const optionWrapperRect = useRefRect(ref, updateOn)
-  const placeOptionsAbove = usePlaceAbove(parentRect, optionWrapperRect, updateOn)
+  const optionsWrapperRect = useRefRect(ref, updateOn)
+  const placeOptionsAbove = usePlaceAbove(parentRect, optionsWrapperRect, updateOn)
 
   if (placeOptionsAbove && children) {
     filteredOptions = filteredOptions.reverse()

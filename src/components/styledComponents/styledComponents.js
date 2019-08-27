@@ -357,7 +357,7 @@ const DivRelative = styled.div`
   position: relative
 `
 
-const OptionWrapper = styled(RawWrapper)`
+const OptionsWrapper = styled(RawWrapper)`
   position: absolute;
   top: 0;
   left: 0;
@@ -391,7 +391,7 @@ export {
   Option,
   Search,
   SelectionWrapper,
-  OptionWrapper,
+  OptionsWrapper,
   StyledAppendToBodyOptionsWrapper,
   Wrapper,
   CheckBox,

@@ -225,7 +225,7 @@ let Select = (rawProps) => {
     component_Option: Option,
     component_Search: Search,
     component_SelectionWrapper: SelectionWrapper,
-    component_OptionWrapper: OptionWrapper,
+    component_OptionsWrapper: OptionsWrapper,
     component_AppendToBodyOptionsWrapper: AppendToBodyOptionsWrapper,
     component_StyledAppendToBodyOptionsWrapper: StyledAppendToBodyOptionsWrapper,
   } = props
@@ -271,7 +271,7 @@ let Select = (rawProps) => {
       } />
 
     {!props.appendToBody && areOptionsOpen &&
-      <DivRelative><OptionWrapper {...styles}>{optionList}</OptionWrapper></DivRelative>}
+      <DivRelative><OptionsWrapper {...styles}>{optionList}</OptionsWrapper></DivRelative>}
 
     {props.appendToBody && areOptionsOpen && ReactDOM.createPortal(
       <AppendToBodyOptionsWrapper

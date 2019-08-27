@@ -98,7 +98,7 @@ let simpleNewInputPropTypes = {
   component_Option: AppPropTypes.element.isRequired,
   component_Search: AppPropTypes.element.isRequired,
   component_SelectionWrapper: AppPropTypes.element.isRequired,
-  component_OptionWrapper: AppPropTypes.element.isRequired,
+  component_OptionsWrapper: AppPropTypes.element.isRequired,
   component_AppendToBodyOptionsWrapper: AppPropTypes.element.isRequired,
   component_StyledAppendToBodyOptionsWrapper: AppPropTypes.element.isRequired,
 

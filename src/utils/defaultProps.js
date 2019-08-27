@@ -1,6 +1,6 @@
 import HtmlFieldData from '../components/HtmlFieldData/HtmlFieldData'
 import AppendToBodyOptionsWrapper from '../components/AppendToBodyOptionsWrapper/AppendToBodyOptionsWrapper'
-import { Wrapper, Selection, SelectionList, OptionList, Option, Search, SelectionWrapper, OptionWrapper, StyledAppendToBodyOptionsWrapper } from '../components/styledComponents/styledComponents'
+import { Wrapper, Selection, SelectionList, OptionList, Option, Search, SelectionWrapper, OptionsWrapper, StyledAppendToBodyOptionsWrapper } from '../components/styledComponents/styledComponents'
 import { Expand, Remove, Checkmark } from '../components/svg/svg'
 import filterOptions from './filterOptions'
 import massageDataIn from './massageDataIn'
@@ -37,6 +37,7 @@ let defaultProps = {
   component_CheckRadio: undefined,
   component_CheckBox: undefined,
   component_Radio: undefined,
+  component_Switch: undefined,
   component_HtmlFieldData: HtmlFieldData,
   component_Wrapper: Wrapper,
   component_Selection: Selection,
@@ -45,7 +46,7 @@ let defaultProps = {
   component_Option: Option,
   component_Search: Search,
   component_SelectionWrapper: SelectionWrapper,
-  component_OptionWrapper: OptionWrapper,
+  component_OptionsWrapper: OptionsWrapper,
   component_AppendToBodyOptionsWrapper: AppendToBodyOptionsWrapper,
   component_StyledAppendToBodyOptionsWrapper: StyledAppendToBodyOptionsWrapper,
 
