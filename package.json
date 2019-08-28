@@ -47,7 +47,11 @@
   "browserslist": {
     "production": [
       ">0.2%",
+<<<<<<< HEAD
       "last 2 versions",
+=======
+      "last 2 versions"
+>>>>>>> dec129b25008635667737ea91ef75624ad745a8d
       "not dead",
       "not op_mini all"
     ],
