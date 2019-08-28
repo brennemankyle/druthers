@@ -98,6 +98,8 @@ let Select = (rawProps) => {
   let onOptionClick = (e) => {
     if (props.multiple) {
       e.preventDefault() // Keep options open on multi select
+    } else {
+      setAreOptionsOpen(false)
     }
 
     callOnChange(props, targetValue(e))

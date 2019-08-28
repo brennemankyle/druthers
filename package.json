@@ -48,6 +48,7 @@
     "production": [
       ">0.2%",
       "last 2 versions",
+      "ie 11",
       "not dead",
       "not op_mini all"
     ],

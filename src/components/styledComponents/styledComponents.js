@@ -110,6 +110,9 @@ const Search = styled(RawSearch)`
   font-size: 1em;
   font-family: inherit;
   background-color: transparent;
+  &::-ms-clear {
+    display: none;
+  }
   margin-top: calc(${props => props.styles_selection_margin} / 2);
   margin-bottom: calc(${props => props.styles_selection_margin} / 2);
   padding-top: ${props => props.styles_selection_paddingTop};
