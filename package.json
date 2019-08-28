@@ -1,7 +1,7 @@
 {
   "name": "react-new-input",
   "homepage": "https://brennemankyle.github.io/react-new-input/",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "React Multi-Select with automatic checkboxes/radios",
   "main": "dist/index.js",
   "private": false,
