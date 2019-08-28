@@ -5,6 +5,7 @@ import { last, inRange } from '../../utils/essentialLodash'
 import ReactDOM from 'react-dom'
 import { DivRelative } from '../styledComponents/styledComponents'
 import withKeys from '../../utils/withKeys'
+import callOnChange from '../../utils/callOnChange'
 import { ENTER_KEY, ESCAPE, SPACE, BACKSPACE, DELETE, ARROW_UP, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, NUM_LETTER_START, NUM_LETTER_END, SEMI_COLON, EQUAL_SIGN, COMMA, DASH, PERIOD, FORWARD_SLASH, OPEN_BRACKET, BACK_SLASH, CLOSE_BRAKET, SINGLE_QUOTE } from '../../utils/keyCodes'
 
 let targetValue = (e) => String(e.target.value || e.target.getAttribute('val') || '')
@@ -68,21 +69,12 @@ let Select = (rawProps) => {
   if (props.creatable && searchText && !filteredOptions.some(option => option.value === searchText)
     && (props.allowDuplicates || !props.selection.some(item => item.value === searchText))) // Don't allow duplicates
   {
-    filteredOptions.push({value: searchText, label: props.text_create + ` "${searchText}"`})
+    filteredOptions.push({value: searchText, label: props.text_create + ` "${searchText}"`}) // Add option for creation
   }
 
   if (selectionHighlighted == null && !filteredOptions.map((option) => option.value).includes(optionHighlighted)) {
-    let newOptionHighlighted = filteredOptions.length ? filteredOptions[0].value : undefined
+    let newOptionHighlighted = filteredOptions.length ? filteredOptions[0].value : undefined // Only highlight visible options
     if (newOptionHighlighted !== optionHighlighted) setOptionHighlighted(newOptionHighlighted)
-  }
-
-  let callOnChange = (value) => {
-    props.onChange({
-      target: {
-        value: props.massageDataOut(value),
-        name: props.name,
-      }
-    })
   }
 
   // Events
@@ -99,32 +91,23 @@ let Select = (rawProps) => {
     setAreOptionsOpen(false)
     setSearchText('')
     setSelectionHighlighted()
+    setPlacholder(props.text_placeholder)
 
     props.onBlur(e)
   }
   let onOptionClick = (e) => {
-    let value = targetValue(e)
-
     if (props.multiple) {
-      value = props.selection.map((option) => option.value)
-      value.push(targetValue(e))
       e.preventDefault() // Keep options open on multi select
     }
 
-    callOnChange(value)
+    callOnChange(props, targetValue(e))
   }
   let onRemove = (e) => {
     if (props.removable && e.target.classList.contains('remove')) {
       e.preventDefault() // Prevent click from opening options
       setPlacholder(props.text_placeholder) // Reset placeholder for single select
-      let value = []
 
-      if (props.multiple) {
-        value = props.selection.map((option) => option.value)
-        value.splice(value.indexOf(targetValue(e)), 1) // Remove
-      }
-
-      callOnChange(value)
+      callOnChange(props, targetValue(e), false)
     }
   }
   let onHoverOption = (e) => {

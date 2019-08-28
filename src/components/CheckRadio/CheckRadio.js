@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
 import defaultProps from '../../utils/defaultProps'
 import withKeys from '../../utils/withKeys'
+import callOnChange from '../../utils/callOnChange'
 import { CheckBox, Radio, Switch } from '../styledComponents/styledComponents'
 
 let CheckRadio = (rawProps, ref) => {
@@ -19,22 +20,9 @@ let CheckRadio = (rawProps, ref) => {
       ? String(e.target.checked)
       : String(e.target.value)
 
-    if (props.multiple) {
-      value = props.selection.map((option) => option.value)
+    let add = props.multiple ? e.target.checked : true
 
-      if (e.target.checked) {
-        value.push(String(e.target.value)) // Add
-      } else {
-        value.splice(value.indexOf(String(e.target.value)), 1) // Remove
-      }
-    }
-
-    props.onChange({
-      target: {
-        value: props.massageDataOut(value),
-        name: props.name,
-      }
-    })
+    callOnChange(props, value, add)
   }
 
   let options = useSwitch
