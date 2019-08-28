@@ -61,6 +61,10 @@ let Select = (rawProps) => {
     }
   }
 
+  if (!hasOptions && !props.creatable) {
+    console.error('Select has no options and is not creatable, nothing to display. Consider adding options or making it creatable')
+  }
+
   if (props.creatable && searchText && !filteredOptions.some(option => option.value === searchText)
     && (props.allowDuplicates || !props.selection.some(item => item.value === searchText))) // Don't allow duplicates
   {
@@ -235,10 +239,10 @@ let Select = (rawProps) => {
     onClick={onOptionClick}
     onMouseOver={onHoverOption}
     Item={Option}
-    noItemsText={props.text_noOptions}
+    noItemsText={hasOptions ? props.text_noOptions : props.text_create + '...'}
     {...styles} />
 
-  return <Wrapper {...styles} ref={selfRef}>
+  return (hasOptions || props.creatable) && <Wrapper {...styles} ref={selfRef}>
     <HtmlFieldData
       name={props.name}
       itemList={props.selection} />

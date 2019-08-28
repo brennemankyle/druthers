@@ -32,6 +32,10 @@ let NewInput = (rawProps) => {
     }
   }
 
+  if (props.options.length === 0 && !props.creatable) {
+    console.error('Select has no options and is not creatable, nothing to display. Consider adding options or making it creatable')
+  }
+
   let { component_CheckRadio: CheckRadio, component_Select: Select } = props
 
   return [

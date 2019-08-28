@@ -44,6 +44,7 @@ let App = () => {
   const [selectionCheck, setSelectionCheck] = useState()
   const [selectionSwitch, setSelectionSwitch] = useState()
   const [selectionNoDuplicates, setSelectionNoDuplicates] = useState([])
+  const [selectionNoOptions, setSelectionNoOptions] = useState([])
 
   return (
     <div className="App">
@@ -97,6 +98,9 @@ let App = () => {
 
       <h1>No Duplicates</h1>
       <NewInput name="NoDuplicates" selection={selectionNoDuplicates} onChange={(e) => setSelectionNoDuplicates(e.target.value)} options={duplicateOptions} creatable={true} multiple={true} allowDuplicates={false} />
+
+      <h1>No Options</h1>
+      <NewInput name="NoOptions" selection={selectionNoOptions} onChange={(e) => setSelectionNoOptions(e.target.value)} creatable={true} multiple={true} />
     </div>
   )
 }
