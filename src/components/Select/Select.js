@@ -96,10 +96,10 @@ let Select = (rawProps) => {
     props.onBlur(e)
   }
   let onOptionClick = (e) => {
-    if (props.multiple) {
-      e.preventDefault() // Keep options open on multi select
-    } else {
-      setAreOptionsOpen(false)
+    e.preventDefault()
+    
+    if (!props.multiple) {
+      onBlur(document.activeElement) // Close options on single select
     }
 
     callOnChange(props, targetValue(e))
@@ -184,12 +184,14 @@ let Select = (rawProps) => {
       case DELETE:
         if (!searchText && props.selection.length) {
           let input = document.createElement("input")
-          input.value = selectionHighlighted == null
-            ? last(props.selection).value
-            : selectionHighlighted
+          input.value = last(props.selection).value
           input.classList.add('remove')
 
-          moveHighlighted(props.selection, 'selection', 1)
+          if (selectionHighlighted != null) {
+            input.value = selectionHighlighted
+            moveHighlighted(props.selection, 'selection', 1)
+          }
+
           onRemove({
             target: input,
             preventDefault: e.preventDefault,
@@ -241,7 +243,7 @@ let Select = (rawProps) => {
       SelectionList={
         showSelection && <SelectionList
           itemList={props.selection}
-          onClick={onRemove}
+          onMouseDown={onRemove}
           onMouseOver={onHoverSelection}
           onMouseOut={onSelectionOut}
           removable={!props.disabled && props.removable}
