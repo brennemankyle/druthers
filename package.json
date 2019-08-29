@@ -1,12 +1,13 @@
 {
   "name": "react-new-input",
   "homepage": "https://brennemankyle.github.io/react-new-input/",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "description": "React Multi-Select with automatic checkboxes/radios",
   "main": "dist/index.js",
   "private": false,
   "dependencies": {
     "@emotion/core": "^10.0.16",
+    "core-js": "^3.2.1",
     "debounce": "^1.2.0",
     "fuzzyset.js": "0.0.8",
     "prop-types": "^15.7.2"
@@ -48,7 +49,7 @@
     "production": [
       ">0.2%",
       "last 2 edge versions",
-      "ie 11",
+      "IE 11",
       "not dead",
       "not op_mini all"
     ],
@@ -169,7 +170,16 @@
   },
   "babel": {
     "presets": [
-      "@babel/preset-env",
+      [
+        "@babel/preset-env",
+        {
+          "useBuiltIns": "usage",
+          "corejs": {
+            "version": 3,
+            "proposals": true
+          }
+        }
+      ],
       "@babel/preset-react"
     ]
   }

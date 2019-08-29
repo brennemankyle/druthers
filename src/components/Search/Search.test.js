@@ -6,7 +6,6 @@ import Search from './Search'
 
 const placeholder = 'Placeholder'
 const onChange = jest.fn()
-const onClick = jest.fn()
 const onFocus = jest.fn()
 const onBlur = jest.fn()
 const onKeyDown = jest.fn()
@@ -85,22 +84,6 @@ it('forwards ref', () => {
     ref={ref} />)
 
   expect(ref.current).toBeDefined()
-})
-
-it('should click', () => {
-  const wrapper = shallow(<Search
-    {...mockStyles}
-    placeholder={placeholder}
-    onChange={onChange}
-    onKeyDown={onKeyDown}
-    onFocus={onFocus}
-    onBlur={onBlur}
-    hide={false}
-    onClick={onClick} />)
-
-  wrapper.find('input').simulate('mouseDown')
-
-  expect(onClick).toBeCalled()
 })
 
 it('should keyDown', () => {

@@ -6,7 +6,7 @@ import Select from '../Select/Select'
 import CheckRadio from '../CheckRadio/CheckRadio'
 import { CheckBox, Radio, Switch } from '../styledComponents/styledComponents'
 
-let hasOverflownX = (element) => element.scrollWidth > element.clientWidth
+let hasOverflownX = (element) => element.scrollWidth > element.offsetWidth
 
 let NewInput = (rawProps) => {
   let props = rawProps.massageDataIn(rawProps)

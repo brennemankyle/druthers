@@ -250,6 +250,8 @@ exports[`renders no items 1`] = `
   onMouseDown={[Function]}
   onMouseOut={[Function]}
   onMouseOver={[Function]}
+  onPointerDown={[Function]}
+  onTouchStart={[Function]}
 >
   <MockElement
     item={

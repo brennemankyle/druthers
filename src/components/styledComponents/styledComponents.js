@@ -41,6 +41,7 @@ const Selection = styled(Item)`
     svg {
       fill: ${props => props.styles_colors_primary};
       width: ${props => props.styles_icon_width};
+      height: ${props => props.styles_icon_width};
     }
 
     ${props => props.styles_selectionHighlighted === props.item.value && `
@@ -172,6 +173,7 @@ const CheckBox = styled(InternalCheckRadio)`
     svg {
       fill: ${props => props.styles_colors_primary};
       width: ${props => props.styles_icon_width};
+      height: ${props => props.styles_icon_width};
       ${props => !props.checked && `
         visibility: hidden;`
       }
@@ -224,6 +226,7 @@ const Radio = styled(InternalCheckRadio)`
     svg {
       visibility: hidden;
       width: ${props => props.styles_icon_width};
+      height: ${props => props.styles_icon_width};
     }
   }
 
@@ -269,6 +272,7 @@ const Switch = styled(InternalCheckRadio)`
 
     svg {
       width: ${props => props.styles_icon_width};
+      height: ${props => props.styles_icon_width};
       border-radius: 100%;
       ${props => props.checked
         ? `
@@ -330,8 +334,9 @@ const SelectionWrapper = styled(RawSelectionWrapper)`
         margin: 0 .4em;
       }
 
-      .expand {
+      svg.expand {
         width: ${props.styles_icon_width};
+        height: ${props.styles_icon_width};
         margin-top: -1px;
 
         ${!props.styles_disabled && `
