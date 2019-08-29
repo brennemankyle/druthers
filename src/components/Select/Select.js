@@ -77,13 +77,16 @@ let Select = (rawProps) => {
     if (newOptionHighlighted !== optionHighlighted) setOptionHighlighted(newOptionHighlighted)
   }
 
+  if (areOptionsOpen) {
+    let newPlaceholder = !props.multiple && props.selection.length
+      ? props.selection[0].label // Set placeholder to current selection on single select
+      : props.text_placeholder
+    if (newPlaceholder !== placeholder) setPlacholder(newPlaceholder)
+  }
+
   // Events
   let onFocus = (e) => {
     setAreOptionsOpen(true)
-
-    setPlacholder(!props.multiple && props.selection.length
-      ? props.selection[0].label // Set placeholder to current selection on single select
-      : props.text_placeholder)
 
     props.onFocus(e)
   }
@@ -91,15 +94,14 @@ let Select = (rawProps) => {
     setAreOptionsOpen(false)
     setSearchText('')
     setSelectionHighlighted()
-    setPlacholder(props.text_placeholder)
 
     props.onBlur(e)
   }
   let onOptionClick = (e) => {
     e.preventDefault()
-    
+
     if (!props.multiple) {
-      onBlur(document.activeElement) // Close options on single select
+      document.activeElement.blur() // Close options on single select
     }
 
     callOnChange(props, targetValue(e))
@@ -107,7 +109,6 @@ let Select = (rawProps) => {
   let onRemove = (e) => {
     if (props.removable && e.target.classList.contains('remove')) {
       e.preventDefault() // Prevent click from opening options
-      setPlacholder(props.text_placeholder) // Reset placeholder for single select
 
       callOnChange(props, targetValue(e), false)
     }
@@ -243,7 +244,7 @@ let Select = (rawProps) => {
       SelectionList={
         showSelection && <SelectionList
           itemList={props.selection}
-          onMouseDown={onRemove}
+          onClick={onRemove}
           onMouseOver={onHoverSelection}
           onMouseOut={onSelectionOut}
           removable={!props.disabled && props.removable}

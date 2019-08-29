@@ -10,7 +10,6 @@ let Search = (props, ref) => {
     type="text"
     placeholder={props.placeholder}
     onChange={props.onChange}
-    onMouseDown={props.onClick}
     onKeyDown={props.onKeyDown}
     onFocus={props.onFocus}
     onBlur={props.onBlur}
@@ -22,7 +21,6 @@ Search = forwardRef(Search)
 Search.propTypes = {
   placeholder: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  onClick: PropTypes.func,
   searchText: PropTypes.string,
   onKeyDown: PropTypes.func.isRequired,
   onFocus: PropTypes.func.isRequired,

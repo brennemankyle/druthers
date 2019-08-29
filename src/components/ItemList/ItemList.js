@@ -23,7 +23,7 @@ let ItemList = (props) => {
   let onMouseOut = hasItems ? props.onMouseOut : noop
 
   return (
-    <ul className={props.className} onMouseDown={onMouseDown} onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
+    <ul className={props.className} onMouseDown={onMouseDown} onPointerDown={onMouseDown} onTouchStart={onMouseDown} onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
       {props.itemList.map(renderItem)}
       {!hasItems && props.noItemsText && <Item
         item={{value: '', label: props.noItemsText}}
