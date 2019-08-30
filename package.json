@@ -17,15 +17,15 @@
     "react-dom": "^16.8.6"
   },
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "old-start": "node scripts/start.js",
+    "old-build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "transpile": "babel ./src --out-dir ./dist",
     "prepare": "npm run transpile",
     "predeploy": "npm run build",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public",
-    "deploy-storybook": "storybook-to-ghpages"
+    "start": "start-storybook -p 9009 -s public",
+    "build": "build-storybook -s public",
+    "deploy": "storybook-to-ghpages"
   },
   "keywords": [
     "multiple select",
