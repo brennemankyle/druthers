@@ -97,6 +97,9 @@ const SelectionList = styled(ItemList)`
   list-style-type: none;
   padding: 0;
   margin: 0;
+  &:not(:empty) {
+    min-width: calc(${props => props.styles_search_width} + ${props => props.styles_selection_paddingRight} + ${props => props.styles_selection_paddingLeft});
+  }
 `
 const OptionList = styled(ItemList)`
   list-style-type: none;
