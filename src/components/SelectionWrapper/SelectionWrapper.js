@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
+import handleClick from '../../utils/handleClick'
 
 let SelectionWrapper = (props) => {
   const searchRef = useRef(null)
@@ -8,11 +9,12 @@ let SelectionWrapper = (props) => {
   let onClick = (e) => {
     let isSearch = e.target.classList.contains('search')
 
-    if (!isSearch && !props.areOptionsOpen) {
-      e.preventDefault()
+    e.preventDefault()
+
+    if (!props.areOptionsOpen) {
       searchRef.current.focus()
-    } else if (isSearch && props.areOptionsOpen) {
-      e.preventDefault()
+    }
+    else {
       searchRef.current.blur()
     }
   }
@@ -26,7 +28,7 @@ let SelectionWrapper = (props) => {
 
   return <div
     className={props.className}
-    onMouseDown={onClick}
+    onMouseDown={handleClick(onClick)}
     onPointerDown={onClick}
     onTouchStart={onClick}>
       <div>
