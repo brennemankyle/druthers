@@ -29,7 +29,6 @@ let SelectionWrapper = (props) => {
   return <div
     className={props.className}
     onMouseDown={handleClick(onClick)}
-    onPointerDown={onClick}
     onTouchStart={onClick}>
       <div>
         {props.SelectionList}

@@ -25,7 +25,7 @@ let ItemList = (props) => {
   let onTouchStart = hasItems ? props.onClick : noop
 
   return (
-    <ul className={props.className} onMouseDown={onMouseDown} onPointerDown={onTouchStart} onTouchStart={onTouchStart} onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
+    <ul className={props.className} onMouseDown={onMouseDown} onTouchStart={onTouchStart} onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
       {props.itemList.map(renderItem)}
       {!hasItems && props.noItemsText && <Item
         item={{value: '', label: props.noItemsText}}
