@@ -3,6 +3,7 @@
 exports[`renders 1`] = `
 <div
   className="test"
+  onClick={[Function]}
   onMouseDown={[Function]}
   onTouchStart={[Function]}
 >
@@ -23,6 +24,7 @@ exports[`renders 1`] = `
 exports[`renders disabled 1`] = `
 <div
   className="test"
+  onClick={[Function]}
   onMouseDown={[Function]}
   onTouchStart={[Function]}
 >

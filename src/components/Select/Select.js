@@ -86,11 +86,13 @@ let Select = (rawProps) => {
 
   // Events
   let onFocus = (e) => {
+    console.log('focus')
     setAreOptionsOpen(true)
 
     props.onFocus(e)
   }
   let onBlur = (e) => {
+    console.log('blur')
     setAreOptionsOpen(false)
     setSearchText('')
     setSelectionHighlighted()

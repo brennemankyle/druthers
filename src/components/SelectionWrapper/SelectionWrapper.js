@@ -12,9 +12,11 @@ let SelectionWrapper = (props) => {
     e.preventDefault()
 
     if (!props.areOptionsOpen) {
+      console.log('click focusing')
       searchRef.current.focus()
     }
     else {
+      console.log('click bluring')
       searchRef.current.blur()
     }
   }
@@ -29,6 +31,7 @@ let SelectionWrapper = (props) => {
   return <div
     className={props.className}
     onMouseDown={handleClick(onClick)}
+    onClick={e => e.preventDefault()}
     onTouchStart={onClick}>
       <div>
         {props.SelectionList}

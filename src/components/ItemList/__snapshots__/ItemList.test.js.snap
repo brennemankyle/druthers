@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders 1`] = `
-<ul>
+<ul
+  onClick={[Function]}
+>
   <MockElement
     item={
       Object {
@@ -247,6 +249,7 @@ exports[`renders 1`] = `
 
 exports[`renders no items 1`] = `
 <ul
+  onClick={[Function]}
   onMouseDown={[Function]}
   onMouseOut={[Function]}
   onMouseOver={[Function]}
@@ -303,7 +306,9 @@ exports[`renders no items 1`] = `
 `;
 
 exports[`renders removable 1`] = `
-<ul>
+<ul
+  onClick={[Function]}
+>
   <MockElement
     item={
       Object {
