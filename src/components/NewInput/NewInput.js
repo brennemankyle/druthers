@@ -10,9 +10,9 @@ let hasOverflownX = (element) => element.scrollWidth > element.offsetWidth
 
 let NewInput = (rawProps) => {
   let props = rawProps.massageDataIn(rawProps)
+  const canCheckRadio = props.options.length < props.checkRadioMaxCount && !props.creatable
   const checkRadioRef = useRef(null)
   const windowWidth = useWindowWidth()
-  const [canCheckRadio] = useState(props.options.length < props.checkRadioMaxCount && !props.creatable)
   const [isLoading, setIsLoading] = useState(canCheckRadio)
   const [isOverflown, setIsOverflown] = useState(false)
   useEffect(() => {
