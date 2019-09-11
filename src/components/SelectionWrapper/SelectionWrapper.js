@@ -12,11 +12,9 @@ let SelectionWrapper = (props) => {
     e.preventDefault()
 
     if (!props.areOptionsOpen) {
-      console.log('click focusing')
       searchRef.current.focus()
     }
     else {
-      console.log('click bluring')
       searchRef.current.blur()
     }
   }

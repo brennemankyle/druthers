@@ -77,22 +77,18 @@ let Select = (rawProps) => {
     if (newOptionHighlighted !== optionHighlighted) setOptionHighlighted(newOptionHighlighted)
   }
 
-  if (areOptionsOpen) {
-    let newPlaceholder = !props.multiple && props.selection.length
-      ? props.selection[0].label // Set placeholder to current selection on single select
-      : props.text_placeholder
-    if (newPlaceholder !== placeholder) setPlacholder(newPlaceholder)
-  }
+  let newPlaceholder = areOptionsOpen && !props.multiple && props.selection.length
+    ? props.selection[0].label // Set placeholder to current selection on single select
+    : props.text_placeholder
+  if (newPlaceholder !== placeholder) setPlacholder(newPlaceholder)
 
   // Events
   let onFocus = (e) => {
-    console.log('focus')
     setAreOptionsOpen(true)
 
     props.onFocus(e)
   }
   let onBlur = (e) => {
-    console.log('blur')
     setAreOptionsOpen(false)
     setSearchText('')
     setSelectionHighlighted()
