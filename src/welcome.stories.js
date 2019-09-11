@@ -15,6 +15,7 @@ let Config = () => {
   const [options, setOptions] = useState(['Option 1', 'Option 2'])
   const [placeholder, setPlaceholder] = useState(defaultProps.placeholder)
   const [multiple, setMultiple] = useState(defaultProps.multiple)
+  const [disabled, setDisabled] = useState(defaultProps.disabled)
   const [creatable, setCreatable] = useState(defaultProps.creatable)
   const [removable, setRemovable] = useState(defaultProps.removable)
   const [appendToBody, setAppendToBody] = useState(defaultProps.appendToBody)
@@ -92,6 +93,13 @@ let Config = () => {
             options={trueFalse}
             onChange={(e) => setMultiple(e.target.value === 'true')} />
         </label>
+        <label>disabled
+          <NewInput
+            name="disabled"
+            selection={disabled}
+            options={trueFalse}
+            onChange={(e) => setDisabled(e.target.value === 'true')} />
+        </label>
         <label>creatable
           <NewInput
             name="creatable"
@@ -131,7 +139,7 @@ let Config = () => {
           <NewInput
             name="checkRadioMaxCount"
             selection={checkRadioMaxCount}
-            onChange={(e) => setCheckRadioMaxCount(e.target.value)}
+            onChange={(e) => setCheckRadioMaxCount(parseInt(e.target.value, 10))}
             creatable={true} />
         </label>
         <label>text_noOptions
@@ -376,6 +384,7 @@ let Config = () => {
           options={options.map(option => ({value: option, label: option}))}
           placeholder={placeholder}
           multiple={multiple}
+          disabled={disabled}
           creatable={creatable}
           removable={removable}
           appendToBody={appendToBody}
