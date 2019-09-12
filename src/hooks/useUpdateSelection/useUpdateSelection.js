@@ -8,7 +8,9 @@ let useUpdateSelection = (props,) => {
     if (!props.allowDuplicates) {
       // No duplicates, distinct
       let selectionValues = selection.map(item => item.value)
-      selection = selection.filter((item, index) => selectionValues.indexOf(item.value) === index)
+      let newSelection = selection.filter((item, index) => selectionValues.indexOf(item.value) === index)
+
+      if (newSelection.length !== selection.length) selection = newSelection
     }
 
     if (!props.multiple && selection.length > 1) {
@@ -18,14 +20,13 @@ let useUpdateSelection = (props,) => {
 
     if (!props.creatable) {
       // Not creatable, only allow selections in the options
-      let filteredSelection = selection.filter(item => props.options.some(option => option.value === item.value))
+      let newSelection = selection.filter(item => props.options.some(option => option.value === item.value))
 
-      if (filteredSelection.length !== selection.length) {
-        selection = filteredSelection
-      }
+      if (newSelection.length !== selection.length) selection = newSelection
     }
 
     if (originalSelection !== selection) {
+      console.log('hey')
       props.onChange({
         target: {
           value: props.massageDataOut(selection.map(item => item.value)),
