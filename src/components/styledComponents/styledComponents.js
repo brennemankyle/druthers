@@ -375,6 +375,9 @@ const OptionsWrapper = styled(RawWrapper)`
   z-index: 999;
   background-color: ${props => props.styles_colors_background};
   width: ${props => props.styles_width}px;
+  ${props => !props.styles_hasOptions && !props.styles_multiple && `
+    display: none;
+  `}
 `
 
 const StyledAppendToBodyOptionsWrapper = styled(RawStyledAppendToBodyOptionsWrapper)`
@@ -392,6 +395,9 @@ const StyledAppendToBodyOptionsWrapper = styled(RawStyledAppendToBodyOptionsWrap
   ${props => props.styles_rightToLeft && `
     transform: scaleX(-1);`
   }
+  ${props => !props.styles_hasOptions && !props.styles_multiple && `
+    display: none;
+  `}
 `
 
 export {

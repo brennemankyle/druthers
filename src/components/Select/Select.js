@@ -27,6 +27,7 @@ let Select = (rawProps) => {
 
   let hasOptions = !!props.options.length
   let hasSelection = !!props.selection.length
+  let singleNoOptions = !hasOptions && !props.multiple && props.creatable
   let filteredOptions = props.filterOptions(searchText, props.selection, props.options)
   let showSelection = props.multiple || !areOptionsOpen // Multiple: always show. Single: show when options are closed
   let showSearch = props.multiple || areOptionsOpen || !props.selection.length // Multiple: always show. Single: show when options are open or when nothing is selected (placeholder should be shown)
@@ -82,7 +83,8 @@ let Select = (rawProps) => {
   let newPlaceholder = areOptionsOpen && !props.multiple && props.selection.length
     ? props.selection[0].label // Set placeholder to current selection on single select
     : props.text_placeholder
-  if (newPlaceholder !== placeholder) setPlacholder(newPlaceholder)
+  if (!singleNoOptions && newPlaceholder !== placeholder) setPlacholder(newPlaceholder)
+  if (singleNoOptions && !areOptionsOpen && props.selection.length && searchText !== props.selection[0].label) setSearchText(props.selection[0].label) // On single creatable with no options, edit the currently selected label
 
   // Events
   let onFocus = (e) => {
