@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom'
 import { DivRelative } from '../styledComponents/styledComponents'
 import withKeys from '../../utils/withKeys'
 import callOnChange from '../../utils/callOnChange'
-import useDistinctSelection from '../../hooks/useDistinctSelection/useDistinctSelection'
+import useUpdateSelection from '../../hooks/useUpdateSelection/useUpdateSelection'
 import { ENTER_KEY, ESCAPE, SPACE, BACKSPACE, DELETE, ARROW_UP, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, NUM_LETTER_START, NUM_LETTER_END, SEMI_COLON, EQUAL_SIGN, COMMA, DASH, PERIOD, FORWARD_SLASH, OPEN_BRACKET, BACK_SLASH, CLOSE_BRAKET, SINGLE_QUOTE } from '../../utils/keyCodes'
 
 let targetValue = (e) => String(e.target.value || e.target.getAttribute('val') || '')
@@ -23,7 +23,7 @@ let Select = (rawProps) => {
     setOptionHighlighted()
     setSelectionHighlighted()
   }, [searchText]) // If Search changes remove highlight
-  useDistinctSelection(props)
+  useUpdateSelection(props)
 
   let hasOptions = !!props.options.length
   let hasSelection = !!props.selection.length

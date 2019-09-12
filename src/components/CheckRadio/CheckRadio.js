@@ -4,10 +4,12 @@ import AppPropTypes from '../../utils/AppPropTypes'
 import defaultProps from '../../utils/defaultProps'
 import withKeys from '../../utils/withKeys'
 import callOnChange from '../../utils/callOnChange'
+import useUpdateSelection from '../../hooks/useUpdateSelection/useUpdateSelection'
 import { CheckBox, Radio, Switch } from '../styledComponents/styledComponents'
 
 let CheckRadio = (rawProps, ref) => {
   let props = rawProps.massaged ? rawProps : rawProps.massageDataIn(rawProps)
+  useUpdateSelection(props)
 
   let type = props.multiple ? 'checkbox' : 'radio'
   let values = props.selection.map(item => item.value)
