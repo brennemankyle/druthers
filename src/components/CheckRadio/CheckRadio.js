@@ -22,10 +22,9 @@ let CheckRadio = (rawProps, ref) => {
       ? String(e.target.checked)
       : String(e.target.value)
 
-    console.log(value)
     let add = props.multiple ? e.target.checked : true
 
-    callOnChange(props, value, add)
+    if (props.removable || e.target.checked) callOnChange(props, value, add)
   }
 
   let onClick = (e) => {

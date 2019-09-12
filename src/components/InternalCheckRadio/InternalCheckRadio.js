@@ -38,7 +38,7 @@ InternalCheckRadio.propTypes = {
   toggle: PropTypes.bool.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   multiple: PropTypes.bool,
   type: PropTypes.string,
   label: PropTypes.string,
