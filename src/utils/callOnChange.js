@@ -2,7 +2,7 @@ let callOnChange = (props, newValue, add = true) => {
   let value = add ? newValue : []
 
   if (props.multiple) {
-    value = props.selection.map((option) => option.value)
+    value = props.selection.map(option => option.value)
 
     if (add) {
       value.push(String(newValue)) // Add
