@@ -26,7 +26,6 @@ let useUpdateSelection = (props,) => {
     }
 
     if (originalSelection !== selection) {
-      console.log('hey')
       props.onChange({
         target: {
           value: props.massageDataOut(selection.map(item => item.value)),
