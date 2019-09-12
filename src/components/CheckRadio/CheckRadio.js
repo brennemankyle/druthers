@@ -22,9 +22,20 @@ let CheckRadio = (rawProps, ref) => {
       ? String(e.target.checked)
       : String(e.target.value)
 
+    console.log(value)
     let add = props.multiple ? e.target.checked : true
 
     callOnChange(props, value, add)
+  }
+
+  let onClick = (e) => {
+    let value = String(e.target.value)
+
+    if (props.removable && !useSwitch && !props.multiple && props.selection.length && props.selection[0].value === value) {
+      // Unchecking radio, onChange event won't fire here
+      callOnChange(props, [])
+    }
+
   }
 
   let options = useSwitch
@@ -47,6 +58,7 @@ let CheckRadio = (rawProps, ref) => {
         value={option.value}
         disabled={props.disabled}
         onChange={onChange}
+        onClick={onClick}
         checked={values.includes(option.value)}
         label={option.label}
         title={option.label}

@@ -20,6 +20,7 @@ let InternalCheckRadio = (props) => {
       name={props.name}
       value={props.value}
       onChange={props.onChange}
+      onClick={props.onClick}
       disabled={props.disabled}
       onFocus={onFocus}
       onBlur={onBlur}
@@ -37,6 +38,7 @@ InternalCheckRadio.propTypes = {
   toggle: PropTypes.bool.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
   multiple: PropTypes.bool,
   type: PropTypes.string,
   label: PropTypes.string,
