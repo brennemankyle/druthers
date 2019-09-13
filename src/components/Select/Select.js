@@ -18,7 +18,7 @@ let Select = (rawProps) => {
   const [searchText, setSearchText] = useState('')
   const [placeholder, setPlacholder] = useState(props.text_placeholder)
   const [optionHighlighted, setOptionHighlighted] = useState()
-  const [selectionHighlighted, setSelectionHighlighted] = useState('option')
+  const [selectionHighlighted, setSelectionHighlighted] = useState()
   const [width, setWidth] = useState(0)
   useEffect(() => {
     if (areOptionsOpen) setWidth(selfRef && selfRef.current ? selfRef.current.offsetWidth : 0)
@@ -57,8 +57,8 @@ let Select = (rawProps) => {
     let index = highlighted == null && type === 'selection'
       ? items.length - 1
       : items.map((item) => item.value).indexOf(highlighted) + distance
-    index = index >= 0 ? index : 0
-    index = index < items.length ? index : items.length - 1
+    index = Math.max(index, 0)
+    index = Math.min(index, items.length - 1)
 
     if (type === 'option') {
       setOptionHighlighted(items[index].value)
