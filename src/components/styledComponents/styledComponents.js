@@ -105,7 +105,10 @@ const OptionList = styled(ItemList)`
   list-style-type: none;
   padding: 0;
   margin: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
   border: 1px solid ${props => props.styles_colors_secondary};
+  border-radius: ${props => props.styles_borderRadius};
 `
 
 const Search = styled(RawSearch)`

@@ -84,7 +84,7 @@ let Select = (rawProps) => {
     ? props.selection[0].label // Set placeholder to current selection on single select
     : props.text_placeholder
   if (!singleNoOptions && newPlaceholder !== placeholder) setPlacholder(newPlaceholder)
-  if (singleNoOptions && !areOptionsOpen && props.selection.length && searchText !== props.selection[0].label) setSearchText(props.selection[0].label) // On single creatable with no options, edit the currently selected label
+  if (singleNoOptions && !areOptionsOpen && props.selection.length && searchText === '') setSearchText(props.selection[0].label) // On single creatable with no options, edit the currently selected label
 
   // Events
   let onFocus = (e) => {
@@ -113,6 +113,7 @@ let Select = (rawProps) => {
       e.preventDefault() // Prevent click from opening options
 
       callOnChange(props, targetValue(e), false)
+      setSearchText('')
     }
   }
   let onHoverOption = (e) => {
@@ -168,12 +169,12 @@ let Select = (rawProps) => {
         }
         break
       case ARROW_LEFT:
-        if (props.selection.length) {
+        if (props.selection.length && searchText === '') {
           moveHighlighted(props.selection, 'selection', -1)
         }
         break
       case ARROW_RIGHT:
-        if (props.selection.length) {
+        if (props.selection.length && searchText === '') {
           moveHighlighted(props.selection, 'selection', 1)
         }
         break
