@@ -74,6 +74,14 @@ const Option = styled(Item)`
   padding-bottom: ${props => props.styles_option_paddingBottom};
   padding-right: ${props => props.styles_option_paddingRight};
   padding-left: ${props => props.styles_option_paddingLeft};
+  &:first-of-type{
+    border-top-left-radius: ${props => props.styles_borderRadius};
+    border-top-right-radius: ${props => props.styles_borderRadius};
+  }
+  &:last-of-type{
+    border-bottom-left-radius: ${props => props.styles_borderRadius};
+    border-bottom-right-radius: ${props => props.styles_borderRadius};
+  }
 
   ${props => props.styles_optionHighlighted === props.item.value && `
     background-color: ${props.styles_colors_highlight};`
@@ -97,9 +105,6 @@ const SelectionList = styled(ItemList)`
   list-style-type: none;
   padding: 0;
   margin: 0;
-  &:not(:empty) {
-    min-width: calc(${props => props.styles_search_width} + ${props => props.styles_selection_paddingRight} + ${props => props.styles_selection_paddingLeft});
-  }
 `
 const OptionList = styled(ItemList)`
   list-style-type: none;
@@ -130,14 +135,11 @@ const Search = styled(RawSearch)`
     transform: scaleX(-1);
     text-align: right;`
   }
-  ${props => props.hide
-    ? `
-      opacity: 0;
-      width: 0;
-      padding: 0;
-      margin: 0;`
-    : `
-      width: ${props.styles_search_width};`
+  ${props => props.hide && `
+    opacity: 0;
+    width: 0;
+    padding: 0;
+    margin: 0;`
   }
   ${props => props.styles_disabled && `
     cursor: not-allowed;`

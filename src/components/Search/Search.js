@@ -9,6 +9,7 @@ let Search = (props, ref) => {
     disabled={props.styles_disabled}
     type="text"
     placeholder={props.placeholder}
+    size={props.styles_search_size}
     onChange={props.onChange}
     onKeyDown={props.onKeyDown}
     onFocus={props.onFocus}

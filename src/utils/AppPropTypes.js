@@ -46,7 +46,7 @@ let AppPropTypes = {
     styles_checkRadio_paddingBottom: PropTypes.string.isRequired,
     styles_checkRadio_paddingLeft: PropTypes.string.isRequired,
     styles_checkRadio_paddingRight: PropTypes.string.isRequired,
-    styles_search_width: PropTypes.string.isRequired,
+    styles_search_size: PropTypes.string.isRequired,
     styles_icon_width: PropTypes.string.isRequired,
     styles_colors_primary: PropTypes.string.isRequired,
     styles_colors_secondary: PropTypes.string.isRequired,

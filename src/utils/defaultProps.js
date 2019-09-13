@@ -76,7 +76,7 @@ let defaultProps = {
   styles_checkRadio_paddingBottom: '.2em',
   styles_checkRadio_paddingLeft: '.2em',
   styles_checkRadio_paddingRight: '.2em',
-  styles_search_width: '10em',
+  styles_search_size: '8',
   styles_icon_width: '1em',
   styles_colors_primary: 'black',
   styles_colors_secondary: '#C3C3C3',

@@ -9,6 +9,7 @@ exports[`renders 1`] = `
   onFocus={[MockFunction]}
   onKeyDown={[MockFunction]}
   placeholder="Placeholder"
+  size="8"
   type="text"
 />
 `;
@@ -22,6 +23,7 @@ exports[`renders disabled 1`] = `
   onFocus={[MockFunction]}
   onKeyDown={[MockFunction]}
   placeholder="Placeholder"
+  size="8"
   type="text"
 />
 `;
@@ -35,6 +37,7 @@ exports[`renders hidden 1`] = `
   onFocus={[MockFunction]}
   onKeyDown={[MockFunction]}
   placeholder="Placeholder"
+  size="8"
   type="text"
 />
 `;
@@ -48,6 +51,7 @@ exports[`renders searchText 1`] = `
   onFocus={[MockFunction]}
   onKeyDown={[MockFunction]}
   placeholder="Placeholder"
+  size="8"
   type="text"
   value="search text"
 />

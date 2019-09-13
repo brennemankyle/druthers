@@ -48,7 +48,7 @@ let Config = () => {
   const [styles_checkRadio_paddingBottom, setStyles_checkRadio_paddingBottom] = useState(defaultProps.styles_checkRadio_paddingBottom)
   const [styles_checkRadio_paddingLeft, setStyles_checkRadio_paddingLeft] = useState(defaultProps.styles_checkRadio_paddingLeft)
   const [styles_checkRadio_paddingRight, setStyles_checkRadio_paddingRight] = useState(defaultProps.styles_checkRadio_paddingRight)
-  const [styles_search_width, setStyles_search_width] = useState(defaultProps.styles_search_width)
+  const [styles_search_size, setStyles_search_size] = useState(defaultProps.styles_search_size)
   const [styles_icon_width, setStyles_icon_width] = useState(defaultProps.styles_icon_width)
   const [styles_colors_primary, setStyles_colors_primary] = useState(defaultProps.styles_colors_primary)
   const [styles_colors_secondary, setStyles_colors_secondary] = useState(defaultProps.styles_colors_secondary)
@@ -311,11 +311,11 @@ let Config = () => {
             onChange={(e) => setStyles_checkRadio_paddingRight(e.target.value)}
             creatable={true} />
         </label>
-        <label>styles_search_width
+        <label>styles_search_size
           <NewInput
-            name="styles_search_width"
-            selection={styles_search_width}
-            onChange={(e) => setStyles_search_width(e.target.value)}
+            name="styles_search_size"
+            selection={styles_search_size}
+            onChange={(e) => setStyles_search_size(e.target.value)}
             creatable={true} />
         </label>
         <label>styles_icon_width
@@ -415,7 +415,7 @@ let Config = () => {
           styles_checkRadio_paddingBottom={styles_checkRadio_paddingBottom}
           styles_checkRadio_paddingLeft={styles_checkRadio_paddingLeft}
           styles_checkRadio_paddingRight={styles_checkRadio_paddingRight}
-          styles_search_width={styles_search_width}
+          styles_search_size={styles_search_size}
           styles_icon_width={styles_icon_width}
           styles_colors_primary={styles_colors_primary}
           styles_colors_secondary={styles_colors_secondary}

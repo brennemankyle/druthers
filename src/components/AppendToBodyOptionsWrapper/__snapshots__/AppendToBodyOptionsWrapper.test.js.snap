@@ -64,7 +64,7 @@ exports[`renders 1`] = `
   styles_paddingRight=".25em"
   styles_paddingTop=".25em"
   styles_rightToLeft={false}
-  styles_search_width="10em"
+  styles_search_size="8"
   styles_selection_margin=".2em"
   styles_selection_paddingBottom=".2em"
   styles_selection_paddingLeft=".4em"
@@ -119,7 +119,7 @@ exports[`renders 1`] = `
     styles_paddingRight=".25em"
     styles_paddingTop=".25em"
     styles_rightToLeft={false}
-    styles_search_width="10em"
+    styles_search_size="8"
     styles_selection_margin=".2em"
     styles_selection_paddingBottom=".2em"
     styles_selection_paddingLeft=".4em"
@@ -199,7 +199,7 @@ exports[`renders 1`] = `
           "styles_paddingRight": ".25em",
           "styles_paddingTop": ".25em",
           "styles_rightToLeft": false,
-          "styles_search_width": "10em",
+          "styles_search_size": "8",
           "styles_selection_margin": ".2em",
           "styles_selection_paddingBottom": ".2em",
           "styles_selection_paddingLeft": ".4em",

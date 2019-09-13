@@ -80,7 +80,7 @@ https://brennemankyle.github.io/react-new-input/
 | styles_checkRadio_paddingBottom | '.2em' |
 | styles_checkRadio_paddingLeft | '.2em' |
 | styles_checkRadio_paddingRight | '.2em' |
-| styles_search_width | '10em' |
+| styles_search_size | 5 |
 | styles_icon_width | '1em' |
 | styles_colors_primary | 'black' |
 | styles_colors_secondary | '#C3C3C3' |
@@ -160,7 +160,7 @@ https://brennemankyle.github.io/react-new-input/
 | styles_checkRadio_paddingBottom | The padding bottom for radio/checkbox/switch group |
 | styles_checkRadio_paddingLeft | The padding left for radio/checkbox/switch group |
 | styles_checkRadio_paddingRight | The padding right for radio/checkbox/switch group |
-| styles_search_width | The width of the search component |
+| styles_search_size | The size of the search component |
 | styles_icon_width | The width of all icon/SVGs |
 | styles_colors_primary | The primary color used |
 | styles_colors_secondary | The secondary color used |
