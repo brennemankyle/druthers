@@ -69,6 +69,9 @@ let Select = (rawProps) => {
     }
   }
 
+  let newWidth = selfRef && selfRef.current ? selfRef.current.offsetWidth : 0
+  if (width !== newWidth) setWidth(newWidth)
+
   if (!hasOptions && !props.creatable) {
     console.error('Select has no options and is not creatable, nothing to display. Consider adding options or making it creatable')
   }

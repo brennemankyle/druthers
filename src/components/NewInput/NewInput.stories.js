@@ -5,16 +5,53 @@ import { mockStyles } from '../../mocks'
 import NewInput from './NewInput'
 
 let options = [
-  {value: '1', label: 'Option 1'},
-  {value: '2', label: 'Option 2'},
-  {value: '3', label: 'Pickle'},
-  {value: '4', label: 'Pick'},
-  {value: '5', label: 'a Pickle'},
-  {value: '6', label: 'Pi'},
-  {value: '7', label: 'a Pie'},
-  {value: '8', label: 'a Pie is nice'},
-  {value: '9', label: 'Pie'},
-  {value: '10', label: 'a Pickle is not Pie'},
+  {value: 'Alabama', label: 'Alabama'},
+  {value: 'Alaska', label: 'Alaska'},
+  {value: 'Arizona', label: 'Arizona'},
+  {value: 'Arkansas', label: 'Arkansas'},
+  {value: 'California', label: 'California'},
+  {value: 'Colorado', label: 'Colorado'},
+  {value: 'Connecticut', label: 'Connecticut'},
+  {value: 'Delaware', label: 'Delaware'},
+  {value: 'Florida', label: 'Florida'},
+  {value: 'Georgia', label: 'Georgia'},
+  {value: 'Hawaii', label: 'Hawaii'},
+  {value: 'Idaho', label: 'Idaho'},
+  {value: 'IllinoisIndiana', label: 'IllinoisIndiana'},
+  {value: 'Iowa', label: 'Iowa'},
+  {value: 'Kansas', label: 'Kansas'},
+  {value: 'Kentucky', label: 'Kentucky'},
+  {value: 'Louisiana', label: 'Louisiana'},
+  {value: 'Maine', label: 'Maine'},
+  {value: 'Maryland', label: 'Maryland'},
+  {value: 'Massachusetts', label: 'Massachusetts'},
+  {value: 'Michigan', label: 'Michigan'},
+  {value: 'Minnesota', label: 'Minnesota'},
+  {value: 'Mississippi', label: 'Mississippi'},
+  {value: 'Missouri', label: 'Missouri'},
+  {value: 'MontanaNebraska', label: 'MontanaNebraska'},
+  {value: 'Nevada', label: 'Nevada'},
+  {value: 'New Hampshire', label: 'New Hampshire'},
+  {value: 'New Jersey', label: 'New Jersey'},
+  {value: 'New Mexico', label: 'New Mexico'},
+  {value: 'New York', label: 'New York'},
+  {value: 'North Carolina', label: 'North Carolina'},
+  {value: 'North Dakota', label: 'North Dakota'},
+  {value: 'Ohio', label: 'Ohio'},
+  {value: 'Oklahoma', label: 'Oklahoma'},
+  {value: 'Oregon', label: 'Oregon'},
+  {value: 'PennsylvaniaRhode Island', label: 'PennsylvaniaRhode Island'},
+  {value: 'South Carolina', label: 'South Carolina'},
+  {value: 'South Dakota', label: 'South Dakota'},
+  {value: 'Tennessee', label: 'Tennessee'},
+  {value: 'Texas', label: 'Texas'},
+  {value: 'Utah', label: 'Utah'},
+  {value: 'Vermont', label: 'Vermont'},
+  {value: 'Virginia', label: 'Virginia'},
+  {value: 'Washington', label: 'Washington'},
+  {value: 'West Virginia', label: 'West Virginia'},
+  {value: 'Wisconsin', label: 'Wisconsin'},
+  {value: 'Wyoming', label: 'Wyoming'},
 ]
 
 let duplicateOptions = [
@@ -49,19 +86,19 @@ let MultipleState = () => {
 }
 
 let SingleCreateState = () => {
-  const [selectionSingleCreate, setSelectionSingleCreate] = useState('1')
+  const [selectionSingleCreate, setSelectionSingleCreate] = useState('Alabama')
 
   return <NewInput name="SingleCreate" selection={selectionSingleCreate} onChange={(e) => setSelectionSingleCreate(e.target.value)} options={options} creatable={true} />
 }
 
 let MultipleCreateState = () => {
-  const [selectionMultipleCreate, setSelectionMultipleCreate] = useState('1')
+  const [selectionMultipleCreate, setSelectionMultipleCreate] = useState('Alabama')
 
   return <NewInput name="MultipleCreate" selection={selectionMultipleCreate} onChange={(e) => setSelectionMultipleCreate(e.target.value)} options={options} creatable={true} multiple={true} />
 }
 
 let AppendToBodyState = () => {
-  const [selectionAppendToBody, setSelectionAppendToBody] = useState(['1'])
+  const [selectionAppendToBody, setSelectionAppendToBody] = useState(['Alabama'])
 
   return <NewInput name="AppendToBody" selection={selectionAppendToBody} onChange={(e) => setSelectionAppendToBody(e.target.value)} options={options} creatable={true} multiple={true} appendToBody={true} />
 }
@@ -106,11 +143,11 @@ let SingleNoOptionsState = () => {
 }
 
 let SingleDisabledState = () => {
-  return <NewInput name="SingleDisabled" selection={['1']} onChange={(e) => setSelectionSingle(e.target.value)} options={options} disabled={true} />
+  return <NewInput name="SingleDisabled" selection={['Alabama']} onChange={(e) => setSelectionSingle(e.target.value)} options={options} disabled={true} />
 }
 
 let MultipleDisabledState = () => {
-  return <NewInput name="MultipleDisabled" selection={['1', '2']} onChange={(e) => setSelectionMultiple(e.target.value)} options={options} multiple={true} disabled={true} />
+  return <NewInput name="MultipleDisabled" selection={['Alabama', 'Colorado']} onChange={(e) => setSelectionMultiple(e.target.value)} options={options} multiple={true} disabled={true} />
 }
 
 let RadiosDisabledState = () => {
@@ -157,10 +194,10 @@ storiesOf('New Input', module)
   .add('Checkboxes', () => <CheckboxesState />)
   .add('Switch', () => <SwitchState />)
   .add('Single No Options', () => <SingleNoOptionsState />)
+  .add('Multiple No Options', () => <NoOptionsState />)
   .add('Single Disabled', () => <SingleDisabledState />)
   .add('Multiple Disabled', () => <MultipleDisabledState />)
   .add('Radios Disabled', () => <RadiosDisabledState />)
   .add('Checkboxes Disabled', () => <CheckboxesDisabledState />)
   .add('Switch Disabled', () => <SwitchDisabledState />)
   .add('No Duplicates', () => <NoDuplicatesState />)
-  .add('No Options', () => <NoOptionsState />)
