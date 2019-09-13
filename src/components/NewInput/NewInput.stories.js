@@ -75,19 +75,34 @@ let RightToLeftState = () => {
 let RadiosState = () => {
   const [selectionRadio, setSelectionRadio] = useState()
 
-  return <NewInput name="Radios" selection={selectionRadio} onChange={(e) => setSelectionRadio(e.target.value)} options={checkRadioOptions} />
+  return [
+    <h3 key="description">Resize window to see it change from Radios to Select if it runs out of space on one line</h3>,
+    <NewInput key="NewInput" name="Radios" selection={selectionRadio} onChange={(e) => setSelectionRadio(e.target.value)} options={checkRadioOptions} />
+  ]
 }
 
 let CheckboxesState = () => {
   const [selectionCheck, setSelectionCheck] = useState()
 
-  return <NewInput name="Checkboxes" selection={selectionCheck} onChange={(e) => setSelectionCheck(e.target.value)} options={checkRadioOptions} multiple={true} />
+  return [
+    <h3 key="description">Resize window to see it change from Checkboxes to Select if it runs out of space on one line</h3>,
+    <NewInput key="NewInput" name="Checkboxes" selection={selectionCheck} onChange={(e) => setSelectionCheck(e.target.value)} options={checkRadioOptions} multiple={true} />
+  ]
 }
 
 let SwitchState = () => {
   const [selectionSwitch, setSelectionSwitch] = useState()
 
-  return <NewInput name="Switch" selection={selectionSwitch} onChange={(e) => setSelectionSwitch(e.target.value)} options={switchOptions} />
+  return [
+    <h3 key="description">Resize window to see it change from Switch to Select if it runs out of space on one line</h3>,
+    <NewInput key="NewInput" name="Switch" selection={selectionSwitch} onChange={(e) => setSelectionSwitch(e.target.value)} options={switchOptions} />
+  ]
+}
+
+let SingleNoOptionsState = () => {
+  const [selectionSingleNoOptions, setSelectionSingleNoOptions] = useState()
+
+  return <NewInput name="SingleNoOptions" selection={selectionSingleNoOptions} onChange={(e) => setSelectionSingleNoOptions(e.target.value)} creatable={true} />
 }
 
 let SingleDisabledState = () => {
@@ -99,15 +114,24 @@ let MultipleDisabledState = () => {
 }
 
 let RadiosDisabledState = () => {
-  return <NewInput name="RadiosDisabled" selection={['1']} onChange={(e) => setSelectionRadio(e.target.value)} options={checkRadioOptions} disabled={true} />
+  return [
+    <h3 key="description">Resize window to see it change from Radios to Select if it runs out of space on one line</h3>,
+    <NewInput key="NewInput" name="RadiosDisabled" selection={['1']} onChange={(e) => setSelectionRadio(e.target.value)} options={checkRadioOptions} disabled={true} />
+  ]
 }
 
 let CheckboxesDisabledState = () => {
-  return <NewInput name="CheckboxesDisabled" selection={['1', '2']} onChange={(e) => setSelectionCheck(e.target.value)} options={checkRadioOptions} multiple={true} disabled={true} />
+  return [
+    <h3 key="description">Resize window to see it change from Checkboxes to Select if it runs out of space on one line</h3>,
+    <NewInput key="NewInput" name="CheckboxesDisabled" selection={['1', '2']} onChange={(e) => setSelectionCheck(e.target.value)} options={checkRadioOptions} multiple={true} disabled={true} />
+  ]
 }
 
 let SwitchDisabledState = () => {
-  return <NewInput name="SwitchDisabled" selection={['true']} onChange={(e) => setSelectionSwitch(e.target.value)} options={switchOptions} disabled={true} />
+  return [
+    <h3 key="description">Resize window to see it change from Switch to Select if it runs out of space on one line</h3>,
+    <NewInput key="NewInput" name="SwitchDisabled" selection={['true']} onChange={(e) => setSelectionSwitch(e.target.value)} options={switchOptions} disabled={true} />
+  ]
 }
 
 let NoDuplicatesState = () => {
@@ -132,6 +156,7 @@ storiesOf('New Input', module)
   .add('Radios', () => <RadiosState />)
   .add('Checkboxes', () => <CheckboxesState />)
   .add('Switch', () => <SwitchState />)
+  .add('Single No Options', () => <SingleNoOptionsState />)
   .add('Single Disabled', () => <SingleDisabledState />)
   .add('Multiple Disabled', () => <MultipleDisabledState />)
   .add('Radios Disabled', () => <RadiosDisabledState />)

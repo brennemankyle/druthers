@@ -472,4 +472,20 @@ let Config = () => {
 }
 
 storiesOf('Welcome', module)
+  .add('Features', () => <div>
+    <h1>React New Input</h1>
+    <b>A robust multi-select that automatically uses Radios, Checkboxes, or a Switch if they fit on one line</b>
+    <h3>Features:</h3>
+    <ul>
+      <li>Deterministic even with dynamic/live prop updates</li>
+      <li>Completely customizable: replace any internal component, styling, icon, text, or search filter by changing props</li>
+      <li>Automatically uses Radios, Checkboxes, or a Switch if it fits on one line (updates on live screen resizes)</li>
+      <li>Search using fuzzy matching: mossisippi > Mississippi, py > Pi. Powered by https://glench.github.io/fuzzyset.js/</li>
+      <li>Fully usable with only the Keyboard</li>
+      <li>Creatable options (managed by a prop not a separate component)</li>
+      <li>Small npm package size</li>
+      <li>No Jquery</li>
+      <li>Modern browser support: Chrome, Safari, Edge, IE11, Firefox, iOS, Android</li>
+      <li>And much more!</li>
+    </ul></div>)
   .add('Demo', () => <Config />)

@@ -4,6 +4,19 @@ https://brennemankyle.github.io/react-new-input/
 # Install
 `npm install react-new-input`
 
+# Features
+A robust multi-select that automatically uses Radios, Checkboxes, or a Switch if they'll fit on one line
+* Deterministic even with dynamic/live prop updates
+* Completely customizable: replace any internal component, styling, icon, text, or search filter by changing props
+* Automatically uses Radios, Checkboxes, or a Switch if it fits on one line (updates on live screen resizes)
+* Search using fuzzy matching: mossisippi > Mississippi, py > Pi. Powered by https://glench.github.io/fuzzyset.js/
+* Fully usable with only the Keyboard
+* Creatable options (managed by a prop not a separate component)
+* Small npm package size
+* No Jquery
+* Modern browser support: Chrome, Safari, Edge, IE11, Firefox, iOS, Android
+* And much more!
+
 # Comparison
 | Name | Bundle Size |
 | - | - |
