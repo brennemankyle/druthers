@@ -19,6 +19,10 @@ let Select = (rawProps) => {
   const [placeholder, setPlacholder] = useState(props.text_placeholder)
   const [optionHighlighted, setOptionHighlighted] = useState()
   const [selectionHighlighted, setSelectionHighlighted] = useState('option')
+  const [width, setWidth] = useState(0)
+  useEffect(() => {
+    if (areOptionsOpen) setWidth(selfRef && selfRef.current ? selfRef.current.offsetWidth : 0)
+  }, [areOptionsOpen])
   useEffect(() => {
     setOptionHighlighted()
     setSelectionHighlighted()
@@ -32,7 +36,7 @@ let Select = (rawProps) => {
   let showSelection = props.multiple || !areOptionsOpen // Multiple: always show. Single: show when options are closed
   let showSearch = props.multiple || areOptionsOpen || !props.selection.length // Multiple: always show. Single: show when options are open or when nothing is selected (placeholder should be shown)
   let styles = {
-    styles_width: selfRef && selfRef.current ? selfRef.current.offsetWidth : 0,
+    styles_width: width,
     styles_multiple: props.multiple,
     styles_disabled: props.disabled,
     styles_hasSelection: hasSelection,
