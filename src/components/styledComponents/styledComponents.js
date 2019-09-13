@@ -337,7 +337,10 @@ const SelectionWrapper = styled(RawSelectionWrapper)`
         width: 1px;
         align-self: stretch;
         background-color: ${props.styles_colors_secondary};
-        margin: 0 .4em;
+        margin-top: calc(.2em - ${props.styles_paddingTop});
+        margin-bottom: calc(.2em - ${props.styles_paddingBottom});
+        margin-left: .4em;
+        margin-right: .4em;
       }
 
       svg.expand {

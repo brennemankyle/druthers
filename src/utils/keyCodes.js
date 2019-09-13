@@ -19,6 +19,7 @@ const OPEN_BRACKET = 219
 const BACK_SLASH = 220
 const CLOSE_BRAKET = 221
 const SINGLE_QUOTE = 222
+const TAB = 9
 
 export {
   ENTER_KEY,
@@ -42,4 +43,5 @@ export {
   BACK_SLASH,
   CLOSE_BRAKET,
   SINGLE_QUOTE,
+  TAB,
 }
