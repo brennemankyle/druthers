@@ -4,6 +4,53 @@ https://brennemankyle.github.io/react-new-input/
 # Install
 `npm install react-new-input`
 
+```javascript
+// Example File
+import React, { useState } from 'react'
+import NewInput from 'react-new-input'
+
+// With React Function/Hooks
+let SomeHook = () => {
+  const [selection, setSelection] = useState()
+  let options = [
+    {value: '1', label: 'Option 1'},
+    {value: '2', label: 'Option 2'},
+  ]
+
+  return <NewInput
+    name="example"
+    selection={selection}
+    onChange={(e) => setSelection(e.target.value)}
+    options={options} />
+}
+
+// OR With React Component
+class SomeComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {selection}
+    this.options = [
+      {value: '1', label: 'Option 1'},
+      {value: '2', label: 'Option 2'},
+    ]
+  }
+
+  onChange(e) {
+    this.setState({
+      selection: e.target.value
+    })
+  }
+
+  render() {
+    return <NewInput
+      name="example"
+      selection={this.state.selection}
+      onChange={this.onChange}
+      options={this.options} />
+  }
+}
+```
+
 # Features
 A robust multi-select that automatically uses Radios, Checkboxes, or a Switch if they'll fit on one line
 * Deterministic even with dynamic/live prop updates
