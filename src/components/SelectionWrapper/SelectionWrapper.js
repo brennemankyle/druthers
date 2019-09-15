@@ -1,7 +1,8 @@
 import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
-import handleClick from '../../utils/handleClick'
+
+const preventBlur = e => e.preventDefault()
 
 let SelectionWrapper = (props) => {
   const searchRef = useRef(null)
@@ -28,9 +29,9 @@ let SelectionWrapper = (props) => {
 
   return <div
     className={props.className}
-    onMouseDown={handleClick(onClick)}
-    onClick={e => e.preventDefault()}
-    onTouchStart={onClick}>
+    onClick={onClick}
+    onMouseDown={preventBlur}
+    onTouchStart={preventBlur}>
       <div>
         {props.SelectionList}
         {Search}

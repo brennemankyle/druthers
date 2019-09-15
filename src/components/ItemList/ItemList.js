@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
 import withKeys from '../../utils/withKeys'
-import handleClick from '../../utils/handleClick'
 
 const noop = () => {}
+const preventBlur = e => e.preventDefault()
 
 let ItemList = (props) => {
   let styles = withKeys(props, 'styles_')
@@ -19,19 +19,18 @@ let ItemList = (props) => {
       {...styles} />
 
   let hasItems = !!props.itemList.length
-  let onMouseDown = hasItems ? handleClick(props.onClick) : noop
+  let onClick = hasItems ? props.onClick : noop
   let onMouseOver = hasItems ? props.onMouseOver : noop
   let onMouseOut = hasItems ? props.onMouseOut : noop
-  let onTouchStart = hasItems ? props.onClick : noop
 
   return (
     <ul
       className={props.className}
-      onMouseDown={onMouseDown}
-      onTouchStart={onTouchStart}
+      onClick={onClick}
+      onMouseDown={preventBlur}
+      onTouchStart={preventBlur}
       onMouseOver={onMouseOver}
-      onMouseOut={onMouseOut}
-      onClick={e => e.preventDefault()}>
+      onMouseOut={onMouseOut}>
         {props.itemList.map(renderItem)}
         {!hasItems && props.noItemsText && <Item
           item={{value: '', label: props.noItemsText}}

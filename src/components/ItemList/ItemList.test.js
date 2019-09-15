@@ -36,7 +36,7 @@ it('renders no items', () => {
     onClick={onClick}
     onMouseOver={onMouseOver} />)
 
-  wrapper.find('ul').simulate('mouseDown')
+  wrapper.find('ul').simulate('click')
   wrapper.find('ul').simulate('mouseOver')
 
   expect(onClick).not.toBeCalled()
@@ -51,7 +51,7 @@ it('should click', () => {
     Item={MockElement}
     onClick={onClick} />)
 
-  wrapper.find('ul').simulate('mouseDown')
+  wrapper.find('ul').simulate('click')
 
   expect(onClick).toBeCalled()
 })
