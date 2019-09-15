@@ -67,7 +67,7 @@ A robust multi-select that automatically uses Radios, Checkboxes, or a Switch if
 # Comparison
 | Name | Bundle Size |
 | - | - |
-| react-new-input | gzip 20.8kb (https://bundlephobia.com/result?p=react-new-input) |
+| react-new-input | gzip 21.1kB (https://bundlephobia.com/result?p=react-new-input) |
 | react-select (competitor) | gzip 26.1kb (https://bundlephobia.com/result?p=react-select) |
 
 # Property Defaults
