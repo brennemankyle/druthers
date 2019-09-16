@@ -15,7 +15,7 @@ let CheckRadio = (rawProps, ref) => {
   let values = props.selection.map(item => item.value)
   let useSwitch = props.options.length === 2
     && !props.multiple
-    && props.options.map(option => option.value).every(val => ['false', 'true'].includes(val.toLowerCase()))
+    && props.options.map(option => option.value).every(val => ['false', 'true'].includes(val))
 
   let onChange = (e) => {
     let value = useSwitch
@@ -34,7 +34,6 @@ let CheckRadio = (rawProps, ref) => {
       // Unchecking radio, onChange event won't fire here
       callOnChange(props, [])
     }
-
   }
 
   let options = useSwitch
