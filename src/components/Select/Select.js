@@ -9,7 +9,8 @@ import callOnChange from '../../utils/callOnChange'
 import useUpdateSelection from '../../hooks/useUpdateSelection/useUpdateSelection'
 import { ENTER_KEY, ESCAPE, SPACE, BACKSPACE, DELETE, ARROW_UP, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, NUM_LETTER_START, NUM_LETTER_END, SEMI_COLON, EQUAL_SIGN, COMMA, DASH, PERIOD, FORWARD_SLASH, OPEN_BRACKET, BACK_SLASH, CLOSE_BRAKET, SINGLE_QUOTE, TAB } from '../../utils/keyCodes'
 
-let targetValue = (e) => String(e.target.value || e.target.getAttribute('val') || '')
+let targetHasValue = e => e.target.hasAttribute('value') || e.target.hasAttribute('val')
+let targetValue = e => String(e.target.value || e.target.getAttribute('val') || '')
 
 let Select = (rawProps) => {
   let props = rawProps.massaged ? rawProps : rawProps.massageDataIn(rawProps)
@@ -103,7 +104,7 @@ let Select = (rawProps) => {
     if (singleNoOptions) {
       callOnChange(props, targetValue(e))
     }
-    
+
     setAreOptionsOpen(false)
     setSearchText('')
     setSelectionHighlighted()
@@ -112,11 +113,13 @@ let Select = (rawProps) => {
   }
   let onOptionClick = (e) => {
     e.preventDefault()
+    if (!targetHasValue(e)) return
 
     if (!props.multiple) {
       document.activeElement.blur() // Close options on single select
     }
 
+    console.log(e.target)
     callOnChange(props, targetValue(e))
   }
   let onRemove = (e) => {
