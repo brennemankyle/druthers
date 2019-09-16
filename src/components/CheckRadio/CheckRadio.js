@@ -15,7 +15,7 @@ let CheckRadio = (rawProps, ref) => {
   let values = props.selection.map(item => item.value)
   let useSwitch = props.options.length === 2
     && !props.multiple
-    && props.options.map(option => option.value).every(val => ['false', 'true'].includes(val))
+    && props.options.map(option => option.value).every(val => ['false', 'true'].includes(val)) // Has only two true/false values we can use a switch!
 
   let onChange = (e) => {
     let value = useSwitch
@@ -24,6 +24,7 @@ let CheckRadio = (rawProps, ref) => {
 
     let add = props.multiple ? e.target.checked : true
 
+    // Don't allow unchecking unless it's removable
     if (props.removable || e.target.checked) callOnChange(props, value, add)
   }
 
@@ -31,7 +32,7 @@ let CheckRadio = (rawProps, ref) => {
     let value = String(e.target.value)
 
     if (props.removable && !useSwitch && !props.multiple && props.selection.length && props.selection[0].value === value) {
-      // Unchecking radio, onChange event won't fire here
+      // Unchecking radio, onChange event won't fire, so we have to use onClick instead
       callOnChange(props, [])
     }
   }

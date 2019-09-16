@@ -8,15 +8,14 @@ let SelectionWrapper = (props) => {
   const searchRef = useRef(null)
 
   let onClick = (e) => {
-    let isRemove = e.target.classList.contains('remove')
     e.preventDefault()
-    if (isRemove) return
+    if (e.target.classList.contains('remove')) return // Don't open options if remove was clicked
 
     if (!props.areOptionsOpen) {
-      searchRef.current.focus()
+      searchRef.current.focus() // Open options
     }
     else {
-      searchRef.current.blur()
+      searchRef.current.blur() // Close options
     }
   }
 

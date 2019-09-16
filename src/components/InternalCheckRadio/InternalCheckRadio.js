@@ -11,7 +11,7 @@ let InternalCheckRadio = (props) => {
     ? 'checkbox'
     : props.type || (props.multiple ? 'checkbox' : 'radio')
   let label = props.label || props.title
-  let className = props.className + ' ' + (hasFocus ? 'focus' : '')
+  let className = props.className + ' ' + (hasFocus ? 'focus' : '') // Allow styling based on .focus
   let Checkmark = props.svg_Checkmark
 
   return <label className={className} key={props.value}>

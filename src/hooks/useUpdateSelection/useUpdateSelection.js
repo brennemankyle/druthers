@@ -4,6 +4,7 @@ let useUpdateSelection = (props,) => {
   let originalSelection = props.selection
   let selection = props.selection
 
+  // Make sure selection reacts to prop changes
   useEffect(() => {
     if (!props.allowDuplicates) {
       // No duplicates, distinct

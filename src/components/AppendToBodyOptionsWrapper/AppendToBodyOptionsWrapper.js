@@ -5,6 +5,7 @@ import useRefRect from '../../hooks/useRefRect/useRefRect'
 import usePlaceAbove from '../../hooks/usePlaceAbove/usePlaceAbove'
 import Wrapper from '../Wrapper/Wrapper'
 
+// Only props can by used for styled components, therefore AppendToBodyOptionsWrapper can't use it's state to be styled
 let StyledAppendToBodyOptionsWrapper = (props, ref) => {
   let {className, children, placeOptionsAbove, parentRect, ...otherProps} = props
 

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 let usePlaceAbove = (rect, optionsWrapperRect, skip = []) => {
   const [placeOptionsAbove, setPlaceOptionsAbove] = useState(false)
 
+  // if no space below, place above
   useEffect(() => {
     let windowHeight = window.innerHeight + window.scrollY
     let belowDiff = windowHeight - (rect.y + rect.height + optionsWrapperRect.height)

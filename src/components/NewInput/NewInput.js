@@ -13,7 +13,7 @@ let NewInput = (rawProps) => {
   const canCheckRadio = props.options.length <= props.checkRadioMaxCount && !props.creatable
   const checkRadioRef = useRef(null)
   const windowWidth = useWindowWidth()
-  const [isLoading, setIsLoading] = useState(canCheckRadio)
+  const [isLoading, setIsLoading] = useState(canCheckRadio) // Only show CheckRadio after we've loaded
   const [isOverflown, setIsOverflown] = useState(false)
   useEffect(() => {
     if (canCheckRadio) setIsOverflown(hasOverflownX(checkRadioRef.current, windowWidth))
@@ -21,7 +21,7 @@ let NewInput = (rawProps) => {
   }, [props.options, props.creatable, windowWidth, canCheckRadio, isLoading])
 
   let hideCheckRadio = isLoading || isOverflown
-  let checkRadioStyle = {whiteSpace: 'nowrap', overflow: 'visible'}
+  let checkRadioStyle = {whiteSpace: 'nowrap', overflow: 'visible'} // Make sure we can calculate if CheckRadio has overflown
 
   if (hideCheckRadio) {
     checkRadioStyle = {

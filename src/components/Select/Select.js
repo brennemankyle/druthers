@@ -23,12 +23,12 @@ let Select = (rawProps) => {
   const [width, setWidth] = useState(0)
   useEffect(() => {
     if (areOptionsOpen) setWidth(selfRef && selfRef.current ? selfRef.current.offsetWidth : 0)
-  }, [areOptionsOpen])
+  }, [areOptionsOpen]) // When options open make sure width is correct
   useEffect(() => {
     setOptionHighlighted()
     setSelectionHighlighted()
-  }, [searchText]) // If Search changes remove highlight
-  useUpdateSelection(props)
+  }, [searchText]) // If search text changes remove highlight
+  useUpdateSelection(props) // Update selection based on prop changes
 
   let hasOptions = !!props.options.length
   let hasSelection = !!props.selection.length
@@ -56,7 +56,7 @@ let Select = (rawProps) => {
 
     let highlighted = type === 'option' ? optionHighlighted : selectionHighlighted
     let index = highlighted == null && type === 'selection'
-      ? items.length - 1
+      ? items.length - 1 // default 'selection' to end, if 'option' defaulted to start
       : items.map((item) => item.value).indexOf(highlighted) + distance
     index = Math.max(index, 0)
     index = Math.min(index, items.length - 1)
@@ -71,7 +71,7 @@ let Select = (rawProps) => {
   }
 
   let newWidth = selfRef && selfRef.current ? selfRef.current.offsetWidth : 0
-  if (width !== newWidth) setWidth(newWidth)
+  if (width !== newWidth) setWidth(newWidth) // Make sure width is updated correctly
 
   if (!hasOptions && !props.creatable) {
     console.error('Select has no options and is not creatable, nothing to display. Consider adding options or making it creatable')
@@ -80,7 +80,7 @@ let Select = (rawProps) => {
   if (props.creatable && searchText && !filteredOptions.some(option => option.value === searchText)
     && (props.allowDuplicates || !props.selection.some(item => item.value === searchText))) // Don't allow duplicates
   {
-    filteredOptions.push({value: searchText, label: props.text_create + ` "${searchText}"`}) // Add option for creation
+    filteredOptions.push({value: searchText, label: props.text_create + ` "${searchText}"`}) // Add option for creatable
   }
 
   if (selectionHighlighted == null && !filteredOptions.map((option) => option.value).includes(optionHighlighted)) {
@@ -102,7 +102,7 @@ let Select = (rawProps) => {
   }
   let onBlur = (e) => {
     if (singleNoOptions) {
-      callOnChange(props, targetValue(e))
+      callOnChange(props, targetValue(e)) // Make single no options behave like text input
     }
 
     setAreOptionsOpen(false)
@@ -113,8 +113,7 @@ let Select = (rawProps) => {
   }
   let onOptionClick = (e) => {
     e.preventDefault()
-
-    if (!targetHasValue(e)) return
+    if (!targetHasValue(e)) return // Sometimes parent of options is clickable, do nothing
 
     if (!props.multiple) {
       document.activeElement.blur() // Close options on single select
@@ -147,13 +146,13 @@ let Select = (rawProps) => {
     }
   }
   let onSelectionOut = (e) => {
-    if (!areOptionsOpen) setSelectionHighlighted()
+    if (!areOptionsOpen) setSelectionHighlighted() // Stop highlighting selection if mouse leaves select area
   }
   let onKeyDown = (e) => {
     let openKeys = [ENTER_KEY, ARROW_UP, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, SPACE, SEMI_COLON,
       EQUAL_SIGN, COMMA, DASH, PERIOD, FORWARD_SLASH, OPEN_BRACKET, BACK_SLASH, CLOSE_BRAKET, SINGLE_QUOTE]
     if (!areOptionsOpen
-      && (inRange(e.keyCode, NUM_LETTER_START, NUM_LETTER_END) || openKeys.includes(e.keyCode))) setAreOptionsOpen(true)
+      && (inRange(e.keyCode, NUM_LETTER_START, NUM_LETTER_END) || openKeys.includes(e.keyCode))) setAreOptionsOpen(true) // if you type letters, numbers, or openKeys then open options
 
     switch (e.keyCode) {
       case TAB:
@@ -165,7 +164,7 @@ let Select = (rawProps) => {
             },
             preventDefault: e.preventDefault,
           })
-          moveHighlighted(filteredOptions, 'option', 1)
+          moveHighlighted(filteredOptions, 'option', 1) // Highlight next option
           setSearchText('')
 
           if (!props.multiple) e.target.blur() // Close options on single select
@@ -199,7 +198,7 @@ let Select = (rawProps) => {
         break
       case BACKSPACE:
       case DELETE:
-        if (!searchText && props.selection.length) {
+        if (!searchText && props.selection.length) { // Only remove if there isn't search text
           let input = document.createElement("input")
           input.value = last(props.selection).value
           input.classList.add('remove')

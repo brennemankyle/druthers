@@ -1,3 +1,5 @@
+// Functions that we need from lodash, but implemented here so we don't have to install all of lodash
+
 function castArray(value) {
   return Array.isArray(value) ? value : [value]
 }
