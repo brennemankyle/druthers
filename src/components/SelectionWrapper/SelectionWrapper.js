@@ -8,9 +8,9 @@ let SelectionWrapper = (props) => {
   const searchRef = useRef(null)
 
   let onClick = (e) => {
-    let isSearch = e.target.classList.contains('search')
-
+    let isRemove = e.target.classList.contains('remove')
     e.preventDefault()
+    if (isRemove) return
 
     if (!props.areOptionsOpen) {
       searchRef.current.focus()

@@ -113,19 +113,17 @@ let Select = (rawProps) => {
   }
   let onOptionClick = (e) => {
     e.preventDefault()
+
     if (!targetHasValue(e)) return
 
     if (!props.multiple) {
       document.activeElement.blur() // Close options on single select
     }
 
-    console.log(e.target)
     callOnChange(props, targetValue(e))
   }
   let onRemove = (e) => {
     if (props.removable && e.target.classList.contains('remove')) {
-      e.preventDefault() // Prevent click from opening options
-
       callOnChange(props, targetValue(e), false)
       setSearchText('')
     }
@@ -288,7 +286,8 @@ let Select = (rawProps) => {
         {...styles}
         parentRef={selfRef}
         filteredOptions={filteredOptions}
-        StyledAppendToBodyOptionsWrapper={StyledAppendToBodyOptionsWrapper}>
+        StyledAppendToBodyOptionsWrapper={StyledAppendToBodyOptionsWrapper}
+        updateOn={[props.selection]}>
       {optionList}</AppendToBodyOptionsWrapper>,
       document.body)}</Wrapper>
 }
