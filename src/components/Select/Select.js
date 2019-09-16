@@ -100,6 +100,10 @@ let Select = (rawProps) => {
     props.onFocus(e)
   }
   let onBlur = (e) => {
+    if (singleNoOptions) {
+      callOnChange(props, targetValue(e))
+    }
+    
     setAreOptionsOpen(false)
     setSearchText('')
     setSelectionHighlighted()
