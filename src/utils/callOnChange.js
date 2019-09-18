@@ -1,5 +1,5 @@
 let callOnChange = (props, newValue, add = true) => {
-  let value = add ? newValue : []
+  let value = add ? [newValue] : []
 
   if (props.multiple) {
     value = props.selection.map(option => option.value)

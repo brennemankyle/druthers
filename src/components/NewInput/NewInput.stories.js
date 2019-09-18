@@ -5,56 +5,11 @@ import { mockStyles } from '../../mocks'
 import NewInput from './NewInput'
 
 let options = [
-  {value: 'Alabama', label: 'Alabama'},
-  {value: 'Alaska', label: 'Alaska'},
-  {value: 'Arizona', label: 'Arizona'},
-  {value: 'Arkansas', label: 'Arkansas'},
-  {value: 'California', label: 'California'},
-  {value: 'Colorado', label: 'Colorado'},
-  {value: 'Connecticut', label: 'Connecticut'},
-  {value: 'Delaware', label: 'Delaware'},
-  {value: 'Florida', label: 'Florida'},
-  {value: 'Georgia', label: 'Georgia'},
-  {value: 'Hawaii', label: 'Hawaii'},
-  {value: 'Idaho', label: 'Idaho'},
-  {value: 'Illinois', label: 'Illinois'},
-  {value: 'Indiana', label: 'Indiana'},
-  {value: 'Iowa', label: 'Iowa'},
-  {value: 'Kansas', label: 'Kansas'},
-  {value: 'Kentucky', label: 'Kentucky'},
-  {value: 'Louisiana', label: 'Louisiana'},
-  {value: 'Maine', label: 'Maine'},
-  {value: 'Maryland', label: 'Maryland'},
-  {value: 'Massachusetts', label: 'Massachusetts'},
-  {value: 'Michigan', label: 'Michigan'},
-  {value: 'Minnesota', label: 'Minnesota'},
-  {value: 'Mississippi', label: 'Mississippi'},
-  {value: 'Missouri', label: 'Missouri'},
-  {value: 'Montana', label: 'Montana'},
-  {value: 'Nebraska', label: 'Nebraska'},
-  {value: 'Nevada', label: 'Nevada'},
-  {value: 'New Hampshire', label: 'New Hampshire'},
-  {value: 'New Jersey', label: 'New Jersey'},
-  {value: 'New Mexico', label: 'New Mexico'},
-  {value: 'New York', label: 'New York'},
-  {value: 'North Carolina', label: 'North Carolina'},
-  {value: 'North Dakota', label: 'North Dakota'},
-  {value: 'Ohio', label: 'Ohio'},
-  {value: 'Oklahoma', label: 'Oklahoma'},
-  {value: 'Oregon', label: 'Oregon'},
-  {value: 'Pennsylvania', label: 'Pennsylvania'},
-  {value: 'Rhode Island', label: 'Rhode Island'},
-  {value: 'South Carolina', label: 'South Carolina'},
-  {value: 'South Dakota', label: 'South Dakota'},
-  {value: 'Tennessee', label: 'Tennessee'},
-  {value: 'Texas', label: 'Texas'},
-  {value: 'Utah', label: 'Utah'},
-  {value: 'Vermont', label: 'Vermont'},
-  {value: 'Virginia', label: 'Virginia'},
-  {value: 'Washington', label: 'Washington'},
-  {value: 'West Virginia', label: 'West Virginia'},
-  {value: 'Wisconsin', label: 'Wisconsin'},
-  {value: 'Wyoming', label: 'Wyoming'},
+  {value: '1', label: 'Banana'},
+  {value: '2', label: 'Orange'},
+  {value: '3', label: 'Grape'},
+  {value: '4', label: 'GrapeFruit'},
+  {value: '5', label: 'Apple'},
 ]
 
 let duplicateOptions = [
@@ -68,7 +23,6 @@ let checkRadioOptions = [
   {value: '2', label: 'Green'},
   {value: '3', label: 'Blue'},
   {value: '4', label: 'Pink'},
-  {value: '5', label: 'All The Colors in The Rainbow'},
 ]
 
 let switchOptions = [
@@ -76,131 +30,50 @@ let switchOptions = [
   {value: false, label: 'Off'},
 ]
 
-let SingleState = () => {
-  const [selectionSingle, setSelectionSingle] = useState()
+const StoryNewInput = props => {
+  const [selection, setSelection] = useState(props.selection)
+  let { selection: test, onChange, ...otherProps } = props
 
-  return <NewInput name="Single" selection={selectionSingle} onChange={(e) => setSelectionSingle(e.target.value)} options={options} />
+  return <NewInput
+    {...otherProps}
+    selection={selection}
+    onChange={(e) => {
+      setSelection(e.target.value)
+      action('onChange')(...e.target.value)
+    }}
+    onFocus={() => action('onFocus')}
+    onBlur={() => action('onBlur')} />
 }
+StoryNewInput.displayName = 'NewInput'
 
-let MultipleState = () => {
-  const [selectionMultiple, setSelectionMultiple] = useState([])
-
-  return <NewInput name="Multiple" selection={selectionMultiple} onChange={(e) => setSelectionMultiple(e.target.value)} options={options} multiple={true} />
+const info = {
+  propTables: [NewInput],
+  propTablesExclude: [StoryNewInput],
 }
-
-let SingleCreateState = () => {
-  const [selectionSingleCreate, setSelectionSingleCreate] = useState('Alabama')
-
-  return <NewInput name="SingleCreate" selection={selectionSingleCreate} onChange={(e) => setSelectionSingleCreate(e.target.value)} options={options} creatable={true} />
-}
-
-let MultipleCreateState = () => {
-  const [selectionMultipleCreate, setSelectionMultipleCreate] = useState('Alabama')
-
-  return <NewInput name="MultipleCreate" selection={selectionMultipleCreate} onChange={(e) => setSelectionMultipleCreate(e.target.value)} options={options} creatable={true} multiple={true} />
-}
-
-let AppendToBodyState = () => {
-  const [selectionAppendToBody, setSelectionAppendToBody] = useState(['Alabama'])
-
-  return <NewInput name="AppendToBody" selection={selectionAppendToBody} onChange={(e) => setSelectionAppendToBody(e.target.value)} options={options} creatable={true} multiple={true} appendToBody={true} />
-}
-
-let RightToLeftState = () => {
-  const [selectionRightToLeft, setSelectionRightToLeft] = useState()
-
-  return <NewInput name="RightToLeft" selection={selectionRightToLeft} onChange={(e) => setSelectionRightToLeft(e.target.value)} options={options} rightToLeft={true} />
-}
-
-let RadiosState = () => {
-  const [selectionRadio, setSelectionRadio] = useState()
-
-  return [
-    <h3 key="description">Resize window to see it change from Radios to Select if it runs out of space on one line</h3>,
-    <NewInput key="NewInput" name="Radios" selection={selectionRadio} onChange={(e) => setSelectionRadio(e.target.value)} options={checkRadioOptions} />
-  ]
-}
-
-let CheckboxesState = () => {
-  const [selectionCheck, setSelectionCheck] = useState()
-
-  return [
-    <h3 key="description">Resize window to see it change from Checkboxes to Select if it runs out of space on one line</h3>,
-    <NewInput key="NewInput" name="Checkboxes" selection={selectionCheck} onChange={(e) => setSelectionCheck(e.target.value)} options={checkRadioOptions} multiple={true} />
-  ]
-}
-
-let SwitchState = () => {
-  const [selectionSwitch, setSelectionSwitch] = useState()
-
-  return [
-    <h3 key="description">Resize window to see it change from Switch to Select if it runs out of space on one line</h3>,
-    <NewInput key="NewInput" name="Switch" selection={selectionSwitch} onChange={(e) => setSelectionSwitch(e.target.value)} options={switchOptions} />
-  ]
-}
-
-let SingleNoOptionsState = () => {
-  const [selectionSingleNoOptions, setSelectionSingleNoOptions] = useState()
-
-  return <NewInput name="SingleNoOptions" selection={selectionSingleNoOptions} onChange={(e) => setSelectionSingleNoOptions(e.target.value)} creatable={true} />
-}
-
-let SingleDisabledState = () => {
-  return <NewInput name="SingleDisabled" selection={['Alabama']} onChange={(e) => setSelectionSingle(e.target.value)} options={options} disabled={true} />
-}
-
-let MultipleDisabledState = () => {
-  return <NewInput name="MultipleDisabled" selection={['Alabama', 'Colorado']} onChange={(e) => setSelectionMultiple(e.target.value)} options={options} multiple={true} disabled={true} />
-}
-
-let RadiosDisabledState = () => {
-  return [
-    <h3 key="description">Resize window to see it change from Radios to Select if it runs out of space on one line</h3>,
-    <NewInput key="NewInput" name="RadiosDisabled" selection={['1']} onChange={(e) => setSelectionRadio(e.target.value)} options={checkRadioOptions} disabled={true} />
-  ]
-}
-
-let CheckboxesDisabledState = () => {
-  return [
-    <h3 key="description">Resize window to see it change from Checkboxes to Select if it runs out of space on one line</h3>,
-    <NewInput key="NewInput" name="CheckboxesDisabled" selection={['1', '2']} onChange={(e) => setSelectionCheck(e.target.value)} options={checkRadioOptions} multiple={true} disabled={true} />
-  ]
-}
-
-let SwitchDisabledState = () => {
-  return [
-    <h3 key="description">Resize window to see it change from Switch to Select if it runs out of space on one line</h3>,
-    <NewInput key="NewInput" name="SwitchDisabled" selection={['true']} onChange={(e) => setSelectionSwitch(e.target.value)} options={switchOptions} disabled={true} />
-  ]
-}
+let selection = []
+let onChange = () => {}
 
 let NoDuplicatesState = () => {
   const [selectionNoDuplicates, setSelectionNoDuplicates] = useState([])
 
-  return <NewInput name="NoDuplicates" selection={selectionNoDuplicates} onChange={(e) => setSelectionNoDuplicates(e.target.value)} options={duplicateOptions} creatable={true} multiple={true} allowDuplicates={false} />
-}
-
-let NoOptionsState = () => {
-  const [selectionNoOptions, setSelectionNoOptions] = useState([])
-
-  return <NewInput name="NoOptions" selection={selectionNoOptions} onChange={(e) => setSelectionNoOptions(e.target.value)} creatable={true} multiple={true} />
+  return <NewInput name="NoDuplicates" selection={selectionNoDuplicates} onChange={(e) => setSelectionNoDuplicates(e.target.value)} options={duplicateOptions} creatable multiple allowDuplicates={false} />
 }
 
 storiesOf('New Input', module)
-  .add('Single', () => <SingleState />)
-  .add('Multiple', () => <MultipleState />)
-  .add('Create Single', () => <SingleCreateState />)
-  .add('Create Multiple', () => <MultipleCreateState />)
-  .add('Append to body', () => <AppendToBodyState />)
-  .add('Right to left', () => <RightToLeftState />)
-  .add('Radios', () => <RadiosState />)
-  .add('Checkboxes', () => <CheckboxesState />)
-  .add('Switch', () => <SwitchState />)
-  .add('Single No Options', () => <SingleNoOptionsState />)
-  .add('Multiple No Options', () => <NoOptionsState />)
-  .add('Single Disabled', () => <SingleDisabledState />)
-  .add('Multiple Disabled', () => <MultipleDisabledState />)
-  .add('Radios Disabled', () => <RadiosDisabledState />)
-  .add('Checkboxes Disabled', () => <CheckboxesDisabledState />)
-  .add('Switch Disabled', () => <SwitchDisabledState />)
-  .add('No Duplicates', () => <NoDuplicatesState />)
+  .add('Single', () => <StoryNewInput name="Single" selection={selection} onChange={onChange} options={options} checkRadioMaxCount={0} />, {info})
+  .add('Multiple', () => <StoryNewInput name="Multiple" selection={selection} onChange={onChange} options={options} multiple checkRadioMaxCount={0} />, {info})
+  .add('Create Single', () => <StoryNewInput name="SingleCreate" selection={selection} onChange={onChange} options={options} creatable />, {info})
+  .add('Create Multiple', () => <StoryNewInput name="MultipleCreate" selection={selection} onChange={onChange} options={options} creatable multiple />, {info})
+  .add('Append to body', () => <StoryNewInput name="AppendToBody" selection={selection} onChange={onChange} options={options} creatable multiple appendToBody />, {info})
+  .add('Right to left', () => <StoryNewInput name="RightToLeft" selection={selection} onChange={onChange} options={options} rightToLeft checkRadioMaxCount={0} />, {info})
+  .add('Radios', () =>   <StoryNewInput name="Radios" selection={selection} onChange={onChange} options={checkRadioOptions} />, {info, notes: 'Resize window to see it change from Radios to Select if it runs out of space on one line'})
+  .add('Checkboxes', () => <StoryNewInput name="Checkboxes" selection={selection} onChange={onChange} options={checkRadioOptions} multiple />, {info, notes: 'Resize window to see it change from Checkboxes to Select if it runs out of space on one line'})
+  .add('Switch', () => <StoryNewInput name="Switch" selection={selection} onChange={onChange} options={switchOptions} />, {info, notes: 'Resize window to see it change from Switch to Select if it runs out of space on one line'})
+  .add('Single No Options', () => <StoryNewInput name="SingleNoOptions" selection={selection} onChange={onChange} creatable />, {info})
+  .add('Multiple No Options', () => <StoryNewInput name="MultipleNoOptions" selection={selection} onChange={onChange} creatable multiple />, {info})
+  .add('Single Disabled', () => <StoryNewInput name="SingleDisabled" selection={['1']} onChange={onChange} options={options} disabled checkRadioMaxCount={0} />, {info})
+  .add('Multiple Disabled', () => <StoryNewInput name="MultipleDisabled" selection={['2', '3']} onChange={onChange} options={options} multiple disabled checkRadioMaxCount={0} />, {info})
+  .add('Radios Disabled', () => <StoryNewInput name="RadiosDisabled" selection={['1']} onChange={onChange} options={checkRadioOptions} disabled />, {info, notes: 'Resize window to see it change from Radios to Select if it runs out of space on one line'})
+  .add('Checkboxes Disabled', () => <StoryNewInput name="CheckboxesDisabled" selection={['1', '2']} onChange={onChange} options={checkRadioOptions} multiple disabled />, {info, notes: 'Resize window to see it change from Switch to Select if it runs out of space on one line'})
+  .add('Switch Disabled', () => <StoryNewInput name="SwitchDisabled" selection={['true']} onChange={onChange} options={switchOptions} disabled />, {info, notes: 'Resize window to see it change from Switch to Select if it runs out of space on one line'})
+  .add('No Duplicates', () => <StoryNewInput name="NoDuplicates" selection={selection} onChange={onChange} options={duplicateOptions} creatable multiple allowDuplicates={false} />, {info})

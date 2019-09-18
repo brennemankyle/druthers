@@ -82,6 +82,7 @@ const Option = styled(Item)`
     border-bottom-left-radius: ${props => props.styles_borderRadius};
     border-bottom-right-radius: ${props => props.styles_borderRadius};
   }
+  z-index: 999;
 
   ${props => props.styles_optionHighlighted === props.item.value && `
     background-color: ${props.styles_colors_highlight};`

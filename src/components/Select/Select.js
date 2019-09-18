@@ -101,7 +101,7 @@ let Select = (rawProps) => {
     props.onFocus(e)
   }
   let onBlur = (e) => {
-    if (singleNoOptions) {
+    if (singleNoOptions && targetValue(e) !== '') {
       callOnChange(props, targetValue(e)) // Make single no options behave like text input
     }
 
@@ -160,7 +160,8 @@ let Select = (rawProps) => {
         if (areOptionsOpen && optionHighlighted != null) {
           onOptionClick({
             target: {
-              value: optionHighlighted
+              value: optionHighlighted,
+              hasAttribute: () => true,
             },
             preventDefault: e.preventDefault,
           })
