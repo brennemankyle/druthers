@@ -1,7 +1,7 @@
 {
   "name": "react-new-input",
   "homepage": "https://brennemankyle.github.io/react-new-input/",
-  "version": "2.3.4",
+  "version": "2.3.5",
   "description": "React Multi-Select with automatic checkboxes/radios",
   "main": "dist/index.js",
   "private": false,
@@ -10,7 +10,8 @@
     "@emotion/styled": "^10.0.15",
     "debounce": "^1.2.0",
     "fuzzyset.js": "0.0.8",
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.7.2",
+    "core-js": "^3.2.1"
   },
   "peerDependencies": {
     "react": "^16.8.6",
@@ -78,7 +79,6 @@
     "babel-plugin-named-asset-import": "^0.3.2",
     "camelcase": "^5.2.0",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
-    "core-js": "^3.2.1",
     "css-loader": "2.1.1",
     "dotenv": "6.2.0",
     "dotenv-expand": "4.2.0",
