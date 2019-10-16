@@ -95,7 +95,7 @@ let Config = () => {
             name="multiple"
             selection={multiple}
             options={trueFalse}
-            onChange={(e) => setMultiple(e.target.value === 'true')} />
+            onChange={(e) => setMultiple(e.target.value[0] === 'true')} />
         </label>
         <label><b>disabled</b>
           <span style={{color: 'gray'}}> (Whether component is disabled)</span>
@@ -103,7 +103,7 @@ let Config = () => {
             name="disabled"
             selection={disabled}
             options={trueFalse}
-            onChange={(e) => setDisabled(e.target.value === 'true')} />
+            onChange={(e) => setDisabled(e.target.value[0] === 'true')} />
         </label>
         <label><b>creatable</b>
           <span style={{color: 'gray'}}> (Whether new selected items can be created)</span>
@@ -111,7 +111,7 @@ let Config = () => {
             name="creatable"
             selection={creatable}
             options={trueFalse}
-            onChange={(e) => setCreatable(e.target.value === 'true')} />
+            onChange={(e) => setCreatable(e.target.value[0] === 'true')} />
         </label>
         <label><b>removable</b>
           <span style={{color: 'gray'}}> (Whether selected items are removable)</span>
@@ -119,7 +119,7 @@ let Config = () => {
             name="removable"
             selection={removable}
             options={trueFalse}
-            onChange={(e) => setRemovable(e.target.value === 'true')} />
+            onChange={(e) => setRemovable(e.target.value[0] === 'true')} />
         </label>
         <label><b>appendToBody</b>
           <span style={{color: 'gray'}}> (Whether options append to the body tag (can prevent options from being clipped))</span>
@@ -127,7 +127,7 @@ let Config = () => {
             name="appendToBody"
             selection={appendToBody}
             options={trueFalse}
-            onChange={(e) => setAppendToBody(e.target.value === 'true')} />
+            onChange={(e) => setAppendToBody(e.target.value[0] === 'true')} />
         </label>
         <label><b>rightToLeft</b>
           <span style={{color: 'gray'}}> (Whether to show text from right to left instead)</span>
@@ -135,7 +135,7 @@ let Config = () => {
             name="rightToLeft"
             selection={rightToLeft}
             options={trueFalse}
-            onChange={(e) => setRightToLeft(e.target.value === 'true')} />
+            onChange={(e) => setRightToLeft(e.target.value[0] === 'true')} />
         </label>
         <label><b>allowDuplicates</b>
           <span style={{color: 'gray'}}> (Whether duplicate selection items are allowed)</span>
@@ -143,7 +143,7 @@ let Config = () => {
             name="allowDuplicates"
             selection={allowDuplicates}
             options={trueFalse}
-            onChange={(e) => setAllowDuplicates(e.target.value === 'true')} />
+            onChange={(e) => setAllowDuplicates(e.target.value[0] === 'true')} />
         </label>
         <label><b>checkRadioMaxCount</b>
           <span style={{color: 'gray'}}> (The maximum radio buttons allowed before rendering a Select instead)</span>
