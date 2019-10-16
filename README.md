@@ -61,7 +61,7 @@ A robust multi-select that automatically uses Radios, Checkboxes, or a Switch if
 * Creatable options (managed by a prop not a separate component)
 * Small npm package size
 * No Jquery
-* Modern browser support: Chrome, Safari, Edge, IE11, Firefox, iOS, Android
+* Modern browser support: Chrome, Safari, Edge, Firefox, iOS, Android
 * And much more!
 
 # Comparison
