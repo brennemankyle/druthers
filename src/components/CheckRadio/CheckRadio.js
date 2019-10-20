@@ -4,50 +4,50 @@ import AppPropTypes from '../../utils/AppPropTypes'
 import defaultProps from '../../utils/defaultProps'
 import withKeys from '../../utils/withKeys'
 import callOnChange from '../../utils/callOnChange'
-import useUpdateSelection from '../../hooks/useUpdateSelection/useUpdateSelection'
+import useUpdateSelection, { allBooleanValues, isBooleanSwitch } from '../../hooks/useUpdateSelection/useUpdateSelection'
 import { CheckBox, Radio, Switch } from '../styledComponents/styledComponents'
 
 let CheckRadio = (rawProps, ref) => {
   let props = rawProps.massaged ? rawProps : rawProps.massageDataIn(rawProps)
-  useUpdateSelection(props)
+  let options = props.options
+  useUpdateSelection(props, true)
+
+  if (!props.multiple && props.options.length === 2 && allBooleanValues(props.options)) { // Only has boolean values
+    options = [props.options.find(option => option.value === 'true')] // This should be a switch, grab 'true' item
+  }
 
   let type = props.multiple ? 'checkbox' : 'radio'
   let values = props.selection.map(item => item.value)
-  let useSwitch = props.options.length === 2
-    && !props.multiple
-    && props.options.map(option => option.value).every(val => ['false', 'true'].includes(val)) // Has only two true/false values we can use a switch!
+  let useSwitch = options.length === 1
 
   let onChange = (e) => {
-    let value = useSwitch
-      ? String(e.target.checked)
-      : String(e.target.value)
+    let value = String(e.target.value)
+    let add = props.multiple || useSwitch ? e.target.checked : true
+    let replace = useSwitch // Always replace selection if switch, in case it's multiple
 
-    let add = props.multiple ? e.target.checked : true
+    if (isBooleanSwitch(props) && !e.target.checked) {
+      value = options[0].value === 'true' ? 'false' : 'true'
+      add = true
+    }
 
     // Don't allow unchecking unless it's removable
-    if (props.removable || e.target.checked) callOnChange(props, value, add)
+    if (props.removable || e.target.checked) callOnChange(props, value, add, replace)
   }
 
-  let onClick = (e) => {
-    let value = String(e.target.value)
-
-    if (props.removable && !useSwitch && !props.multiple && props.selection.length && props.selection[0].value === value) {
+  let radioUncheck = (e) => {
+    if (props.removable && !useSwitch && !props.multiple && props.selection.length && props.selection[0].value === String(e.target.value)) {
       // Unchecking radio, onChange event won't fire, so we have to use onClick instead
       callOnChange(props, [])
     }
   }
 
-  let options = useSwitch
-    ? [props.options.find(option => option.value.toLowerCase() === 'true')] // Only 'true' item
-    : props.options
-
   if (props.disabled) {
     onChange = () => {}
   }
 
-  let Checkable = props.multiple
-    ? props.component_CheckBox
-    : useSwitch ? props.component_Switch : props.component_Radio
+  let Checkable = useSwitch
+    ? props.component_Switch
+    : props.multiple ? props.component_CheckBox : props.component_Radio
 
   return <div className={props.className} style={props.style} ref={ref}>
     {options.map(option =>
@@ -57,7 +57,7 @@ let CheckRadio = (rawProps, ref) => {
         value={option.value}
         disabled={props.disabled}
         onChange={onChange}
-        onClick={onClick}
+        onClick={radioUncheck}
         checked={values.includes(option.value)}
         label={option.label}
         title={option.label}

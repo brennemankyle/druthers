@@ -26,8 +26,11 @@ let checkRadioOptions = [
 ]
 
 let switchOptions = [
-  {value: true, label: 'On (some really long label here)'},
-  {value: false, label: 'Off'},
+  {value: 'on', label: 'On (some really long label here)'},
+]
+
+let trueSwitchOptions = [
+  {value: true, label: 'True'},
 ]
 
 const StoryNewInput = props => {
@@ -69,6 +72,7 @@ storiesOf('New Input', module)
   .add('Radios', () =>   <StoryNewInput name="Radios" selection={selection} onChange={onChange} options={checkRadioOptions} />, {info, notes: 'Resize window to see it change from Radios to Select if it runs out of space on one line'})
   .add('Checkboxes', () => <StoryNewInput name="Checkboxes" selection={selection} onChange={onChange} options={checkRadioOptions} multiple />, {info, notes: 'Resize window to see it change from Checkboxes to Select if it runs out of space on one line'})
   .add('Switch', () => <StoryNewInput name="Switch" selection={selection} onChange={onChange} options={switchOptions} />, {info, notes: 'Resize window to see it change from Switch to Select if it runs out of space on one line'})
+  .add('True/False Switch', () => <StoryNewInput name="trueSwitch" selection={selection} onChange={onChange} options={trueSwitchOptions} />, {info, notes: 'Resize window to see it change from Switch to Select if it runs out of space on one line'})
   .add('Single No Options', () => <StoryNewInput name="SingleNoOptions" selection={selection} onChange={onChange} creatable />, {info})
   .add('Multiple No Options', () => <StoryNewInput name="MultipleNoOptions" selection={selection} onChange={onChange} creatable multiple />, {info})
   .add('Single Disabled', () => <StoryNewInput name="SingleDisabled" selection={['1']} onChange={onChange} options={options} disabled checkRadioMaxCount={0} />, {info})

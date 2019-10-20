@@ -1,7 +1,21 @@
-let callOnChange = (props, newValue, add = true) => {
+let internalCallOnChange = (props, value) => {
+  props.onChange({
+    target: {
+      value: props.massageDataOut(value),
+      name: props.name,
+    }
+  })
+}
+
+let callOnChange = (props, newValue, add = true, replace = false) => {
+  if (Array.isArray(newValue) && !newValue.length) {
+    internalCallOnChange(props, newValue) // Empty
+    return
+  }
+
   let value = add ? [newValue] : []
 
-  if (props.multiple) {
+  if (props.multiple && !replace) {
     value = props.selection.map(option => option.value)
 
     if (add) {
@@ -11,12 +25,7 @@ let callOnChange = (props, newValue, add = true) => {
     }
   }
 
-  props.onChange({
-    target: {
-      value: props.massageDataOut(value),
-      name: props.name,
-    }
-  })
+  internalCallOnChange(props, value)
 }
 
 export default callOnChange

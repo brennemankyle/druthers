@@ -5,9 +5,8 @@ import { mockStyles } from './mocks'
 import defaultProps from './utils/defaultProps'
 import NewInput from './components/NewInput/NewInput'
 
-let trueFalse = [
+let trueOptions = [
   {value: true, label: 'True'},
-  {value: false, label: 'False'},
 ]
 
 let Config = () => {
@@ -94,7 +93,7 @@ let Config = () => {
           <NewInput
             name="multiple"
             selection={multiple}
-            options={trueFalse}
+            options={trueOptions}
             onChange={(e) => setMultiple(e.target.value[0] === 'true')} />
         </label>
         <label><b>disabled</b>
@@ -102,7 +101,7 @@ let Config = () => {
           <NewInput
             name="disabled"
             selection={disabled}
-            options={trueFalse}
+            options={trueOptions}
             onChange={(e) => setDisabled(e.target.value[0] === 'true')} />
         </label>
         <label><b>creatable</b>
@@ -110,7 +109,7 @@ let Config = () => {
           <NewInput
             name="creatable"
             selection={creatable}
-            options={trueFalse}
+            options={trueOptions}
             onChange={(e) => setCreatable(e.target.value[0] === 'true')} />
         </label>
         <label><b>removable</b>
@@ -118,7 +117,7 @@ let Config = () => {
           <NewInput
             name="removable"
             selection={removable}
-            options={trueFalse}
+            options={trueOptions}
             onChange={(e) => setRemovable(e.target.value[0] === 'true')} />
         </label>
         <label><b>appendToBody</b>
@@ -126,7 +125,7 @@ let Config = () => {
           <NewInput
             name="appendToBody"
             selection={appendToBody}
-            options={trueFalse}
+            options={trueOptions}
             onChange={(e) => setAppendToBody(e.target.value[0] === 'true')} />
         </label>
         <label><b>rightToLeft</b>
@@ -134,7 +133,7 @@ let Config = () => {
           <NewInput
             name="rightToLeft"
             selection={rightToLeft}
-            options={trueFalse}
+            options={trueOptions}
             onChange={(e) => setRightToLeft(e.target.value[0] === 'true')} />
         </label>
         <label><b>allowDuplicates</b>
@@ -142,7 +141,7 @@ let Config = () => {
           <NewInput
             name="allowDuplicates"
             selection={allowDuplicates}
-            options={trueFalse}
+            options={trueOptions}
             onChange={(e) => setAllowDuplicates(e.target.value[0] === 'true')} />
         </label>
         <label><b>checkRadioMaxCount</b>
