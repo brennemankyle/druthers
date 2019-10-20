@@ -101,7 +101,7 @@ let Select = (rawProps) => {
     props.onFocus(e)
   }
   let onBlur = (e) => {
-    if (singleNoOptions && targetValue(e) !== '') {
+    if (singleNoOptions) {
       callOnChange(props, targetValue(e)) // Make single no options behave like text input
     }
 
