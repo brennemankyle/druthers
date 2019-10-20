@@ -20,6 +20,7 @@ let Config = () => {
   const [appendToBody, setAppendToBody] = useState(defaultProps.appendToBody)
   const [rightToLeft, setRightToLeft] = useState(defaultProps.rightToLeft)
   const [allowDuplicates, setAllowDuplicates] = useState(defaultProps.allowDuplicates)
+  const [alwaysReturnArray, setAlwaysReturnArray] = useState(defaultProps.alwaysReturnArray)
   const [checkRadioMaxCount, setCheckRadioMaxCount] = useState(defaultProps.checkRadioMaxCount)
   // Text
   const [text_noOptions, setText_noOptions] = useState(defaultProps.text_noOptions)
@@ -62,7 +63,7 @@ let Config = () => {
 
   return <div style={{display: 'flex', justifyContent: 'space-between'}}>
       <div style={{width: '45%', flexShrink: 0, flexGrow: 0, height: '98vh', overflowY: 'auto'}}>
-        <h1 style={{textAlign: 'center'}}>Configure</h1>
+        <h1 style={{textAlign: 'center'}}>Props (Configure)</h1>
         <label><b>name</b>
           <span style={{color: 'gray'}}> (The HTML name in the form)</span>
           <NewInput
@@ -94,7 +95,7 @@ let Config = () => {
             name="multiple"
             selection={multiple}
             options={trueOptions}
-            onChange={(e) => setMultiple(e.target.value[0] === 'true')} />
+            onChange={(e) => setMultiple(e.target.value === 'true')} />
         </label>
         <label><b>disabled</b>
           <span style={{color: 'gray'}}> (Whether component is disabled)</span>
@@ -102,7 +103,7 @@ let Config = () => {
             name="disabled"
             selection={disabled}
             options={trueOptions}
-            onChange={(e) => setDisabled(e.target.value[0] === 'true')} />
+            onChange={(e) => setDisabled(e.target.value === 'true')} />
         </label>
         <label><b>creatable</b>
           <span style={{color: 'gray'}}> (Whether new selected items can be created)</span>
@@ -110,7 +111,7 @@ let Config = () => {
             name="creatable"
             selection={creatable}
             options={trueOptions}
-            onChange={(e) => setCreatable(e.target.value[0] === 'true')} />
+            onChange={(e) => setCreatable(e.target.value === 'true')} />
         </label>
         <label><b>removable</b>
           <span style={{color: 'gray'}}> (Whether selected items are removable)</span>
@@ -118,7 +119,7 @@ let Config = () => {
             name="removable"
             selection={removable}
             options={trueOptions}
-            onChange={(e) => setRemovable(e.target.value[0] === 'true')} />
+            onChange={(e) => setRemovable(e.target.value === 'true')} />
         </label>
         <label><b>appendToBody</b>
           <span style={{color: 'gray'}}> (Whether options append to the body tag (can prevent options from being clipped))</span>
@@ -126,7 +127,7 @@ let Config = () => {
             name="appendToBody"
             selection={appendToBody}
             options={trueOptions}
-            onChange={(e) => setAppendToBody(e.target.value[0] === 'true')} />
+            onChange={(e) => setAppendToBody(e.target.value === 'true')} />
         </label>
         <label><b>rightToLeft</b>
           <span style={{color: 'gray'}}> (Whether to show text from right to left instead)</span>
@@ -134,7 +135,7 @@ let Config = () => {
             name="rightToLeft"
             selection={rightToLeft}
             options={trueOptions}
-            onChange={(e) => setRightToLeft(e.target.value[0] === 'true')} />
+            onChange={(e) => setRightToLeft(e.target.value === 'true')} />
         </label>
         <label><b>allowDuplicates</b>
           <span style={{color: 'gray'}}> (Whether duplicate selection items are allowed)</span>
@@ -142,7 +143,15 @@ let Config = () => {
             name="allowDuplicates"
             selection={allowDuplicates}
             options={trueOptions}
-            onChange={(e) => setAllowDuplicates(e.target.value[0] === 'true')} />
+            onChange={(e) => setAllowDuplicates(e.target.value === 'true')} />
+        </label>
+        <label><b>alwaysReturnArray</b>
+          <span style={{color: 'gray'}}> (Always return an array from onChange, instead of only when multiple)</span>
+          <NewInput
+            name="alwaysReturnArray"
+            selection={alwaysReturnArray}
+            options={trueOptions}
+            onChange={(e) => setAlwaysReturnArray(e.target.value === 'true')} />
         </label>
         <label><b>checkRadioMaxCount</b>
           <span style={{color: 'gray'}}> (The maximum radio buttons allowed before rendering a Select instead)</span>
@@ -433,6 +442,7 @@ let Config = () => {
           appendToBody={appendToBody}
           rightToLeft={rightToLeft}
           allowDuplicates={allowDuplicates}
+          alwaysReturnArray={alwaysReturnArray}
           checkRadioMaxCount={checkRadioMaxCount}
           text_noOptions={text_noOptions}
           text_create={text_create}

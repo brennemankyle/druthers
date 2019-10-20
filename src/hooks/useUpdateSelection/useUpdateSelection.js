@@ -42,7 +42,7 @@ let useUpdateSelection = (props, isCheckRadio = false) => {
     if (originalSelection !== selection) {
       props.onChange({
         target: {
-          value: props.massageDataOut(selection.map(item => item.value)),
+          value: props.massageDataOut(props, selection.map(item => item.value)),
           name: props.name,
         }
       })

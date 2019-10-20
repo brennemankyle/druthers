@@ -42,7 +42,11 @@ const StoryNewInput = props => {
     selection={selection}
     onChange={(e) => {
       setSelection(e.target.value)
-      action('onChange')(...e.target.value)
+      if (Array.isArray(e.target.value)) {
+        action('onChange')(...e.target.value)
+      } else {
+        action('onChange')(e.target.value, "<<<< Single Value")
+      }
     }}
     onFocus={() => action('onFocus')}
     onBlur={() => action('onBlur')} />

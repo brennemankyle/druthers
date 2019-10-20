@@ -87,6 +87,7 @@ class SomeComponent extends React.Component {
 | appendToBody | false |
 | rightToLeft | false |
 | allowDuplicates | true |
+| alwaysReturnArray | false |
 | filterOptions | filterOptions |
 | massageDataIn | massageDataIn |
 | massageDataOut | massageDataOut |
@@ -167,6 +168,7 @@ class SomeComponent extends React.Component {
 | appendToBody | Whether options append to the body tag (can prevent options from being clipped) |
 | rightToLeft | Whether to show text from right to left instead |
 | allowDuplicates | Whether duplicate selection items are allowed |
+| alwaysReturnArray | Always return an array from onChange, instead of only when multiple |
 | filterOptions | The function which filters options based on search text |
 | massageDataIn | The function that massages the props coming in |
 | massageDataOut | The function massaging the selection returned from the onChange event |

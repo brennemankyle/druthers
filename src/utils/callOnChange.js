@@ -1,7 +1,7 @@
 let internalCallOnChange = (props, value) => {
   props.onChange({
     target: {
-      value: props.massageDataOut(value),
+      value: props.massageDataOut(props, value),
       name: props.name,
     }
   })

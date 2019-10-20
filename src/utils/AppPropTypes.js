@@ -80,6 +80,7 @@ let simpleNewInputPropTypes = {
   appendToBody: PropTypes.bool.isRequired,
   rightToLeft: PropTypes.bool.isRequired,
   allowDuplicates: PropTypes.bool.isRequired,
+  alwaysReturnArray: PropTypes.bool.isRequired,
   filterOptions: PropTypes.func.isRequired,
   massageDataIn: PropTypes.func.isRequired,
   massageDataOut: PropTypes.func.isRequired,

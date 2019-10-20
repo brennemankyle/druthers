@@ -23,6 +23,7 @@ let defaultProps = {
   appendToBody: false,
   rightToLeft: false,
   allowDuplicates: true,
+  alwaysReturnArray: false,
   filterOptions,
   massageDataIn,
   massageDataOut,
