@@ -83,8 +83,8 @@ CheckRadio.propTypes = {
   disabled: PropTypes.bool,
   multiple: PropTypes.bool.isRequired,
   selection: PropTypes.oneOfType([
-    AppPropTypes.rawValue.isRequired,
-    PropTypes.arrayOf(AppPropTypes.rawValue).isRequired,
+    PropTypes.any.isRequired,
+    PropTypes.arrayOf(PropTypes.any).isRequired,
     AppPropTypes.itemList.isRequired,
   ]).isRequired,
   options: PropTypes.oneOfType([

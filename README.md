@@ -93,6 +93,7 @@ class SomeComponent extends React.Component {
 | massageDataOut | massageDataOut |
 | optionKeys | ['value', 'label'] |
 | checkRadioMaxCount | 10 |
+| parseTo | string |
 | **Text Props** ||
 | text_placeholder | '' |
 | text_noOptions | 'No Options' |
@@ -174,6 +175,7 @@ class SomeComponent extends React.Component {
 | massageDataOut | The function massaging the selection returned from the onChange event |
 | optionKeys | The name of the keys in an option object |
 | checkRadioMaxCount | The maximum radio buttons allowed before rendering a Select instead |
+| parseTo | parse value from onChange to a js type: string, number, int, float, boolean |
 | **Text Props** ||
 | text_placeholder | Same as `placeholder` with a more descriptive name |
 | text_noOptions | The text shown when there are no options |

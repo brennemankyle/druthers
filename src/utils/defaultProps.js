@@ -29,6 +29,7 @@ let defaultProps = {
   massageDataOut,
   optionKeys: ['value', 'label'],
   checkRadioMaxCount: 10,
+  parseTo: 'string',
 
   text_placeholder: '',
   text_noOptions: 'No Options',

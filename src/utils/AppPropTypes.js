@@ -5,22 +5,16 @@ let item = PropTypes.shape({
   label: PropTypes.string.isRequired,
 })
 
-let rawValue = PropTypes.oneOfType([
-  PropTypes.string.isRequired,
-  PropTypes.bool.isRequired,
-  PropTypes.number.isRequired
-])
-
 let rawItem = PropTypes.shape({
-  value: rawValue.isRequired,
-  label: rawValue.isRequired,
+  value: PropTypes.any.isRequired,
+  label: PropTypes.any.isRequired,
 })
 
 let AppPropTypes = {
   item: item,
   itemList: PropTypes.arrayOf(item),
   element: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]),
-  rawValue: rawValue,
+  rawValue: PropTypes.any.isRequired,
   rawItem: rawItem,
   rawItemList: PropTypes.arrayOf(rawItem),
   styles: {
@@ -64,8 +58,8 @@ let simpleNewInputPropTypes = {
   onFocus: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   selection: PropTypes.oneOfType([
-    AppPropTypes.rawValue.isRequired,
-    PropTypes.arrayOf(AppPropTypes.rawValue).isRequired,
+    PropTypes.any.isRequired,
+    PropTypes.arrayOf(PropTypes.any).isRequired,
     AppPropTypes.itemList.isRequired,
   ]).isRequired,
   options: PropTypes.oneOfType([
@@ -86,6 +80,7 @@ let simpleNewInputPropTypes = {
   massageDataOut: PropTypes.func.isRequired,
   optionKeys: PropTypes.arrayOf(PropTypes.string).isRequired,
   checkRadioMaxCount: PropTypes.number.isRequired,
+  parseTo: PropTypes.oneOf(['string', 'number', 'int', 'float', 'boolean']),
 
   text_placeholder: PropTypes.string.isRequired,
   text_noOptions: PropTypes.string.isRequired,

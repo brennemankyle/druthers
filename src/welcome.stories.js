@@ -9,6 +9,14 @@ let trueOptions = [
   {value: true, label: 'True'},
 ]
 
+let parseToOptions = [
+  {value: 'string', label: 'string'},
+  {value: 'number', label: 'number'},
+  {value: 'int', label: 'int'},
+  {value: 'float', label: 'float'},
+  {value: 'boolean', label: 'boolean'},
+]
+
 let Config = () => {
   const [name, setName] = useState(defaultProps.name || 'defaultName')
   const [options, setOptions] = useState(['Option 1', 'Option 2'])
@@ -22,6 +30,7 @@ let Config = () => {
   const [allowDuplicates, setAllowDuplicates] = useState(defaultProps.allowDuplicates)
   const [alwaysReturnArray, setAlwaysReturnArray] = useState(defaultProps.alwaysReturnArray)
   const [checkRadioMaxCount, setCheckRadioMaxCount] = useState(defaultProps.checkRadioMaxCount)
+  const [parseTo, setParseTo] = useState(defaultProps.parseTo)
   // Text
   const [text_noOptions, setText_noOptions] = useState(defaultProps.text_noOptions)
   const [text_create, setText_create] = useState(defaultProps.text_create)
@@ -95,7 +104,8 @@ let Config = () => {
             name="multiple"
             selection={multiple}
             options={trueOptions}
-            onChange={(e) => setMultiple(e.target.value === 'true')} />
+            parseTo="boolean"
+            onChange={(e) => setMultiple(e.target.value)} />
         </label>
         <label><b>disabled</b>
           <span style={{color: 'gray'}}> (Whether component is disabled)</span>
@@ -103,7 +113,8 @@ let Config = () => {
             name="disabled"
             selection={disabled}
             options={trueOptions}
-            onChange={(e) => setDisabled(e.target.value === 'true')} />
+            parseTo="boolean"
+            onChange={(e) => setDisabled(e.target.value)} />
         </label>
         <label><b>creatable</b>
           <span style={{color: 'gray'}}> (Whether new selected items can be created)</span>
@@ -111,7 +122,8 @@ let Config = () => {
             name="creatable"
             selection={creatable}
             options={trueOptions}
-            onChange={(e) => setCreatable(e.target.value === 'true')} />
+            parseTo="boolean"
+            onChange={(e) => setCreatable(e.target.value)} />
         </label>
         <label><b>removable</b>
           <span style={{color: 'gray'}}> (Whether selected items are removable)</span>
@@ -119,7 +131,8 @@ let Config = () => {
             name="removable"
             selection={removable}
             options={trueOptions}
-            onChange={(e) => setRemovable(e.target.value === 'true')} />
+            parseTo="boolean"
+            onChange={(e) => setRemovable(e.target.value)} />
         </label>
         <label><b>appendToBody</b>
           <span style={{color: 'gray'}}> (Whether options append to the body tag (can prevent options from being clipped))</span>
@@ -127,7 +140,8 @@ let Config = () => {
             name="appendToBody"
             selection={appendToBody}
             options={trueOptions}
-            onChange={(e) => setAppendToBody(e.target.value === 'true')} />
+            parseTo="boolean"
+            onChange={(e) => setAppendToBody(e.target.value)} />
         </label>
         <label><b>rightToLeft</b>
           <span style={{color: 'gray'}}> (Whether to show text from right to left instead)</span>
@@ -135,7 +149,8 @@ let Config = () => {
             name="rightToLeft"
             selection={rightToLeft}
             options={trueOptions}
-            onChange={(e) => setRightToLeft(e.target.value === 'true')} />
+            parseTo="boolean"
+            onChange={(e) => setRightToLeft(e.target.value)} />
         </label>
         <label><b>allowDuplicates</b>
           <span style={{color: 'gray'}}> (Whether duplicate selection items are allowed)</span>
@@ -143,7 +158,8 @@ let Config = () => {
             name="allowDuplicates"
             selection={allowDuplicates}
             options={trueOptions}
-            onChange={(e) => setAllowDuplicates(e.target.value === 'true')} />
+            parseTo="boolean"
+            onChange={(e) => setAllowDuplicates(e.target.value)} />
         </label>
         <label><b>alwaysReturnArray</b>
           <span style={{color: 'gray'}}> (Always return an array from onChange, instead of only when multiple)</span>
@@ -151,15 +167,25 @@ let Config = () => {
             name="alwaysReturnArray"
             selection={alwaysReturnArray}
             options={trueOptions}
-            onChange={(e) => setAlwaysReturnArray(e.target.value === 'true')} />
+            parseTo="boolean"
+            onChange={(e) => setAlwaysReturnArray(e.target.value)} />
         </label>
         <label><b>checkRadioMaxCount</b>
           <span style={{color: 'gray'}}> (The maximum radio buttons allowed before rendering a Select instead)</span>
           <NewInput
             name="checkRadioMaxCount"
             selection={checkRadioMaxCount}
-            onChange={(e) => setCheckRadioMaxCount(parseInt(e.target.value, 10))}
+            parseTo="int"
+            onChange={(e) => setCheckRadioMaxCount(e.target.value)}
             creatable={true} />
+        </label>
+        <label><b>parseTo</b>
+          <span style={{color: 'gray'}}> (parse value from onChange to a js type: string, number, boolean, or date)</span>
+          <NewInput
+            name="parseTo"
+            selection={parseTo}
+            options={parseToOptions}
+            onChange={(e) => setParseTo(e.target.value)} />
         </label>
         <label><b>text_noOptions</b>
           <span style={{color: 'gray'}}> (The text shown when there are no options)</span>
@@ -444,6 +470,7 @@ let Config = () => {
           allowDuplicates={allowDuplicates}
           alwaysReturnArray={alwaysReturnArray}
           checkRadioMaxCount={checkRadioMaxCount}
+          parseTo={parseTo}
           text_noOptions={text_noOptions}
           text_create={text_create}
           styles_fontSize={styles_fontSize}
