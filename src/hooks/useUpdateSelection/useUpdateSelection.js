@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
+import allOptions from '../../utils/allOptions'
 
 let allBooleanValues = (options) => options.every(option => ['false', 'true'].includes(option.value))
-let isBooleanSwitch = (props) => (props.options.length === 1 || (props.options.length === 2 && !props.multiple)) && allBooleanValues(props.options)
+let isBooleanSwitch = (props) => !props.hasOptionGroups && (props.options.length === 1 || (props.options.length === 2 && !props.multiple)) && allBooleanValues(props.options)
 
 let useUpdateSelection = (props, isCheckRadio = false) => {
   let originalSelection = props.selection
@@ -26,7 +27,7 @@ let useUpdateSelection = (props, isCheckRadio = false) => {
 
     if (!props.creatable && !booleanSwitch) {
       // Not creatable, only allow selections in the options
-      let newSelection = selection.filter(item => props.options.some(option => option.value === item.value))
+      let newSelection = selection.filter(item => allOptions(props.options, 'some', option => option.value === item.value))
 
       if (newSelection.length !== selection.length) selection = newSelection
     }

@@ -1,26 +1,35 @@
 import { castArray } from './essentialLodash'
+import allOptions from './allOptions'
 
 let massageDataIn = (props) => {
   let { selection, options, placeholder, ...otherProps } = props
-  let isEmpty = selection == null || selection === '' 
+  let isEmpty = selection == null || selection === ''
+  let allOptionsOut = {hasOptionGroups: null}
+
+  // Arrayify
+  selection = castArray(selection)
 
   // Stringify
-  selection = castArray(selection).map((value) => String(value))
-  options = options.map((option) => ({value: String(option[props.optionKeys[0]]), label: String(option[props.optionKeys[1]])}))
+  selection = selection.map((value) => String(value))
+  options = allOptions(
+    options,
+    'map',
+    option => ({label: String(option[props.optionKeys[1]]), value: String(option[props.optionKeys[0]])}),
+    allOptionsOut)
 
-  // Objectify
+  // Objectify selection, turn single value into label/value object
   let massagedSelection = isEmpty
     ? []
     : selection.map((value) => {
-        let option = options.find((option) => option.value === value)
+        let option = allOptions(options, 'find', option => option.value === value)
 
         return option == null ? {value: value, label: value} : option
       })
 
   // Distinct
   if (!props.allowDuplicates) {
-    let values = options.map(option => option.value)
-    options = options.filter((option, index) => values.indexOf(option.value) === index)
+    let values = allOptions(options, 'map', option => option.value).filter(value => value != null)
+    options = allOptions(options, 'filter', (option, index) => values.indexOf(option.value) === index) // TODO: Not going to work
   }
 
   placeholder = otherProps.text_placeholder ? otherProps.text_placeholder : placeholder
@@ -30,6 +39,7 @@ let massageDataIn = (props) => {
     selection: massagedSelection,
     options,
     text_placeholder: placeholder,
+    hasOptionGroups: allOptionsOut.hasOptionGroups,
   }
 }
 

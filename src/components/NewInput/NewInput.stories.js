@@ -33,6 +33,22 @@ let trueSwitchOptions = [
   {value: true, label: 'True'},
 ]
 
+let optionGroupOptions = [
+  {label: 'Colors', options: [
+    {value: 1, label: 'Purple'},
+    {value: '2', label: 'Green'},
+    {value: '3', label: 'Blue'},
+    {value: 4, label: 'Pink'},
+  ]},
+  {label: 'Fruits', options: [
+    {value: '5', label: 'Banana'},
+    {value: '6', label: 'Orange'},
+    {value: 7, label: 'Grape'},
+    {value: '8', label: 'GrapeFruit'},
+    {value: '9', label: 'Apple'},
+  ]},
+]
+
 const StoryNewInput = props => {
   const [selection, setSelection] = useState(props.selection)
   let { selection: test, onChange, ...otherProps } = props
@@ -79,6 +95,7 @@ storiesOf('New Input', module)
   .add('True/False Switch', () => <StoryNewInput name="trueSwitch" selection={selection} onChange={onChange} options={trueSwitchOptions} />, {info, notes: 'Resize window to see it change from Switch to Select if it runs out of space on one line'})
   .add('Single No Options', () => <StoryNewInput name="SingleNoOptions" selection={selection} onChange={onChange} creatable />, {info})
   .add('Multiple No Options', () => <StoryNewInput name="MultipleNoOptions" selection={selection} onChange={onChange} creatable multiple />, {info})
+  .add('Option Groups', () => <StoryNewInput name="OptionGroups" selection={selection} onChange={onChange} options={optionGroupOptions} />, {info})
   .add('Single Disabled', () => <StoryNewInput name="SingleDisabled" selection={['1']} onChange={onChange} options={options} disabled checkRadioMaxCount={0} />, {info})
   .add('Multiple Disabled', () => <StoryNewInput name="MultipleDisabled" selection={['2', '3']} onChange={onChange} options={options} multiple disabled checkRadioMaxCount={0} />, {info})
   .add('Radios Disabled', () => <StoryNewInput name="RadiosDisabled" selection={['1']} onChange={onChange} options={checkRadioOptions} disabled />, {info, notes: 'Resize window to see it change from Radios to Select if it runs out of space on one line'})

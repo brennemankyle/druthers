@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { simpleNewInputPropTypes } from '../../utils/AppPropTypes'
+import allOptions from '../../utils/allOptions'
 import defaultProps from '../../utils/defaultProps'
 import { last, inRange } from '../../utils/essentialLodash'
 import ReactDOM from 'react-dom'
@@ -77,13 +78,13 @@ let Select = (rawProps) => {
     console.error('Select has no options and is not creatable, nothing to display. Consider adding options or making it creatable')
   }
 
-  if (props.creatable && searchText && !filteredOptions.some(option => option.value === searchText)
+  if (props.creatable && searchText && !allOptions(filteredOptions, 'some', option => option.value === searchText)
     && (props.allowDuplicates || !props.selection.some(item => item.value === searchText))) // Don't allow duplicates
   {
     filteredOptions.push({value: searchText, label: props.text_create + ` "${searchText}"`}) // Add option for creatable
   }
 
-  if (selectionHighlighted == null && !filteredOptions.map((option) => option.value).includes(optionHighlighted)) {
+  if (selectionHighlighted == null && !allOptions(filteredOptions, 'map', (option) => option.value).includes(optionHighlighted)) {
     let newOptionHighlighted = filteredOptions.length ? filteredOptions[0].value : undefined // Only highlight visible options
     if (newOptionHighlighted !== optionHighlighted) setOptionHighlighted(newOptionHighlighted)
   }

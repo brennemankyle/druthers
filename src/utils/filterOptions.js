@@ -1,5 +1,6 @@
 import { isEmpty, without, sortBy } from './essentialLodash'
 import FuzzySet from 'fuzzyset.js'
+import allOptions from './allOptions'
 
 let fuzzySearch = (item, searchTerm) => {
   let fuzzy = FuzzySet()
@@ -10,17 +11,17 @@ let fuzzySearch = (item, searchTerm) => {
 }
 
 let filterOptions = (searchTerm, selection, options, searchProps = ['label', 'value']) => {
-  options = without(options, selection)
+  options = without(options, selection) // TODO
   if (isEmpty(searchTerm)) return options
 
   searchTerm = searchTerm.toLowerCase()
 
-  options = options.filter(item =>
+  options = allOptions(options, 'filter', item =>
     item.label.toLowerCase().includes(searchTerm)
     || item.value.toLowerCase() === searchTerm
     || fuzzySearch(item, searchTerm))
 
-  options = sortBy(options, [
+  options = sortBy(options, [ // TODO
     item => item.label.toLowerCase() === searchTerm,
     item => item.value.toLowerCase() === searchTerm,
     item => item.label.toLowerCase().startsWith(searchTerm),

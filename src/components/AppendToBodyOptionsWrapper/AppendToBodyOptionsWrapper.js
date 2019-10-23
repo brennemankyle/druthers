@@ -1,6 +1,7 @@
 import React, { useRef, forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import AppPropTypes from '../../utils/AppPropTypes'
+import allOptions from '../../utils/allOptions'
 import useRefRect from '../../hooks/useRefRect/useRefRect'
 import usePlaceAbove from '../../hooks/usePlaceAbove/usePlaceAbove'
 import Wrapper from '../Wrapper/Wrapper'
@@ -22,7 +23,7 @@ let AppendToBodyOptionsWrapper = (props) => {
   const placeOptionsAbove = usePlaceAbove(parentRect, optionsWrapperRect, updateOn)
 
   if (placeOptionsAbove && children) {
-    filteredOptions = filteredOptions.reverse()
+    filteredOptions = allOptions(filteredOptions, 'reverse')
     children = React.cloneElement(children, {itemList: filteredOptions})
   }
 
