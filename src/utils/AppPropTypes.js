@@ -62,7 +62,7 @@ let simpleNewInputPropTypes = {
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
   onFocus: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   selection: PropTypes.oneOfType([
     PropTypes.any.isRequired,
     PropTypes.arrayOf(PropTypes.any).isRequired,

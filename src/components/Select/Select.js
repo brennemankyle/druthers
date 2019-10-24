@@ -232,9 +232,9 @@ let Select = (rawProps) => {
     {...styles} />
 
   return (hasOptions || props.creatable) && <Wrapper {...styles} ref={selfRef}>
-    <HtmlFieldData
+    {props.name && <HtmlFieldData
       name={props.name}
-      itemList={props.selection} />
+      itemList={props.selection} />}
 
     <SelectionWrapper
       onFocus={onFocus}
