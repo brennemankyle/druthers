@@ -519,6 +519,7 @@ storiesOf('Welcome', module)
       <li>Search using fuzzy matching: mossisippi > Mississippi, py > Pi. Powered by https://glench.github.io/fuzzyset.js/</li>
       <li>Fully usable with only the Keyboard</li>
       <li>Creatable options (managed by a prop not a separate component)</li>
+      <li>Selectable Option Groups (parent group can be selected)</li>
       <li>Small npm package size</li>
       <li>No Jquery</li>
       <li>Modern browser support: Chrome, Safari, Edge, IE11, Firefox, iOS, Android</li>

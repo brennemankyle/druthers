@@ -2,13 +2,38 @@ import { castArray } from './essentialLodash'
 
 let massageDataIn = (props) => {
   let { selection, options, placeholder, ...otherProps } = props
-  let isEmpty = selection == null || selection === '' 
+  let isEmpty = selection == null || selection === ''
+
+  // Arrayify
+  selection = castArray(selection)
 
   // Stringify
-  selection = castArray(selection).map((value) => String(value))
-  options = options.map((option) => ({value: String(option[props.optionKeys[0]]), label: String(option[props.optionKeys[1]])}))
+  selection = selection.map((value) => String(value))
+  let hasOptionGroups = false
+  let strigifyOption = option => ({value: String(option[props.optionKeys[0]]), label: String(option[props.optionKeys[1]])})
+  let groupNumber = 1 // Start at 1 because 0 isn't truthy
+  options = [].concat(...options.map(option => { // Also flatten option groups
+    if (option.options == null) return strigifyOption(option)
 
-  // Objectify
+    hasOptionGroups = true
+    let newOption = strigifyOption(option)
+    let group = groupNumber++
+    if (option.value == null) delete newOption.value
+
+    return [
+      {
+        ...newOption,
+        group: group,
+        parent: true,
+      },
+      ...option.options.map(option => ({
+        ...strigifyOption(option),
+        group: group,
+      })),
+    ]
+  }))
+
+  // Objectify selection, turn single value into label/value object
   let massagedSelection = isEmpty
     ? []
     : selection.map((value) => {
@@ -29,6 +54,7 @@ let massageDataIn = (props) => {
     ...otherProps,
     selection: massagedSelection,
     options,
+    hasOptionGroups,
     text_placeholder: placeholder,
   }
 }

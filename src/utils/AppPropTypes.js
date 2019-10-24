@@ -1,13 +1,19 @@
 import PropTypes from 'prop-types'
 
 let item = PropTypes.shape({
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   label: PropTypes.string.isRequired,
+  group: PropTypes.number,
+  parent: PropTypes.bool,
 })
 
 let rawItem = PropTypes.shape({
-  value: PropTypes.any.isRequired,
+  value: PropTypes.any,
   label: PropTypes.any.isRequired,
+  options: PropTypes.arrayOf(PropTypes.shape({
+    value: PropTypes.any.isRequired,
+    label: PropTypes.any.isRequired,
+  })),
 })
 
 let AppPropTypes = {

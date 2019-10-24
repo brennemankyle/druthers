@@ -14,7 +14,7 @@ let ItemList = (props) => {
     <Item
       item={item}
       removable={props.removable}
-      key={item.value}
+      key={item.value || item.label}
       svg_Remove={props.svg_Remove}
       {...styles} />
 

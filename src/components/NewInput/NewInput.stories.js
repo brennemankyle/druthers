@@ -33,6 +33,39 @@ let trueSwitchOptions = [
   {value: true, label: 'True'},
 ]
 
+let optionGroupOptions = [
+  {label: 'Colors', options: [
+    {value: 1, label: 'Purple'},
+    {value: '2', label: 'Green'},
+    {value: '3', label: 'Blue'},
+    {value: 4, label: 'Pink'},
+  ]},
+  {label: 'Fruits', options: [
+    {value: '5', label: 'Banana'},
+    {value: '6', label: 'Orange'},
+    {value: 7, label: 'Grape'},
+    {value: '8', label: 'GrapeFruit'},
+    {value: '9', label: 'Apple'},
+  ]},
+  {value: 'other', label: 'Other'},
+]
+
+let selectableOptionGroupOptions = [
+  {value: 'everything', label: 'Everything', options: [
+    {value: 'burger', label: 'Burger'},
+    {value: 'cheese', label: 'Cheese'},
+    {value: 'pickle', label: 'Pickle'},
+    {value: 'lettuce', label: 'Lettuce'},
+    {value: 'tomato', label: 'Tomato'},
+  ]},
+  {value: 'all_condiments', label: 'Condiments', options: [
+    {value: 'ketchup', label: 'Ketchup'},
+    {value: 'mustard', label: 'Mustard'},
+    {value: 'mayo', label: 'Mayo'},
+  ]},
+  {value: 'to_go', label: 'To Go'},
+]
+
 const StoryNewInput = props => {
   const [selection, setSelection] = useState(props.selection)
   let { selection: test, onChange, ...otherProps } = props
@@ -71,6 +104,8 @@ storiesOf('New Input', module)
   .add('Multiple', () => <StoryNewInput name="Multiple" selection={selection} onChange={onChange} options={options} multiple checkRadioMaxCount={0} />, {info})
   .add('Create Single', () => <StoryNewInput name="SingleCreate" selection={selection} onChange={onChange} options={options} creatable />, {info})
   .add('Create Multiple', () => <StoryNewInput name="MultipleCreate" selection={selection} onChange={onChange} options={options} creatable multiple />, {info})
+  .add('Option Groups', () => <StoryNewInput name="OptionGroups" selection={selection} onChange={onChange} options={optionGroupOptions} />, {info})
+  .add('Selectable Option Groups', () => <StoryNewInput name="SelectableOptionGroups" selection={selection} onChange={onChange} options={selectableOptionGroupOptions} multiple />, {info})
   .add('Append to body', () => <StoryNewInput name="AppendToBody" selection={selection} onChange={onChange} options={options} creatable multiple appendToBody />, {info})
   .add('Right to left', () => <StoryNewInput name="RightToLeft" selection={selection} onChange={onChange} options={options} rightToLeft checkRadioMaxCount={0} />, {info})
   .add('Radios', () =>   <StoryNewInput name="Radios" selection={selection} onChange={onChange} options={checkRadioOptions} />, {info, notes: 'Resize window to see it change from Radios to Select if it runs out of space on one line'})

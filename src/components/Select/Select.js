@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { simpleNewInputPropTypes } from '../../utils/AppPropTypes'
 import defaultProps from '../../utils/defaultProps'
+import moveHighlighted from '../../utils/moveHighlighted'
 import { last, inRange } from '../../utils/essentialLodash'
 import ReactDOM from 'react-dom'
 import { DivRelative } from '../styledComponents/styledComponents'
@@ -33,7 +34,7 @@ let Select = (rawProps) => {
   let hasOptions = !!props.options.length
   let hasSelection = !!props.selection.length
   let singleNoOptions = !hasOptions && !props.multiple && props.creatable
-  let filteredOptions = props.filterOptions(searchText, props.selection, props.options)
+  let filteredOptions = props.filterOptions(props, searchText)
   let showSelection = props.multiple || !areOptionsOpen // Multiple: always show. Single: show when options are closed
   let showSearch = props.multiple || areOptionsOpen || !props.selection.length // Multiple: always show. Single: show when options are open or when nothing is selected (placeholder should be shown)
   let styles = {
@@ -46,28 +47,6 @@ let Select = (rawProps) => {
     styles_selectionHighlighted: selectionHighlighted,
     styles_rightToLeft: props.rightToLeft,
     ...withKeys(props, 'styles_')
-  }
-  let moveHighlighted = (items, type, distance) => {
-    if (items.length === 0) {
-      setOptionHighlighted()
-      setSelectionHighlighted()
-      return
-    }
-
-    let highlighted = type === 'option' ? optionHighlighted : selectionHighlighted
-    let index = highlighted == null && type === 'selection'
-      ? items.length - 1 // default 'selection' to end, if 'option' defaulted to start
-      : items.map((item) => item.value).indexOf(highlighted) + distance
-    index = Math.max(index, 0)
-    index = Math.min(index, items.length - 1)
-
-    if (type === 'option') {
-      setOptionHighlighted(items[index].value)
-      setSelectionHighlighted()
-    } else {
-      setOptionHighlighted()
-      setSelectionHighlighted(items[index].value)
-    }
   }
 
   let newWidth = selfRef && selfRef.current ? selfRef.current.offsetWidth : 0
@@ -83,8 +62,8 @@ let Select = (rawProps) => {
     filteredOptions.push({value: searchText, label: props.text_create + ` "${searchText}"`}) // Add option for creatable
   }
 
-  if (selectionHighlighted == null && !filteredOptions.map((option) => option.value).includes(optionHighlighted)) {
-    let newOptionHighlighted = filteredOptions.length ? filteredOptions[0].value : undefined // Only highlight visible options
+  if (selectionHighlighted == null && !filteredOptions.map(option => option.value).filter(value => value != null).includes(optionHighlighted)) {
+    let newOptionHighlighted = moveHighlighted(filteredOptions, 1, optionHighlighted)
     if (newOptionHighlighted !== optionHighlighted) setOptionHighlighted(newOptionHighlighted)
   }
 
@@ -113,7 +92,7 @@ let Select = (rawProps) => {
   }
   let onOptionClick = (e) => {
     e.preventDefault()
-    if (!targetHasValue(e)) return // Sometimes parent of options is clickable, do nothing
+    if (!targetHasValue(e)) return // no value, do nothing
 
     if (!props.multiple) {
       document.activeElement.blur() // Close options on single select
@@ -165,7 +144,8 @@ let Select = (rawProps) => {
             },
             preventDefault: e.preventDefault,
           })
-          moveHighlighted(filteredOptions, 'option', 1) // Highlight next option
+          setOptionHighlighted(moveHighlighted(filteredOptions, 1, optionHighlighted)) // Highlight next option
+          setSelectionHighlighted()
           setSearchText('')
 
           if (!props.multiple) e.target.blur() // Close options on single select
@@ -173,22 +153,26 @@ let Select = (rawProps) => {
         break
       case ARROW_UP:
         if (areOptionsOpen && filteredOptions.length) {
-          moveHighlighted(filteredOptions, 'option', -1)
+          setOptionHighlighted(moveHighlighted(filteredOptions, -1, optionHighlighted))
+          setSelectionHighlighted()
         }
         break
       case ARROW_DOWN:
         if (areOptionsOpen && filteredOptions.length) {
-          moveHighlighted(filteredOptions, 'option', 1)
+          setOptionHighlighted(moveHighlighted(filteredOptions, 1, optionHighlighted))
+          setSelectionHighlighted()
         }
         break
       case ARROW_LEFT:
         if (props.selection.length && searchText === '') {
-          moveHighlighted(props.selection, 'selection', -1)
+          setSelectionHighlighted(moveHighlighted(props.selection, -1, selectionHighlighted, true))
+          setOptionHighlighted()
         }
         break
       case ARROW_RIGHT:
         if (props.selection.length && searchText === '') {
-          moveHighlighted(props.selection, 'selection', 1)
+          setSelectionHighlighted(moveHighlighted(props.selection, 1, selectionHighlighted, true))
+          setOptionHighlighted()
         }
         break
       case ESCAPE:
@@ -206,7 +190,8 @@ let Select = (rawProps) => {
 
           if (selectionHighlighted != null) {
             input.value = selectionHighlighted
-            moveHighlighted(props.selection, 'selection', 1)
+            setSelectionHighlighted(moveHighlighted(props.selection, -1, selectionHighlighted, true))
+            setOptionHighlighted()
           }
 
           onRemove({

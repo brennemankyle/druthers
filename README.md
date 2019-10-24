@@ -9,6 +9,7 @@ A robust multi-select that automatically uses Radios, Checkboxes, or a Switch if
 * Search using fuzzy matching: mossisippi > Mississippi, py > Pi. Powered by https://glench.github.io/fuzzyset.js/
 * Fully usable with only the Keyboard
 * Creatable options (managed by a prop not a separate component)
+* Selectable Option Groups (parent group can be selected)
 * Small npm package size
 * No Jquery
 * Modern browser support: Chrome, Safari, Edge, Firefox, iOS, Android

@@ -9,20 +9,40 @@ let fuzzySearch = (item, searchTerm) => {
   return result ? result.length : false
 }
 
-let filterOptions = (searchTerm, selection, options, searchProps = ['label', 'value']) => {
-  options = without(options, selection)
+let filterOptions = (props, searchTerm) => {
+  let options = without(props.options, props.selection)
+
+  if (props.hasOptionGroups) {
+    // Remove child groups if parent is selected
+    let groupsToRemove = props.selection.filter(selection => selection.parent).map(selection => selection.group)
+    options = options.filter(option => !groupsToRemove.includes(option.group))
+  }
   if (isEmpty(searchTerm)) return options
 
   searchTerm = searchTerm.toLowerCase()
+  let filter = item => item.label.toLowerCase().includes(searchTerm)
+    || (item.value != null && item.value.toLowerCase() === searchTerm)
+    || fuzzySearch(item, searchTerm)
 
-  options = options.filter(item =>
-    item.label.toLowerCase().includes(searchTerm)
-    || item.value.toLowerCase() === searchTerm
-    || fuzzySearch(item, searchTerm))
+  options = options.filter(item => item.parent || filter(item))
+
+  if (props.hasOptionGroups) {
+    // Remove empty groups
+    options.reduce((acc, item, index) => {
+      if (item.parent && !filter(item)) acc.push(index)
+
+      return acc
+    }, []).reverse().forEach(index => {
+      if (options[index + 1] == null || options[index].group !== options[index + 1].group) {
+        options.splice(index, 1)
+      }
+    })
+  }
 
   options = sortBy(options, [
+    item => item.group,
     item => item.label.toLowerCase() === searchTerm,
-    item => item.value.toLowerCase() === searchTerm,
+    item => item.value != null && item.value.toLowerCase() === searchTerm,
     item => item.label.toLowerCase().startsWith(searchTerm),
     item => item.label.toLowerCase().endsWith(searchTerm),
     item => fuzzySearch(item, searchTerm),

@@ -84,12 +84,22 @@ const Option = styled(Item)`
   }
   z-index: 999;
 
-  ${props => props.styles_optionHighlighted === props.item.value && `
+  ${props => props.styles_optionHighlighted != null && props.styles_optionHighlighted === props.item.value && `
     background-color: ${props.styles_colors_highlight};`
   }
   ${props => props.styles_rightToLeft && `
     transform: scaleX(-1);
     text-align: right;`
+  }
+  ${props => props.item.group && props.item.parent && props.item.value == null && `
+    color: ${props.styles_colors_secondary};
+    font-size: .8em;`
+  }
+  ${props => props.item.group && props.item.parent && props.item.value != null && `
+    font-weight: bold;`
+  }
+  ${props => props.item.group && !props.item.parent && `
+    margin-left: 1em;`
   }
 `
 
