@@ -20,7 +20,7 @@ let callOnChange = (props, newValue, add = true, replace = false) => {
     value = props.selection.map(option => option.value)
 
     if (add) {
-      if (newOption.parent) { // Option is a parent, remove selected children
+      if (newOption != null && newOption.parent) { // Option is a parent, remove selected children
         value = props.selection.filter(option => option.group !== newOption.group).map(option => option.value)
       }
 
