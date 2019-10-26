@@ -1,3 +1,5 @@
+import { castArray } from './essentialLodash'
+
 let internalCallOnChange = (props, value) => {
   props.onChange({
     target: {
@@ -7,19 +9,16 @@ let internalCallOnChange = (props, value) => {
   })
 }
 
-let callOnChange = (props, newValue, add = true, replace = false) => {
-  if (Array.isArray(newValue) && !newValue.length) {
-    internalCallOnChange(props, newValue) // Empty
-    return
-  }
+let callOnChange = (props, newValue, method = 'add') => { // methods: 'add', 'remove', 'replace'
+  if (method === 'replace') return internalCallOnChange(props, castArray(newValue))
 
-  let value = add ? [newValue] : []
-  let newOption = props.options.find(option => option.value === newValue)
+  let value = method === 'add' ? castArray(newValue) : []
 
-  if (props.multiple && !replace) {
+  if (props.multiple) {
     value = props.selection.map(option => option.value)
 
-    if (add) {
+    if (method === 'add') {
+      let newOption = props.options.find(option => option.value === newValue)
       if (newOption != null && newOption.parent) { // Option is a parent, remove selected children
         value = props.selection.filter(option => option.group !== newOption.group).map(option => option.value)
       }

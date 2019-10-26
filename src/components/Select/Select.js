@@ -102,7 +102,7 @@ let Select = (rawProps) => {
   }
   let onRemove = (e) => {
     if (props.removable && e.target.classList.contains('remove')) {
-      callOnChange(props, targetValue(e), false)
+      callOnChange(props, targetValue(e), 'remove')
       setSearchText('')
     }
   }

@@ -22,22 +22,22 @@ let CheckRadio = (rawProps, ref) => {
 
   let onChange = (e) => {
     let value = String(e.target.value)
-    let add = props.multiple || useSwitch ? e.target.checked : true
-    let replace = useSwitch // Always replace selection if switch, in case it's multiple
+    let method = 'add'
+    if (props.multiple || useSwitch) method = e.target.checked ? 'add' : 'remove'
 
     if (isBooleanSwitch(props) && !e.target.checked) {
       value = options[0].value === 'true' ? 'false' : 'true'
-      add = true
+      method = 'add'
     }
 
     // Don't allow unchecking unless it's removable
-    if (props.removable || e.target.checked) callOnChange(props, value, add, replace)
+    if (props.removable || e.target.checked) callOnChange(props, value, method)
   }
 
   let radioUncheck = (e) => {
     if (props.removable && !useSwitch && !props.multiple && props.selection.length && props.selection[0].value === String(e.target.value)) {
       // Unchecking radio, onChange event won't fire, so we have to use onClick instead
-      callOnChange(props, [])
+      callOnChange(props, [], 'replace')
     }
   }
 

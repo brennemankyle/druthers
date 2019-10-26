@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import callOnChange from '../../utils/callOnChange'
 
 let allBooleanValues = (options) => options.every(option => ['false', 'true'].includes(option.value))
 let isBooleanSwitch = (props) => (props.options.length === 1 || (props.options.length === 2 && !props.multiple)) && allBooleanValues(props.options)
@@ -40,12 +41,7 @@ let useUpdateSelection = (props, isCheckRadio = false) => {
     }
 
     if (originalSelection !== selection) {
-      props.onChange({
-        target: {
-          value: props.massageDataOut(props, selection.map(item => item.value)),
-          name: props.name,
-        }
-      })
+      callOnChange(props, selection.map(item => item.value), 'replace')
     }
   }, [props.allowDuplicates, props.multiple, props.creatable, props.options])
 }
