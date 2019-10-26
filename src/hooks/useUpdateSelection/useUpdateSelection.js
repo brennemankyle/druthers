@@ -44,6 +44,10 @@ let useUpdateSelection = (props, isCheckRadio = false) => {
       callOnChange(props, selection.map(item => item.value), 'replace')
     }
   }, [props.allowDuplicates, props.multiple, props.creatable, props.options])
+
+  useEffect(() => {
+    callOnChange(props, selection.map(item => item.value), 'replace') // Always update with different parsing
+  }, [props.parseTo])
 }
 
 export default useUpdateSelection

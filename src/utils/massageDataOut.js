@@ -17,13 +17,22 @@ let massageDataOut = (props, onChangeValue) => {
   switch (props.parseTo.toLowerCase()) {
     case 'number':
     case 'int':
-      onChangeValue = onChangeValue.slice().map((val) => parseInt(val, 10))
+      onChangeValue = onChangeValue
+        .slice()
+        .map(val => parseInt(val, 10))
+        .filter(val => !Number.isNaN(val))
       break
     case 'float':
-      onChangeValue = onChangeValue.slice().map((val) => parseFloat(val))
+      onChangeValue = onChangeValue
+        .slice()
+        .map(val => parseFloat(val))
+        .filter(val => !Number.isNaN(val))
       break
     case 'boolean':
-      onChangeValue = onChangeValue.slice().map((val) => val.toLowerCase() === 'true')
+      onChangeValue = onChangeValue
+        .slice()
+        .filter(val => ['true', 'false'].includes(val.toLowerCase()))
+        .map(val => val.toLowerCase() === 'true')
       break
     case 'string':
     default:
