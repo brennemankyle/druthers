@@ -63,7 +63,7 @@ let Select = (rawProps) => {
   }
 
   if (selectionHighlighted == null && !filteredOptions.map(option => option.value).filter(value => value != null).includes(optionHighlighted)) {
-    let newOptionHighlighted = moveHighlighted(filteredOptions, 1, optionHighlighted)
+    let newOptionHighlighted = moveHighlighted(filteredOptions, 0, optionHighlighted)
     if (newOptionHighlighted !== optionHighlighted) setOptionHighlighted(newOptionHighlighted)
   }
 
