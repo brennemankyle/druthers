@@ -99,6 +99,11 @@ let NoDuplicatesState = () => {
   return <NewInput name="NoDuplicates" selection={selectionNoDuplicates} onChange={(e) => setSelectionNoDuplicates(e.target.value)} options={duplicateOptions} creatable multiple allowDuplicates={false} />
 }
 
+let asyncOptions = (searchText) => {
+  searchText = searchText ? searchText : 'a'
+  return fetch(`http://openlibrary.org/search.json?title=${encodeURI(searchText)}`)
+}
+
 storiesOf('New Input', module)
   .add('Single', () => <StoryNewInput name="Single" selection={selection} onChange={onChange} options={options} checkRadioMaxCount={0} />, {info})
   .add('Multiple', () => <StoryNewInput name="Multiple" selection={selection} onChange={onChange} options={options} multiple checkRadioMaxCount={0} />, {info})
@@ -106,6 +111,7 @@ storiesOf('New Input', module)
   .add('Create Multiple', () => <StoryNewInput name="MultipleCreate" selection={selection} onChange={onChange} options={options} creatable multiple />, {info})
   .add('Option Groups', () => <StoryNewInput name="OptionGroups" selection={selection} onChange={onChange} options={optionGroupOptions} />, {info})
   .add('Selectable Option Groups', () => <StoryNewInput name="SelectableOptionGroups" selection={selection} onChange={onChange} options={selectableOptionGroupOptions} multiple />, {info})
+  // .add('Async Options', () => <StoryNewInput name="AsyncOptions" selection={selection} onChange={onChange} asyncOptions={asyncOptions} />, {info})
   .add('Append to body', () => <StoryNewInput name="AppendToBody" selection={selection} onChange={onChange} options={options} creatable multiple appendToBody />, {info})
   .add('Right to left', () => <StoryNewInput name="RightToLeft" selection={selection} onChange={onChange} options={options} rightToLeft checkRadioMaxCount={0} />, {info})
   .add('Radios', () =>   <StoryNewInput name="Radios" selection={selection} onChange={onChange} options={checkRadioOptions} />, {info, notes: 'Resize window to see it change from Radios to Select if it runs out of space on one line'})
