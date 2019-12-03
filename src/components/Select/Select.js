@@ -1,6 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useReducer, useRef, useEffect, useMemo } from 'react'
 import { simpleNewInputPropTypes } from '../../utils/AppPropTypes'
 import defaultProps from '../../utils/defaultProps'
+import reducer from '../../reducers/reducer'
 import moveHighlighted from '../../utils/moveHighlighted'
 import { last, inRange } from '../../utils/essentialLodash'
 import ReactDOM from 'react-dom'
@@ -16,18 +17,20 @@ let targetValue = e => String(e.target.value || e.target.getAttribute('val') || 
 let Select = (rawProps) => {
   let props = rawProps.massaged ? rawProps : rawProps.massageDataIn(rawProps)
   const selfRef = useRef(null)
-  const [areOptionsOpen, setAreOptionsOpen] = useState(false)
-  const [searchText, setSearchText] = useState('')
-  const [placeholder, setPlacholder] = useState(props.text_placeholder)
-  const [optionHighlighted, setOptionHighlighted] = useState()
-  const [selectionHighlighted, setSelectionHighlighted] = useState()
-  const [width, setWidth] = useState(0)
+  const [state, dispatch] = useReducer(reducer, {
+    areOptionsOpen: false,
+    searchText: '',
+    placeholder: props.text_placeholder,
+    optionHighlighted: null,
+    selectionHighlighted: null,
+    width: 0,
+  })
+  const { areOptionsOpen, searchText, placeholder, optionHighlighted, selectionHighlighted, width } = state
   useEffect(() => {
-    if (areOptionsOpen) setWidth(selfRef && selfRef.current ? selfRef.current.offsetWidth : 0)
+    if (areOptionsOpen) dispatch({type: 'setWidth', payload: selfRef && selfRef.current ? selfRef.current.offsetWidth : 0})
   }, [areOptionsOpen]) // When options open make sure width is correct
   useEffect(() => {
-    setOptionHighlighted()
-    setSelectionHighlighted()
+    dispatch({type: 'clearHighlighted'})
   }, [searchText]) // If search text changes remove highlight
   useUpdateSelection(props) // Update selection based on prop changes
 
@@ -50,7 +53,7 @@ let Select = (rawProps) => {
   }
 
   let newWidth = selfRef && selfRef.current ? selfRef.current.offsetWidth : 0
-  if (width !== newWidth) setWidth(newWidth) // Make sure width is updated correctly
+  if (width !== newWidth) dispatch({type: 'setWidth', payload: newWidth}) // Make sure width is updated correctly
 
   if (!hasOptions && !props.creatable) {
     console.error('Select has no options and is not creatable, nothing to display. Consider adding options or making it creatable')
@@ -63,19 +66,18 @@ let Select = (rawProps) => {
   }
 
   if (selectionHighlighted == null && !filteredOptions.map(option => option.value).filter(value => value != null).includes(optionHighlighted)) {
-    let newOptionHighlighted = moveHighlighted(filteredOptions, 0, optionHighlighted)
-    if (newOptionHighlighted !== optionHighlighted) setOptionHighlighted(newOptionHighlighted)
+    dispatch({type: 'setOptionHighlighted', payload: moveHighlighted(filteredOptions, 0, optionHighlighted)})
   }
 
   let newPlaceholder = areOptionsOpen && !props.multiple && props.selection.length
     ? props.selection[0].label // Set placeholder to current selection on single select
     : props.text_placeholder
-  if (!singleNoOptions && newPlaceholder !== placeholder) setPlacholder(newPlaceholder)
-  if (singleNoOptions && !areOptionsOpen && props.selection.length && searchText === '') setSearchText(props.selection[0].label) // On single creatable with no options, edit the currently selected label
+  if (!singleNoOptions && placeholder !== newPlaceholder) dispatch({type: 'setPlaceholder', payload: newPlaceholder})
+  if (singleNoOptions && !areOptionsOpen && props.selection.length && searchText === '') dispatch({type: 'setSearchText', payload: props.selection[0].label}) // On single creatable with no options, edit the currently selected label
 
   // Events
   let onFocus = (e) => {
-    setAreOptionsOpen(true)
+    dispatch({type: 'setAreOptionsOpen', payload: true})
 
     props.onFocus(e)
   }
@@ -84,9 +86,9 @@ let Select = (rawProps) => {
       callOnChange(props, targetValue(e)) // Make single no options behave like text input
     }
 
-    setAreOptionsOpen(false)
-    setSearchText('')
-    setSelectionHighlighted()
+    dispatch({type: 'setAreOptionsOpen', payload: false})
+    dispatch({type: 'clearSearchText'})
+    dispatch({type: 'clearSelectionHighlighted'})
 
     props.onBlur(e)
   }
@@ -103,15 +105,14 @@ let Select = (rawProps) => {
   let onRemove = (e) => {
     if (props.removable && e.target.classList.contains('remove')) {
       callOnChange(props, targetValue(e), 'remove')
-      setSearchText('')
+      dispatch({type: 'clearSearchText'})
     }
   }
   let onHoverOption = (e) => {
     let value = targetValue(e)
 
-    if (value && value !== optionHighlighted) {
-      setOptionHighlighted(value)
-      setSelectionHighlighted()
+    if (value != null) {
+      dispatch({type: 'setOptionHighlighted', payload: value})
     }
   }
   let onHoverSelection = (e) => {
@@ -119,19 +120,18 @@ let Select = (rawProps) => {
 
     let value = targetValue(e)
 
-    if (value && value !== optionHighlighted) {
-      setOptionHighlighted()
-      setSelectionHighlighted(value)
+    if (value != null) {
+      dispatch({type: 'setSelectionHighlighted', payload: value})
     }
   }
   let onSelectionOut = (e) => {
-    if (!areOptionsOpen) setSelectionHighlighted() // Stop highlighting selection if mouse leaves select area
+    if (!areOptionsOpen) dispatch({type: 'clearSelectionHighlighted'}) // Stop highlighting selection if mouse leaves select area
   }
   let onKeyDown = (e) => {
     let openKeys = [ENTER_KEY, ARROW_UP, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, SPACE, SEMI_COLON,
       EQUAL_SIGN, COMMA, DASH, PERIOD, FORWARD_SLASH, OPEN_BRACKET, BACK_SLASH, CLOSE_BRAKET, SINGLE_QUOTE]
     if (!areOptionsOpen
-      && (inRange(e.keyCode, NUM_LETTER_START, NUM_LETTER_END) || openKeys.includes(e.keyCode))) setAreOptionsOpen(true) // if you type letters, numbers, or openKeys then open options
+      && (inRange(e.keyCode, NUM_LETTER_START, NUM_LETTER_END) || openKeys.includes(e.keyCode))) dispatch({type: 'setAreOptionsOpen', payload: true}) // if you type letters, numbers, or openKeys then open options
 
     switch (e.keyCode) {
       case TAB:
@@ -144,42 +144,36 @@ let Select = (rawProps) => {
             },
             preventDefault: e.preventDefault,
           })
-          setOptionHighlighted(moveHighlighted(filteredOptions, 1, optionHighlighted)) // Highlight next option
-          setSelectionHighlighted()
-          setSearchText('')
+          dispatch({type: 'setOptionHighlighted', payload: moveHighlighted(filteredOptions, 1, optionHighlighted)})
+          dispatch({type: 'clearSearchText'})
 
           if (!props.multiple) e.target.blur() // Close options on single select
         }
         break
       case ARROW_UP:
         if (areOptionsOpen && filteredOptions.length) {
-          setOptionHighlighted(moveHighlighted(filteredOptions, -1, optionHighlighted))
-          setSelectionHighlighted()
+          dispatch({type: 'setOptionHighlighted', payload: moveHighlighted(filteredOptions, -1, optionHighlighted)})
         }
         break
       case ARROW_DOWN:
         if (areOptionsOpen && filteredOptions.length) {
-          setOptionHighlighted(moveHighlighted(filteredOptions, 1, optionHighlighted))
-          setSelectionHighlighted()
+          dispatch({type: 'setOptionHighlighted', payload: moveHighlighted(filteredOptions, 1, optionHighlighted)})
         }
         break
       case ARROW_LEFT:
         if (props.selection.length && searchText === '') {
-          setSelectionHighlighted(moveHighlighted(props.selection, -1, selectionHighlighted, true))
-          setOptionHighlighted()
+          dispatch({type: 'setSelectionHighlighted', payload: moveHighlighted(props.selection, -1, selectionHighlighted, true)})
         }
         break
       case ARROW_RIGHT:
         if (props.selection.length && searchText === '') {
-          setSelectionHighlighted(moveHighlighted(props.selection, 1, selectionHighlighted, true))
-          setOptionHighlighted()
+          dispatch({type: 'setSelectionHighlighted', payload: moveHighlighted(props.selection, 1, selectionHighlighted, true)})
         }
         break
       case ESCAPE:
-        if (areOptionsOpen) setAreOptionsOpen(false)
-        setSearchText('')
-        setOptionHighlighted()
-        setSelectionHighlighted()
+        if (areOptionsOpen) dispatch({type: 'setAreOptionsOpen', payload: false})
+        dispatch({type: 'clearSearchText'})
+        dispatch({type: 'clearHighlighted'})
         break
       case BACKSPACE:
       case DELETE:
@@ -190,8 +184,7 @@ let Select = (rawProps) => {
 
           if (selectionHighlighted != null) {
             input.value = selectionHighlighted
-            setSelectionHighlighted(moveHighlighted(props.selection, -1, selectionHighlighted, true))
-            setOptionHighlighted()
+            dispatch({type: 'setSelectionHighlighted', payload: moveHighlighted(props.selection, -1, selectionHighlighted, true)})
           }
 
           onRemove({
@@ -259,7 +252,7 @@ let Select = (rawProps) => {
           placeholder={placeholder}
           searchText={searchText}
           onKeyDown={onKeyDown}
-          onChange={(e) => setSearchText(targetValue(e))}
+          onChange={(e) => dispatch({type: 'setSearchText', payload: targetValue(e)})}
           {...styles} />
       } />
 
