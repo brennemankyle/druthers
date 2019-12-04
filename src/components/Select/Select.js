@@ -61,10 +61,6 @@ let Select = (rawProps) => {
     filteredOptions.push({value: searchText, label: props.text_create + ` "${searchText}"`}) // Add option for creatable
   }
 
-  if (selectionHighlighted == null && !filteredOptions.map(option => option.value).filter(value => value != null).includes(optionHighlighted)) {
-    dispatch({type: 'moveOptionHighlighted', payload: {filteredOptions: filteredOptions, move: 0}})
-  }
-
   let newPlaceholder = areOptionsOpen && !props.multiple && props.selection.length
     ? props.selection[0].label // Set placeholder to current selection on single select
     : props.text_placeholder
@@ -73,7 +69,7 @@ let Select = (rawProps) => {
 
   // Events
   let onFocus = (e) => {
-    dispatch({type: 'setAreOptionsOpen', payload: true})
+    dispatch({type: 'openOptions', payload: filteredOptions})
 
     props.onFocus(e)
   }
@@ -82,7 +78,7 @@ let Select = (rawProps) => {
       callOnChange(props, targetValue(e)) // Make single no options behave like text input
     }
 
-    dispatch({type: 'setAreOptionsOpen', payload: false})
+    dispatch({type: 'closeOptions'})
     dispatch({type: 'clearSearchText'})
     dispatch({type: 'clearSelectionHighlighted'})
 
@@ -105,20 +101,12 @@ let Select = (rawProps) => {
     }
   }
   let onHoverOption = (e) => {
-    let value = targetValue(e)
-
-    if (value != null) {
-      dispatch({type: 'setOptionHighlighted', payload: value})
-    }
+    if (targetHasValue(e)) dispatch({type: 'setOptionHighlighted', payload: targetValue(e)})
   }
   let onHoverSelection = (e) => {
     if (!e.target.classList.contains('remove')) return
 
-    let value = targetValue(e)
-
-    if (value != null) {
-      dispatch({type: 'setSelectionHighlighted', payload: value})
-    }
+    if (targetHasValue(e)) dispatch({type: 'setSelectionHighlighted', payload: targetValue(e)})
   }
   let onSelectionOut = (e) => {
     if (!areOptionsOpen) dispatch({type: 'clearSelectionHighlighted'}) // Stop highlighting selection if mouse leaves select area
@@ -127,7 +115,7 @@ let Select = (rawProps) => {
     let openKeys = [ENTER_KEY, ARROW_UP, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, SPACE, SEMI_COLON,
       EQUAL_SIGN, COMMA, DASH, PERIOD, FORWARD_SLASH, OPEN_BRACKET, BACK_SLASH, CLOSE_BRAKET, SINGLE_QUOTE]
     if (!areOptionsOpen
-      && (inRange(e.keyCode, NUM_LETTER_START, NUM_LETTER_END) || openKeys.includes(e.keyCode))) dispatch({type: 'setAreOptionsOpen', payload: true}) // if you type letters, numbers, or openKeys then open options
+      && (inRange(e.keyCode, NUM_LETTER_START, NUM_LETTER_END) || openKeys.includes(e.keyCode))) dispatch({type: 'openOptions', payload: filteredOptions}) // if you type letters, numbers, or openKeys then open options
 
     switch (e.keyCode) {
       case TAB:
@@ -147,27 +135,19 @@ let Select = (rawProps) => {
         }
         break
       case ARROW_UP:
-        if (areOptionsOpen && filteredOptions.length) {
-          dispatch({type: 'moveOptionHighlighted', payload: {filteredOptions: filteredOptions, move: -1}})
-        }
+        dispatch({type: 'moveOptionHighlighted', payload: {filteredOptions: filteredOptions, move: -1}})
         break
       case ARROW_DOWN:
-        if (areOptionsOpen && filteredOptions.length) {
-          dispatch({type: 'moveOptionHighlighted', payload: {filteredOptions: filteredOptions, move: 1}})
-        }
+        dispatch({type: 'moveOptionHighlighted', payload: {filteredOptions: filteredOptions, move: 1}})
         break
       case ARROW_LEFT:
-        if (props.selection.length && searchText === '') {
-          dispatch({type: 'moveSelectionHighlighted', payload: {selection: props.selection, move: -1}})
-        }
+        dispatch({type: 'moveSelectionHighlighted', payload: {selection: props.selection, move: -1}})
         break
       case ARROW_RIGHT:
-        if (props.selection.length && searchText === '') {
-          dispatch({type: 'moveSelectionHighlighted', payload: {selection: props.selection, move: 1}})
-        }
+        dispatch({type: 'moveSelectionHighlighted', payload: {selection: props.selection, move: 1}})
         break
       case ESCAPE:
-        if (areOptionsOpen) dispatch({type: 'setAreOptionsOpen', payload: false})
+        dispatch({type: 'closeOptions'})
         dispatch({type: 'clearSearchText'})
         dispatch({type: 'clearHighlighted'})
         break
