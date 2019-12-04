@@ -2,7 +2,6 @@ import React, { useReducer, useRef, useEffect, useMemo } from 'react'
 import { simpleNewInputPropTypes } from '../../utils/AppPropTypes'
 import defaultProps from '../../utils/defaultProps'
 import reducer from '../../reducers/reducer'
-import moveHighlighted from '../../utils/moveHighlighted'
 import { last, inRange } from '../../utils/essentialLodash'
 import ReactDOM from 'react-dom'
 import { DivRelative } from '../styledComponents/styledComponents'
@@ -27,8 +26,8 @@ let Select = (rawProps) => {
   })
   const { areOptionsOpen, searchText, placeholder, optionHighlighted, selectionHighlighted, width } = state
   useEffect(() => {
-    if (areOptionsOpen) dispatch({type: 'setWidth', payload: selfRef && selfRef.current ? selfRef.current.offsetWidth : 0})
-  }, [areOptionsOpen]) // When options open make sure width is correct
+    dispatch({type: 'setWidth', payload: selfRef && selfRef.current ? selfRef.current.offsetWidth : 0})
+  }, [areOptionsOpen])
   useEffect(() => {
     dispatch({type: 'clearHighlighted'})
   }, [searchText]) // If search text changes remove highlight
@@ -52,9 +51,6 @@ let Select = (rawProps) => {
     ...withKeys(props, 'styles_')
   }
 
-  let newWidth = selfRef && selfRef.current ? selfRef.current.offsetWidth : 0
-  if (width !== newWidth) dispatch({type: 'setWidth', payload: newWidth}) // Make sure width is updated correctly
-
   if (!hasOptions && !props.creatable) {
     console.error('Select has no options and is not creatable, nothing to display. Consider adding options or making it creatable')
   }
@@ -66,7 +62,7 @@ let Select = (rawProps) => {
   }
 
   if (selectionHighlighted == null && !filteredOptions.map(option => option.value).filter(value => value != null).includes(optionHighlighted)) {
-    dispatch({type: 'setOptionHighlighted', payload: moveHighlighted(filteredOptions, 0, optionHighlighted)})
+    dispatch({type: 'moveOptionHighlighted', payload: {filteredOptions: filteredOptions, move: 0}})
   }
 
   let newPlaceholder = areOptionsOpen && !props.multiple && props.selection.length
@@ -144,7 +140,7 @@ let Select = (rawProps) => {
             },
             preventDefault: e.preventDefault,
           })
-          dispatch({type: 'setOptionHighlighted', payload: moveHighlighted(filteredOptions, 1, optionHighlighted)})
+          dispatch({type: 'moveOptionHighlighted', payload: {filteredOptions: filteredOptions, move: 1}})
           dispatch({type: 'clearSearchText'})
 
           if (!props.multiple) e.target.blur() // Close options on single select
@@ -152,22 +148,22 @@ let Select = (rawProps) => {
         break
       case ARROW_UP:
         if (areOptionsOpen && filteredOptions.length) {
-          dispatch({type: 'setOptionHighlighted', payload: moveHighlighted(filteredOptions, -1, optionHighlighted)})
+          dispatch({type: 'moveOptionHighlighted', payload: {filteredOptions: filteredOptions, move: -1}})
         }
         break
       case ARROW_DOWN:
         if (areOptionsOpen && filteredOptions.length) {
-          dispatch({type: 'setOptionHighlighted', payload: moveHighlighted(filteredOptions, 1, optionHighlighted)})
+          dispatch({type: 'moveOptionHighlighted', payload: {filteredOptions: filteredOptions, move: 1}})
         }
         break
       case ARROW_LEFT:
         if (props.selection.length && searchText === '') {
-          dispatch({type: 'setSelectionHighlighted', payload: moveHighlighted(props.selection, -1, selectionHighlighted, true)})
+          dispatch({type: 'moveSelectionHighlighted', payload: {selection: props.selection, move: -1}})
         }
         break
       case ARROW_RIGHT:
         if (props.selection.length && searchText === '') {
-          dispatch({type: 'setSelectionHighlighted', payload: moveHighlighted(props.selection, 1, selectionHighlighted, true)})
+          dispatch({type: 'moveSelectionHighlighted', payload: {selection: props.selection, move: 1}})
         }
         break
       case ESCAPE:
@@ -184,7 +180,7 @@ let Select = (rawProps) => {
 
           if (selectionHighlighted != null) {
             input.value = selectionHighlighted
-            dispatch({type: 'setSelectionHighlighted', payload: moveHighlighted(props.selection, -1, selectionHighlighted, true)})
+            dispatch({type: 'moveSelectionHighlighted', payload: {selection: props.selection, move: -1}})
           }
 
           onRemove({

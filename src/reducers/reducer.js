@@ -1,3 +1,5 @@
+import moveHighlighted from '../utils/moveHighlighted'
+
 const mergeState = (state, merge) => {
   let newState = state
 
@@ -11,7 +13,11 @@ const mergeState = (state, merge) => {
 const reducer = (state, action) => {
   switch (action.type) {
     case 'setAreOptionsOpen':
-      return mergeState(state, {areOptionsOpen: action.payload})
+      return reducer(state, {type: action.payload ? 'openOptions' : 'closeOptions'})
+    case 'openOptions':
+       return mergeState(state, {areOptionsOpen: true})
+    case 'closeOptions':
+       return mergeState(state, {areOptionsOpen: false})
     case 'setSearchText':
       return mergeState(state, {searchText: action.payload})
     case 'clearSearchText':
@@ -39,6 +45,18 @@ const reducer = (state, action) => {
         selectionHighlighted: null,
         optionHighlighted: null,
       })
+    case 'moveSelectionHighlighted': {
+      return reducer(state, {
+        type: 'setSelectionHighlighted',
+        payload: moveHighlighted(action.payload.selection, action.payload.move, state.selectionHighlighted, true)
+      })
+    }
+    case 'moveOptionHighlighted': {
+      return reducer(state, {
+        type: 'setOptionHighlighted',
+        payload: moveHighlighted(action.payload.filteredOptions, action.payload.move, state.optionHighlighted)
+      })
+    }
     default:
       throw new Error('action not found')
   }
