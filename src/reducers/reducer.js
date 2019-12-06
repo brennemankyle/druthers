@@ -11,34 +11,36 @@ const mergeState = (state, merge) => {
 }
 
 const reducer = (state, action) => {
-  const { areOptionsOpen, searchText, placeholder, optionHighlighted, selectionHighlighted, width } = state
-  const { type , payload } = action
+  if (action.props == null) throw new Error('must always send props')
+
+  const { areOptionsOpen, searchText, placeholder, optionHighlighted, selectionHighlighted, width, filteredOptions } = state
+  const { type, props, payload } = action
   let newState = state
 
   switch (type) {
-    case 'setAreOptionsOpen':
-      return reducer(newState, {type: payload.areOptionsOpen ? 'openOptions' : 'closeOptions', payload: payload.filteredOptions})
     case 'openOptions':
-      let filteredOptions = payload
       newState = mergeState(newState, {areOptionsOpen: true})
 
-      if (!areOptionsOpen && selectionHighlighted == null && !filteredOptions.map(option => option.value).filter(value => value != null).includes(optionHighlighted)) {
-        newState = reducer(newState, {type: 'moveOptionHighlighted', payload: {filteredOptions: filteredOptions, move: 0}})
-      }
+      newState = reducer(newState, {props, type: 'setValidOptionHighlighted'})
 
       return newState
     case 'closeOptions':
-      newState = mergeState(newState, {areOptionsOpen: false})
-
       if (areOptionsOpen) {
-        newState = reducer(newState, {type: 'clearOptionHighlighted'})
+        newState = reducer(newState, {props, type: 'clearOptionHighlighted'})
+        newState = reducer(newState, {props, type: 'clearSearchText'})
+      }
+
+      return mergeState(newState, {areOptionsOpen: false})
+    case 'setSearchText':
+      newState = mergeState(newState, {searchText: payload})
+
+      if (searchText !== payload) {
+        newState = reducer(newState, {props, type: 'filterOptions'})
       }
 
       return newState
-    case 'setSearchText':
-      return mergeState(newState, {searchText: payload})
     case 'clearSearchText':
-      return mergeState(newState, {searchText: ''})
+      return reducer(newState, {props, type: 'setSearchText', payload: ''})
     case 'setPlaceholder':
       return mergeState(newState, {placeholder: payload})
     case 'setWidth':
@@ -49,7 +51,7 @@ const reducer = (state, action) => {
       return mergeState(newState, {selectionHighlighted: null})
     case 'setOptionHighlighted':
       if (payload == null) return newState
-      if (!areOptionsOpen) return reducer(newState, {type: 'clearHighlighted'})
+      if (!areOptionsOpen) return reducer(newState, {props, type: 'clearHighlighted'})
 
       return mergeState(newState, {
         optionHighlighted: payload,
@@ -57,7 +59,7 @@ const reducer = (state, action) => {
       })
     case 'setSelectionHighlighted':
       if (payload == null) return newState
-      if (!areOptionsOpen) return reducer(newState, {type: 'clearHighlighted'})
+      if (!areOptionsOpen) return reducer(newState, {props, type: 'clearHighlighted'})
 
       return mergeState(newState, {
         selectionHighlighted: payload,
@@ -70,16 +72,37 @@ const reducer = (state, action) => {
       })
     case 'moveSelectionHighlighted': {
       return reducer(newState, {
+        props,
         type: 'setSelectionHighlighted',
-        payload: moveHighlighted(payload.selection, payload.move, selectionHighlighted, true)
+        payload: moveHighlighted(props.selection, payload, selectionHighlighted, true)
       })
     }
     case 'moveOptionHighlighted': {
       return reducer(newState, {
+        props,
         type: 'setOptionHighlighted',
-        payload: moveHighlighted(payload.filteredOptions, payload.move, optionHighlighted)
+        payload: moveHighlighted(filteredOptions, payload, optionHighlighted)
       })
     }
+    case 'setValidOptionHighlighted':
+      if (!areOptionsOpen || selectionHighlighted != null || filteredOptions.map(option => option.value).filter(value => value != null).includes(optionHighlighted)) {
+        return newState
+      }
+
+      return reducer(newState, {props, type: 'moveOptionHighlighted', payload: 0})
+    case 'filterOptions':
+      newState = reducer(newState, {props, type: 'clearHighlighted'})
+
+      let newFilteredOptions = props.filterOptions(props, searchText)
+
+      if (props.creatable && searchText && !newFilteredOptions.some(option => option.value === searchText)
+        && (props.allowDuplicates || !props.selection.some(item => item.value === searchText))) // Don't allow duplicates
+      {
+        newFilteredOptions.push({value: searchText, label: props.text_create + ` "${searchText}"`}) // Add option for creatable
+      }
+
+      newState = mergeState(newState, {filteredOptions: newFilteredOptions})
+      return reducer(newState, {props, type: 'setValidOptionHighlighted'})
     default:
       throw new Error('action not found')
   }
