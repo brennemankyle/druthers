@@ -218,7 +218,10 @@ let Select = (rawProps) => {
           placeholder={placeholder}
           searchText={searchText}
           onKeyDown={onKeyDown}
-          onChange={(e) => dispatch({props, type: 'setSearchText', payload: targetValue(e)})}
+          onChange={(e) => {
+            dispatch({props, type: 'clearOptionHighlighted'})
+            dispatch({props, type: 'setSearchText', payload: targetValue(e)})
+          }}
           {...styles} />
       } />
 

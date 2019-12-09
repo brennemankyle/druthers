@@ -95,8 +95,6 @@ const reducer = (state, action) => {
 
       return reducer(newState, {props, type: 'moveOptionHighlighted', payload: 0})
     case 'filterOptions':
-      newState = reducer(newState, {props, type: 'clearHighlighted'})
-
       let newFilteredOptions = props.filterOptions(props, searchText)
 
       if (props.creatable && searchText && !newFilteredOptions.some(option => option.value === searchText)
@@ -106,9 +104,14 @@ const reducer = (state, action) => {
       }
 
       newState = mergeState(newState, {filteredOptions: newFilteredOptions})
-      return reducer(newState, {props, type: 'setValidOptionHighlighted'})
+
+      if (props.optionHighlighted == null) {
+        newState = reducer(newState, {props, type: 'setValidOptionHighlighted'})
+      }
+
+      return newState
     default:
-      throw new Error('action not found')
+      throw new Error('action not found: ' + action.type)
   }
 }
 
