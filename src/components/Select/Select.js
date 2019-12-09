@@ -68,6 +68,12 @@ let Select = (rawProps) => {
 
     callOnChange(props, option)
   }
+  let removeSelectionItem = (selectionItem) => {
+    if (props.removable) {
+      callOnChange(props, selectionItem, 'remove')
+      dispatch({props, type: 'clearSearchText'})
+    }
+  }
 
   // Events
   let onFocus = (e) => {
@@ -91,9 +97,8 @@ let Select = (rawProps) => {
     selectOption(targetValue(e))
   }
   let onRemove = (e) => {
-    if (props.removable && e.target.classList.contains('remove')) {
-      callOnChange(props, targetValue(e), 'remove')
-      dispatch({props, type: 'clearSearchText'})
+    if (e.target.classList.contains('remove') && targetHasValue(e)) {
+      removeSelectionItem(targetValue(e))
     }
   }
   let onHoverOption = (e) => {
@@ -140,19 +145,14 @@ let Select = (rawProps) => {
       case BACKSPACE:
       case DELETE:
         if (!searchText && props.selection.length) { // Only remove if there isn't search text
-          let input = document.createElement("input")
-          input.value = last(props.selection).value
-          input.classList.add('remove')
+          let selectionItem = last(props.selection).value
 
           if (selectionHighlighted != null) {
-            input.value = selectionHighlighted
+            selectionItem = selectionHighlighted
             dispatch({props, type: 'moveSelectionHighlighted', payload: -1})
           }
 
-          onRemove({
-            target: input,
-            preventDefault: e.preventDefault,
-          })
+          removeSelectionItem(selectionItem)
         }
         break
       default:

@@ -48,6 +48,10 @@ const reducer = (state, action) => {
 
       return mergeState(newState, {width: ref && ref.current ? ref.current.offsetWidth : 0})
     case 'selectionUpdated':
+      if (!props.selection.length) {
+        newState = reducer(newState, {props, type: 'clearSelectionHighlighted'})
+      }
+
       return reducer(newState, {props, type: 'filterOptions'})
     case 'clearOptionHighlighted':
       return mergeState(newState, {optionHighlighted: null})
@@ -55,7 +59,7 @@ const reducer = (state, action) => {
       return mergeState(newState, {selectionHighlighted: null})
     case 'setOptionHighlighted':
       if (payload == null) return newState
-      if (!areOptionsOpen) return reducer(newState, {props, type: 'clearHighlighted'})
+      if (!areOptionsOpen || !filteredOptions.length) return reducer(newState, {props, type: 'clearHighlighted'})
 
       return mergeState(newState, {
         optionHighlighted: payload,
@@ -63,7 +67,7 @@ const reducer = (state, action) => {
       })
     case 'setSelectionHighlighted':
       if (payload == null) return newState
-      if (!areOptionsOpen) return reducer(newState, {props, type: 'clearHighlighted'})
+      if (!areOptionsOpen || !props.selection.length) return reducer(newState, {props, type: 'clearHighlighted'})
 
       return mergeState(newState, {
         selectionHighlighted: payload,
@@ -105,8 +109,10 @@ const reducer = (state, action) => {
 
       newState = mergeState(newState, {filteredOptions: newFilteredOptions})
 
-      if (props.optionHighlighted == null) {
+      if (optionHighlighted == null) {
         newState = reducer(newState, {props, type: 'setValidOptionHighlighted'})
+      } else if (!newFilteredOptions.length) {
+        newState = reducer(newState, {props, type: 'clearOptionHighlighted'})
       }
 
       return newState
