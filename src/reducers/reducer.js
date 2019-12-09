@@ -44,7 +44,11 @@ const reducer = (state, action) => {
     case 'setPlaceholder':
       return mergeState(newState, {placeholder: payload})
     case 'setWidth':
-      return mergeState(newState, {width: payload})
+      const ref = payload
+
+      return mergeState(newState, {width: ref && ref.current ? ref.current.offsetWidth : 0})
+    case 'selectionUpdated':
+      return reducer(newState, {props, type: 'filterOptions'})
     case 'clearOptionHighlighted':
       return mergeState(newState, {optionHighlighted: null})
     case 'clearSelectionHighlighted':

@@ -27,8 +27,11 @@ let Select = (rawProps) => {
   })
   const { areOptionsOpen, searchText, placeholder, optionHighlighted, selectionHighlighted, width, filteredOptions } = state
   useEffect(() => {
-    dispatch({props, type: 'setWidth', payload: selfRef && selfRef.current ? selfRef.current.offsetWidth : 0})
+    dispatch({props, type: 'setWidth', payload: selfRef})
   }, [areOptionsOpen])
+  useEffect(() => {
+    dispatch({props, type: 'selectionUpdated'})
+  }, [props.selection])
   useUpdateSelection(props) // Update selection based on prop changes
 
   let hasOptions = !!props.options.length
