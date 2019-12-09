@@ -61,6 +61,14 @@ let Select = (rawProps) => {
   if (!singleNoOptions && placeholder !== newPlaceholder) dispatch({props, type: 'setPlaceholder', payload: newPlaceholder})
   if (singleNoOptions && !areOptionsOpen && props.selection.length && searchText === '') dispatch({props, type: 'setSearchText', payload: props.selection[0].label}) // On single creatable with no options, edit the currently selected label
 
+  let selectOption = (option) => {
+    if (!props.multiple) {
+      document.activeElement.blur() // Close options on single select
+    }
+
+    callOnChange(props, option)
+  }
+
   // Events
   let onFocus = (e) => {
     dispatch({props, type: 'openOptions'})
@@ -80,11 +88,7 @@ let Select = (rawProps) => {
     e.preventDefault()
     if (!targetHasValue(e)) return // no value, do nothing
 
-    if (!props.multiple) {
-      document.activeElement.blur() // Close options on single select
-    }
-
-    callOnChange(props, targetValue(e))
+    selectOption(targetValue(e))
   }
   let onRemove = (e) => {
     if (props.removable && e.target.classList.contains('remove')) {
@@ -113,17 +117,9 @@ let Select = (rawProps) => {
       case TAB:
       case ENTER_KEY:
         if (areOptionsOpen && optionHighlighted != null) {
-          onOptionClick({
-            target: {
-              value: optionHighlighted,
-              hasAttribute: () => true,
-            },
-            preventDefault: e.preventDefault,
-          })
           dispatch({props, type: 'moveOptionHighlighted', payload: 1})
           dispatch({props, type: 'clearSearchText'})
-
-          if (!props.multiple) e.target.blur() // Close options on single select
+          selectOption(optionHighlighted)
         }
         break
       case ARROW_UP:
