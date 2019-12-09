@@ -1,3 +1,9 @@
+let decreaseOneAbsolute = (value) => {
+  if (value === 0) return value
+
+  return value > 0 ? value - 1 : value + 1
+}
+
 let moveHighlighted = (items, distance, highlighted, defaultLast = false) => {
   if (items.length === 0) {
     return undefined
@@ -5,7 +11,7 @@ let moveHighlighted = (items, distance, highlighted, defaultLast = false) => {
 
   let defaultIndex = defaultLast ? items.length - 1 : 0
   let index = highlighted == null
-    ? defaultIndex + distance
+    ? defaultIndex + decreaseOneAbsolute(distance)
     : items.map((item) => item.value).indexOf(highlighted) + distance
 
   if (index < 0) index = items.length + index
