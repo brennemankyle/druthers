@@ -50,8 +50,6 @@ let Select = (rawProps) => {
     console.error('Select has no options and is not creatable, nothing to display. Consider adding options or making it creatable')
   }
 
-  if (props.singleNoOptions && !areOptionsOpen && props.hasSelection && searchText === '') dispatch({props, type: 'setSearchText', payload: props.selection[0].label}) // On single creatable with no options, edit the currently selected label
-
   let selectOption = (option) => {
     if (!props.multiple) {
       document.activeElement.blur() // Close options on single select

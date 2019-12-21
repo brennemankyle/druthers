@@ -24,6 +24,11 @@ const reducer = (state, action) => {
       newState = reducer(newState, {props, type: 'setValidOptionHighlighted'})
       newState = reducer(newState, {props, type: 'updatePlaceholder'})
 
+      if (props.singleNoOptions && props.hasSelection && searchText === '') {
+         // On single creatable with no options, edit the currently selected label
+        newState = reducer(newState, {props, type: 'setSearchText', payload: props.selection[0].label})
+      }
+
       return newState
     case 'closeOptions':
       if (areOptionsOpen) {
