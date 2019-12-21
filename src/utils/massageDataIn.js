@@ -48,12 +48,17 @@ let massageDataIn = (props) => {
     options = options.filter((option, index) => values.indexOf(option.value) === index)
   }
 
-  placeholder = otherProps.text_placeholder ? otherProps.text_placeholder : placeholder
+  placeholder = props.text_placeholder ? props.text_placeholder : placeholder
+
+  let hasOptions = !!options.length
 
   return {
     ...otherProps,
     selection: massagedSelection,
+    hasSelection: !!massagedSelection.length,
     options,
+    hasOptions,
+    singleNoOptions: !hasOptions && !props.multiple && props.creatable,
     hasOptionGroups,
     text_placeholder: placeholder,
   }

@@ -34,32 +34,29 @@ let Select = (rawProps) => {
   }, [props.selection])
   useUpdateSelection(props) // Update selection based on prop changes
 
-  let hasOptions = !!props.options.length
-  let hasSelection = !!props.selection.length
-  let singleNoOptions = !hasOptions && !props.multiple && props.creatable
   let showSelection = props.multiple || !areOptionsOpen // Multiple: always show. Single: show when options are closed
   let showSearch = props.multiple || areOptionsOpen || !props.selection.length // Multiple: always show. Single: show when options are open or when nothing is selected (placeholder should be shown)
   let styles = {
     styles_width: width,
     styles_multiple: props.multiple,
     styles_disabled: props.disabled,
-    styles_hasSelection: hasSelection,
-    styles_hasOptions: hasOptions,
+    styles_hasSelection: props.hasSelection,
+    styles_hasOptions: props.hasOptions,
     styles_optionHighlighted: optionHighlighted,
     styles_selectionHighlighted: selectionHighlighted,
     styles_rightToLeft: props.rightToLeft,
     ...withKeys(props, 'styles_')
   }
 
-  if (!hasOptions && !props.creatable) {
+  if (!props.hasOptions && !props.creatable) {
     console.error('Select has no options and is not creatable, nothing to display. Consider adding options or making it creatable')
   }
 
   let newPlaceholder = areOptionsOpen && !props.multiple && props.selection.length
     ? props.selection[0].label // Set placeholder to current selection on single select
     : props.text_placeholder
-  if (!singleNoOptions && placeholder !== newPlaceholder) dispatch({props, type: 'setPlaceholder', payload: newPlaceholder})
-  if (singleNoOptions && !areOptionsOpen && props.selection.length && searchText === '') dispatch({props, type: 'setSearchText', payload: props.selection[0].label}) // On single creatable with no options, edit the currently selected label
+  if (!props.singleNoOptions && placeholder !== newPlaceholder) dispatch({props, type: 'setPlaceholder', payload: newPlaceholder})
+  if (props.singleNoOptions && !areOptionsOpen && props.selection.length && searchText === '') dispatch({props, type: 'setSearchText', payload: props.selection[0].label}) // On single creatable with no options, edit the currently selected label
 
   let selectOption = (option) => {
     if (!props.multiple) {
@@ -82,7 +79,7 @@ let Select = (rawProps) => {
     props.onFocus(e)
   }
   let onBlur = (e) => {
-    if (singleNoOptions) {
+    if (props.singleNoOptions) {
       callOnChange(props, targetValue(e)) // Make single no options behave like text input
     }
 
@@ -183,10 +180,10 @@ let Select = (rawProps) => {
     onClick={onOptionClick}
     onMouseOver={onHoverOption}
     Item={Option}
-    noItemsText={hasOptions ? props.text_noOptions : props.text_create + '...'}
+    noItemsText={props.hasOptions ? props.text_noOptions : props.text_create + '...'}
     {...styles} />
 
-  return (hasOptions || props.creatable) && <Wrapper {...styles} ref={selfRef}>
+  return (props.hasOptions || props.creatable) && <Wrapper {...styles} ref={selfRef}>
     {props.name && <HtmlFieldData
       name={props.name}
       itemList={props.selection} />}
