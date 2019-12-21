@@ -35,7 +35,7 @@ let Select = (rawProps) => {
   useUpdateSelection(props) // Update selection based on prop changes
 
   let showSelection = props.multiple || !areOptionsOpen // Multiple: always show. Single: show when options are closed
-  let showSearch = props.multiple || areOptionsOpen || !props.selection.length // Multiple: always show. Single: show when options are open or when nothing is selected (placeholder should be shown)
+  let showSearch = props.multiple || areOptionsOpen || !props.hasSelection // Multiple: always show. Single: show when options are open or when nothing is selected (placeholder should be shown)
   let styles = {
     styles_width: width,
     styles_multiple: props.multiple,
@@ -52,11 +52,11 @@ let Select = (rawProps) => {
     console.error('Select has no options and is not creatable, nothing to display. Consider adding options or making it creatable')
   }
 
-  let newPlaceholder = areOptionsOpen && !props.multiple && props.selection.length
+  let newPlaceholder = areOptionsOpen && !props.multiple && props.hasSelection
     ? props.selection[0].label // Set placeholder to current selection on single select
     : props.text_placeholder
   if (!props.singleNoOptions && placeholder !== newPlaceholder) dispatch({props, type: 'setPlaceholder', payload: newPlaceholder})
-  if (props.singleNoOptions && !areOptionsOpen && props.selection.length && searchText === '') dispatch({props, type: 'setSearchText', payload: props.selection[0].label}) // On single creatable with no options, edit the currently selected label
+  if (props.singleNoOptions && !areOptionsOpen && props.hasSelection && searchText === '') dispatch({props, type: 'setSearchText', payload: props.selection[0].label}) // On single creatable with no options, edit the currently selected label
 
   let selectOption = (option) => {
     if (!props.multiple) {
@@ -141,7 +141,7 @@ let Select = (rawProps) => {
         break
       case BACKSPACE:
       case DELETE:
-        if (!searchText && props.selection.length) { // Only remove if there isn't search text
+        if (!searchText && props.hasSelection) { // Only remove if there isn't search text
           let selectionItem = last(props.selection).value
 
           if (selectionHighlighted != null) {

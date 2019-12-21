@@ -32,7 +32,7 @@ let NewInput = (rawProps) => {
     }
   }
 
-  if (props.options.length === 0 && !props.creatable) {
+  if (!props.hasOptions && !props.creatable) {
     console.error('Select has no options and is not creatable, nothing to display. Consider adding options or making it creatable')
   }
 

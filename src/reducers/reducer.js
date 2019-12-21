@@ -48,7 +48,7 @@ const reducer = (state, action) => {
 
       return mergeState(newState, {width: ref && ref.current ? ref.current.offsetWidth : 0})
     case 'selectionUpdated':
-      if (!props.selection.length) {
+      if (!props.hasSelection) {
         newState = reducer(newState, {props, type: 'clearSelectionHighlighted'})
       }
 
@@ -67,7 +67,7 @@ const reducer = (state, action) => {
       })
     case 'setSelectionHighlighted':
       if (payload == null) return newState
-      if (!areOptionsOpen || !props.selection.length) return reducer(newState, {props, type: 'clearHighlighted'})
+      if (!props.hasSelection) return reducer(newState, {props, type: 'clearHighlighted'})
 
       return mergeState(newState, {
         selectionHighlighted: payload,

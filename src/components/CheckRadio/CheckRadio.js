@@ -35,7 +35,7 @@ let CheckRadio = (rawProps, ref) => {
   }
 
   let radioUncheck = (e) => {
-    if (props.removable && !useSwitch && !props.multiple && props.selection.length && props.selection[0].value === String(e.target.value)) {
+    if (props.removable && !useSwitch && !props.multiple && props.hasSelection && props.selection[0].value === String(e.target.value)) {
       // Unchecking radio, onChange event won't fire, so we have to use onClick instead
       callOnChange(props, [], 'replace')
     }
