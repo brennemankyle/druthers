@@ -34,8 +34,6 @@ let Select = (rawProps) => {
   }, [props.selection])
   useUpdateSelection(props) // Update selection based on prop changes
 
-  let showSelection = props.multiple || !areOptionsOpen // Multiple: always show. Single: show when options are closed
-  let showSearch = props.multiple || areOptionsOpen || !props.hasSelection // Multiple: always show. Single: show when options are open or when nothing is selected (placeholder should be shown)
   let styles = {
     styles_width: width,
     styles_multiple: props.multiple,
@@ -161,6 +159,8 @@ let Select = (rawProps) => {
     onFocus = onBlur = onOptionClick = onKeyDown = onRemove = onHoverOption = () => {}
   }
 
+  let showSelection = props.multiple || !areOptionsOpen // Multiple: always show. Single: show when options are closed
+  let showSearch = props.multiple || areOptionsOpen || !props.hasSelection // Multiple: always show. Single: show when options are open or when nothing is selected (placeholder should be shown)
   let {
     component_HtmlFieldData: HtmlFieldData,
     component_Wrapper: Wrapper,
