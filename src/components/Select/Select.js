@@ -50,10 +50,6 @@ let Select = (rawProps) => {
     console.error('Select has no options and is not creatable, nothing to display. Consider adding options or making it creatable')
   }
 
-  let newPlaceholder = areOptionsOpen && !props.multiple && props.hasSelection
-    ? props.selection[0].label // Set placeholder to current selection on single select
-    : props.text_placeholder
-  if (!props.singleNoOptions && placeholder !== newPlaceholder) dispatch({props, type: 'setPlaceholder', payload: newPlaceholder})
   if (props.singleNoOptions && !areOptionsOpen && props.hasSelection && searchText === '') dispatch({props, type: 'setSearchText', payload: props.selection[0].label}) // On single creatable with no options, edit the currently selected label
 
   let selectOption = (option) => {

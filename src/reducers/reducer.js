@@ -22,6 +22,7 @@ const reducer = (state, action) => {
       newState = mergeState(newState, {areOptionsOpen: true})
 
       newState = reducer(newState, {props, type: 'setValidOptionHighlighted'})
+      newState = reducer(newState, {props, type: 'updatePlaceholder'})
 
       return newState
     case 'closeOptions':
@@ -41,8 +42,16 @@ const reducer = (state, action) => {
       return newState
     case 'clearSearchText':
       return reducer(newState, {props, type: 'setSearchText', payload: ''})
-    case 'setPlaceholder':
-      return mergeState(newState, {placeholder: payload})
+    case 'updatePlaceholder':
+      let newPlaceholder = areOptionsOpen && !props.multiple && props.hasOptions && props.hasSelection
+        ? props.selection[0].label // Set placeholder to current selection on single select
+        : props.text_placeholder
+
+      if (newState.placeholder !== newPlaceholder) {
+        newState = mergeState(newState, {placeholder: newPlaceholder})
+      }
+
+      return newState
     case 'setWidth':
       const ref = payload
 
@@ -51,6 +60,8 @@ const reducer = (state, action) => {
       if (!props.hasSelection) {
         newState = reducer(newState, {props, type: 'clearSelectionHighlighted'})
       }
+
+      newState = reducer(newState, {props, type: 'updatePlaceholder'})
 
       return reducer(newState, {props, type: 'filterOptions'})
     case 'clearOptionHighlighted':
