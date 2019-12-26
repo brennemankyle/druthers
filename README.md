@@ -92,6 +92,7 @@ class SomeComponent extends React.Component {
 | filterOptions | filterOptions |
 | massageDataIn | massageDataIn |
 | massageDataOut | massageDataOut |
+| selectReducer | selectReducer |
 | optionKeys | ['value', 'label'] |
 | checkRadioMaxCount | 10 |
 | parseTo | string |
@@ -174,6 +175,7 @@ class SomeComponent extends React.Component {
 | filterOptions | The function which filters options based on search text |
 | massageDataIn | The function that massages the props coming in |
 | massageDataOut | The function massaging the selection returned from the onChange event |
+| selectReducer | The function/reducer that controls the state of the Select component |
 | optionKeys | The name of the keys in an option object |
 | checkRadioMaxCount | The maximum radio buttons allowed before rendering a Select instead |
 | parseTo | parse value from onChange to a js type: string, number, int, float, boolean |

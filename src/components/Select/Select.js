@@ -1,7 +1,6 @@
 import React, { useReducer, useRef, useEffect, useMemo } from 'react'
 import { simpleNewInputPropTypes } from '../../utils/AppPropTypes'
 import defaultProps from '../../utils/defaultProps'
-import reducer from '../../reducers/reducer'
 import { last, inRange } from '../../utils/essentialLodash'
 import ReactDOM from 'react-dom'
 import { DivRelative } from '../styledComponents/styledComponents'
@@ -16,7 +15,7 @@ let targetValue = e => String(e.target.value || e.target.getAttribute('val') || 
 let Select = (rawProps) => {
   let props = rawProps.massaged ? rawProps : rawProps.massageDataIn(rawProps)
   const selfRef = useRef(null)
-  const [state, dispatch] = useReducer(reducer, {
+  const [state, dispatch] = useReducer(props.selectReducer, {
     areOptionsOpen: false,
     searchText: '',
     placeholder: props.text_placeholder,

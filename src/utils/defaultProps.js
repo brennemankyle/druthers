@@ -5,6 +5,7 @@ import { Expand, Remove, Checkmark } from '../components/svg/svg'
 import filterOptions from './filterOptions'
 import massageDataIn from './massageDataIn'
 import massageDataOut from './massageDataOut'
+import selectReducer from '../reducers/selectReducer'
 
 const noop = () => {}
 
@@ -27,6 +28,7 @@ let defaultProps = {
   filterOptions,
   massageDataIn,
   massageDataOut,
+  selectReducer,
   optionKeys: ['value', 'label'],
   checkRadioMaxCount: 10,
   parseTo: 'string',
