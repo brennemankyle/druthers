@@ -19,6 +19,8 @@ const reducer = (state, action) => {
 
   switch (type) {
     case 'openOptions':
+      if (areOptionsOpen) return newState
+
       newState = mergeState(newState, {areOptionsOpen: true})
 
       newState = reducer(newState, {props, type: 'setValidOptionHighlighted'})
@@ -31,18 +33,19 @@ const reducer = (state, action) => {
 
       return newState
     case 'closeOptions':
-      if (areOptionsOpen) {
-        newState = reducer(newState, {props, type: 'clearOptionHighlighted'})
-        newState = reducer(newState, {props, type: 'clearSearchText'})
-      }
+      if (!areOptionsOpen) return newState
 
-      return mergeState(newState, {areOptionsOpen: false})
+      newState = mergeState(newState, {areOptionsOpen: false})
+
+      newState = reducer(newState, {props, type: 'clearOptionHighlighted'})
+      newState = reducer(newState, {props, type: 'clearSearchText'})
+
+      return newState
     case 'setSearchText':
-      newState = mergeState(newState, {searchText: payload})
+      if (searchText === payload) return newState
 
-      if (searchText !== payload) {
-        newState = reducer(newState, {props, type: 'filterOptions'})
-      }
+      newState = mergeState(newState, {searchText: payload})
+      newState = reducer(newState, {props, type: 'filterOptions'})
 
       return newState
     case 'clearSearchText':
@@ -52,11 +55,7 @@ const reducer = (state, action) => {
         ? props.selection[0].label // Set placeholder to current selection on single select
         : props.text_placeholder
 
-      if (newState.placeholder !== newPlaceholder) {
-        newState = mergeState(newState, {placeholder: newPlaceholder})
-      }
-
-      return newState
+      return mergeState(newState, {placeholder: newPlaceholder})
     case 'setWidth':
       const ref = payload
 
@@ -133,7 +132,7 @@ const reducer = (state, action) => {
 
       return newState
     default:
-      throw new Error('action not found: ' + action.type)
+      throw new Error('action not found: ' + type)
   }
 }
 
