@@ -37,7 +37,7 @@ let defaultProps = {
   text_noOptions: 'No Options',
   text_create: 'Create',
 
-  component_Select: undefined, // These undefined ones are defined in NewInput, must be done there or we'd have circular imports
+  component_Select: undefined, // These undefined ones are defined in Druthers, must be done there or we'd have circular imports
   component_CheckRadio: undefined,
   component_CheckBox: undefined,
   component_Radio: undefined,

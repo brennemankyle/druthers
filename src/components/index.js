@@ -4,7 +4,7 @@ import HtmlFieldData from './HtmlFieldData/HtmlFieldData'
 import InternalCheckRadio from './InternalCheckRadio/InternalCheckRadio'
 import Item from './Item/Item'
 import ItemList from './ItemList/ItemList'
-import NewInput from './NewInput/NewInput'
+import Druthers from './Druthers/Druthers'
 import Search from './Search/Search'
 import Select from './Select/Select'
 import SelectionWrapper from './SelectionWrapper/SelectionWrapper'
@@ -17,7 +17,7 @@ export {
   InternalCheckRadio,
   Item,
   ItemList,
-  NewInput,
+  Druthers,
   Search,
   Select,
   SelectionWrapper,

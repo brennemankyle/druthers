@@ -1,11 +1,11 @@
 import CheckRadio from './components/CheckRadio/CheckRadio'
-import NewInput from './components/NewInput/NewInput'
+import Druthers from './components/Druthers/Druthers'
 import Select from './components/Select/Select'
 
-export default NewInput
+export default Druthers
 export {
   CheckRadio,
-  NewInput,
+  Druthers,
   Select,
 }
 export * from './hooks'

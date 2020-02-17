@@ -1,5 +1,5 @@
 # Demo with Storybook
-https://brennemankyle.github.io/react-new-input/
+https://brennemankyle.github.io/druthers/
 
 # Features
 A robust multi-select that automatically uses Radios, Checkboxes, or a Switch if they'll fit on one line
@@ -16,12 +16,12 @@ A robust multi-select that automatically uses Radios, Checkboxes, or a Switch if
 * And much more!
 
 # Install
-`npm install react-new-input`
+`npm install druthers`
 
 ```javascript
 // Example File
 import React, { useState } from 'react'
-import NewInput from 'react-new-input'
+import Druthers from 'druthers'
 
 // With React Function/Hooks
 let SomeHook = () => {
@@ -31,7 +31,7 @@ let SomeHook = () => {
     {value: '2', label: 'Option 2'},
   ]
 
-  return <NewInput
+  return <Druthers
     name="example"
     selection={selection}
     onChange={(e) => setSelection(e.target.value)}
@@ -56,7 +56,7 @@ class SomeComponent extends React.Component {
   }
 
   render() {
-    return <NewInput
+    return <Druthers
       name="example"
       selection={this.state.selection}
       onChange={this.onChange}
@@ -68,7 +68,7 @@ class SomeComponent extends React.Component {
 # Comparison
 | Name | Bundle Size |
 | - | - |
-| react-new-input | gzip 21.1kB (https://bundlephobia.com/result?p=react-new-input) |
+| druthers | gzip 21.1kB (https://bundlephobia.com/result?p=druthers) |
 | react-select (competitor) | gzip 26.1kb (https://bundlephobia.com/result?p=react-select) |
 
 # Property Defaults

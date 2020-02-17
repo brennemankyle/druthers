@@ -1,5 +1,5 @@
 import React, { useReducer, useRef, useEffect, useMemo } from 'react'
-import { simpleNewInputPropTypes } from '../../utils/AppPropTypes'
+import { simpleDruthersPropTypes } from '../../utils/AppPropTypes'
 import defaultProps from '../../utils/defaultProps'
 import { last, inRange } from '../../utils/essentialLodash'
 import ReactDOM from 'react-dom'
@@ -227,6 +227,6 @@ let Select = (rawProps) => {
 
 Select.defaultProps = defaultProps
 
-Select.propTypes = simpleNewInputPropTypes
+Select.propTypes = simpleDruthersPropTypes
 
 export default Select

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import AppPropTypes, { simpleNewInputPropTypes } from '../../utils/AppPropTypes'
+import AppPropTypes, { simpleDruthersPropTypes } from '../../utils/AppPropTypes'
 import defaultProps from '../../utils/defaultProps'
 import useWindowWidth from '../../hooks/useWindowWidth/useWindowWidth'
 import Select from '../Select/Select'
@@ -8,7 +8,7 @@ import { CheckBox, Radio, Switch } from '../styledComponents/styledComponents'
 
 let hasOverflownX = (element) => element.scrollWidth > element.offsetWidth
 
-let NewInput = (rawProps) => {
+let Druthers = (rawProps) => {
   let props = rawProps.massageDataIn(rawProps)
   const canCheckRadio = props.hasOptions <= props.checkRadioMaxCount && !props.creatable && !props.hasOptionGroups
   const checkRadioRef = useRef(null)
@@ -44,7 +44,7 @@ let NewInput = (rawProps) => {
   ]
 }
 
-NewInput.defaultProps = {
+Druthers.defaultProps = {
   ...defaultProps,
   component_Select: Select,
   component_CheckRadio: CheckRadio,
@@ -53,8 +53,8 @@ NewInput.defaultProps = {
   component_Switch: Switch,
 }
 
-NewInput.propTypes = {
-  ...simpleNewInputPropTypes,
+Druthers.propTypes = {
+  ...simpleDruthersPropTypes,
   component_Select: AppPropTypes.element.isRequired,
   component_CheckRadio: AppPropTypes.element.isRequired,
   component_CheckBox: AppPropTypes.element.isRequired,
@@ -62,4 +62,4 @@ NewInput.propTypes = {
   component_Switch: AppPropTypes.element.isRequired,
 }
 
-export default NewInput
+export default Druthers

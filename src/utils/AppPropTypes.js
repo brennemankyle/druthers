@@ -58,7 +58,7 @@ let AppPropTypes = {
   }
 }
 
-let simpleNewInputPropTypes = {
+let simpleDruthersPropTypes = {
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
   onFocus: PropTypes.func.isRequired,
@@ -112,5 +112,5 @@ let simpleNewInputPropTypes = {
   ...AppPropTypes.styles,
 }
 
-export { simpleNewInputPropTypes }
+export { simpleDruthersPropTypes }
 export default AppPropTypes
