@@ -6,6 +6,7 @@ import ItemList from './ItemList'
 
 const onClick = jest.fn()
 const onMouseOver = jest.fn()
+const onMouseOut = jest.fn()
 
 it('renders', () => {
   const wrapper = shallow(<ItemList
@@ -66,4 +67,16 @@ it('should mouseOver', () => {
   wrapper.find('ul').simulate('mouseOver')
 
   expect(onMouseOver).toBeCalled()
+})
+
+it('should mouseOver', () => {
+  const wrapper = shallow(<ItemList
+    {...mockStyles}
+    itemList={mockItemList}
+    Item={MockElement}
+    onMouseOut={onMouseOut} />)
+
+  wrapper.find('ul').simulate('mouseOut')
+
+  expect(onMouseOut).toBeCalled()
 })
