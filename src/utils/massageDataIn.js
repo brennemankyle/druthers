@@ -1,56 +1,64 @@
-import { castArray } from './essentialLodash'
+import { castArray } from "./essentialLodash";
 
-let massageDataIn = (props) => {
-  let { selection, options, placeholder, ...otherProps } = props
-  let isEmpty = selection == null || selection === ''
+let massageDataIn = props => {
+  let { selection, options, placeholder, ...otherProps } = props;
+  let isEmpty = selection == null || selection === "";
 
   // Arrayify
-  selection = castArray(selection)
+  selection = castArray(selection);
 
   // Stringify
-  selection = selection.map((value) => String(value))
-  let hasOptionGroups = false
-  let strigifyOption = option => ({value: String(option[props.optionKeys[0]]), label: String(option[props.optionKeys[1]])})
-  let groupNumber = 1 // Start at 1 because 0 isn't truthy
-  options = [].concat(...options.map(option => { // Also flatten option groups
-    if (option.options == null) return strigifyOption(option)
+  selection = selection.map(value => String(value));
+  let hasOptionGroups = false;
+  let strigifyOption = option => ({
+    value: String(option[props.optionKeys[0]]),
+    label: String(option[props.optionKeys[1]])
+  });
+  let groupNumber = 1; // Start at 1 because 0 isn't truthy
+  options = [].concat(
+    ...options.map(option => {
+      // Also flatten option groups
+      if (option.options == null) return strigifyOption(option);
 
-    hasOptionGroups = true
-    let newOption = strigifyOption(option)
-    let group = groupNumber++
-    if (option.value == null) delete newOption.value
+      hasOptionGroups = true;
+      let newOption = strigifyOption(option);
+      let group = groupNumber++;
+      if (option.value == null) delete newOption.value;
 
-    return [
-      {
-        ...newOption,
-        group: group,
-        parent: true,
-      },
-      ...option.options.map(option => ({
-        ...strigifyOption(option),
-        group: group,
-      })),
-    ]
-  }))
+      return [
+        {
+          ...newOption,
+          group: group,
+          parent: true
+        },
+        ...option.options.map(option => ({
+          ...strigifyOption(option),
+          group: group
+        }))
+      ];
+    })
+  );
 
   // Objectify selection, turn single value into label/value object
   let massagedSelection = isEmpty
     ? []
-    : selection.map((value) => {
-        let option = options.find((option) => option.value === value)
+    : selection.map(value => {
+        let option = options.find(option => option.value === value);
 
-        return option == null ? {value: value, label: value} : option
-      })
+        return option == null ? { value: value, label: value } : option;
+      });
 
   // Distinct
   if (!props.allowDuplicates) {
-    let values = options.map(option => option.value)
-    options = options.filter((option, index) => values.indexOf(option.value) === index)
+    let values = options.map(option => option.value);
+    options = options.filter(
+      (option, index) => values.indexOf(option.value) === index
+    );
   }
 
-  placeholder = props.text_placeholder ? props.text_placeholder : placeholder
+  placeholder = props.text_placeholder ? props.text_placeholder : placeholder;
 
-  let hasOptions = !!options.length
+  let hasOptions = !!options.length;
 
   return {
     ...otherProps,
@@ -60,8 +68,8 @@ let massageDataIn = (props) => {
     hasOptions,
     singleNoOptions: !hasOptions && !props.multiple && props.creatable,
     hasOptionGroups,
-    text_placeholder: placeholder,
-  }
-}
+    text_placeholder: placeholder
+  };
+};
 
-export default massageDataIn
+export default massageDataIn;

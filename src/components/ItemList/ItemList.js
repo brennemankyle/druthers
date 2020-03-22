@@ -1,27 +1,29 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import AppPropTypes from '../../utils/AppPropTypes'
-import withKeys from '../../utils/withKeys'
+import React from "react";
+import PropTypes from "prop-types";
+import AppPropTypes from "../../utils/AppPropTypes";
+import withKeys from "../../utils/withKeys";
 
-const noop = () => {}
-const preventBlur = e => e.preventDefault()
+const noop = () => {};
+const preventBlur = e => e.preventDefault();
 
-let ItemList = (props) => {
-  let styles = withKeys(props, 'styles_')
-  let Item = props.Item
+let ItemList = props => {
+  let styles = withKeys(props, "styles_");
+  let Item = props.Item;
 
-  let renderItem = (item) =>
+  let renderItem = item => (
     <Item
       item={item}
       removable={props.removable}
       key={item.value || item.label}
       svg_Remove={props.svg_Remove}
-      {...styles} />
+      {...styles}
+    />
+  );
 
-  let hasItems = !!props.itemList.length
-  let onClick = hasItems ? props.onClick : noop
-  let onMouseOver = hasItems ? props.onMouseOver : noop
-  let onMouseOut = hasItems ? props.onMouseOut : noop
+  let hasItems = !!props.itemList.length;
+  let onClick = hasItems ? props.onClick : noop;
+  let onMouseOver = hasItems ? props.onMouseOver : noop;
+  let onMouseOut = hasItems ? props.onMouseOut : noop;
 
   return (
     <ul
@@ -30,19 +32,23 @@ let ItemList = (props) => {
       onMouseDown={preventBlur}
       onTouchStart={preventBlur}
       onMouseOver={onMouseOver}
-      onMouseOut={onMouseOut}>
-        {props.itemList.map(renderItem)}
-        {!hasItems && props.noItemsText && <Item
-          item={{value: '', label: props.noItemsText}}
+      onMouseOut={onMouseOut}
+    >
+      {props.itemList.map(renderItem)}
+      {!hasItems && props.noItemsText && (
+        <Item
+          item={{ value: "", label: props.noItemsText }}
           removable={false}
-          {...styles} />}
+          {...styles}
+        />
+      )}
     </ul>
-  )
-}
+  );
+};
 
 ItemList.defaultProps = {
-  removable: false,
-}
+  removable: false
+};
 
 ItemList.propTypes = {
   itemList: AppPropTypes.itemList.isRequired,
@@ -53,7 +59,7 @@ ItemList.propTypes = {
   onMouseOut: PropTypes.func,
   Item: AppPropTypes.element.isRequired,
   svg_Remove: AppPropTypes.element,
-  ...AppPropTypes.styles,
-}
+  ...AppPropTypes.styles
+};
 
-export default ItemList
+export default ItemList;

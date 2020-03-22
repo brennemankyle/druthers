@@ -1,25 +1,31 @@
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
 let item = PropTypes.shape({
   value: PropTypes.string,
   label: PropTypes.string.isRequired,
   group: PropTypes.number,
-  parent: PropTypes.bool,
-})
+  parent: PropTypes.bool
+});
 
 let rawItem = PropTypes.shape({
   value: PropTypes.any,
   label: PropTypes.any.isRequired,
-  options: PropTypes.arrayOf(PropTypes.shape({
-    value: PropTypes.any.isRequired,
-    label: PropTypes.any.isRequired,
-  })),
-})
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.any.isRequired,
+      label: PropTypes.any.isRequired
+    })
+  )
+});
 
 let AppPropTypes = {
   item: item,
   itemList: PropTypes.arrayOf(item),
-  element: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.shape({current: PropTypes.element})]),
+  element: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.element })
+  ]),
   rawValue: PropTypes.any.isRequired,
   rawItem: rawItem,
   rawItemList: PropTypes.arrayOf(rawItem),
@@ -54,9 +60,9 @@ let AppPropTypes = {
     styles_colors_warning: PropTypes.string.isRequired,
     styles_colors_warningBold: PropTypes.string.isRequired,
     styles_colors_disabled: PropTypes.string.isRequired,
-    styles_colors_background: PropTypes.string.isRequired,
+    styles_colors_background: PropTypes.string.isRequired
   }
-}
+};
 
 let simpleDruthersPropTypes = {
   onChange: PropTypes.func.isRequired,
@@ -66,11 +72,11 @@ let simpleDruthersPropTypes = {
   selection: PropTypes.oneOfType([
     PropTypes.any.isRequired,
     PropTypes.arrayOf(PropTypes.any).isRequired,
-    AppPropTypes.itemList.isRequired,
+    AppPropTypes.itemList.isRequired
   ]).isRequired,
   options: PropTypes.oneOfType([
     AppPropTypes.rawItemList.isRequired,
-    AppPropTypes.itemList.isRequired,
+    AppPropTypes.itemList.isRequired
   ]).isRequired,
   placeholder: PropTypes.string.isRequired,
   multiple: PropTypes.bool.isRequired,
@@ -87,7 +93,7 @@ let simpleDruthersPropTypes = {
   selectReducer: PropTypes.func.isRequired,
   optionKeys: PropTypes.arrayOf(PropTypes.string).isRequired,
   checkRadioMaxCount: PropTypes.number.isRequired,
-  parseTo: PropTypes.oneOf(['string', 'number', 'int', 'float', 'boolean']),
+  parseTo: PropTypes.oneOf(["string", "number", "int", "float", "boolean"]),
 
   text_placeholder: PropTypes.string.isRequired,
   text_noOptions: PropTypes.string.isRequired,
@@ -109,8 +115,8 @@ let simpleDruthersPropTypes = {
   svg_Remove: AppPropTypes.element.isRequired,
   svg_Expand: AppPropTypes.element.isRequired,
 
-  ...AppPropTypes.styles,
-}
+  ...AppPropTypes.styles
+};
 
-export { simpleDruthersPropTypes }
-export default AppPropTypes
+export { simpleDruthersPropTypes };
+export default AppPropTypes;

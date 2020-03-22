@@ -1,7 +1,7 @@
-import withKeys from './withKeys'
+import withKeys from "./withKeys";
 
 let withoutKeys = (obj, startsWith) => {
-  return withKeys(obj, startsWith, true)
-}
+  return withKeys(obj, startsWith, true);
+};
 
-export default withoutKeys
+export default withoutKeys;

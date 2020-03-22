@@ -1,23 +1,26 @@
-import React, { forwardRef } from 'react'
-import PropTypes from 'prop-types'
-import AppPropTypes from '../../utils/AppPropTypes'
+import React, { forwardRef } from "react";
+import PropTypes from "prop-types";
+import AppPropTypes from "../../utils/AppPropTypes";
 
 let Search = (props, ref) => {
-  return <input
-    className={props.className + ' search'}
-    ref={ref}
-    disabled={props.styles_disabled}
-    type="text"
-    placeholder={props.placeholder}
-    size={props.styles_search_size}
-    onChange={props.onChange}
-    onKeyDown={props.onKeyDown}
-    onFocus={props.onFocus}
-    onBlur={props.onBlur}
-    value={props.searchText} />
-}
+  return (
+    <input
+      className={props.className + " search"}
+      ref={ref}
+      disabled={props.styles_disabled}
+      type="text"
+      placeholder={props.placeholder}
+      size={props.styles_search_size}
+      onChange={props.onChange}
+      onKeyDown={props.onKeyDown}
+      onFocus={props.onFocus}
+      onBlur={props.onBlur}
+      value={props.searchText}
+    />
+  );
+};
 
-Search = forwardRef(Search)
+Search = forwardRef(Search);
 
 Search.propTypes = {
   placeholder: PropTypes.string.isRequired,
@@ -27,7 +30,7 @@ Search.propTypes = {
   onFocus: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
   hide: PropTypes.bool.isRequired,
-  ...AppPropTypes.styles,
-}
+  ...AppPropTypes.styles
+};
 
-export default Search
+export default Search;

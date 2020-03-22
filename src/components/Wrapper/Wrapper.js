@@ -1,17 +1,21 @@
-import React, { forwardRef } from 'react'
-import AppPropTypes from '../../utils/AppPropTypes'
-import withoutKeys from '../../utils/withoutKeys'
+import React, { forwardRef } from "react";
+import AppPropTypes from "../../utils/AppPropTypes";
+import withoutKeys from "../../utils/withoutKeys";
 
 let Wrapper = (props, ref) => {
-  let {className, children, ...otherProps} = withoutKeys(props, 'styles_')
+  let { className, children, ...otherProps } = withoutKeys(props, "styles_");
 
-  return <div className={className} ref={ref} {...otherProps}>{children}</div>
-}
+  return (
+    <div className={className} ref={ref} {...otherProps}>
+      {children}
+    </div>
+  );
+};
 
-Wrapper = forwardRef(Wrapper)
+Wrapper = forwardRef(Wrapper);
 
 Wrapper.propTypes = {
-  ...AppPropTypes.styles,
-}
+  ...AppPropTypes.styles
+};
 
-export default Wrapper
+export default Wrapper;
