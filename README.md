@@ -1,4 +1,5 @@
 ![Druthers](images/druthers_logo.jpg)
+
 **Druthers**: an old-timey way to say preferences
 
 > _Iffen I had my druthers I'd choose this here multi-select_
