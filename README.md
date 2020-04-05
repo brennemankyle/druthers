@@ -5,6 +5,8 @@
 
 ![koala](images/druthers_koala.jpg)
 
+Artwork courtesy of [Rebecca Brenneman](https://www.linkedin.com/in/rebecca-brenneman-7217b825)
+
 # Demo with Storybook
 
 https://brennemankyle.github.io/druthers/
