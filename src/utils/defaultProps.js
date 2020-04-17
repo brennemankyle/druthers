@@ -1,16 +1,11 @@
 import HtmlFieldData from "../components/HtmlFieldData/HtmlFieldData";
 import AppendToBodyOptionsWrapper from "../components/AppendToBodyOptionsWrapper/AppendToBodyOptionsWrapper";
-import {
-  Wrapper,
-  Selection,
-  SelectionList,
-  OptionList,
-  Option,
-  Search,
-  SelectionWrapper,
-  OptionsWrapper,
-  StyledAppendToBodyOptionsWrapper
-} from "../components/styledComponents/styledComponents";
+import { Wrapper, OptionsWrapper } from "../components/Wrapper/styled";
+import { SelectionWrapper } from "../components/SelectionWrapper/styled";
+import { Selection, Option } from "../components/Item/styled";
+import { SelectionList, OptionList } from "../components/ItemList/styled";
+import { Search } from "../components/Search/styled";
+import { StyledAppendToBodyOptionsWrapper } from "../components/AppendToBodyOptionsWrapper/styled";
 import { Expand, Remove, Checkmark } from "../components/svg/svg";
 import filterOptions from "./filterOptions";
 import massageDataIn from "./massageDataIn";

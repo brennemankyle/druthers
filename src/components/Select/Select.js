@@ -1,9 +1,9 @@
 import React, { useReducer, useRef, useEffect } from "react";
+import styled from "@emotion/styled";
 import { simpleDruthersPropTypes } from "../../utils/AppPropTypes";
 import defaultProps from "../../utils/defaultProps";
 import { last, inRange } from "../../utils/essentialLodash";
 import ReactDOM from "react-dom";
-import { DivRelative } from "../styledComponents/styledComponents";
 import withKeys from "../../utils/withKeys";
 import callOnChange from "../../utils/callOnChange";
 import useUpdateSelection from "../../hooks/useUpdateSelection/useUpdateSelection";
@@ -248,6 +248,10 @@ let Select = rawProps => {
       {...styles}
     />
   );
+
+  const DivRelative = styled.div`
+    position: relative;
+  `;
 
   return (
     (props.hasOptions || props.creatable) && (

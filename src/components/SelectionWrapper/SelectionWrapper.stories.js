@@ -3,12 +3,10 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { mockStyles } from "../../mocks";
 import props from "../../utils/defaultProps";
-import {
-  SelectionWrapper,
-  SelectionList,
-  Search,
-  Selection
-} from "../styledComponents/styledComponents";
+import { SelectionWrapper } from "../SelectionWrapper/styled";
+import { SelectionList } from "../SelectionList/styled";
+import { Search } from "../Search/styled";
+import { Selection } from "../Selection/styled";
 
 let selectionList = (
   <SelectionList
