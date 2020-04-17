@@ -1,3 +1,5 @@
+![Node.js CI](https://github.com/brennemankyle/druthers/workflows/Node.js%20CI/badge.svg)
+
 ![Druthers](images/druthers_logo.jpg)
 
 **Druthers**: an old-timey way to say preferences
