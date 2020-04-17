@@ -6,7 +6,7 @@ import defaultProps from "../../utils/defaultProps";
 import useWindowWidth from "../../hooks/useWindowWidth/useWindowWidth";
 import Select from "../Select/Select";
 import CheckRadio from "../CheckRadio/CheckRadio";
-import { CheckBox, Radio, Switch } from "../styledComponents/styledComponents";
+import { CheckBox, Radio, Switch } from "../SingleCheckRadio/styled";
 
 let hasOverflownX = element => element.scrollWidth > element.offsetWidth;
 

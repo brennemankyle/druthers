@@ -8,7 +8,7 @@ import useUpdateSelection, {
   allBooleanValues,
   isBooleanSwitch
 } from "../../hooks/useUpdateSelection/useUpdateSelection";
-import { CheckBox, Radio, Switch } from "../styledComponents/styledComponents";
+import { CheckBox, Radio, Switch } from "../SingleCheckRadio/styled";
 
 let CheckRadio = (rawProps, ref) => {
   let props = rawProps.massaged ? rawProps : rawProps.massageDataIn(rawProps);
