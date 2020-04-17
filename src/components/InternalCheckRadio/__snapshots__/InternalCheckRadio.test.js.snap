@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders checkbox 1`] = `
+<label
+  className="test "
+  key="value"
+>
+  <input
+    checked={false}
+    disabled={false}
+    name="test"
+    onBlur={[Function]}
+    onChange={[MockFunction]}
+    onClick={[MockFunction]}
+    onFocus={[Function]}
+    type="checkbox"
+    value="value"
+  />
+  <div
+    className="check-radio-display"
+  >
+    <MockSvg />
+  </div>
+  test label
+</label>
+`;
+
+exports[`renders radio 1`] = `
+<label
+  className="test "
+  key="value"
+>
+  <input
+    checked={false}
+    disabled={false}
+    name="test"
+    onBlur={[Function]}
+    onChange={[MockFunction]}
+    onClick={[MockFunction]}
+    onFocus={[Function]}
+    type="radio"
+    value="value"
+  />
+  <div
+    className="check-radio-display"
+  >
+    <MockSvg />
+  </div>
+  test label
+</label>
+`;
+
+exports[`renders toggle 1`] = `
+<label
+  className="test "
+  key="value"
+>
+  <input
+    checked={false}
+    disabled={false}
+    name="test"
+    onBlur={[Function]}
+    onChange={[MockFunction]}
+    onClick={[MockFunction]}
+    onFocus={[Function]}
+    type="checkbox"
+    value="value"
+  />
+  <div
+    className="check-radio-display"
+  >
+    <MockSvg />
+  </div>
+  test label
+</label>
+`;

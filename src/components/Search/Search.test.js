@@ -10,6 +10,10 @@ const onFocus = jest.fn();
 const onBlur = jest.fn();
 const onKeyDown = jest.fn();
 
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
 it("renders", () => {
   const wrapper = shallow(
     <Search

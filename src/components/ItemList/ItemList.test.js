@@ -8,6 +8,10 @@ const onClick = jest.fn();
 const onMouseOver = jest.fn();
 const onMouseOut = jest.fn();
 
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
 it("renders", () => {
   const wrapper = shallow(
     <ItemList {...mockStyles} itemList={mockItemList} Item={MockElement} />
