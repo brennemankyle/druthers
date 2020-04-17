@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import Item from "../Item/Item";
 import ItemList from "../ItemList/ItemList";
 import RawSearch from "../Search/Search";
-import InternalCheckRadio from "../InternalCheckRadio/InternalCheckRadio";
+import SingleCheckRadio from "../SingleCheckRadio/SingleCheckRadio";
 import RawSelectionWrapper from "../SelectionWrapper/SelectionWrapper";
 import { StyledAppendToBodyOptionsWrapper as RawStyledAppendToBodyOptionsWrapper } from "../AppendToBodyOptionsWrapper/AppendToBodyOptionsWrapper";
 import RawWrapper from "../Wrapper/Wrapper";
@@ -156,7 +156,7 @@ const Search = styled(RawSearch)`
   ${props => props.styles_disabled && `cursor: not-allowed;`}
 `;
 
-const CheckBox = styled(InternalCheckRadio)`
+const CheckBox = styled(SingleCheckRadio)`
   margin-right: ${props => props.styles_checkRadio_marginBetween};
   display: inline-flex;
   align-items: center;
@@ -204,7 +204,7 @@ const CheckBox = styled(InternalCheckRadio)`
   }
 `;
 
-const Radio = styled(InternalCheckRadio)`
+const Radio = styled(SingleCheckRadio)`
   margin-right: ${props => props.styles_checkRadio_marginBetween};
   display: inline-flex;
   align-items: center;
@@ -255,7 +255,7 @@ const Radio = styled(InternalCheckRadio)`
   }
 `;
 
-const Switch = styled(InternalCheckRadio)`
+const Switch = styled(SingleCheckRadio)`
   display: inline-flex;
   align-items: center;
   cursor: pointer;

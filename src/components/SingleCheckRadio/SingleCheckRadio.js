@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import AppPropTypes from "../../utils/AppPropTypes";
 
-let InternalCheckRadio = props => {
+let SingleCheckRadio = props => {
   let [hasFocus, setHasFocus] = useState(false);
 
   let onFocus = () => setHasFocus(true);
@@ -35,7 +35,7 @@ let InternalCheckRadio = props => {
   );
 };
 
-InternalCheckRadio.propTypes = {
+SingleCheckRadio.propTypes = {
   name: PropTypes.string.isRequired,
   checked: PropTypes.bool.isRequired,
   disabled: PropTypes.bool.isRequired,
@@ -51,4 +51,4 @@ InternalCheckRadio.propTypes = {
   ...AppPropTypes.styles
 };
 
-export default InternalCheckRadio;
+export default SingleCheckRadio;

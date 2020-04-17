@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
 import { MockSvg } from "../../mocks";
-import InternalCheckRadio from "./InternalCheckRadio";
+import SingleCheckRadio from "./SingleCheckRadio";
 
 jest.mock("react", () => ({
   ...jest.requireActual("react"),
@@ -31,25 +31,25 @@ beforeEach(() => {
 });
 
 it("renders radio", () => {
-  const wrapper = shallow(<InternalCheckRadio {...props} />);
+  const wrapper = shallow(<SingleCheckRadio {...props} />);
 
   expect(toJson(wrapper)).toMatchSnapshot();
 });
 
 it("renders checkbox", () => {
-  const wrapper = shallow(<InternalCheckRadio {...props} multiple={true} />);
+  const wrapper = shallow(<SingleCheckRadio {...props} multiple={true} />);
 
   expect(toJson(wrapper)).toMatchSnapshot();
 });
 
 it("renders toggle", () => {
-  const wrapper = shallow(<InternalCheckRadio {...props} toggle={true} />);
+  const wrapper = shallow(<SingleCheckRadio {...props} toggle={true} />);
 
   expect(toJson(wrapper)).toMatchSnapshot();
 });
 
 it("should click", () => {
-  const wrapper = shallow(<InternalCheckRadio {...props} />);
+  const wrapper = shallow(<SingleCheckRadio {...props} />);
 
   wrapper.find("input").simulate("click");
 
@@ -57,7 +57,7 @@ it("should click", () => {
 });
 
 it("should change", () => {
-  const wrapper = shallow(<InternalCheckRadio {...props} />);
+  const wrapper = shallow(<SingleCheckRadio {...props} />);
 
   wrapper.find("input").simulate("change");
 
@@ -65,7 +65,7 @@ it("should change", () => {
 });
 
 it("should focus", () => {
-  const wrapper = shallow(<InternalCheckRadio {...props} />);
+  const wrapper = shallow(<SingleCheckRadio {...props} />);
 
   expect(setState).not.toBeCalled();
 
@@ -75,7 +75,7 @@ it("should focus", () => {
 });
 
 it("should blur", () => {
-  const wrapper = shallow(<InternalCheckRadio {...props} />);
+  const wrapper = shallow(<SingleCheckRadio {...props} />);
 
   expect(setState).not.toBeCalled();
 

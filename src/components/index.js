@@ -1,7 +1,7 @@
 import AppendToBodyOptionsWrapper from "./AppendToBodyOptionsWrapper/AppendToBodyOptionsWrapper";
 import CheckRadio from "./CheckRadio/CheckRadio";
 import HtmlFieldData from "./HtmlFieldData/HtmlFieldData";
-import InternalCheckRadio from "./InternalCheckRadio/InternalCheckRadio";
+import SingleCheckRadio from "./SingleCheckRadio/SingleCheckRadio";
 import Item from "./Item/Item";
 import ItemList from "./ItemList/ItemList";
 import Druthers from "./Druthers/Druthers";
@@ -14,7 +14,7 @@ export {
   AppendToBodyOptionsWrapper,
   CheckRadio,
   HtmlFieldData,
-  InternalCheckRadio,
+  SingleCheckRadio,
   Item,
   ItemList,
   Druthers,
