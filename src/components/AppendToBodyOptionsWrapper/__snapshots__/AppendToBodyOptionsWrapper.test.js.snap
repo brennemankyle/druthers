@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders 1`] = `
+exports[`AppendToBodyOptionsWrapper place above 1`] = `
 <AppendToBodyOptionsWrapper
   StyledAppendToBodyOptionsWrapper={[Function]}
   className="test"
@@ -168,6 +168,194 @@ exports[`renders 1`] = `
             "y": 600,
           },
           "placeOptionsAbove": true,
+          "styles_borderRadius": ".2em",
+          "styles_checkRadio_borderWidth": "2px",
+          "styles_checkRadio_labelMargin": ".2em",
+          "styles_checkRadio_marginBetween": "1em",
+          "styles_checkRadio_paddingBottom": ".2em",
+          "styles_checkRadio_paddingLeft": ".2em",
+          "styles_checkRadio_paddingRight": ".2em",
+          "styles_checkRadio_paddingTop": ".2em",
+          "styles_colors_background": "white",
+          "styles_colors_disabled": "#ECECEC",
+          "styles_colors_highlight": "lightblue",
+          "styles_colors_primary": "black",
+          "styles_colors_secondary": "#C3C3C3",
+          "styles_colors_warning": "#FABAAC",
+          "styles_colors_warningBold": "#FA2222",
+          "styles_disabled": false,
+          "styles_fontSize": "1em",
+          "styles_hasOptions": true,
+          "styles_hasSelection": false,
+          "styles_icon_width": "1em",
+          "styles_multiple": false,
+          "styles_optionHighlighted": Array [],
+          "styles_option_paddingBottom": ".25em",
+          "styles_option_paddingLeft": ".25em",
+          "styles_option_paddingRight": ".25em",
+          "styles_option_paddingTop": ".25em",
+          "styles_paddingBottom": ".25em",
+          "styles_paddingLeft": ".25em",
+          "styles_paddingRight": ".25em",
+          "styles_paddingTop": ".25em",
+          "styles_rightToLeft": false,
+          "styles_search_size": "8",
+          "styles_selection_margin": ".2em",
+          "styles_selection_paddingBottom": ".2em",
+          "styles_selection_paddingLeft": ".4em",
+          "styles_selection_paddingRight": ".4em",
+          "styles_selection_paddingTop": ".2em",
+          "styles_width": "600px",
+        }
+      }
+    />
+  </MockElement>
+</AppendToBodyOptionsWrapper>
+`;
+
+exports[`AppendToBodyOptionsWrapper renders 1`] = `
+<AppendToBodyOptionsWrapper
+  StyledAppendToBodyOptionsWrapper={[Function]}
+  className="test"
+  filteredOptions={
+    Array [
+      Object {
+        "label": "Item 1",
+        "value": "1",
+      },
+      Object {
+        "label": "Item 2",
+        "value": "2",
+      },
+      Object {
+        "label": "Item 3",
+        "value": "3",
+      },
+      Object {
+        "label": "Item 4",
+        "value": "4",
+      },
+      Object {
+        "label": "Item 5",
+        "value": "5",
+      },
+    ]
+  }
+  parentRef={
+    Object {
+      "current": null,
+    }
+  }
+  styles_borderRadius=".2em"
+  styles_checkRadio_borderWidth="2px"
+  styles_checkRadio_labelMargin=".2em"
+  styles_checkRadio_marginBetween="1em"
+  styles_checkRadio_paddingBottom=".2em"
+  styles_checkRadio_paddingLeft=".2em"
+  styles_checkRadio_paddingRight=".2em"
+  styles_checkRadio_paddingTop=".2em"
+  styles_colors_background="white"
+  styles_colors_disabled="#ECECEC"
+  styles_colors_highlight="lightblue"
+  styles_colors_primary="black"
+  styles_colors_secondary="#C3C3C3"
+  styles_colors_warning="#FABAAC"
+  styles_colors_warningBold="#FA2222"
+  styles_disabled={false}
+  styles_fontSize="1em"
+  styles_hasOptions={true}
+  styles_hasSelection={false}
+  styles_icon_width="1em"
+  styles_multiple={false}
+  styles_optionHighlighted={Array []}
+  styles_option_paddingBottom=".25em"
+  styles_option_paddingLeft=".25em"
+  styles_option_paddingRight=".25em"
+  styles_option_paddingTop=".25em"
+  styles_paddingBottom=".25em"
+  styles_paddingLeft=".25em"
+  styles_paddingRight=".25em"
+  styles_paddingTop=".25em"
+  styles_rightToLeft={false}
+  styles_search_size="8"
+  styles_selection_margin=".2em"
+  styles_selection_paddingBottom=".2em"
+  styles_selection_paddingLeft=".4em"
+  styles_selection_paddingRight=".4em"
+  styles_selection_paddingTop=".2em"
+  styles_width="600px"
+  updateOn={Array []}
+>
+  <MockElement
+    className="test"
+    parentRect={
+      Object {
+        "bottom": 80,
+        "height": 80,
+        "left": 0,
+        "right": 200,
+        "top": 0,
+        "width": 200,
+        "x": 0,
+        "y": 600,
+      }
+    }
+    placeOptionsAbove={false}
+    styles_borderRadius=".2em"
+    styles_checkRadio_borderWidth="2px"
+    styles_checkRadio_labelMargin=".2em"
+    styles_checkRadio_marginBetween="1em"
+    styles_checkRadio_paddingBottom=".2em"
+    styles_checkRadio_paddingLeft=".2em"
+    styles_checkRadio_paddingRight=".2em"
+    styles_checkRadio_paddingTop=".2em"
+    styles_colors_background="white"
+    styles_colors_disabled="#ECECEC"
+    styles_colors_highlight="lightblue"
+    styles_colors_primary="black"
+    styles_colors_secondary="#C3C3C3"
+    styles_colors_warning="#FABAAC"
+    styles_colors_warningBold="#FA2222"
+    styles_disabled={false}
+    styles_fontSize="1em"
+    styles_hasOptions={true}
+    styles_hasSelection={false}
+    styles_icon_width="1em"
+    styles_multiple={false}
+    styles_optionHighlighted={Array []}
+    styles_option_paddingBottom=".25em"
+    styles_option_paddingLeft=".25em"
+    styles_option_paddingRight=".25em"
+    styles_option_paddingTop=".25em"
+    styles_paddingBottom=".25em"
+    styles_paddingLeft=".25em"
+    styles_paddingRight=".25em"
+    styles_paddingTop=".25em"
+    styles_rightToLeft={false}
+    styles_search_size="8"
+    styles_selection_margin=".2em"
+    styles_selection_paddingBottom=".2em"
+    styles_selection_paddingLeft=".4em"
+    styles_selection_paddingRight=".4em"
+    styles_selection_paddingTop=".2em"
+    styles_width="600px"
+  >
+    <div
+      data-props={
+        Object {
+          "children": <MockElement />,
+          "className": "test",
+          "parentRect": Object {
+            "bottom": 80,
+            "height": 80,
+            "left": 0,
+            "right": 200,
+            "top": 0,
+            "width": 200,
+            "x": 0,
+            "y": 600,
+          },
+          "placeOptionsAbove": false,
           "styles_borderRadius": ".2em",
           "styles_checkRadio_borderWidth": "2px",
           "styles_checkRadio_labelMargin": ".2em",

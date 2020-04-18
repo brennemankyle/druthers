@@ -40,6 +40,17 @@ let MockSvg = () => (
   </svg>
 );
 
+let mockRect = {
+  top: 10,
+  bottom: 110,
+  left: 20,
+  right: 220,
+  width: 200,
+  height: 100,
+  x: 15,
+  y: 25
+};
+
 export {
   mockStyles,
   mockItem,
@@ -47,5 +58,6 @@ export {
   mockEvent,
   MockElement,
   MockInput,
-  MockSvg
+  MockSvg,
+  mockRect
 };
