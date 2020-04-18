@@ -1,0 +1,582 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Option has item group and parent = false 1`] = `
+.emotion-0 {
+  padding-top: .25em;
+  padding-bottom: .25em;
+  padding-right: .25em;
+  padding-left: .25em;
+  z-index: 999;
+  margin-left: 1em;
+}
+
+.emotion-0:first-of-type {
+  border-top-left-radius: .2em;
+  border-top-right-radius: .2em;
+}
+
+.emotion-0:last-of-type {
+  border-bottom-left-radius: .2em;
+  border-bottom-right-radius: .2em;
+}
+
+<li
+  className="emotion-0"
+  val="42"
+>
+  Meaning of life
+</li>
+`;
+
+exports[`Option has item group and parent = true 1`] = `
+.emotion-0 {
+  padding-top: .25em;
+  padding-bottom: .25em;
+  padding-right: .25em;
+  padding-left: .25em;
+  z-index: 999;
+  font-weight: bold;
+}
+
+.emotion-0:first-of-type {
+  border-top-left-radius: .2em;
+  border-top-right-radius: .2em;
+}
+
+.emotion-0:last-of-type {
+  border-bottom-left-radius: .2em;
+  border-bottom-right-radius: .2em;
+}
+
+<li
+  className="emotion-0"
+  val="42"
+>
+  Meaning of life
+</li>
+`;
+
+exports[`Option has item group and parent = true and value = null 1`] = `
+.emotion-0 {
+  padding-top: .25em;
+  padding-bottom: .25em;
+  padding-right: .25em;
+  padding-left: .25em;
+  z-index: 999;
+  color: #C3C3C3;
+  font-size: .8em;
+}
+
+.emotion-0:first-of-type {
+  border-top-left-radius: .2em;
+  border-top-right-radius: .2em;
+}
+
+.emotion-0:last-of-type {
+  border-bottom-left-radius: .2em;
+  border-bottom-right-radius: .2em;
+}
+
+<li
+  className="emotion-0"
+  val={null}
+>
+  Meaning of life
+</li>
+`;
+
+exports[`Option should highlight 1`] = `
+.emotion-0 {
+  padding-top: .25em;
+  padding-bottom: .25em;
+  padding-right: .25em;
+  padding-left: .25em;
+  z-index: 999;
+  background-color: lightblue;
+}
+
+.emotion-0:first-of-type {
+  border-top-left-radius: .2em;
+  border-top-right-radius: .2em;
+}
+
+.emotion-0:last-of-type {
+  border-bottom-left-radius: .2em;
+  border-bottom-right-radius: .2em;
+}
+
+<li
+  className="emotion-0"
+  val="highlight"
+>
+  Meaning of life
+</li>
+`;
+
+exports[`Option should not highlight if empty value 1`] = `
+.emotion-0 {
+  padding-top: .25em;
+  padding-bottom: .25em;
+  padding-right: .25em;
+  padding-left: .25em;
+  z-index: 999;
+}
+
+.emotion-0:first-of-type {
+  border-top-left-radius: .2em;
+  border-top-right-radius: .2em;
+}
+
+.emotion-0:last-of-type {
+  border-bottom-left-radius: .2em;
+  border-bottom-right-radius: .2em;
+}
+
+<li
+  className="emotion-0"
+  val={null}
+>
+  Meaning of life
+</li>
+`;
+
+exports[`Option styles 1`] = `
+.emotion-0 {
+  padding-top: .25em;
+  padding-bottom: .25em;
+  padding-right: .25em;
+  padding-left: .25em;
+  z-index: 999;
+}
+
+.emotion-0:first-of-type {
+  border-top-left-radius: .2em;
+  border-top-right-radius: .2em;
+}
+
+.emotion-0:last-of-type {
+  border-bottom-left-radius: .2em;
+  border-bottom-right-radius: .2em;
+}
+
+<li
+  className="emotion-0"
+  val="42"
+>
+  Meaning of life
+</li>
+`;
+
+exports[`Option styles_rightToLeft = true 1`] = `
+.emotion-0 {
+  padding-top: .25em;
+  padding-bottom: .25em;
+  padding-right: .25em;
+  padding-left: .25em;
+  z-index: 999;
+  -webkit-transform: scaleX(-1);
+  -ms-transform: scaleX(-1);
+  transform: scaleX(-1);
+  text-align: right;
+}
+
+.emotion-0:first-of-type {
+  border-top-left-radius: .2em;
+  border-top-right-radius: .2em;
+}
+
+.emotion-0:last-of-type {
+  border-bottom-left-radius: .2em;
+  border-bottom-right-radius: .2em;
+}
+
+<li
+  className="emotion-0"
+  val="42"
+>
+  Meaning of life
+</li>
+`;
+
+exports[`Selection removable = true 1`] = `
+.emotion-0 {
+  border-radius: .2em;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: calc(.2em / 2);
+  margin-bottom: calc(.2em / 2);
+  padding-top: .2em;
+  padding-bottom: .2em;
+  padding-left: .4em;
+  padding-right: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-0 .remove:not(svg):not(path) {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border: none;
+  border-radius: .2em;
+  margin-top: -.2em;
+  margin-bottom: -.2em;
+  padding-top: .2em;
+  padding-bottom: .2em;
+  padding-left: .4em;
+  padding-right: .4em;
+  background-color: transparent;
+  font-size: 1em;
+}
+
+.emotion-0 .remove:not(svg):not(path) svg {
+  fill: black;
+  width: 1em;
+  height: 1em;
+}
+
+<li
+  className="emotion-0"
+  val="42"
+>
+  Meaning of life
+  <button
+    className="remove"
+    tabIndex="-1"
+    type="button"
+    val="42"
+  >
+    <svg>
+      <path
+        d="M0 0L5 5Z"
+      />
+    </svg>
+  </button>
+</li>
+`;
+
+exports[`Selection should highlight removable 1`] = `
+.emotion-0 {
+  border-radius: .2em;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: calc(.2em / 2);
+  margin-bottom: calc(.2em / 2);
+  padding-top: .2em;
+  padding-bottom: .2em;
+  padding-left: .4em;
+  padding-right: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-0 .remove:not(svg):not(path) {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border: none;
+  border-radius: .2em;
+  margin-top: -.2em;
+  margin-bottom: -.2em;
+  padding-top: .2em;
+  padding-bottom: .2em;
+  padding-left: .4em;
+  padding-right: .4em;
+  background-color: transparent;
+  font-size: 1em;
+  background-color: #FABAAC;
+}
+
+.emotion-0 .remove:not(svg):not(path) svg {
+  fill: black;
+  width: 1em;
+  height: 1em;
+}
+
+.emotion-0 .remove:not(svg):not(path) svg {
+  fill: #FA2222;
+}
+
+<li
+  className="emotion-0"
+  val="highlight"
+>
+  Meaning of life
+  <button
+    className="remove"
+    tabIndex="-1"
+    type="button"
+    val="highlight"
+  >
+    <svg>
+      <path
+        d="M0 0L5 5Z"
+      />
+    </svg>
+  </button>
+</li>
+`;
+
+exports[`Selection styles 1`] = `
+.emotion-0 {
+  border-radius: .2em;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: calc(.2em / 2);
+  margin-bottom: calc(.2em / 2);
+  padding-top: .2em;
+  padding-bottom: .2em;
+  padding-left: .4em;
+  padding-right: .4em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-0 .remove:not(svg):not(path) {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border: none;
+  border-radius: .2em;
+  margin-top: -.2em;
+  margin-bottom: -.2em;
+  padding-top: .2em;
+  padding-bottom: .2em;
+  padding-left: .4em;
+  padding-right: .4em;
+  background-color: transparent;
+  font-size: 1em;
+}
+
+.emotion-0 .remove:not(svg):not(path) svg {
+  fill: black;
+  width: 1em;
+  height: 1em;
+}
+
+<li
+  className="emotion-0"
+  val="42"
+>
+  Meaning of life
+</li>
+`;
+
+exports[`Selection styles_multiple = true 1`] = `
+.emotion-0 {
+  border-radius: .2em;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: calc(.2em / 2);
+  margin-bottom: calc(.2em / 2);
+  padding-top: .2em;
+  padding-bottom: .2em;
+  padding-left: .4em;
+  padding-right: .4em;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  background-color: #C3C3C3;
+  margin-right: .2em;
+}
+
+.emotion-0 .remove:not(svg):not(path) {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border: none;
+  border-radius: .2em;
+  margin-top: -.2em;
+  margin-bottom: -.2em;
+  padding-top: .2em;
+  padding-bottom: .2em;
+  padding-left: .4em;
+  padding-right: .4em;
+  background-color: transparent;
+  font-size: 1em;
+}
+
+.emotion-0 .remove:not(svg):not(path) svg {
+  fill: black;
+  width: 1em;
+  height: 1em;
+}
+
+<li
+  className="emotion-0"
+  val="42"
+>
+  Meaning of life
+</li>
+`;
+
+exports[`Selection styles_rightToLeft = true 1`] = `
+.emotion-0 {
+  border-radius: .2em;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: calc(.2em / 2);
+  margin-bottom: calc(.2em / 2);
+  padding-top: .2em;
+  padding-bottom: .2em;
+  padding-left: .4em;
+  padding-right: .4em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transform: scaleX(-1);
+  -ms-transform: scaleX(-1);
+  transform: scaleX(-1);
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  padding-left: .4em;
+  padding-right: .4em;
+}
+
+.emotion-0 .remove:not(svg):not(path) {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border: none;
+  border-radius: .2em;
+  margin-top: -.2em;
+  margin-bottom: -.2em;
+  padding-top: .2em;
+  padding-bottom: .2em;
+  padding-left: .4em;
+  padding-right: .4em;
+  background-color: transparent;
+  font-size: 1em;
+}
+
+.emotion-0 .remove:not(svg):not(path) svg {
+  fill: black;
+  width: 1em;
+  height: 1em;
+}
+
+<li
+  className="emotion-0"
+  val="42"
+>
+  Meaning of life
+</li>
+`;
+
+exports[`Selection styles_rightToLeft = true and removable = true 1`] = `
+.emotion-0 {
+  border-radius: .2em;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: calc(.2em / 2);
+  margin-bottom: calc(.2em / 2);
+  padding-top: .2em;
+  padding-bottom: .2em;
+  padding-left: .4em;
+  padding-right: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transform: scaleX(-1);
+  -ms-transform: scaleX(-1);
+  transform: scaleX(-1);
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  padding-left: 0;
+  padding-right: .4em;
+}
+
+.emotion-0 .remove:not(svg):not(path) {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border: none;
+  border-radius: .2em;
+  margin-top: -.2em;
+  margin-bottom: -.2em;
+  padding-top: .2em;
+  padding-bottom: .2em;
+  padding-left: .4em;
+  padding-right: .4em;
+  background-color: transparent;
+  font-size: 1em;
+}
+
+.emotion-0 .remove:not(svg):not(path) svg {
+  fill: black;
+  width: 1em;
+  height: 1em;
+}
+
+<li
+  className="emotion-0"
+  val="42"
+>
+  Meaning of life
+  <button
+    className="remove"
+    tabIndex="-1"
+    type="button"
+    val="42"
+  >
+    <svg>
+      <path
+        d="M0 0L5 5Z"
+      />
+    </svg>
+  </button>
+</li>
+`;

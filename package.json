@@ -98,6 +98,7 @@
     "identity-obj-proxy": "3.0.0",
     "is-wsl": "^1.1.0",
     "jest": "^24.7.1",
+    "jest-emotion": "^10.0.32",
     "jest-environment-jsdom-fourteen": "^0.1.0",
     "jest-resolve": "^24.7.1",
     "jest-watch-typeahead": "^0.3.0",

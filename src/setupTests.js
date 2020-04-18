@@ -1,9 +1,12 @@
 import Enzyme from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
+import serializer from "jest-emotion";
 import usePlaceAbove from "./hooks/usePlaceAbove/usePlaceAbove";
 import useRefRect from "./hooks/useRefRect/useRefRect";
 
 Enzyme.configure({ adapter: new Adapter() });
+
+expect.addSnapshotSerializer(serializer);
 
 global.console.error = jest.fn();
 

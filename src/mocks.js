@@ -5,7 +5,7 @@ import withKeys from "./utils/withKeys";
 let noop = () => {};
 
 let mockStyles = {
-  styles_width: "600px",
+  styles_width: 600,
   styles_multiple: false,
   styles_disabled: false,
   styles_hasSelection: false,

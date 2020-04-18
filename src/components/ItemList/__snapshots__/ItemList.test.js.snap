@@ -51,7 +51,7 @@ exports[`renders 1`] = `
     styles_selection_paddingLeft=".4em"
     styles_selection_paddingRight=".4em"
     styles_selection_paddingTop=".2em"
-    styles_width="600px"
+    styles_width={600}
   />
   <MockElement
     item={
@@ -99,7 +99,7 @@ exports[`renders 1`] = `
     styles_selection_paddingLeft=".4em"
     styles_selection_paddingRight=".4em"
     styles_selection_paddingTop=".2em"
-    styles_width="600px"
+    styles_width={600}
   />
   <MockElement
     item={
@@ -147,7 +147,7 @@ exports[`renders 1`] = `
     styles_selection_paddingLeft=".4em"
     styles_selection_paddingRight=".4em"
     styles_selection_paddingTop=".2em"
-    styles_width="600px"
+    styles_width={600}
   />
   <MockElement
     item={
@@ -195,7 +195,7 @@ exports[`renders 1`] = `
     styles_selection_paddingLeft=".4em"
     styles_selection_paddingRight=".4em"
     styles_selection_paddingTop=".2em"
-    styles_width="600px"
+    styles_width={600}
   />
   <MockElement
     item={
@@ -243,7 +243,7 @@ exports[`renders 1`] = `
     styles_selection_paddingLeft=".4em"
     styles_selection_paddingRight=".4em"
     styles_selection_paddingTop=".2em"
-    styles_width="600px"
+    styles_width={600}
   />
 </ul>
 `;
@@ -301,7 +301,7 @@ exports[`renders no items 1`] = `
     styles_selection_paddingLeft=".4em"
     styles_selection_paddingRight=".4em"
     styles_selection_paddingTop=".2em"
-    styles_width="600px"
+    styles_width={600}
   />
 </ul>
 `;
@@ -357,7 +357,7 @@ exports[`renders removable 1`] = `
     styles_selection_paddingLeft=".4em"
     styles_selection_paddingRight=".4em"
     styles_selection_paddingTop=".2em"
-    styles_width="600px"
+    styles_width={600}
   />
   <MockElement
     item={
@@ -405,7 +405,7 @@ exports[`renders removable 1`] = `
     styles_selection_paddingLeft=".4em"
     styles_selection_paddingRight=".4em"
     styles_selection_paddingTop=".2em"
-    styles_width="600px"
+    styles_width={600}
   />
   <MockElement
     item={
@@ -453,7 +453,7 @@ exports[`renders removable 1`] = `
     styles_selection_paddingLeft=".4em"
     styles_selection_paddingRight=".4em"
     styles_selection_paddingTop=".2em"
-    styles_width="600px"
+    styles_width={600}
   />
   <MockElement
     item={
@@ -501,7 +501,7 @@ exports[`renders removable 1`] = `
     styles_selection_paddingLeft=".4em"
     styles_selection_paddingRight=".4em"
     styles_selection_paddingTop=".2em"
-    styles_width="600px"
+    styles_width={600}
   />
   <MockElement
     item={
@@ -549,7 +549,7 @@ exports[`renders removable 1`] = `
     styles_selection_paddingLeft=".4em"
     styles_selection_paddingRight=".4em"
     styles_selection_paddingTop=".2em"
-    styles_width="600px"
+    styles_width={600}
   />
 </ul>
 `;

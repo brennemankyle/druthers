@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AppendToBodyOptionsWrapper place above 1`] = `
+exports[`place above 1`] = `
 <AppendToBodyOptionsWrapper
   StyledAppendToBodyOptionsWrapper={[Function]}
   className="test"
@@ -70,7 +70,7 @@ exports[`AppendToBodyOptionsWrapper place above 1`] = `
   styles_selection_paddingLeft=".4em"
   styles_selection_paddingRight=".4em"
   styles_selection_paddingTop=".2em"
-  styles_width="600px"
+  styles_width={600}
   updateOn={Array []}
 >
   <MockElement
@@ -125,7 +125,7 @@ exports[`AppendToBodyOptionsWrapper place above 1`] = `
     styles_selection_paddingLeft=".4em"
     styles_selection_paddingRight=".4em"
     styles_selection_paddingTop=".2em"
-    styles_width="600px"
+    styles_width={600}
   >
     <div
       data-props={
@@ -205,7 +205,7 @@ exports[`AppendToBodyOptionsWrapper place above 1`] = `
           "styles_selection_paddingLeft": ".4em",
           "styles_selection_paddingRight": ".4em",
           "styles_selection_paddingTop": ".2em",
-          "styles_width": "600px",
+          "styles_width": 600,
         }
       }
     />
@@ -213,7 +213,7 @@ exports[`AppendToBodyOptionsWrapper place above 1`] = `
 </AppendToBodyOptionsWrapper>
 `;
 
-exports[`AppendToBodyOptionsWrapper renders 1`] = `
+exports[`renders 1`] = `
 <AppendToBodyOptionsWrapper
   StyledAppendToBodyOptionsWrapper={[Function]}
   className="test"
@@ -283,7 +283,7 @@ exports[`AppendToBodyOptionsWrapper renders 1`] = `
   styles_selection_paddingLeft=".4em"
   styles_selection_paddingRight=".4em"
   styles_selection_paddingTop=".2em"
-  styles_width="600px"
+  styles_width={600}
   updateOn={Array []}
 >
   <MockElement
@@ -338,7 +338,7 @@ exports[`AppendToBodyOptionsWrapper renders 1`] = `
     styles_selection_paddingLeft=".4em"
     styles_selection_paddingRight=".4em"
     styles_selection_paddingTop=".2em"
-    styles_width="600px"
+    styles_width={600}
   >
     <div
       data-props={
@@ -393,7 +393,7 @@ exports[`AppendToBodyOptionsWrapper renders 1`] = `
           "styles_selection_paddingLeft": ".4em",
           "styles_selection_paddingRight": ".4em",
           "styles_selection_paddingTop": ".2em",
-          "styles_width": "600px",
+          "styles_width": 600,
         }
       }
     />
