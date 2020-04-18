@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`hide = true 1`] = `
+.emotion-0 {
+  border: none;
+  outline: 0;
+  font-size: 1em;
+  font-family: inherit;
+  background-color: transparent;
+  margin-top: calc(.2em / 2);
+  margin-bottom: calc(.2em / 2);
+  padding-top: .2em;
+  padding-bottom: .2em;
+  padding-right: .4em;
+  padding-left: .4em;
+  opacity: 0;
+  width: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.emotion-0::-ms-clear {
+  display: none;
+}
+
+<input
+  className="emotion-0 search"
+  disabled={false}
+  size="8"
+  type="text"
+/>
+`;
+
+exports[`styles 1`] = `
+.emotion-0 {
+  border: none;
+  outline: 0;
+  font-size: 1em;
+  font-family: inherit;
+  background-color: transparent;
+  margin-top: calc(.2em / 2);
+  margin-bottom: calc(.2em / 2);
+  padding-top: .2em;
+  padding-bottom: .2em;
+  padding-right: .4em;
+  padding-left: .4em;
+}
+
+.emotion-0::-ms-clear {
+  display: none;
+}
+
+<input
+  className="emotion-0 search"
+  disabled={false}
+  size="8"
+  type="text"
+/>
+`;
+
+exports[`styles_disabled = true 1`] = `
+.emotion-0 {
+  border: none;
+  outline: 0;
+  font-size: 1em;
+  font-family: inherit;
+  background-color: transparent;
+  margin-top: calc(.2em / 2);
+  margin-bottom: calc(.2em / 2);
+  padding-top: .2em;
+  padding-bottom: .2em;
+  padding-right: .4em;
+  padding-left: .4em;
+  cursor: not-allowed;
+}
+
+.emotion-0::-ms-clear {
+  display: none;
+}
+
+<input
+  className="emotion-0 search"
+  disabled={true}
+  size="8"
+  type="text"
+/>
+`;
+
+exports[`styles_rightToLeft = true 1`] = `
+.emotion-0 {
+  border: none;
+  outline: 0;
+  font-size: 1em;
+  font-family: inherit;
+  background-color: transparent;
+  margin-top: calc(.2em / 2);
+  margin-bottom: calc(.2em / 2);
+  padding-top: .2em;
+  padding-bottom: .2em;
+  padding-right: .4em;
+  padding-left: .4em;
+  -webkit-transform: scaleX(-1);
+  -ms-transform: scaleX(-1);
+  transform: scaleX(-1);
+  text-align: right;
+}
+
+.emotion-0::-ms-clear {
+  display: none;
+}
+
+<input
+  className="emotion-0 search"
+  disabled={false}
+  size="8"
+  type="text"
+/>
+`;

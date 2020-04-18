@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OptionsWrapper styles 1`] = `
+.emotion-0 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: white;
+  width: 600px;
+}
+
+<div
+  className="emotion-0"
+>
+  <div
+    data-props={Object {}}
+  />
+</div>
+`;
+
+exports[`OptionsWrapper styles_hasOptions = false and styles_multiple = false 1`] = `
+.emotion-0 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: white;
+  width: 600px;
+  display: none;
+}
+
+<div
+  className="emotion-0"
+>
+  <div
+    data-props={Object {}}
+  />
+</div>
+`;
+
+exports[`Wrapper styles 1`] = `
+.emotion-0 {
+  font-size: 1em;
+}
+
+<div
+  className="emotion-0"
+>
+  <div
+    data-props={Object {}}
+  />
+</div>
+`;
+
+exports[`Wrapper styles_rightToLeft = true 1`] = `
+.emotion-0 {
+  font-size: 1em;
+  -webkit-transform: scaleX(-1);
+  -ms-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+<div
+  className="emotion-0"
+>
+  <div
+    data-props={Object {}}
+  />
+</div>
+`;

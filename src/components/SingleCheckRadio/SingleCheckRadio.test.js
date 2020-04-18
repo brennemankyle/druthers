@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
-import { MockSvg } from "../../mocks";
+import { mockStyles, MockSvg } from "../../mocks";
 import SingleCheckRadio from "./SingleCheckRadio";
 
 jest.mock("react", () => ({
@@ -10,6 +10,7 @@ jest.mock("react", () => ({
 }));
 
 const props = {
+  ...mockStyles,
   name: "test",
   value: "value",
   className: "test",

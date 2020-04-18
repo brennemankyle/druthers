@@ -15,8 +15,8 @@ it("renders", () => {
       areOptionsOpen={false}
       onFocus={onFocus}
       onBlur={onBlur}
-      SelectionList={MockElement}
-      Search={MockInput}
+      SelectionList={<MockElement />}
+      Search={<MockInput />}
       svg_Expand={MockSvg}
     />
   );
@@ -37,8 +37,8 @@ it("renders disabled", () => {
       areOptionsOpen={false}
       onFocus={onFocus}
       onBlur={onBlur}
-      SelectionList={MockElement}
-      Search={MockInput}
+      SelectionList={<MockElement />}
+      Search={<MockInput />}
       svg_Expand={MockSvg}
     />
   );
@@ -46,20 +46,24 @@ it("renders disabled", () => {
   expect(toJson(wrapper)).toMatchSnapshot();
 });
 
-// ref searchRef.current.blur() doesn't continue event propogation
-// it('should close', (done) => {
-//   const wrapper = mount(<SelectionWrapper
-//     {...mockStyles}
-//     className="test"
-//     areOptionsOpen={true}
-//     onFocus={onFocus}
-//     onBlur={onBlur}
-//     SelectionList={<SelectionList />}
-//     Search={<MockInput />} />)
+// TODO fix: ref searchRef.current.blur() doesn't continue event propogation
+// it("should close", done => {
+//   const wrapper = mount(
+//     <SelectionWrapper
+//       {...mockStyles}
+//       className="test"
+//       areOptionsOpen={true}
+//       onFocus={onFocus}
+//       onBlur={onBlur}
+//       SelectionList={<MockElement />}
+//       Search={<MockInput />}
+//       svg_Expand={MockSvg}
+//     />
+//   );
 //
 //   setTimeout(() => {
-//     wrapper.find('input').simulate('click')
-//     expect(onBlur).toBeCalled()
-//     done()
-//   })
-// })
+//     wrapper.find("input").simulate("click");
+//     expect(onBlur).toBeCalled();
+//     done();
+//   });
+// });
