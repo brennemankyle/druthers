@@ -3,6 +3,8 @@ import { castArray } from "./essentialLodash";
 let getKey = (keyGetter, option) =>
   typeof keyGetter === "string" ? option[keyGetter] : keyGetter(option);
 
+let stringify = value => (value == null ? null : String(value));
+
 let massageDataIn = props => {
   let { selection, options, placeholder, ...otherProps } = props;
   let isEmpty = selection == null || selection === "";
@@ -14,8 +16,8 @@ let massageDataIn = props => {
   selection = selection.map(value => String(value));
   let hasOptionGroups = false;
   let strigifyOption = option => ({
-    value: String(getKey(props.valueKey, option)),
-    label: String(getKey(props.labelKey, option))
+    value: stringify(getKey(props.valueKey, option)),
+    label: stringify(getKey(props.labelKey, option))
   });
   let groupNumber = 1; // Start at 1 because 0 isn't truthy
   options = [].concat(
@@ -27,7 +29,7 @@ let massageDataIn = props => {
       hasOptionGroups = true;
       let newOption = strigifyOption(option);
       let group = groupNumber++;
-      if (option.value == null) delete newOption.value;
+      if (newOption.value == null) delete newOption.value;
 
       return [
         {
@@ -70,7 +72,7 @@ let massageDataIn = props => {
     hasSelection: !!massagedSelection.length,
     options,
     hasOptions,
-    singleNoOptions: !hasOptions && !props.multiple && props.creatable,
+    singleNoOptions: !hasOptions && !props.multiple && !!props.creatable,
     hasOptionGroups,
     text_placeholder: placeholder
   };
