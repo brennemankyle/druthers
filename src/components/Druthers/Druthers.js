@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import AppPropTypes, {
-  simpleDruthersPropTypes
+  selectPropsTypes
 } from "../../utils/AppPropTypes";
 import defaultProps from "../../utils/defaultProps";
 import useWindowWidth from "../../hooks/useWindowWidth/useWindowWidth";
@@ -72,7 +72,7 @@ Druthers.defaultProps = {
 };
 
 Druthers.propTypes = {
-  ...simpleDruthersPropTypes,
+  ...selectPropsTypes,
   component_Select: AppPropTypes.element.isRequired,
   component_CheckRadio: AppPropTypes.element.isRequired,
   component_CheckBox: AppPropTypes.element.isRequired,

@@ -1,36 +1,13 @@
 import React, { useReducer, useRef, useEffect } from "react";
 import styled from "@emotion/styled";
-import { simpleDruthersPropTypes } from "../../utils/AppPropTypes";
+import { selectPropsTypes } from "../../utils/AppPropTypes";
 import defaultProps from "../../utils/defaultProps";
-import { last, inRange } from "../../utils/essentialLodash";
+import { last } from "../../utils/essentialLodash";
 import ReactDOM from "react-dom";
 import withKeys from "../../utils/withKeys";
 import callOnChange from "../../utils/callOnChange";
 import useUpdateSelection from "../../hooks/useUpdateSelection/useUpdateSelection";
-import {
-  ENTER_KEY,
-  ESCAPE,
-  SPACE,
-  BACKSPACE,
-  DELETE,
-  ARROW_UP,
-  ARROW_DOWN,
-  ARROW_LEFT,
-  ARROW_RIGHT,
-  NUM_LETTER_START,
-  NUM_LETTER_END,
-  SEMI_COLON,
-  EQUAL_SIGN,
-  COMMA,
-  DASH,
-  PERIOD,
-  FORWARD_SLASH,
-  OPEN_BRACKET,
-  BACK_SLASH,
-  CLOSE_BRAKET,
-  SINGLE_QUOTE,
-  TAB
-} from "../../utils/keyCodes";
+import KEY_CODE from "../../utils/KEY_CODE";
 
 let targetHasValue = e =>
   e.target.hasAttribute("value") || e.target.hasAttribute("val");
@@ -148,57 +125,36 @@ let Select = rawProps => {
     if (!areOptionsOpen) dispatch({ props, type: "clearSelectionHighlighted" }); // Stop highlighting selection if mouse leaves select area
   };
   let onKeyDown = e => {
-    let openKeys = [
-      ENTER_KEY,
-      ARROW_UP,
-      ARROW_DOWN,
-      ARROW_LEFT,
-      ARROW_RIGHT,
-      SPACE,
-      SEMI_COLON,
-      EQUAL_SIGN,
-      COMMA,
-      DASH,
-      PERIOD,
-      FORWARD_SLASH,
-      OPEN_BRACKET,
-      BACK_SLASH,
-      CLOSE_BRAKET,
-      SINGLE_QUOTE
-    ];
-    if (
-      !areOptionsOpen &&
-      (inRange(e.keyCode, NUM_LETTER_START, NUM_LETTER_END) ||
-        openKeys.includes(e.keyCode))
-    )
-      dispatch({ props, type: "openOptions" }); // if you type letters, numbers, or openKeys then open options
+    if (!areOptionsOpen && KEY_CODE.isOpenKeyCode(e.keyCode)) {
+      dispatch({ props, type: "openOptions" });
+    }
 
     switch (e.keyCode) {
-      case TAB:
-      case ENTER_KEY:
+      case KEY_CODE.TAB:
+      case KEY_CODE.ENTER_KEY:
         if (areOptionsOpen && optionHighlighted != null) {
           dispatch({ props, type: "moveOptionHighlighted", payload: 1 });
           dispatch({ props, type: "clearSearchText" });
           selectOption(optionHighlighted);
         }
         break;
-      case ARROW_UP:
+      case KEY_CODE.ARROW_UP:
         dispatch({ props, type: "moveOptionHighlighted", payload: -1 });
         break;
-      case ARROW_DOWN:
+      case KEY_CODE.ARROW_DOWN:
         dispatch({ props, type: "moveOptionHighlighted", payload: 1 });
         break;
-      case ARROW_LEFT:
+      case KEY_CODE.ARROW_LEFT:
         dispatch({ props, type: "moveSelectionHighlighted", payload: -1 });
         break;
-      case ARROW_RIGHT:
+      case KEY_CODE.ARROW_RIGHT:
         dispatch({ props, type: "moveSelectionHighlighted", payload: 1 });
         break;
-      case ESCAPE:
+      case KEY_CODE.ESCAPE:
         dispatch({ props, type: "closeOptions" });
         break;
-      case BACKSPACE:
-      case DELETE:
+      case KEY_CODE.BACKSPACE:
+      case KEY_CODE.DELETE:
         if (!searchText && props.hasSelection) {
           // Only remove if there isn't search text
           let selectionItem = last(props.selection).value;
@@ -328,6 +284,6 @@ let Select = rawProps => {
 
 Select.defaultProps = defaultProps;
 
-Select.propTypes = simpleDruthersPropTypes;
+Select.propTypes = selectPropsTypes;
 
 export default Select;

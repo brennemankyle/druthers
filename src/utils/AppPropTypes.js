@@ -64,7 +64,7 @@ let AppPropTypes = {
   }
 };
 
-let simpleDruthersPropTypes = {
+let selectPropsTypes = {
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
   onFocus: PropTypes.func.isRequired,
@@ -118,5 +118,5 @@ let simpleDruthersPropTypes = {
   ...AppPropTypes.styles
 };
 
-export { simpleDruthersPropTypes };
+export { selectPropsTypes };
 export default AppPropTypes;
