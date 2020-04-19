@@ -11,8 +11,16 @@ let massageDataIn = props => {
   selection = selection.map(value => String(value));
   let hasOptionGroups = false;
   let strigifyOption = option => ({
-    value: String(option[props.optionKeys[0]]),
-    label: String(option[props.optionKeys[1]])
+    value: String(
+      typeof props.valueKey === "string"
+        ? option[props.valueKey]
+        : props.valueKey(option)
+    ),
+    label: String(
+      typeof props.labelKey === "string"
+        ? option[props.labelKey]
+        : props.labelKey(option)
+    )
   });
   let groupNumber = 1; // Start at 1 because 0 isn't truthy
   options = [].concat(

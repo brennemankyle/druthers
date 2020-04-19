@@ -91,7 +91,14 @@ let selectPropsTypes = {
   massageDataIn: PropTypes.func.isRequired,
   massageDataOut: PropTypes.func.isRequired,
   selectReducer: PropTypes.func.isRequired,
-  optionKeys: PropTypes.arrayOf(PropTypes.string).isRequired,
+  valueKey: PropTypes.oneOfType([
+    PropTypes.func.isRequired,
+    PropTypes.string.isRequired
+  ]).isRequired,
+  labelKey: PropTypes.oneOfType([
+    PropTypes.func.isRequired,
+    PropTypes.string.isRequired
+  ]).isRequired,
   checkRadioMaxCount: PropTypes.number.isRequired,
   parseTo: PropTypes.oneOf(["string", "number", "int", "float", "boolean"]),
 

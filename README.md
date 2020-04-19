@@ -117,7 +117,8 @@ class SomeComponent extends React.Component {
 | massageDataIn                              | massageDataIn                    |
 | massageDataOut                             | massageDataOut                   |
 | selectReducer                              | selectReducer                    |
-| optionKeys                                 | ['value', 'label']               |
+| valueKey                                   | object => object["value"]        |
+| labelKey                                   | object => object["label"]        |
 | checkRadioMaxCount                         | 10                               |
 | parseTo                                    | string                           |
 | **Text Props**                             |                                  |
@@ -201,7 +202,8 @@ class SomeComponent extends React.Component {
 | massageDataIn                              | The function that massages the props coming in                                  |
 | massageDataOut                             | The function massaging the selection returned from the onChange event           |
 | selectReducer                              | The function/reducer that controls the state of the Select component            |
-| optionKeys                                 | The name of the keys in an option object                                        |
+| valueKey                                   | The name of the value key in an option object, can be a function or string      |
+| labelKey                                   | The name of the label key in an option object, can be a function or string      |
 | checkRadioMaxCount                         | The maximum radio buttons allowed before rendering a Select instead             |
 | parseTo                                    | parse value from onChange to a js type: string, number, int, float, boolean     |
 | **Text Props**                             |                                                                                 |

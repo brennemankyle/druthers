@@ -34,7 +34,8 @@ let defaultProps = {
   massageDataIn,
   massageDataOut,
   selectReducer,
-  optionKeys: ["value", "label"],
+  valueKey: object => object["value"],
+  labelKey: object => object["label"],
   checkRadioMaxCount: 10,
   parseTo: "string",
 
