@@ -99,6 +99,10 @@ let selectPropsTypes = {
     PropTypes.func.isRequired,
     PropTypes.string.isRequired
   ]).isRequired,
+  optionsKey: PropTypes.oneOfType([
+    PropTypes.func.isRequired,
+    PropTypes.string.isRequired
+  ]).isRequired,
   checkRadioMaxCount: PropTypes.number.isRequired,
   parseTo: PropTypes.oneOf(["string", "number", "int", "float", "boolean"]),
 

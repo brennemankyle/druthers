@@ -119,6 +119,7 @@ class SomeComponent extends React.Component {
 | selectReducer                              | selectReducer                    |
 | valueKey                                   | object => object["value"]        |
 | labelKey                                   | object => object["label"]        |
+| optionsKey                                 | object => object["options"]      |
 | checkRadioMaxCount                         | 10                               |
 | parseTo                                    | string                           |
 | **Text Props**                             |                                  |
@@ -204,6 +205,7 @@ class SomeComponent extends React.Component {
 | selectReducer                              | The function/reducer that controls the state of the Select component            |
 | valueKey                                   | The name of the value key in an option object, can be a function or string      |
 | labelKey                                   | The name of the label key in an option object, can be a function or string      |
+| optionsKey                                 | The name of the child options key in an option object, function or string       |
 | checkRadioMaxCount                         | The maximum radio buttons allowed before rendering a Select instead             |
 | parseTo                                    | parse value from onChange to a js type: string, number, int, float, boolean     |
 | **Text Props**                             |                                                                                 |

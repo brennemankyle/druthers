@@ -36,6 +36,7 @@ let defaultProps = {
   selectReducer,
   valueKey: object => object["value"],
   labelKey: object => object["label"],
+  optionsKey: object => object["options"],
   checkRadioMaxCount: 10,
   parseTo: "string",
 
