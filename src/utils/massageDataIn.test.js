@@ -11,6 +11,7 @@ beforeEach(() => {
     selection: "",
     options: [],
     placeholder: "placeholder",
+    allowDuplicates: true,
     valueKey: funcValueKey,
     labelKey: funcLabelKey,
     optionsKey: funcOptionKey
@@ -20,6 +21,7 @@ beforeEach(() => {
     hasOptionGroups: false,
     hasOptions: false,
     hasSelection: false,
+    allowDuplicates: true,
     selection: [],
     options: [],
     singleNoOptions: false,
@@ -39,7 +41,7 @@ it("should set text_placeholder from text_placeholder", () => {
   });
 });
 
-fit("should set singleNoOptions", () => {
+it("should set singleNoOptions", () => {
   props.creatable = true;
   props.multiple = false;
 
@@ -134,6 +136,36 @@ describe("options", () => {
     expect(massageDataIn(props)).toStrictEqual({
       ...expectedProps,
       hasOptions: true,
+      options: [
+        {
+          label: "1",
+          value: "1"
+        }
+      ]
+    });
+  });
+
+  it("should not allow duplicates", () => {
+    props.allowDuplicates = false;
+    props.options = [
+      {
+        label: 1,
+        value: 1
+      },
+      {
+        label: 1,
+        value: "1"
+      },
+      {
+        label: "One",
+        value: 1
+      }
+    ];
+
+    expect(massageDataIn(props)).toStrictEqual({
+      ...expectedProps,
+      hasOptions: true,
+      allowDuplicates: false,
       options: [
         {
           label: "1",
@@ -372,8 +404,88 @@ describe("option groups", () => {
     expect(outputProps.options[4].group).toBe(2);
   });
 
+  it("should not allow duplicates", () => {
+    props.allowDuplicates = false;
+    props.options = [
+      {
+        label: "Parent 1",
+        value: "1",
+        options: [
+          {
+            label: "P1 Child 1",
+            value: "p1child1"
+          },
+          {
+            label: "DUPLICATE P1 Child 1",
+            value: "p1child1"
+          }
+        ]
+      },
+      {
+        label: "Parent 2 without children",
+        value: 2
+      },
+      {
+        label: "Parent 3 without value",
+        options: [
+          {
+            label: "P3 Child 1",
+            value: "p3child1"
+          },
+          {
+            label: "DUPLICATE P1 Child 1",
+            value: "p1child1"
+          }
+        ]
+      },
+      {
+        label: "DUPLICATE Parent 1",
+        value: 1
+      },
+      {
+        label: "DUPLICATE Parent 2",
+        value: 2
+      }
+    ];
+
+    expect(massageDataIn(props)).toStrictEqual({
+      ...expectedProps,
+      hasOptionGroups: true,
+      hasOptions: true,
+      allowDuplicates: false,
+      options: [
+        {
+          group: 1,
+          label: "Parent 1",
+          parent: true,
+          value: "1"
+        },
+        {
+          group: 1,
+          label: "P1 Child 1",
+          value: "p1child1"
+        },
+        {
+          label: "Parent 2 without children",
+          value: "2"
+        },
+        {
+          group: 2,
+          label: "Parent 3 without value",
+          parent: true
+        },
+        {
+          group: 2,
+          label: "P3 Child 1",
+          value: "p3child1"
+        }
+      ]
+    });
+  });
+
   it("should not get options with bad key selector functions", () => {
     let funcNothing = object => object["nothing"];
+    props.allowDuplicates = false;
     props.options = optionGroups;
     props.optionsKey = funcNothing;
     props.valueKey = funcNothing;
@@ -382,6 +494,7 @@ describe("option groups", () => {
     expect(massageDataIn(props)).toStrictEqual({
       ...expectedProps,
       hasOptions: true,
+      allowDuplicates: false,
       options: [
         {
           label: null,
@@ -422,6 +535,7 @@ describe("option groups", () => {
 
   it("should not get options with bad key selector strings", () => {
     props.options = optionGroups;
+    props.allowDuplicates = false;
     props.optionsKey = "nothing";
     props.valueKey = "nothing";
     props.labelKey = "nothing";
@@ -429,6 +543,7 @@ describe("option groups", () => {
     expect(massageDataIn(props)).toStrictEqual({
       ...expectedProps,
       hasOptions: true,
+      allowDuplicates: false,
       options: [
         {
           label: null,
