@@ -82,17 +82,15 @@ const Option = styled(Item)`
     `transform: scaleX(-1);
     text-align: right;`}
   ${props =>
-    props.item.group &&
-    props.item.parent &&
+    props.item.childGroup &&
     props.item.value == null &&
     `color: ${props.styles_colors_secondary};
     font-size: .8em;`}
   ${props =>
+    props.item.childGroup && props.item.value != null && `font-weight: bold;`}
+  ${props =>
     props.item.group &&
-    props.item.parent &&
-    props.item.value != null &&
-    `font-weight: bold;`}
-  ${props => props.item.group && !props.item.parent && `margin-left: 1em;`}
+    `margin-left: ${props.item.group.split(".").length * 2}em;`}
 `;
 
 export { Selection, Option };

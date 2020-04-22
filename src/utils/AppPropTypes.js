@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 let item = PropTypes.shape({
   value: PropTypes.string,
   label: PropTypes.string.isRequired,
-  group: PropTypes.number,
-  parent: PropTypes.bool
+  group: PropTypes.string,
+  childGroup: PropTypes.string
 });
 
 let rawItem = PropTypes.shape({

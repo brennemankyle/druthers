@@ -804,7 +804,7 @@ storiesOf("Welcome", module)
         </li>
         <li>Fully usable with only the Keyboard</li>
         <li>Creatable options (managed by a prop not a separate component)</li>
-        <li>Selectable Option Groups (parent group can be selected)</li>
+        <li>Infinite nestable Option Groups and parents are seletable</li>
         <li>Small npm package size</li>
         <li>No Jquery</li>
         <li>

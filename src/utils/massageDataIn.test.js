@@ -189,12 +189,7 @@ describe("options", () => {
     expect(massageDataIn(props)).toStrictEqual({
       ...expectedProps,
       hasOptions: true,
-      options: [
-        {
-          label: null,
-          value: null
-        }
-      ],
+      options: [{}],
       valueKey: funcNothing,
       labelKey: funcNothing
     });
@@ -241,12 +236,7 @@ describe("options", () => {
     expect(massageDataIn(props)).toStrictEqual({
       ...expectedProps,
       hasOptions: true,
-      options: [
-        {
-          label: null,
-          value: null
-        }
-      ],
+      options: [{}],
       selection: [],
       valueKey: "nothing",
       labelKey: "nothing"
@@ -293,7 +283,7 @@ describe("option groups", () => {
       ]
     },
     {
-      label: "Parent 2 without children",
+      label: "Parent 2 without child options",
       value: 2
     },
     {
@@ -319,7 +309,7 @@ describe("option groups", () => {
       ]
     },
     {
-      otherLabel: "Parent 2 without children",
+      otherLabel: "Parent 2 without child options",
       otherValue: 2
     },
     {
@@ -344,18 +334,17 @@ describe("option groups", () => {
       hasSelection: true,
       selection: [
         {
-          group: 1,
           label: "Parent 1",
-          parent: true,
+          childGroup: "0",
           value: "1"
         },
         {
-          group: 1,
+          group: "0",
           label: "P1 Child 1",
           value: "p1child1"
         },
         {
-          label: "Parent 2 without children",
+          label: "Parent 2 without child options",
           value: "2"
         },
         {
@@ -365,27 +354,25 @@ describe("option groups", () => {
       ],
       options: [
         {
-          group: 1,
+          childGroup: "0",
           label: "Parent 1",
-          parent: true,
           value: "1"
         },
         {
-          group: 1,
+          group: "0",
           label: "P1 Child 1",
           value: "p1child1"
         },
         {
-          label: "Parent 2 without children",
+          label: "Parent 2 without child options",
           value: "2"
         },
         {
-          group: 2,
-          label: "Parent 3 without value",
-          parent: true
+          childGroup: "1",
+          label: "Parent 3 without value"
         },
         {
-          group: 2,
+          group: "1",
           label: "P3 Child 1",
           value: "p3child1"
         }
@@ -397,11 +384,159 @@ describe("option groups", () => {
     props.options = optionGroups;
 
     let outputProps = massageDataIn(props);
-    expect(outputProps.options[0].group).toBe(1);
-    expect(outputProps.options[1].group).toBe(1);
+    expect(outputProps.options[0].group).toBeUndefined();
+    expect(outputProps.options[0].childGroup).toBe("0");
+
+    expect(outputProps.options[1].group).toBe("0");
+    expect(outputProps.options[1].childGroup).toBeUndefined();
+
     expect(outputProps.options[2].group).toBeUndefined();
-    expect(outputProps.options[3].group).toBe(2);
-    expect(outputProps.options[4].group).toBe(2);
+    expect(outputProps.options[2].childGroup).toBeUndefined();
+
+    expect(outputProps.options[3].group).toBeUndefined();
+    expect(outputProps.options[3].childGroup).toBe("1");
+
+    expect(outputProps.options[4].group).toBe("1");
+    expect(outputProps.options[4].childGroup).toBeUndefined();
+  });
+
+  it("should allow infinite option nesting", () => {
+    let infiniteOptionGroupOptions = [
+      {
+        value: "burger",
+        label: "Burger",
+        options: [
+          {
+            value: "patty",
+            label: "Patty",
+            options: [
+              { value: "beef", label: "Beef" },
+              {
+                value: "veggie",
+                label: "Veggie",
+                options: [
+                  { value: "blackbean", label: "Black bean" },
+                  { value: "grain", label: "Grain" },
+                  { value: "mirepoix", label: "Mirepoix" }
+                ]
+              },
+              { value: "lamb", label: "Lamb" }
+            ]
+          },
+          { value: "cheese", label: "Cheese" },
+          { value: "pickle", label: "Pickle" },
+          { value: "lettuce", label: "Lettuce" },
+          { value: "tomato", label: "Tomato" },
+          {
+            value: "all_condiments",
+            label: "Condiments",
+            options: [
+              { value: "ketchup", label: "Ketchup" },
+              { value: "mustard", label: "Mustard" },
+              { value: "mayo", label: "Mayo" }
+            ]
+          }
+        ]
+      },
+      { value: "to_go", label: "To Go" }
+    ];
+
+    props.options = infiniteOptionGroupOptions;
+
+    expect(massageDataIn(props)).toStrictEqual({
+      ...expectedProps,
+      hasOptionGroups: true,
+      hasOptions: true,
+      options: [
+        {
+          label: "Burger",
+          childGroup: "0",
+          value: "burger"
+        },
+        {
+          group: "0",
+          childGroup: "0.0",
+          label: "Patty",
+          value: "patty"
+        },
+        {
+          group: "0.0",
+          label: "Beef",
+          value: "beef"
+        },
+        {
+          group: "0.0",
+          childGroup: "0.0.0",
+          label: "Veggie",
+          value: "veggie"
+        },
+        {
+          group: "0.0.0",
+          label: "Black bean",
+          value: "blackbean"
+        },
+        {
+          group: "0.0.0",
+          label: "Grain",
+          value: "grain"
+        },
+        {
+          group: "0.0.0",
+          label: "Mirepoix",
+          value: "mirepoix"
+        },
+        {
+          group: "0.0",
+          label: "Lamb",
+          value: "lamb"
+        },
+        {
+          group: "0",
+          label: "Cheese",
+          value: "cheese"
+        },
+        {
+          group: "0",
+          label: "Pickle",
+          value: "pickle"
+        },
+        {
+          group: "0",
+          label: "Lettuce",
+          value: "lettuce"
+        },
+        {
+          group: "0",
+          label: "Tomato",
+          value: "tomato"
+        },
+        {
+          group: "0",
+          childGroup: "0.1",
+          label: "Condiments",
+          value: "all_condiments"
+        },
+        {
+          group: "0.1",
+          label: "Ketchup",
+          value: "ketchup"
+        },
+        {
+          group: "0.1",
+          label: "Mustard",
+          value: "mustard"
+        },
+        {
+          group: "0.1",
+          label: "Mayo",
+          value: "mayo"
+        },
+        {
+          label: "To Go",
+          value: "to_go"
+        }
+      ]
+    });
   });
 
   it("should not allow duplicates", () => {
@@ -422,7 +557,7 @@ describe("option groups", () => {
         ]
       },
       {
-        label: "Parent 2 without children",
+        label: "Parent 2 without child options",
         value: 2
       },
       {
@@ -455,27 +590,25 @@ describe("option groups", () => {
       allowDuplicates: false,
       options: [
         {
-          group: 1,
+          childGroup: "0",
           label: "Parent 1",
-          parent: true,
           value: "1"
         },
         {
-          group: 1,
+          group: "0",
           label: "P1 Child 1",
           value: "p1child1"
         },
         {
-          label: "Parent 2 without children",
+          label: "Parent 2 without child options",
           value: "2"
         },
         {
-          group: 2,
-          label: "Parent 3 without value",
-          parent: true
+          childGroup: "1",
+          label: "Parent 3 without value"
         },
         {
-          group: 2,
+          group: "1",
           label: "P3 Child 1",
           value: "p3child1"
         }
@@ -495,12 +628,7 @@ describe("option groups", () => {
       ...expectedProps,
       hasOptions: true,
       allowDuplicates: false,
-      options: [
-        {
-          label: null,
-          value: null
-        }
-      ],
+      options: [{}],
       optionsKey: funcNothing,
       valueKey: funcNothing,
       labelKey: funcNothing
@@ -521,12 +649,11 @@ describe("option groups", () => {
           value: "1"
         },
         {
-          label: "Parent 2 without children",
+          label: "Parent 2 without child options",
           value: "2"
         },
         {
-          label: "Parent 3 without value",
-          value: null
+          label: "Parent 3 without value"
         }
       ],
       optionsKey: funcNothing
@@ -544,12 +671,7 @@ describe("option groups", () => {
       ...expectedProps,
       hasOptions: true,
       allowDuplicates: false,
-      options: [
-        {
-          label: null,
-          value: null
-        }
-      ],
+      options: [{}],
       optionsKey: "nothing",
       valueKey: "nothing",
       labelKey: "nothing"
@@ -569,12 +691,11 @@ describe("option groups", () => {
           value: "1"
         },
         {
-          label: "Parent 2 without children",
+          label: "Parent 2 without child options",
           value: "2"
         },
         {
-          label: "Parent 3 without value",
-          value: null
+          label: "Parent 3 without value"
         }
       ],
       optionsKey: "nothing"
@@ -596,27 +717,25 @@ describe("option groups", () => {
       hasOptions: true,
       options: [
         {
-          group: 1,
+          childGroup: "0",
           label: "Parent 1",
-          parent: true,
           value: "1"
         },
         {
-          group: 1,
+          group: "0",
           label: "P1 Child 1",
           value: "p1child1"
         },
         {
-          label: "Parent 2 without children",
+          label: "Parent 2 without child options",
           value: "2"
         },
         {
-          group: 2,
-          label: "Parent 3 without value",
-          parent: true
+          childGroup: "1",
+          label: "Parent 3 without value"
         },
         {
-          group: 2,
+          group: "1",
           label: "P3 Child 1",
           value: "p3child1"
         }
@@ -639,27 +758,25 @@ describe("option groups", () => {
       hasOptions: true,
       options: [
         {
-          group: 1,
+          childGroup: "0",
           label: "Parent 1",
-          parent: true,
           value: "1"
         },
         {
-          group: 1,
+          group: "0",
           label: "P1 Child 1",
           value: "p1child1"
         },
         {
-          label: "Parent 2 without children",
+          label: "Parent 2 without child options",
           value: "2"
         },
         {
-          group: 2,
-          label: "Parent 3 without value",
-          parent: true
+          childGroup: "1",
+          label: "Parent 3 without value"
         },
         {
-          group: 2,
+          group: "1",
           label: "P3 Child 1",
           value: "p3child1"
         }

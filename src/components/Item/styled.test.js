@@ -150,11 +150,10 @@ describe("Option", () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it("has item group and parent = true", () => {
+  it("has item group and childGroup = 0", () => {
     let mockGroupItem = {
       ...mockItem,
-      group: "item group",
-      parent: true
+      childGroup: "0"
     };
 
     const wrapper = renderer.create(
@@ -164,11 +163,23 @@ describe("Option", () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it("has item group and parent = true and value = null", () => {
+  it("has item group and childGroup = 0.0.0", () => {
     let mockGroupItem = {
       ...mockItem,
-      group: "item group",
-      parent: true,
+      childGroup: "0.0.0"
+    };
+
+    const wrapper = renderer.create(
+      <Option {...mockStyles} item={mockGroupItem} svg_Remove={MockSvg} />
+    );
+
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it("has item group and childGroup = 0 and value = null", () => {
+    let mockGroupItem = {
+      ...mockItem,
+      childGroup: "0",
       value: null
     };
 
@@ -179,11 +190,10 @@ describe("Option", () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it("has item group and parent = false", () => {
+  it("has item group and no childGroup", () => {
     let mockGroupItem = {
       ...mockItem,
-      group: "item group",
-      parent: false
+      group: "0"
     };
 
     const wrapper = renderer.create(

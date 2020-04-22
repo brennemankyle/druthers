@@ -15,9 +15,13 @@ let filterOptions = (props, searchTerm) => {
   if (props.hasOptionGroups) {
     // Remove child groups if parent is selected
     let groupsToRemove = props.selection
-      .filter(selection => selection.parent)
-      .map(selection => selection.group);
-    options = options.filter(option => !groupsToRemove.includes(option.group));
+      .filter(selection => selection.childGroup)
+      .map(selection => selection.childGroup);
+    options = options.filter(
+      option =>
+        !option.group ||
+        !groupsToRemove.some(group => option.group.startsWith(group))
+    );
   }
   if (isEmpty(searchTerm)) return options;
 

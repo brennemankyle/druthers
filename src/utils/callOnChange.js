@@ -21,10 +21,10 @@ let callOnChange = (props, newValue, method = "add") => {
 
     if (method === "add") {
       let newOption = props.options.find(option => option.value === newValue);
-      if (newOption != null && newOption.parent) {
-        // Option is a parent, remove selected children
+      if (newOption != null && newOption.childGroup) {
+        // Option has child options, remove selected children
         value = props.selection
-          .filter(option => option.group !== newOption.group)
+          .filter(option => !option.group.startsWith(newOption.childGroup))
           .map(option => option.value);
       }
 

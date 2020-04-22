@@ -77,6 +77,46 @@ let selectableOptionGroupOptions = [
   { value: "to_go", label: "To Go" }
 ];
 
+let infiniteOptionGroupOptions = [
+  {
+    value: "burger",
+    label: "Burger",
+    options: [
+      {
+        value: "patty",
+        label: "Patty",
+        options: [
+          { value: "beef", label: "Beef" },
+          {
+            value: "veggie",
+            label: "Veggie",
+            options: [
+              { value: "blackbean", label: "Black bean" },
+              { value: "grain", label: "Grain" },
+              { value: "mirepoix", label: "Mirepoix" }
+            ]
+          },
+          { value: "lamb", label: "Lamb" }
+        ]
+      },
+      { value: "cheese", label: "Cheese" },
+      { value: "pickle", label: "Pickle" },
+      { value: "lettuce", label: "Lettuce" },
+      { value: "tomato", label: "Tomato" },
+      {
+        value: "all_condiments",
+        label: "Condiments",
+        options: [
+          { value: "ketchup", label: "Ketchup" },
+          { value: "mustard", label: "Mustard" },
+          { value: "mayo", label: "Mayo" }
+        ]
+      }
+    ]
+  },
+  { value: "to_go", label: "To Go" }
+];
+
 const StoryDruthers = props => {
   const [selection, setSelection] = useState(props.selection);
   let { selection: test, onChange, ...otherProps } = props;
@@ -205,6 +245,19 @@ storiesOf("Druthers", module)
         selection={selection}
         onChange={onChange}
         options={selectableOptionGroupOptions}
+        multiple
+      />
+    ),
+    { info }
+  )
+  .add(
+    "Infinite Option Groups",
+    () => (
+      <StoryDruthers
+        name="InfiniteOptionGroupOptions"
+        selection={selection}
+        onChange={onChange}
+        options={infiniteOptionGroupOptions}
         multiple
       />
     ),

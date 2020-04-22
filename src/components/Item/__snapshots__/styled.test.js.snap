@@ -1,34 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Option has item group and parent = false 1`] = `
-.emotion-0 {
-  padding-top: .25em;
-  padding-bottom: .25em;
-  padding-right: .25em;
-  padding-left: .25em;
-  z-index: 999;
-  margin-left: 1em;
-}
-
-.emotion-0:first-of-type {
-  border-top-left-radius: .2em;
-  border-top-right-radius: .2em;
-}
-
-.emotion-0:last-of-type {
-  border-bottom-left-radius: .2em;
-  border-bottom-right-radius: .2em;
-}
-
-<li
-  className="emotion-0"
-  val="42"
->
-  Meaning of life
-</li>
-`;
-
-exports[`Option has item group and parent = true 1`] = `
+exports[`Option has item group and childGroup = 0 1`] = `
 .emotion-0 {
   padding-top: .25em;
   padding-bottom: .25em;
@@ -56,7 +28,7 @@ exports[`Option has item group and parent = true 1`] = `
 </li>
 `;
 
-exports[`Option has item group and parent = true and value = null 1`] = `
+exports[`Option has item group and childGroup = 0 and value = null 1`] = `
 .emotion-0 {
   padding-top: .25em;
   padding-bottom: .25em;
@@ -80,6 +52,62 @@ exports[`Option has item group and parent = true and value = null 1`] = `
 <li
   className="emotion-0"
   val={null}
+>
+  Meaning of life
+</li>
+`;
+
+exports[`Option has item group and childGroup = 0.0.0 1`] = `
+.emotion-0 {
+  padding-top: .25em;
+  padding-bottom: .25em;
+  padding-right: .25em;
+  padding-left: .25em;
+  z-index: 999;
+  font-weight: bold;
+}
+
+.emotion-0:first-of-type {
+  border-top-left-radius: .2em;
+  border-top-right-radius: .2em;
+}
+
+.emotion-0:last-of-type {
+  border-bottom-left-radius: .2em;
+  border-bottom-right-radius: .2em;
+}
+
+<li
+  className="emotion-0"
+  val="42"
+>
+  Meaning of life
+</li>
+`;
+
+exports[`Option has item group and no childGroup 1`] = `
+.emotion-0 {
+  padding-top: .25em;
+  padding-bottom: .25em;
+  padding-right: .25em;
+  padding-left: .25em;
+  z-index: 999;
+  margin-left: 2em;
+}
+
+.emotion-0:first-of-type {
+  border-top-left-radius: .2em;
+  border-top-right-radius: .2em;
+}
+
+.emotion-0:last-of-type {
+  border-bottom-left-radius: .2em;
+  border-bottom-right-radius: .2em;
+}
+
+<li
+  className="emotion-0"
+  val="42"
 >
   Meaning of life
 </li>
