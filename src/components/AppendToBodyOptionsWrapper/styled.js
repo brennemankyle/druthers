@@ -3,20 +3,22 @@ import { StyledAppendToBodyOptionsWrapper as RawStyledAppendToBodyOptionsWrapper
 
 const StyledAppendToBodyOptionsWrapper = styled(
   RawStyledAppendToBodyOptionsWrapper
-)`
+)(
+  props => `
   position: absolute;
-  background-color: ${props => props.styles_colors_background};
-  width: ${props => props.styles_width}px;
+  background-color: ${props.styles_colors_background};
+  width: ${props.styles_width}px;
 
-  ${props =>
+  ${
     props.placeOptionsAbove
       ? `bottom: ${window.innerHeight - props.parentRect.y}px;
-      left: ${props.parentRect.x}px;`
+        left: ${props.parentRect.x}px;`
       : `top: ${props.parentRect.y + props.parentRect.height}px;
-      left: ${props.parentRect.x}px;`}
-  ${props => props.styles_rightToLeft && `transform: scaleX(-1);`}
-  ${props =>
-    !props.styles_hasOptions && !props.styles_multiple && `display: none;`}
-`;
+        left: ${props.parentRect.x}px;`
+  }
+  ${props.styles_rightToLeft ? `transform: scaleX(-1);` : ``}
+  ${!props.styles_hasOptions && !props.styles_multiple ? `display: none;` : ``}
+`
+);
 
 export { StyledAppendToBodyOptionsWrapper };
