@@ -1,4 +1,3 @@
-import { mockRect } from "../../mocks";
 import { renderHook } from "@testing-library/react-hooks";
 import usePlaceAbove from "./usePlaceAbove";
 
@@ -33,7 +32,7 @@ beforeEach(() => {
 });
 
 it("Should default to false", () => {
-  const { result } = renderHook(() => usePlaceAbove(mockRect, mockRect));
+  const { result } = renderHook(() => usePlaceAbove(rect, optionsWrapperRect));
 
   expect(result.current).toBe(false);
 });
@@ -77,6 +76,21 @@ it("Should place below if less space above", () => {
   rect.y = 50;
   rect.height = 100;
   optionsWrapperRect.height = 100;
+
+  const { result } = renderHook(() => usePlaceAbove(rect, optionsWrapperRect));
+
+  expect(result.current).toBe(false);
+});
+
+it("Should place below with no space", () => {
+  // Window height
+  window.innerHeight = 1;
+  window.scrollY = 1;
+
+  // Below height
+  rect.y = 0;
+  rect.height = 2;
+  optionsWrapperRect.height = 20;
 
   const { result } = renderHook(() => usePlaceAbove(rect, optionsWrapperRect));
 
