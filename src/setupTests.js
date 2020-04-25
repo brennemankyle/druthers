@@ -1,7 +1,6 @@
 import Enzyme from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import serializer from "jest-emotion";
-import usePlaceAbove from "./hooks/usePlaceAbove/usePlaceAbove";
 import useRefRect from "./hooks/useRefRect/useRefRect";
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -21,6 +20,3 @@ useRefRect.mockImplementation(() => ({
   x: 0,
   y: 600
 }));
-
-jest.mock("./hooks/usePlaceAbove/usePlaceAbove");
-usePlaceAbove.mockImplementation(() => false);

@@ -5,6 +5,9 @@ import usePlaceAbove from "../../hooks/usePlaceAbove/usePlaceAbove";
 import { mockStyles, MockElement, mockItemList } from "../../mocks";
 import AppendToBodyOptionsWrapper from "./AppendToBodyOptionsWrapper";
 
+jest.mock("../../hooks/usePlaceAbove/usePlaceAbove");
+usePlaceAbove.mockImplementation(() => false);
+
 it("renders", () => {
   const parentRef = React.createRef();
   const wrapper = mount(
