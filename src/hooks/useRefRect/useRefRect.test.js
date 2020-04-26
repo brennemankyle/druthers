@@ -29,8 +29,8 @@ it("Should get default", () => {
   ref = {
     current: null
   };
-  window.innerWidth = 10;
-  window.innerHeight = 10;
+  global.innerWidth = 10;
+  global.innerHeight = 10;
 
   const { result } = renderHook(() => useRefRect(ref));
 

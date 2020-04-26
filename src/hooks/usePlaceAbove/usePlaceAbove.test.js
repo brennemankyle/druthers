@@ -27,8 +27,8 @@ beforeEach(() => {
     y: 600
   };
 
-  window.innerHeight = 1000;
-  window.scrollY = 200;
+  global.innerHeight = 1000;
+  global.scrollY = 200;
 });
 
 it("Should default to false", () => {
@@ -39,8 +39,8 @@ it("Should default to false", () => {
 
 it("Should place above", () => {
   // Window height
-  window.innerHeight = 150;
-  window.scrollY = 150;
+  global.innerHeight = 150;
+  global.scrollY = 150;
 
   // Below height
   rect.y = 100;
@@ -54,8 +54,8 @@ it("Should place above", () => {
 
 it("Should place below", () => {
   // Window height
-  window.innerHeight = 150;
-  window.scrollY = 150;
+  global.innerHeight = 150;
+  global.scrollY = 150;
 
   // Below height
   rect.y = 100;
@@ -69,8 +69,8 @@ it("Should place below", () => {
 
 it("Should place below if less space above", () => {
   // Window height
-  window.innerHeight = 100;
-  window.scrollY = 100;
+  global.innerHeight = 100;
+  global.scrollY = 100;
 
   // Below height
   rect.y = 50;
@@ -84,8 +84,8 @@ it("Should place below if less space above", () => {
 
 it("Should place below with no space", () => {
   // Window height
-  window.innerHeight = 1;
-  window.scrollY = 1;
+  global.innerHeight = 1;
+  global.scrollY = 1;
 
   // Below height
   rect.y = 0;
