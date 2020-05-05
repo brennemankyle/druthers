@@ -11,7 +11,8 @@ const mergeState = (state, merge) => {
   return newState;
 };
 
-const reducer = (state, action) => {
+// reducer param for testing
+const selectReducer = (state, action, reducer = selectReducer) => {
   if (action.props == null) throw new Error("must always send props");
 
   const {
@@ -188,5 +189,5 @@ const reducer = (state, action) => {
   }
 };
 
-export default reducer;
+export default selectReducer;
 export { mergeState };
