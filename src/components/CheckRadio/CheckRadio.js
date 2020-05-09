@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 import PropTypes from "prop-types";
 import AppPropTypes from "../../utils/AppPropTypes";
 import defaultProps from "../../utils/defaultProps";
-import withKeys from "../../utils/withKeys";
+import { withKeys } from "../../utils/utils";
 import callOnChange from "../../utils/callOnChange";
 import useUpdateSelection, {
   allBooleanValues,

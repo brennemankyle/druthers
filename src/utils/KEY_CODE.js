@@ -1,4 +1,4 @@
-import { inRange } from "./essentialLodash";
+import { inRange } from "./utils";
 
 let KEY_CODES = {
   ENTER_KEY: 13,
@@ -42,7 +42,8 @@ KEY_CODES.isOpenKeyCode = keyCode => {
     KEY_CODES.OPEN_BRACKET,
     KEY_CODES.BACK_SLASH,
     KEY_CODES.CLOSE_BRAKET,
-    KEY_CODES.SINGLE_QUOTE
+    KEY_CODES.SINGLE_QUOTE,
+    KEY_CODES.SPACE
   ];
 
   // if you type letters, numbers, or openKeys then it is an open key code

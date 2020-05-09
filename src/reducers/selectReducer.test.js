@@ -8,9 +8,7 @@ moveHighlighted.mockImplementation(() => "test");
 jest.mock("./selectReducer", () => ({
   __esModule: true,
   ...jest.requireActual("./selectReducer"),
-  default: jest
-    .fn()
-    .mockImplementation(jest.requireActual("./selectReducer").default)
+  default: jest.fn(jest.requireActual("./selectReducer").default)
 }));
 
 beforeEach(() => {

@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import AppPropTypes from "../../utils/AppPropTypes";
-import withoutKeys from "../../utils/withoutKeys";
+import { withoutKeys } from "../../utils/utils";
 
 let Wrapper = (props, ref) => {
   let { className, children, ...otherProps } = withoutKeys(props, "styles_");

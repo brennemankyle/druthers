@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import AppPropTypes from "../../utils/AppPropTypes";
-import withKeys from "../../utils/withKeys";
+import { withKeys } from "../../utils/utils";
 
 const noop = () => {};
 const preventBlur = e => e.preventDefault();

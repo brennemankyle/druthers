@@ -1,6 +1,6 @@
 import React from "react";
 import defaultProps from "./utils/defaultProps";
-import withKeys from "./utils/withKeys";
+import { withKeys } from "./utils/utils";
 
 let noop = () => {};
 

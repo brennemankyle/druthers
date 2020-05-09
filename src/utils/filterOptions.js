@@ -1,4 +1,4 @@
-import { isEmpty, without, sortBy } from "./essentialLodash";
+import { isEmpty, without, groupBy } from "./utils";
 import FuzzySet from "fuzzyset.js";
 
 let fuzzySearch = (item, searchTerm) => {
@@ -52,7 +52,7 @@ let filterOptions = (props, searchTerm) => {
       });
   }
 
-  options = sortBy(options, [
+  options = groupBy(options, [
     item => item.group,
     item => item.label.toLowerCase() === searchTerm,
     item => item.value != null && item.value.toLowerCase() === searchTerm,

@@ -1,4 +1,4 @@
-import { castArray } from "./essentialLodash";
+import { castArray } from "./utils";
 
 let internalCallOnChange = (props, value) => {
   props.onChange({

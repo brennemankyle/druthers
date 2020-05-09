@@ -1,4 +1,4 @@
-import { castArray } from "./essentialLodash";
+import { castArray } from "./utils";
 
 let getKey = (keyGetter, option) =>
   typeof keyGetter === "string" ? option[keyGetter] : keyGetter(option);
