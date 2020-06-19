@@ -241,6 +241,35 @@ describe("rankFilterSort", () => {
     );
   });
 
+  it("should do custom on rank 0 parents", () => {
+    items = [
+      {
+        label: "rank 0 parent",
+        value: "1",
+        children: [{ label: "search", value: "2" }]
+      }
+    ];
+    searchTerm = "P2 child 2";
+
+    expect(
+      rankFilterSort(
+        items,
+        calculateRankThunk("search"),
+        (a, b) => b.rank - a.rank,
+        "children",
+        item => {
+          delete item.value;
+          return item;
+        }
+      )
+    ).toStrictEqual([
+      {
+        label: "rank 0 parent",
+        children: [{ label: "search", value: "2" }]
+      }
+    ]);
+  });
+
   it("should sort options in order", () => {
     items = [
       {

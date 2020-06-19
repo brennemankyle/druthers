@@ -53,7 +53,8 @@ let rankFilterSort = (
   items,
   calculateRank,
   comparator = (a, b) => b.rank - a.rank,
-  childrenKey = "children"
+  childrenKey = "children",
+  onParentRankZero = item => item
 ) => {
   let internalRankFilterSort = items => {
     let accRank = 0;
@@ -68,8 +69,6 @@ let rankFilterSort = (
             item[childrenKey]
           );
 
-          rank += childSum;
-
           newItem = {
             ...newItem,
             [childrenKey]: other[childrenKey]
@@ -78,6 +77,12 @@ let rankFilterSort = (
           if (newItem[childrenKey].length === 0) {
             delete newItem[childrenKey];
           }
+
+          if (rank <= 0) {
+            newItem = onParentRankZero(newItem);
+          }
+
+          rank += childSum;
         }
 
         accRank += rank;

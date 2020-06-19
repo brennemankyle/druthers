@@ -392,7 +392,6 @@ it("should sort options in order", () => {
   expect(filterOptions(props, searchTerm)).toStrictEqual([
     {
       label: "nothing",
-      value: "p",
       childGroup: "0",
       options: expect.anything()
     },

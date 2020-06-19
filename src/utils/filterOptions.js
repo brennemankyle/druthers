@@ -13,6 +13,12 @@ let fuzzySearch = (item, searchTerm) => {
 let sortComparator = (a, b) =>
   b.rank - a.rank || a.item.label.localeCompare(b.item.label); // sort by rank, then alphabetically
 
+let onParentRankZeroRemoveValue = item => {
+  delete item.value; // Don't allow rank 0 parent to be selectable during searching
+
+  return item;
+};
+
 let filterOptions = (props, searchTerm) => {
   let calculateRank = option => {
     if (option.label.toLowerCase() === searchTerm) return 32;
@@ -35,7 +41,8 @@ let filterOptions = (props, searchTerm) => {
         props.hierarchicalOptions,
         calculateRank,
         sortComparator,
-        "options"
+        "options",
+        onParentRankZeroRemoveValue
       ),
       props.hasOptionGroups
     );
