@@ -1,11 +1,11 @@
-// Functions that we need from lodash, but implemented here so we don't have to install all of lodash
-
 function castArray(value) {
   return Array.isArray(value) ? value : [value];
 }
 
 function without(array, values) {
-  return array.filter(value => !castArray(values).includes(value));
+  let filtered = array.filter(value => !castArray(values).includes(value));
+
+  return filtered.length === array.length ? array : filtered;
 }
 
 function isEmpty(value) {
@@ -49,29 +49,56 @@ function inRange(number, start, end) {
   return number >= Math.min(start, end) && number < Math.max(start, end);
 }
 
-function groupBy(array, funcs) {
-  function convertToPriority(value) {
-    if (typeof value === "boolean") return Number(!value);
+let rankFilterSort = (
+  items,
+  calculateRank,
+  comparator = (a, b) => b.rank - a.rank,
+  childrenKey = "children"
+) => {
+  let internalRankFilterSort = items => {
+    let accRank = 0;
 
-    return typeof value === "string" || value instanceof String
-      ? value
-      : Number(value);
-  }
+    let filteredItems = items
+      .map(item => {
+        let newItem = item;
+        let rank = calculateRank(newItem);
 
-  function isSorted(original, prioritized) {
-    return original.every((item, index) => item === prioritized[index]);
-  }
+        if (item[childrenKey]) {
+          let { childSum, ...other } = internalRankFilterSort(
+            item[childrenKey]
+          );
 
-  let priority = value =>
-    funcs.map(func => convertToPriority(func(value))).join(".");
+          rank += childSum;
 
-  let prioritized = array
-    .map(value => ({ value, priority: priority(value) }))
-    .sort((a, b) => a.priority.localeCompare(b.priority))
-    .map(item => item.value);
+          newItem = {
+            ...newItem,
+            [childrenKey]: other[childrenKey]
+          };
 
-  return isSorted(array, prioritized) ? array : prioritized;
-}
+          if (newItem[childrenKey].length === 0) {
+            delete newItem[childrenKey];
+          }
+        }
+
+        accRank += rank;
+
+        return {
+          rank,
+          item: newItem
+        };
+      })
+      .filter(ranker => ranker.rank > 0) // Remove ranks with 0
+      .sort(comparator)
+      .map(ranker => ranker.item); // return to just array of items
+
+    return {
+      [childrenKey]: filteredItems,
+      childSum: accRank
+    };
+  };
+
+  return internalRankFilterSort(items)[childrenKey];
+};
 
 function withKeys(obj, startsWith, not = false) {
   return Object.keys(obj).reduce((acc, key) => {
@@ -88,12 +115,12 @@ let withoutKeys = (obj, startsWith) => {
 };
 
 export {
-  groupBy,
   inRange,
   without,
   castArray,
   isEmpty,
   last,
+  rankFilterSort,
   withKeys,
   withoutKeys
 };

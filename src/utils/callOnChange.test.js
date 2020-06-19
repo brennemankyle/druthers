@@ -99,6 +99,10 @@ describe("add", () => {
         value: "child0.0",
         label: "child0.0",
         group: "0.0"
+      },
+      {
+        value: "nothing",
+        label: "nothing"
       }
     ];
     props.options = [
@@ -117,12 +121,16 @@ describe("add", () => {
         value: "child0.0",
         label: "child0.0",
         group: "0.0"
+      },
+      {
+        value: "nothing",
+        label: "nothing"
       }
     ];
 
     callOnChange(props, "child0", "add");
 
-    expected.target.value = ["child0"];
+    expected.target.value = ["nothing", "child0"];
 
     expect(props.onChange).toBeCalledWith(expected);
   });

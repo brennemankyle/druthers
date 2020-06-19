@@ -20,6 +20,7 @@
     "old-start": "node scripts/start.js",
     "old-build": "node scripts/build.js",
     "test": "node scripts/test.js",
+    "test-debug": "node --inspect scripts/test.js --runInBand",
     "transpile": "babel ./src --out-dir ./dist",
     "prepare": "npm run transpile",
     "predeploy": "npm run build",

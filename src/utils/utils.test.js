@@ -1,5 +1,5 @@
 import {
-  groupBy,
+  rankFilterSort,
   inRange,
   without,
   castArray,
@@ -9,78 +9,413 @@ import {
   withoutKeys
 } from "./utils";
 
-describe("groupBy", () => {
-  let users = [
-    { user: "fred", group: 1 },
-    { user: "barney", group: 2 },
-    { user: "ari", group: 1 },
-    { user: "freddie", group: 2 },
-    { user: "freds", group: 2 },
-    { user: "fred", group: 2 }
-  ];
+describe("rankFilterSort", () => {
+  let items;
+  let searchTerm;
+  let sortComparator;
+  let calculateRankThunk;
 
-  it("should not changed already sorted", () => {
-    let sorted = [{ user: "fred", group: 1 }, { user: "ari", group: 2 }];
+  beforeEach(() => {
+    items = [];
+    searchTerm = "";
 
-    expect(groupBy(sorted, [item => item.group])).toBe(sorted);
-    expect(groupBy(sorted, [item => item.group])).toStrictEqual([
-      { user: "fred", group: 1 },
-      { user: "ari", group: 2 }
-    ]);
+    sortComparator = (a, b) =>
+      a.rank - b.rank || a.label.localeCompare(b.label); // sort by rank, then alphabetically
+
+    calculateRankThunk = searchTerm => option => {
+      searchTerm = searchTerm.toLowerCase();
+
+      if (option.label.toLowerCase() === searchTerm) return 8;
+      else if (option.label.toLowerCase().startsWith(searchTerm)) return 4;
+      else if (option.label.toLowerCase().endsWith(searchTerm)) return 2;
+      else if (option.label.toLowerCase().includes(searchTerm)) return 1;
+      else return 0;
+    };
   });
 
-  it("should group", () => {
-    expect(groupBy(users, [item => item.group])).toStrictEqual([
-      { user: "fred", group: 1 },
-      { user: "ari", group: 1 },
-      { user: "barney", group: 2 },
-      { user: "freddie", group: 2 },
-      { user: "freds", group: 2 },
-      { user: "fred", group: 2 }
-    ]);
+  it("should filter by label equals", () => {
+    items = [
+      {
+        label: "test",
+        value: "1"
+      },
+      {
+        label: "not",
+        value: "not"
+      }
+    ];
+    searchTerm = "test";
+
+    expect(rankFilterSort(items, calculateRankThunk(searchTerm))).toStrictEqual(
+      [
+        {
+          label: "test",
+          value: "1"
+        }
+      ]
+    );
   });
 
-  it("should group multiple", () => {
+  it("should filter by label includes search term", () => {
+    items = [
+      {
+        label: "testing",
+        value: "1"
+      },
+      {
+        label: "not",
+        value: "not"
+      }
+    ];
+    searchTerm = "test";
+
+    expect(rankFilterSort(items, calculateRankThunk(searchTerm))).toStrictEqual(
+      [
+        {
+          label: "testing",
+          value: "1"
+        }
+      ]
+    );
+  });
+
+  it("should not filter by value includes search term", () => {
+    items = [
+      {
+        label: "1",
+        value: "testing"
+      },
+      {
+        label: "not",
+        value: "not"
+      }
+    ];
+    searchTerm = "test";
+
+    expect(rankFilterSort(items, calculateRankThunk(searchTerm))).toStrictEqual(
+      []
+    );
+  });
+
+  it("should keep parents of child search term", () => {
+    items = [
+      {
+        label: "Parent 1",
+        value: "1",
+        children: [
+          {
+            label: "P1 Child 1",
+            value: "p1child1",
+            children: [{ label: "search", value: "p1c1child1" }]
+          }
+        ]
+      },
+      {
+        label: "search",
+        value: "2",
+        children: [{ label: "P2 child 2", value: "p2child1" }]
+      }
+    ];
+    searchTerm = "search";
+
+    expect(rankFilterSort(items, calculateRankThunk(searchTerm))).toStrictEqual(
+      [
+        {
+          label: "Parent 1",
+          value: "1",
+          children: [
+            {
+              label: "P1 Child 1",
+              value: "p1child1",
+              children: [{ label: "search", value: "p1c1child1" }]
+            }
+          ]
+        },
+        {
+          label: "search",
+          value: "2"
+        }
+      ]
+    );
+  });
+
+  it("should sort parent with multiple children rank first", () => {
+    items = [
+      {
+        label: "Parent 1",
+        value: "1",
+        children: [
+          {
+            label: "search",
+            value: "p1child2"
+          }
+        ]
+      },
+      {
+        label: "search",
+        value: "2",
+        children: [{ label: "P2 child 2", value: "p2child1" }]
+      },
+      {
+        label: "Parent 3",
+        value: "3",
+        children: [
+          {
+            label: "P3 Child 1",
+            value: "p3child1",
+            children: [{ label: "search", value: "p3c1child1" }]
+          },
+          {
+            label: "search",
+            value: "p3child2"
+          }
+        ]
+      }
+    ];
+    searchTerm = "search";
+
+    expect(rankFilterSort(items, calculateRankThunk(searchTerm))).toStrictEqual(
+      [
+        {
+          label: "Parent 3",
+          value: "3",
+          children: [
+            {
+              label: "P3 Child 1",
+              value: "p3child1",
+              children: [{ label: "search", value: "p3c1child1" }]
+            },
+            {
+              label: "search",
+              value: "p3child2"
+            }
+          ]
+        },
+        {
+          label: "Parent 1",
+          value: "1",
+          children: [
+            {
+              label: "search",
+              value: "p1child2"
+            }
+          ]
+        },
+        {
+          label: "search",
+          value: "2"
+        }
+      ]
+    );
+  });
+
+  it("should remove empty parents", () => {
+    items = [
+      {
+        label: "Parent 1",
+        value: "1",
+        children: [
+          {
+            label: "P1 Child 1",
+            value: "p1child1",
+            children: [{ label: "search", value: "p1c1child1" }]
+          }
+        ]
+      },
+      {
+        label: "search",
+        value: "2",
+        children: [{ label: "P2 child 2", value: "p2child1" }]
+      }
+    ];
+    searchTerm = "P2 child 2";
+
+    expect(rankFilterSort(items, calculateRankThunk(searchTerm))).toStrictEqual(
+      [
+        {
+          label: "search",
+          value: "2",
+          children: [{ label: "P2 child 2", value: "p2child1" }]
+        }
+      ]
+    );
+  });
+
+  it("should sort options in order", () => {
+    items = [
+      {
+        label: "nothing",
+        value: "0"
+      },
+      {
+        label: "_search_",
+        value: "1"
+      },
+      {
+        label: "_search",
+        value: "2"
+      },
+      {
+        label: "search_",
+        value: "3"
+      },
+      {
+        label: "search",
+        value: "4"
+      }
+    ];
+    searchTerm = "search";
+
+    expect(rankFilterSort(items, calculateRankThunk(searchTerm))).toStrictEqual(
+      [
+        {
+          label: "search",
+          value: "4"
+        },
+        {
+          label: "search_",
+          value: "3"
+        },
+        {
+          label: "_search",
+          value: "2"
+        },
+        {
+          label: "_search_",
+          value: "1"
+        }
+      ]
+    );
+  });
+
+  it("should custom sort options in order", () => {
+    items = [
+      {
+        label: "nothing",
+        value: "0"
+      },
+      {
+        label: "nothing",
+        value: "p",
+        options: [
+          {
+            label: "_search_",
+            value: "p1"
+          },
+          {
+            label: "_search",
+            value: "p2"
+          },
+          {
+            label: "search_",
+            value: "p3"
+          },
+          {
+            label: "search",
+            value: "p4"
+          },
+          {
+            label: "Zsort_search_",
+            value: "p5"
+          },
+          {
+            label: "Asort_search_",
+            value: "p6"
+          }
+        ]
+      },
+      {
+        label: "_search_",
+        value: "1"
+      },
+      {
+        label: "_search",
+        value: "2"
+      },
+      {
+        label: "search_",
+        value: "3"
+      },
+      {
+        label: "search",
+        value: "4"
+      },
+      {
+        label: "Zsort_search_",
+        value: "6"
+      },
+      {
+        label: "Asort_search_",
+        value: "5"
+      }
+    ];
+    searchTerm = "search";
+    sortComparator = (a, b) =>
+      b.rank - a.rank || a.item.label.localeCompare(b.item.label);
+    let childrenKey = "options";
+
     expect(
-      groupBy(users, [item => item.group, item => item.user])
+      rankFilterSort(
+        items,
+        calculateRankThunk(searchTerm),
+        sortComparator,
+        childrenKey
+      )
     ).toStrictEqual([
-      { user: "ari", group: 1 },
-      { user: "fred", group: 1 },
-      { user: "barney", group: 2 },
-      { user: "fred", group: 2 },
-      { user: "freddie", group: 2 },
-      { user: "freds", group: 2 }
-    ]);
-  });
-
-  it("should group with search", () => {
-    expect(
-      groupBy(users, [item => item.group, item => item.user === "freds"])
-    ).toStrictEqual([
-      { user: "fred", group: 1 },
-      { user: "ari", group: 1 },
-      { user: "freds", group: 2 },
-      { user: "barney", group: 2 },
-      { user: "freddie", group: 2 },
-      { user: "fred", group: 2 }
-    ]);
-  });
-
-  it("should group with search multiple", () => {
-    expect(
-      groupBy(users, [
-        item => item.group,
-        item => item.user === "freds",
-        item => item.user.startsWith("fredd"),
-        item => item.user.endsWith("fred")
-      ])
-    ).toStrictEqual([
-      { user: "fred", group: 1 },
-      { user: "ari", group: 1 },
-      { user: "freds", group: 2 },
-      { user: "freddie", group: 2 },
-      { user: "fred", group: 2 },
-      { user: "barney", group: 2 }
+      {
+        label: "nothing",
+        value: "p",
+        options: [
+          {
+            label: "search",
+            value: "p4"
+          },
+          {
+            label: "search_",
+            value: "p3"
+          },
+          {
+            label: "_search",
+            value: "p2"
+          },
+          {
+            label: "_search_",
+            value: "p1"
+          },
+          {
+            label: "Asort_search_",
+            value: "p6"
+          },
+          {
+            label: "Zsort_search_",
+            value: "p5"
+          }
+        ]
+      },
+      {
+        label: "search",
+        value: "4"
+      },
+      {
+        label: "search_",
+        value: "3"
+      },
+      {
+        label: "_search",
+        value: "2"
+      },
+      {
+        label: "_search_",
+        value: "1"
+      },
+      {
+        label: "Asort_search_",
+        value: "5"
+      },
+      {
+        label: "Zsort_search_",
+        value: "6"
+      }
     ]);
   });
 });
@@ -109,7 +444,10 @@ describe("inRange", () => {
 
 describe("without", () => {
   it("should do nothing, if empty", () => {
-    expect(without([], 0)).toStrictEqual([]);
+    let testArray = [];
+
+    expect(without(testArray, 0)).toBe(testArray);
+    expect(without(testArray, 0)).toStrictEqual([]);
   });
 
   it("should do nothing", () => {

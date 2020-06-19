@@ -21,6 +21,7 @@ let defaultProps = {
   name: undefined,
   selection: [],
   options: [],
+  hierarchicalOptions: [],
   placeholder: "Select...",
   multiple: false,
   disabled: false,
