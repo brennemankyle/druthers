@@ -8,16 +8,27 @@ exports[`renders 1`] = `
   onTouchStart={[Function]}
 >
   <div>
-    <MockElement />
-    <MockInput
-      onBlur={[MockFunction]}
-      onFocus={[MockFunction]}
+    <div
+      data-props={Object {}}
+    />
+    <input
+      data-props={
+        Object {
+          "onBlur": [MockFunction],
+          "onFocus": [MockFunction],
+        }
+      }
+      type="text"
     />
   </div>
   <span
     className="divider"
   />
-  <MockSvg />
+  <svg>
+    <path
+      d="M0 0L5 5Z"
+    />
+  </svg>
 </div>
 `;
 
@@ -29,15 +40,26 @@ exports[`renders disabled 1`] = `
   onTouchStart={[Function]}
 >
   <div>
-    <MockElement />
-    <MockInput
-      onBlur={[MockFunction]}
-      onFocus={[MockFunction]}
+    <div
+      data-props={Object {}}
+    />
+    <input
+      data-props={
+        Object {
+          "onBlur": [MockFunction],
+          "onFocus": [MockFunction],
+        }
+      }
+      type="text"
     />
   </div>
   <span
     className="divider"
   />
-  <MockSvg />
+  <svg>
+    <path
+      d="M0 0L5 5Z"
+    />
+  </svg>
 </div>
 `;

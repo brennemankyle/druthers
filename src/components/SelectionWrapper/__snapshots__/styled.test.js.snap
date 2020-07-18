@@ -93,6 +93,7 @@ exports[`areOptionsOpen = true 1`] = `
           "onFocus": undefined,
         }
       }
+      type="text"
     />
   </div>
   <span
@@ -192,6 +193,7 @@ exports[`styles 1`] = `
           "onFocus": undefined,
         }
       }
+      type="text"
     />
   </div>
   <span
@@ -324,6 +326,7 @@ exports[`styles_hasOptions = false 1`] = `
           "onFocus": undefined,
         }
       }
+      type="text"
     />
   </div>
   <span

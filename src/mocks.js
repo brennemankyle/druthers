@@ -33,7 +33,7 @@ let mockEvent = {
 };
 
 let MockElement = props => <div data-props={props} />;
-let MockInput = props => <input data-props={props} />;
+let MockInput = props => <input type="text" data-props={props} />;
 let MockSvg = () => (
   <svg>
     <path d="M0 0L5 5Z" />

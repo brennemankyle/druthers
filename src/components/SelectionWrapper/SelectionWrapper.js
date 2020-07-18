@@ -2,12 +2,12 @@ import React, { useRef } from "react";
 import PropTypes from "prop-types";
 import AppPropTypes from "../../utils/AppPropTypes";
 
-const preventBlur = e => e.preventDefault();
+const preventBlur = (e) => e.preventDefault();
 
-let SelectionWrapper = props => {
+let SelectionWrapper = (props) => {
   const searchRef = useRef(null);
 
-  let onClick = e => {
+  let onClick = (e) => {
     e.preventDefault();
     if (e.target.classList.contains("remove")) return; // Don't open options if remove was clicked
 
@@ -21,7 +21,7 @@ let SelectionWrapper = props => {
   const Search = React.cloneElement(props.Search, {
     ref: searchRef,
     onFocus: props.onFocus,
-    onBlur: props.onBlur
+    onBlur: props.onBlur,
   });
   let Expand = props.svg_Expand;
 
@@ -49,10 +49,10 @@ SelectionWrapper.propTypes = {
   Search: AppPropTypes.element.isRequired,
   SelectionList: PropTypes.oneOfType([
     AppPropTypes.element.isRequired,
-    PropTypes.bool
+    PropTypes.bool,
   ]),
   svg_Expand: AppPropTypes.element.isRequired,
-  ...AppPropTypes.styles
+  ...AppPropTypes.styles,
 };
 
 export default SelectionWrapper;
