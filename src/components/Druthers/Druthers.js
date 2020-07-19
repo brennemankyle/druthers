@@ -1,19 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
-import AppPropTypes, {
-  selectPropsTypes
-} from "../../utils/AppPropTypes";
+import AppPropTypes, { selectPropsTypes } from "../../utils/AppPropTypes";
 import defaultProps from "../../utils/defaultProps";
 import useWindowWidth from "../../hooks/useWindowWidth/useWindowWidth";
 import Select from "../Select/Select";
 import CheckRadio from "../CheckRadio/CheckRadio";
 import { CheckBox, Radio, Switch } from "../SingleCheckRadio/styled";
 
-let hasOverflownX = element => element.scrollWidth > element.offsetWidth;
+let hasOverflownX = (element) => element.scrollWidth > element.offsetWidth;
 
-let Druthers = rawProps => {
+let Druthers = (rawProps) => {
   let props = rawProps.massageDataIn(rawProps);
   const canCheckRadio =
-    props.hasOptions <= props.checkRadioMaxCount &&
+    props.options.length <= props.checkRadioMaxCount &&
     !props.creatable &&
     !props.hasOptionGroups;
   const checkRadioRef = useRef(null);
@@ -21,8 +19,7 @@ let Druthers = rawProps => {
   const [isLoading, setIsLoading] = useState(canCheckRadio); // Only show CheckRadio after we've loaded
   const [isOverflown, setIsOverflown] = useState(false);
   useEffect(() => {
-    if (canCheckRadio)
-      setIsOverflown(hasOverflownX(checkRadioRef.current, windowWidth));
+    if (canCheckRadio) setIsOverflown(hasOverflownX(checkRadioRef.current));
     if (isLoading) setIsLoading(false);
   }, [props.options, props.creatable, windowWidth, canCheckRadio, isLoading]);
 
@@ -34,7 +31,7 @@ let Druthers = rawProps => {
       ...checkRadioStyle,
       opacity: 1,
       height: 0,
-      overflowY: "hidden"
+      overflowY: "hidden",
     };
   }
 
@@ -58,7 +55,7 @@ let Druthers = rawProps => {
     ),
     (!canCheckRadio || isOverflown) && (
       <Select {...props} massaged={true} key="Select" />
-    )
+    ),
   ];
 };
 
@@ -68,7 +65,7 @@ Druthers.defaultProps = {
   component_CheckRadio: CheckRadio,
   component_CheckBox: CheckBox,
   component_Radio: Radio,
-  component_Switch: Switch
+  component_Switch: Switch,
 };
 
 Druthers.propTypes = {
@@ -77,7 +74,7 @@ Druthers.propTypes = {
   component_CheckRadio: AppPropTypes.element.isRequired,
   component_CheckBox: AppPropTypes.element.isRequired,
   component_Radio: AppPropTypes.element.isRequired,
-  component_Switch: AppPropTypes.element.isRequired
+  component_Switch: AppPropTypes.element.isRequired,
 };
 
 export default Druthers;
