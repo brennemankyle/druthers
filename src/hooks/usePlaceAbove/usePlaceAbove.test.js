@@ -1,4 +1,4 @@
-import { renderHook } from "@testing-library/react-hooks";
+import { renderHook } from "@testing-library/react";
 import usePlaceAbove from "./usePlaceAbove";
 
 let rect;
@@ -13,7 +13,7 @@ beforeEach(() => {
     top: 0,
     width: 200,
     x: 0,
-    y: 600
+    y: 600,
   };
 
   optionsWrapperRect = {
@@ -24,7 +24,7 @@ beforeEach(() => {
     top: 0,
     width: 200,
     x: 0,
-    y: 600
+    y: 600,
   };
 
   global.innerHeight = 1000;

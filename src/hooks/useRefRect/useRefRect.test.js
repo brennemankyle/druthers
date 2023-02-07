@@ -1,5 +1,5 @@
 import { mockRect } from "../../mocks";
-import { renderHook } from "@testing-library/react-hooks";
+import { renderHook } from "@testing-library/react";
 import useRefRect from "./useRefRect";
 
 let ref;
@@ -16,18 +16,18 @@ beforeEach(() => {
           left: 20,
           right: 220,
           width: 200,
-          height: 100
-        }
+          height: 100,
+        },
       ],
       offsetLeft: 15,
-      offsetTop: 25
-    }
+      offsetTop: 25,
+    },
   };
 });
 
 it("Should get default", () => {
   ref = {
-    current: null
+    current: null,
   };
   global.innerWidth = 10;
   global.innerHeight = 10;
@@ -42,7 +42,7 @@ it("Should get default", () => {
     top: 0,
     width: 0,
     x: -10,
-    y: -10
+    y: -10,
   });
 });
 
@@ -57,6 +57,6 @@ it("Should get ref rectangle", () => {
     width: 200,
     height: 100,
     x: 15,
-    y: 25
+    y: 25,
   });
 });

@@ -1,8 +1,8 @@
-import { renderHook } from "@testing-library/react-hooks";
+import { renderHook } from "@testing-library/react";
 import callOnChange from "../../utils/callOnChange";
 import useUpdateSelection, {
   allBooleanValues,
-  isBooleanSwitch
+  isBooleanSwitch,
 } from "./useUpdateSelection";
 
 jest.mock("../../utils/callOnChange");
@@ -20,7 +20,7 @@ beforeEach(() => {
     onChange: jest.fn(),
     allowDuplicates: true,
     multiple: true,
-    parseTo: "string"
+    parseTo: "string",
   };
 
   jest.clearAllMocks();
@@ -36,30 +36,30 @@ describe("allowDuplicates", () => {
   let withDuplicates = [
     {
       value: "1",
-      label: "dup"
+      label: "dup",
     },
     {
       value: "1",
-      label: "dup"
+      label: "dup",
     },
     {
       value: "1",
-      label: "dup"
+      label: "dup",
     },
     {
       value: "2",
-      label: "other"
-    }
+      label: "other",
+    },
   ];
   let options = [
     {
       value: "1",
-      label: "dup"
+      label: "dup",
     },
     {
       value: "2",
-      label: "other"
-    }
+      label: "other",
+    },
   ];
 
   it("Should allow duplicates", () => {
@@ -86,22 +86,22 @@ describe("single selection", () => {
   let selection = [
     {
       value: "1",
-      label: "dup"
+      label: "dup",
     },
     {
       value: "2",
-      label: "other"
-    }
+      label: "other",
+    },
   ];
   let options = [
     {
       value: "1",
-      label: "dup"
+      label: "dup",
     },
     {
       value: "2",
-      label: "other"
-    }
+      label: "other",
+    },
   ];
 
   it("Should allow multiple", () => {
@@ -128,22 +128,22 @@ describe("creatable", () => {
   let selection = [
     {
       value: "1",
-      label: "dup"
+      label: "dup",
     },
     {
       value: "created",
-      label: "created"
-    }
+      label: "created",
+    },
   ];
   let options = [
     {
       value: "1",
-      label: "dup"
+      label: "dup",
     },
     {
       value: "2",
-      label: "other"
-    }
+      label: "other",
+    },
   ];
 
   it("Should not allow created", () => {
@@ -170,12 +170,12 @@ describe("booleanSwitch", () => {
   let options = [
     {
       value: "true",
-      label: "Yes"
+      label: "Yes",
     },
     {
       value: "false",
-      label: "No"
-    }
+      label: "No",
+    },
   ];
 
   it("Should never be empty and default false", () => {
@@ -193,8 +193,8 @@ describe("booleanSwitch", () => {
     props.options = [
       {
         value: "false",
-        label: "No"
-      }
+        label: "No",
+      },
     ];
     props.multiple = false;
 
@@ -216,12 +216,12 @@ describe("allBooleanValues", () => {
   let options = [
     {
       value: "true",
-      label: "Yes"
+      label: "Yes",
     },
     {
       value: "false",
-      label: "No"
-    }
+      label: "No",
+    },
   ];
 
   it("should be true", () => {
@@ -231,7 +231,7 @@ describe("allBooleanValues", () => {
   it("should be false", () => {
     options.push({
       value: "not bool",
-      label: "not bool"
+      label: "not bool",
     });
 
     expect(allBooleanValues(options)).toBe(false);
@@ -242,12 +242,12 @@ describe("isBooleanSwitch", () => {
   let options = [
     {
       value: "true",
-      label: "Yes"
+      label: "Yes",
     },
     {
       value: "false",
-      label: "No"
-    }
+      label: "No",
+    },
   ];
 
   it("should be true, two options", () => {
@@ -261,8 +261,8 @@ describe("isBooleanSwitch", () => {
     props.options = [
       {
         value: "true",
-        label: "Yes"
-      }
+        label: "Yes",
+      },
     ];
     props.multiple = false;
 
@@ -280,16 +280,16 @@ describe("isBooleanSwitch", () => {
     props.options = [
       {
         value: "true",
-        label: "Yes"
+        label: "Yes",
       },
       {
         value: "false",
-        label: "No"
+        label: "No",
       },
       {
         value: "false",
-        label: "Not"
-      }
+        label: "Not",
+      },
     ];
     props.multiple = false;
 
@@ -307,8 +307,8 @@ describe("isBooleanSwitch", () => {
     props.options = [
       {
         value: "not bool",
-        label: "not bool"
-      }
+        label: "not bool",
+      },
     ];
     props.multiple = false;
 
