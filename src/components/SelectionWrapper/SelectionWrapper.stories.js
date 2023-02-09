@@ -4,9 +4,9 @@ import { action } from "@storybook/addon-actions";
 import { mockStyles } from "../../mocks";
 import props from "../../utils/defaultProps";
 import { SelectionWrapper } from "../SelectionWrapper/styled";
-import { SelectionList } from "../SelectionList/styled";
+import { SelectionList } from "../ItemList/styled";
 import { Search } from "../Search/styled";
-import { Selection } from "../Selection/styled";
+import { Selection } from "../Item/styled";
 
 let selectionList = (
   <SelectionList
@@ -52,7 +52,7 @@ storiesOf("(Internal) SelectionWrapper", module).add("open", () => (
 
 let styles = {
   ...mockStyles,
-  styles_disabled: true
+  styles_disabled: true,
 };
 
 storiesOf("(Internal) SelectionWrapper", module).add("disabled", () => (
