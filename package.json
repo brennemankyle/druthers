@@ -1,9 +1,9 @@
 {
   "name": "druthers",
   "homepage": "https://brennemankyle.github.io/druthers/",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "React Multi-Select with automatic checkboxes/radios",
-  "main": "dist/index.js",
+  "main": "src/index.js",
   "private": false,
   "dependencies": {
     "@emotion/react": "^11.10.5",
