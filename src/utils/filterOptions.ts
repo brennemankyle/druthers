@@ -1,14 +1,9 @@
-import { isEmpty, without, rankFilterSort } from "./utils";
+import { isEmpty, without, rankFilterSort, Comparable } from "./utils";
 import { flattenOptions } from "./massageOptions";
 import FuzzySet from "fuzzyset";
 import { Item, MassagedSelectProps } from "./SelectTypes";
 
-interface Comparable {
-  rank: number;
-  item: Item;
-}
-
-interface RankItem extends Omit<Item, "value"> {
+interface DeletableItem extends Omit<Item, "value"> {
   value?: string;
 }
 
@@ -22,11 +17,11 @@ function fuzzySearch(item: Item, searchTerm: string): boolean {
   return result ? result.length > 0 : false;
 }
 
-function sortComparator(a: Comparable, b: Comparable): number {
+function sortComparator(a: Comparable<Item>, b: Comparable<Item>): number {
   return b.rank - a.rank || a.item.label.localeCompare(b.item.label); // sort by rank, then alphabetically
 }
 
-function onParentRankZeroRemoveValue(item: RankItem): RankItem {
+function onParentRankZeroRemoveValue(item: DeletableItem): DeletableItem {
   delete item.value; // Don't allow rank 0 parent to be selectable during searching
 
   return item;

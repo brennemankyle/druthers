@@ -1,20 +1,16 @@
-interface Dictionary<T> {
-  [index: string]: T;
-}
+export const noop = () => {};
 
-const noop = () => {};
-
-function castArray<T>(value: T[] | T): T[] {
+export function castArray<T>(value: T[] | T): T[] {
   return Array.isArray(value) ? value : [value];
 }
 
-function without<T>(array: T[], values: T[]): T[] {
+export function without<T>(array: T[], values: T[]): T[] {
   let filtered = array.filter((value) => !castArray(values).includes(value));
 
   return filtered.length === array.length ? array : filtered;
 }
 
-function isEmpty(value: any): boolean {
+export function isEmpty(value: any): boolean {
   if (value == null) {
     return true;
   }
@@ -40,13 +36,13 @@ function isEmpty(value: any): boolean {
   return false;
 }
 
-function last<T>(array: T[]): T | undefined {
+export function last<T>(array: T[]): T | undefined {
   let length = array == null ? 0 : array.length;
 
   return length ? array[length - 1] : undefined;
 }
 
-function inRange(number: number, start: number, end: number): boolean {
+export function inRange(number: number, start: number, end: number): boolean {
   if (end === undefined) {
     end = start;
     start = 0;
@@ -55,14 +51,21 @@ function inRange(number: number, start: number, end: number): boolean {
   return number >= Math.min(start, end) && number < Math.max(start, end);
 }
 
-let rankFilterSort = (
-  items,
-  calculateRank,
-  comparator = (a, b) => b.rank - a.rank,
+export interface RankItem<T> {
+  rank: number;
+  item: T;
+}
+
+export type Comparator<C> = (a: C, b: C) => number;
+
+export function rankFilterSor<T>(
+  items: T[],
+  calculateRank: (item: T) => number,
+  comparator: Comparator<RankItem<T>> = (a, b) => b.rank - a.rank,
   childrenKey = "children",
-  onParentRankZero = (item) => item
-) => {
-  let internalRankFilterSort = (items) => {
+  onParentRankZero = (item: RankItem<T>) => item
+) {
+  let internalRankFilterSort = (items: T[]) => {
     let accRank = 0;
 
     let filteredItems = items
@@ -109,9 +112,9 @@ let rankFilterSort = (
   };
 
   return internalRankFilterSort(items)[childrenKey];
-};
+}
 
-function withKeys<T extends object>(
+export function withKeys<T extends object>(
   obj: T,
   startsWith: string | string[],
   not = false
@@ -125,21 +128,9 @@ function withKeys<T extends object>(
   }, {});
 }
 
-function withoutKeys<T extends object>(
+export function withoutKeys<T extends object>(
   obj: T,
   startsWith: string | string[]
 ): Partial<T> {
   return withKeys(obj, startsWith, true);
 }
-
-export {
-  noop,
-  inRange,
-  without,
-  castArray,
-  isEmpty,
-  last,
-  rankFilterSort,
-  withKeys,
-  withoutKeys,
-};
