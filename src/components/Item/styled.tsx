@@ -4,7 +4,7 @@ import Item from "./Item";
 
 const Selection = styled(Item)(
   (props) => `
-  color: ${props.styles_colors_text}
+  color: ${props.styles_colors_text};
   border-radius: ${props.styles_borderRadius};
   align-items: center;
   justify-content: space-between;
@@ -68,7 +68,7 @@ const Selection = styled(Item)(
 
 const Option = styled(Item)(
   (props) => `
-  color: ${props.styles_colors_text}
+  color: ${props.styles_colors_text};
   padding-top: ${props.styles_option_paddingTop};
   padding-bottom: ${props.styles_option_paddingBottom};
   padding-right: ${props.styles_option_paddingRight};
@@ -82,6 +82,10 @@ const Option = styled(Item)(
     border-bottom-right-radius: ${props.styles_borderRadius};
   }
   z-index: 999;
+
+  &:hover {
+    background-color: ${props.styles_colors_highlight};
+  }
 
   ${
     props.styles_optionHighlighted != null &&

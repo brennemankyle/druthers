@@ -96,7 +96,6 @@ function Select(rawProps: RawSelectProps): ReactElement {
     props.onBlur(e);
   };
   let onOptionClick = (e) => {
-    e.preventDefault();
     if (!targetHasValue(e)) return; // no value, do nothing
 
     selectOption(targetValue(e));
