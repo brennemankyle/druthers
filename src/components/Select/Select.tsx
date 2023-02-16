@@ -1,6 +1,6 @@
-import React, { useReducer, useRef, useEffect, ReactElement } from "react";
+import { useReducer, useRef, useEffect, ReactElement } from "react";
 import styled from "@emotion/styled";
-import { StyledSelectProps } from "../../utils/SelectTypes";
+import { RawSelectProps } from "../../utils/SelectTypes";
 import defaultProps from "../../utils/defaultProps";
 import { last } from "../../utils/utils";
 import ReactDOM from "react-dom";
@@ -17,7 +17,7 @@ function targetValue(e): string {
   return String(e.target.value || e.target.getAttribute("data-val") || "");
 }
 
-function Select(rawProps: StyledSelectProps): ReactElement {
+function Select(rawProps: RawSelectProps): ReactElement {
   let props = rawProps.massaged ? rawProps : rawProps.massageDataIn(rawProps);
   const selfRef = useRef(null);
   const [state, dispatch] = useReducer(props.selectReducer, {

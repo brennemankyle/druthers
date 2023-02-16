@@ -92,6 +92,7 @@ export interface RawSelectPropsWithoutStyles {
   rightToLeft: boolean;
   allowDuplicates: boolean;
   alwaysReturnArray: boolean;
+  massaged: boolean;
   filterOptions: FilterOptions;
   massageDataIn: MassageDataIn;
   massageDataOut: MassageDataOut;
