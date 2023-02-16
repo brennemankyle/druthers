@@ -1,4 +1,4 @@
-import { useReducer, useRef, useEffect, ReactElement } from "react";
+import React, { useReducer, useRef, useEffect, ReactElement } from "react";
 import styled from "@emotion/styled";
 import { RawSelectProps } from "../../utils/SelectTypes";
 import defaultProps from "../../utils/defaultProps";

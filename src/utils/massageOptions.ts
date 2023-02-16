@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 import { RawItem, Item, HierarchicalItem } from "./SelectTypes";
 
 interface Props {

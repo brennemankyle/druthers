@@ -1,9 +1,4 @@
-import {
-  ChangeEventHandler,
-  ComponentType,
-  MouseEventHandler,
-  ReactElement,
-} from "react";
+import { ChangeEventHandler, MouseEventHandler, ReactElement } from "react";
 import { SelectReducer } from "../reducers/selectReducer";
 import { KeyGetter } from "./massageOptions";
 import { MassageDataOut } from "./massageDataOut";

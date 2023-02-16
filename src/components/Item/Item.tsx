@@ -1,4 +1,4 @@
-import { ComponentType } from "react";
+import React, { ComponentType } from "react";
 import { Item as ItemType } from "../../utils/SelectTypes";
 import { RemoveProps } from "../svg/svg";
 

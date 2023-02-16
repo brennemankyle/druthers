@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, ReactElement } from "react";
+import React, { useState, useEffect, useRef, ReactElement } from "react";
 import { RawSelectProps } from "../../utils/SelectTypes";
 import defaultProps from "../../utils/defaultProps";
 import useWindowWidth from "../../hooks/useWindowWidth/useWindowWidth";
