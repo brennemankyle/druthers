@@ -25,6 +25,24 @@ let checkRadioOptions = [
   { value: "4", label: "Pink" },
 ];
 
+let displayElementOptions = [
+  {
+    value: "1",
+    label: "Google",
+    displayElement: <a href="https://www.google.com/">Google</a>,
+  },
+  {
+    value: "2",
+    label: "Bing",
+    displayElement: <a href="https://www.bing.com/">Bing</a>,
+  },
+  {
+    value: "3",
+    label: "DuckDuckGo",
+    displayElement: <a href="https://duckduckgo.com/">DuckDuckGo</a>,
+  },
+];
+
 let switchOptions = [
   { value: "on", label: "On (some really long label here)" },
 ];
@@ -146,7 +164,6 @@ const info = {
   propTablesExclude: [StoryDruthers],
 };
 let selection = [];
-let onChange = noop;
 
 // let NoDuplicatesState = () => {
 //   const [selectionNoDuplicates, setSelectionNoDuplicates] = useState([]);
@@ -253,6 +270,18 @@ storiesOf("Druthers", module)
         selection={selection}
         options={infiniteOptionGroupOptions}
         multiple
+      />
+    ),
+    { info }
+  )
+  .add(
+    "React Element Labels",
+    () => (
+      <StoryDruthers
+        name="ReactElementLabels"
+        selection={selection}
+        options={displayElementOptions}
+        checkRadioMaxCount={0}
       />
     ),
     { info }

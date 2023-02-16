@@ -14,7 +14,7 @@ function Item(props: Props) {
 
   return (
     <li className={props.className} data-val={props.item.value}>
-      {props.item.label}
+      {props.item.displayElement ?? props.item.label}
       {props.removable && (
         <button
           className="remove"

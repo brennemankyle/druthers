@@ -58,7 +58,7 @@ export interface RankItem<T> {
 
 export type Comparator<C> = (a: C, b: C) => number;
 
-export function rankFilterSor<T>(
+export function rankFilterSort<T>(
   items: T[],
   calculateRank: (item: T) => number,
   comparator: Comparator<RankItem<T>> = (a, b) => b.rank - a.rank,

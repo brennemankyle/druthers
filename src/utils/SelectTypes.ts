@@ -1,4 +1,9 @@
-import { ChangeEventHandler, MouseEventHandler, ReactElement } from "react";
+import {
+  ChangeEventHandler,
+  ComponentType,
+  MouseEventHandler,
+  ReactElement,
+} from "react";
 import { SelectReducer } from "../reducers/selectReducer";
 import { KeyGetter } from "./massageOptions";
 import { MassageDataOut } from "./massageDataOut";
@@ -42,6 +47,7 @@ export interface Styles {
 export interface Item {
   value: string;
   label: string;
+  displayElement?: ReactElement;
   group: string;
   childGroup?: string;
 }
@@ -49,6 +55,7 @@ export interface Item {
 export interface HierarchicalItem {
   value: string;
   label: string;
+  displayElement?: ReactElement;
   group: string;
   childGroup?: string;
   options?: HierarchicalItem[];
@@ -57,6 +64,7 @@ export interface HierarchicalItem {
 export interface RawItem {
   value?: any;
   label?: any;
+  displayElement?: ReactElement;
   options?: RawItem[];
 }
 
@@ -91,6 +99,7 @@ export interface RawSelectPropsWithoutStyles {
   valueKey: KeyGetter<string | undefined>;
   labelKey: KeyGetter<string | undefined>;
   optionsKey: KeyGetter<RawItem[] | undefined>;
+  displayElementKey: KeyGetter<ReactElement | undefined>;
   checkRadioMaxCount: number;
   parseTo: "string" | "number" | "int" | "float" | "boolean";
 

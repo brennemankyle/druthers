@@ -97,7 +97,7 @@ function CheckRadio(rawProps: Props, ref) {
           onChange={onChange}
           onClick={radioUncheck}
           checked={values.includes(option.value)}
-          label={option.label}
+          label={option.displayElement ?? option.label}
           title={option.label}
           multiple={props.multiple}
           toggle={useSwitch}

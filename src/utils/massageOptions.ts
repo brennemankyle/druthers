@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import { RawItem, Item, HierarchicalItem } from "./SelectTypes";
 
 interface Props {
@@ -6,6 +7,7 @@ interface Props {
   valueKey: KeyGetter<string | undefined>;
   labelKey: KeyGetter<string | undefined>;
   optionsKey: KeyGetter<RawItem[] | undefined>;
+  displayElementKey: KeyGetter<ReactElement | undefined>;
 }
 
 interface MassagedOptions {
@@ -18,6 +20,7 @@ interface MassagedOptions {
 interface StringifyRawItem {
   value?: string;
   label?: string;
+  displayElement?: ReactElement;
   options?: RawItem[];
 }
 
@@ -50,9 +53,11 @@ function massageOptions(props: Props): MassagedOptions {
     let newOption: StringifyRawItem = {};
     let value = getKey(props.valueKey, option);
     let label = getKey(props.labelKey, option);
+    let displayElement = getKey(props.displayElementKey, option);
 
-    if (label != null) newOption["label"] = String(label);
     if (value != null) newOption["value"] = String(value);
+    if (label != null) newOption["label"] = String(label);
+    if (displayElement != null) newOption["displayElement"] = displayElement;
     return newOption;
   };
 

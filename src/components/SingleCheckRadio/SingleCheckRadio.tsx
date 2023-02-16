@@ -17,7 +17,7 @@ interface Props {
   multiple: boolean;
   className: string;
   type: string;
-  label: string;
+  label: ReactElement;
   title: string;
   svg_Checkmark: ReactElement;
 }

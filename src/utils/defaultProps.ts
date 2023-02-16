@@ -37,6 +37,7 @@ let defaultProps: MassagedSelectProps = {
   selectReducer,
   valueKey: (item) => item["value"],
   labelKey: (item) => item["label"],
+  displayElementKey: (item) => item["displayElement"],
   optionsKey: (item) => item["options"],
   checkRadioMaxCount: 10,
   parseTo: "string",
