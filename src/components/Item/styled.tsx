@@ -4,6 +4,7 @@ import Item from "./Item";
 
 const Selection = styled(Item)(
   (props) => `
+  color: ${props.styles_colors_text}
   border-radius: ${props.styles_borderRadius};
   align-items: center;
   justify-content: space-between;
@@ -67,6 +68,7 @@ const Selection = styled(Item)(
 
 const Option = styled(Item)(
   (props) => `
+  color: ${props.styles_colors_text}
   padding-top: ${props.styles_option_paddingTop};
   padding-bottom: ${props.styles_option_paddingBottom};
   padding-right: ${props.styles_option_paddingRight};

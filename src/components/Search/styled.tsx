@@ -4,6 +4,7 @@ import RawSearch from "./Search";
 
 const Search = styled(RawSearch)(
   (props) => `
+  color: ${props.styles_colors_text};
   border: none;
   outline: 0;
   font-size: 1em;

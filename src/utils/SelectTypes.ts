@@ -30,6 +30,7 @@ export interface Styles {
   styles_checkRadio_paddingRight: string;
   styles_search_size: string;
   styles_icon_width: string;
+  styles_colors_text: string;
   styles_colors_primary: string;
   styles_colors_secondary: string;
   styles_colors_highlight: string;

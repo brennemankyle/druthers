@@ -92,6 +92,7 @@ let defaultProps: MassagedSelectProps = {
   styles_checkRadio_paddingRight: ".2em",
   styles_search_size: "8",
   styles_icon_width: "1em",
+  styles_colors_text: "black",
   styles_colors_primary: "black",
   styles_colors_secondary: "#C3C3C3",
   styles_colors_highlight: "lightblue",

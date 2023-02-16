@@ -15,11 +15,13 @@ const SelectionList = styled(ItemList)(
   list-style-type: none;
   padding: 0;
   margin: 0;
+  color: ${props.styles_colors_text};
 `
 );
 
 const OptionList = styled(ItemList)(
   (props) => `
+  color: ${props.styles_colors_text};
   list-style-type: none;
   padding: 0;
   margin: 0;

@@ -4,6 +4,7 @@ import SingleCheckRadio from "./SingleCheckRadio";
 
 const CheckBox = styled(SingleCheckRadio)(
   (props) => `
+  color: ${props.styles_colors_text};
   margin-right: ${props.styles_checkRadio_marginBetween};
   display: inline-flex;
   align-items: center;
@@ -56,6 +57,7 @@ const CheckBox = styled(SingleCheckRadio)(
 
 const Radio = styled(SingleCheckRadio)(
   (props) => `
+  color: ${props.styles_colors_text};
   margin-right: ${props.styles_checkRadio_marginBetween};
   display: inline-flex;
   align-items: center;
@@ -112,6 +114,7 @@ const Radio = styled(SingleCheckRadio)(
 
 const Switch = styled(SingleCheckRadio)(
   (props) => `
+  color: ${props.styles_colors_text};
   display: inline-flex;
   align-items: center;
   cursor: pointer;
