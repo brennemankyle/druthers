@@ -265,14 +265,14 @@ function Select(rawProps: RawSelectProps): ReactElement {
           }
         />
 
-        {!props.appendToBody && areOptionsOpen && (
+        {!props.appendToBody && (areOptionsOpen || props.optionsAlwaysOpen) && (
           <DivRelative>
             <OptionsWrapper {...styles}>{optionList}</OptionsWrapper>
           </DivRelative>
         )}
 
         {props.appendToBody &&
-          areOptionsOpen &&
+          (areOptionsOpen || props.optionsAlwaysOpen) &&
           ReactDOM.createPortal(
             <AppendToBodyOptionsWrapper
               {...styles}

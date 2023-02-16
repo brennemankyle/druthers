@@ -31,6 +31,7 @@ let defaultProps: MassagedSelectProps = {
   rightToLeft: false,
   allowDuplicates: true,
   alwaysReturnArray: false,
+  optionsAlwaysOpen: false,
   filterOptions,
   massageDataIn,
   massageDataOut,
