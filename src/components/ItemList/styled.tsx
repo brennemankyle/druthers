@@ -1,8 +1,9 @@
+import React from "react";
 import styled from "@emotion/styled";
 import ItemList from "./ItemList";
 
 const SelectionList = styled(ItemList)(
-  props => `
+  (props) => `
   ${
     props.styles_multiple
       ? `display: inline;`
@@ -18,7 +19,7 @@ const SelectionList = styled(ItemList)(
 );
 
 const OptionList = styled(ItemList)(
-  props => `
+  (props) => `
   list-style-type: none;
   padding: 0;
   margin: 0;

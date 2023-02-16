@@ -1,8 +1,9 @@
+import React from "react";
 import styled from "@emotion/styled";
 import RawSearch from "./Search";
 
 const Search = styled(RawSearch)(
-  props => `
+  (props) => `
   border: none;
   outline: 0;
   font-size: 1em;

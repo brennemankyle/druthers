@@ -1,8 +1,9 @@
+import React from "react";
 import styled from "@emotion/styled";
 import RawSelectionWrapper from "./SelectionWrapper";
 
 const SelectionWrapper = styled(RawSelectionWrapper)(
-  props => `
+  (props) => `
   border: 1px solid ${props.styles_colors_secondary};
   border-radius: ${props.styles_borderRadius};
   display: flex;

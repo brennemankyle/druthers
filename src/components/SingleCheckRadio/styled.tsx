@@ -1,8 +1,9 @@
+import React from "react";
 import styled from "@emotion/styled";
 import SingleCheckRadio from "./SingleCheckRadio";
 
 const CheckBox = styled(SingleCheckRadio)(
-  props => `
+  (props) => `
   margin-right: ${props.styles_checkRadio_marginBetween};
   display: inline-flex;
   align-items: center;
@@ -54,7 +55,7 @@ const CheckBox = styled(SingleCheckRadio)(
 );
 
 const Radio = styled(SingleCheckRadio)(
-  props => `
+  (props) => `
   margin-right: ${props.styles_checkRadio_marginBetween};
   display: inline-flex;
   align-items: center;
@@ -110,7 +111,7 @@ const Radio = styled(SingleCheckRadio)(
 );
 
 const Switch = styled(SingleCheckRadio)(
-  props => `
+  (props) => `
   display: inline-flex;
   align-items: center;
   cursor: pointer;

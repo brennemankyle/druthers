@@ -1,10 +1,11 @@
+import React from "react";
 import styled from "@emotion/styled";
 import { StyledAppendToBodyOptionsWrapper as RawStyledAppendToBodyOptionsWrapper } from "./AppendToBodyOptionsWrapper";
 
 const StyledAppendToBodyOptionsWrapper = styled(
   RawStyledAppendToBodyOptionsWrapper
 )(
-  props => `
+  (props) => `
   position: absolute;
   background-color: ${props.styles_colors_background};
   width: ${props.styles_width}px;
