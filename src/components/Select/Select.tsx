@@ -195,7 +195,8 @@ function Select(rawProps: RawSelectProps): ReactElement {
     component_Option: Option,
     component_Search: Search,
     component_SelectionWrapper: SelectionWrapper,
-    component_OptionsWrapper: OptionsWrapper,
+    component_OverlayOptionsWrapper: OverlayOptionsWrapper,
+    component_InPlaceOptionsWrapper: InPlaceOptionsWrapper,
     component_AppendToBodyOptionsWrapper: AppendToBodyOptionsWrapper,
     component_StyledAppendToBodyOptionsWrapper:
       StyledAppendToBodyOptionsWrapper,
@@ -264,11 +265,23 @@ function Select(rawProps: RawSelectProps): ReactElement {
           }
         />
 
-        {!props.appendToBody && (areOptionsOpen || props.optionsAlwaysOpen) && (
-          <DivRelative>
-            <OptionsWrapper {...styles}>{optionList}</OptionsWrapper>
-          </DivRelative>
-        )}
+        {!props.appendToBody &&
+          (areOptionsOpen || props.optionsAlwaysOpen) &&
+          props.overlayOptions && (
+            <DivRelative>
+              <OverlayOptionsWrapper {...styles}>
+                {optionList}
+              </OverlayOptionsWrapper>
+            </DivRelative>
+          )}
+
+        {!props.appendToBody &&
+          (areOptionsOpen || props.optionsAlwaysOpen) &&
+          !props.overlayOptions && (
+            <InPlaceOptionsWrapper {...styles}>
+              {optionList}
+            </InPlaceOptionsWrapper>
+          )}
 
         {props.appendToBody &&
           (areOptionsOpen || props.optionsAlwaysOpen) &&

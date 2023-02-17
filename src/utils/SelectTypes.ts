@@ -89,6 +89,7 @@ export interface RawSelectPropsWithoutStyles {
   allowDuplicates: boolean;
   alwaysReturnArray: boolean;
   optionsAlwaysOpen: boolean;
+  overlayOptions: boolean;
   filterOptions: FilterOptions;
   massageDataIn: MassageDataIn;
   massageDataOut: MassageDataOut;
@@ -112,7 +113,8 @@ export interface RawSelectPropsWithoutStyles {
   component_Option: ReactElement;
   component_Search: ReactElement;
   component_SelectionWrapper: ReactElement;
-  component_OptionsWrapper: ReactElement;
+  component_OverlayOptionsWrapper: ReactElement;
+  component_InPlaceOptionsWrapper: ReactElement;
   component_AppendToBodyOptionsWrapper: ReactElement;
   component_StyledAppendToBodyOptionsWrapper: ReactElement;
 

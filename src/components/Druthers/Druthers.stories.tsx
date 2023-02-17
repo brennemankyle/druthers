@@ -286,7 +286,20 @@ storiesOf("Druthers", module)
     ),
     { info }
   )
-  // .add('Async Options', () => <StoryDruthers name="AsyncOptions" selection={selection} onChange={onChange} asyncOptions={asyncOptions} />, {info})
+  .add(
+    "Always Open In Place Options",
+    () => (
+      <StoryDruthers
+        name="AlwaysOpenInPlaceOptions"
+        selection={selection}
+        options={options}
+        checkRadioMaxCount={0}
+        optionsAlwaysOpen={true}
+        overlayOptions={false}
+      />
+    ),
+    { info }
+  )
   .add(
     "Append to body",
     () => (

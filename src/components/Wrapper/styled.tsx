@@ -2,14 +2,14 @@ import React from "react";
 import styled from "@emotion/styled";
 import RawWrapper from "./Wrapper";
 
-const Wrapper = styled(RawWrapper)(
+export const Wrapper = styled(RawWrapper)(
   (props) => `
   font-size: ${props.styles_fontSize};
   ${props.styles_rightToLeft ? `transform: scaleX(-1);` : ``}
 `
 );
 
-const OptionsWrapper = styled(RawWrapper)(
+export const OverlayOptionsWrapper = styled(RawWrapper)(
   (props) => `
   position: absolute;
   top: 0;
@@ -21,4 +21,7 @@ const OptionsWrapper = styled(RawWrapper)(
 `
 );
 
-export { Wrapper, OptionsWrapper };
+export const InPlaceOptionsWrapper = styled(Wrapper)`
+  background-color: ${(props) => props.styles_colors_background};
+  width: ${(props) => props.styles_width}px;
+`;

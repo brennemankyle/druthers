@@ -1,6 +1,10 @@
 import HtmlFieldData from "../components/HtmlFieldData/HtmlFieldData";
 import AppendToBodyOptionsWrapper from "../components/AppendToBodyOptionsWrapper/AppendToBodyOptionsWrapper";
-import { Wrapper, OptionsWrapper } from "../components/Wrapper/styled";
+import {
+  Wrapper,
+  OverlayOptionsWrapper,
+  InPlaceOptionsWrapper,
+} from "../components/Wrapper/styled";
 import { SelectionWrapper } from "../components/SelectionWrapper/styled";
 import { Selection, Option } from "../components/Item/styled";
 import { SelectionList, OptionList } from "../components/ItemList/styled";
@@ -32,6 +36,7 @@ let defaultProps: MassagedSelectProps = {
   allowDuplicates: true,
   alwaysReturnArray: false,
   optionsAlwaysOpen: false,
+  overlayOptions: true,
   filterOptions,
   massageDataIn,
   massageDataOut,
@@ -60,7 +65,8 @@ let defaultProps: MassagedSelectProps = {
   component_Option: Option,
   component_Search: Search,
   component_SelectionWrapper: SelectionWrapper,
-  component_OptionsWrapper: OptionsWrapper,
+  component_OverlayOptionsWrapper: OverlayOptionsWrapper,
+  component_InPlaceOptionsWrapper: InPlaceOptionsWrapper,
   component_AppendToBodyOptionsWrapper: AppendToBodyOptionsWrapper,
   component_StyledAppendToBodyOptionsWrapper: StyledAppendToBodyOptionsWrapper,
 
