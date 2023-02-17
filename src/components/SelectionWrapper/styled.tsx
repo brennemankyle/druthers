@@ -43,7 +43,7 @@ const SelectionWrapper = styled(RawSelectionWrapper)(
   }
 
   ${
-    props.styles_hasOptions
+    props.styles_hasOptions && !props.styles_optionsAlwaysOpen
       ? `.divider {
           width: 1px;
           align-self: stretch;

@@ -57,6 +57,7 @@ function Select(rawProps: RawSelectProps): ReactElement {
     styles_optionHighlighted: optionHighlighted,
     styles_selectionHighlighted: selectionHighlighted,
     styles_rightToLeft: props.rightToLeft,
+    styles_optionsAlwaysOpen: props.optionsAlwaysOpen,
     ...withKeys(props, "styles_"),
   };
 
