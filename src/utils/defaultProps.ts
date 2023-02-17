@@ -44,6 +44,7 @@ let defaultProps: MassagedSelectProps = {
   valueKey: (item) => item["value"],
   labelKey: (item) => item["label"],
   displayElementKey: (item) => item["displayElement"],
+  selectableKey: (item) => item["selectable"],
   optionsKey: (item) => item["options"],
   checkRadioMaxCount: 10,
   parseTo: "string",

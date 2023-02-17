@@ -13,12 +13,16 @@ function internalCallOnChange(
   });
 }
 
+export type CallOnChangeMethod = "add" | "remove" | "replace";
+
 function callOnChange(
   props: MassagedSelectProps,
-  newValue: string[] | string,
-  method = "add"
+  newValue: string,
+  method: CallOnChangeMethod = "add"
 ) {
-  // methods: 'add', 'remove', 'replace'
+  const item = props.options.find((option) => option.value === newValue);
+
+  if (item && !item.selectable) return;
   if (method === "replace")
     return internalCallOnChange(props, castArray(newValue));
 

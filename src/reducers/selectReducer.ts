@@ -121,7 +121,11 @@ function selectReducer(
       return mergeState(newState, { selectionHighlighted: null });
     case "setOptionHighlighted":
       if (payload == null) return newState;
-      if (!areOptionsOpen || !filteredOptions.length)
+      if (
+        !areOptionsOpen ||
+        !filteredOptions.length ||
+        !filteredOptions.find((item) => item.value === payload)?.selectable
+      )
         return reducer(newState, { props, type: "clearHighlighted" });
 
       return mergeState(newState, {
@@ -166,8 +170,8 @@ function selectReducer(
         !areOptionsOpen ||
         selectionHighlighted != null ||
         filteredOptions
+          .filter((option) => option.selectable && option.value != null)
           .map((option) => option.value)
-          .filter((value) => value != null)
           .includes(optionHighlighted ?? "")
       ) {
         return newState;

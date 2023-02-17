@@ -1,9 +1,9 @@
 import { Item } from "./SelectTypes";
 
-function decreaseOneAbsolute(value: number): number {
-  if (value === 0) return value;
+function decreaseOneAbsolute(num: number): number {
+  if (num === 0) return num;
 
-  return value > 0 ? value - 1 : value + 1;
+  return num > 0 ? num - 1 : num + 1;
 }
 
 function moveHighlighted(
@@ -12,7 +12,7 @@ function moveHighlighted(
   highlighted: string | null,
   defaultLast = false
 ): string | undefined {
-  if (items.length === 0) {
+  if (items.length === 0 || items.every((item) => !item.selectable)) {
     return undefined;
   }
 
@@ -25,7 +25,7 @@ function moveHighlighted(
   if (index < 0) index = items.length + index;
   index = index % items.length; // Wrap around
 
-  if (items[index].value == null) {
+  if (!items[index].selectable || items[index].value == null) {
     // Has no value, continue
     return moveHighlighted(
       items,

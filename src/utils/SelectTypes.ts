@@ -44,6 +44,7 @@ export interface Item {
   value: string;
   label: string;
   displayElement?: ReactElement;
+  selectable: boolean;
   group: string;
   childGroup?: string;
 }
@@ -52,6 +53,7 @@ export interface HierarchicalItem {
   value: string;
   label: string;
   displayElement?: ReactElement;
+  selectable: boolean;
   group: string;
   childGroup?: string;
   options?: HierarchicalItem[];
@@ -61,6 +63,7 @@ export interface RawItem {
   value?: any;
   label?: any;
   displayElement?: ReactElement;
+  selectable?: boolean;
   options?: RawItem[];
 }
 
@@ -98,6 +101,7 @@ export interface RawSelectPropsWithoutStyles {
   labelKey: KeyGetter<string | undefined>;
   optionsKey: KeyGetter<RawItem[] | undefined>;
   displayElementKey: KeyGetter<ReactElement | undefined>;
+  selectableKey: KeyGetter<boolean | undefined>;
   checkRadioMaxCount: number;
   parseTo: "string" | "number" | "int" | "float" | "boolean";
 

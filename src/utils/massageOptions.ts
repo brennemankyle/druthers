@@ -8,6 +8,7 @@ interface Props {
   labelKey: KeyGetter<string | undefined>;
   optionsKey: KeyGetter<RawItem[] | undefined>;
   displayElementKey: KeyGetter<ReactElement | undefined>;
+  selectableKey: KeyGetter<boolean | undefined>;
 }
 
 interface MassagedOptions {
@@ -21,6 +22,7 @@ interface StringifyRawItem {
   value?: string;
   label?: string;
   displayElement?: ReactElement;
+  selectable?: boolean;
   options?: RawItem[];
 }
 
@@ -49,15 +51,30 @@ function flattenOptions(
 function massageOptions(props: Props): MassagedOptions {
   let hasOptionGroups = false;
 
-  let strigifyOption = (option: RawItem): StringifyRawItem => {
+  let massageOption = (option: RawItem): StringifyRawItem => {
     let newOption: StringifyRawItem = {};
     let value = getKey(props.valueKey, option);
     let label = getKey(props.labelKey, option);
     let displayElement = getKey(props.displayElementKey, option);
+    let selectable = getKey(props.selectableKey, option);
 
     if (value != null) newOption["value"] = String(value);
-    if (label != null) newOption["label"] = String(label);
+    if (label != null) {
+      newOption["label"] = String(label);
+
+      // If there is no value found, the label the value
+      if (value == null) newOption["value"] = String(label);
+    }
     if (displayElement != null) newOption["displayElement"] = displayElement;
+
+    if (selectable != null) {
+      newOption["selectable"] = selectable;
+    } else if (value == null && getKey(props.optionsKey, option) != null) {
+      newOption["selectable"] = false; // should not be selectable if parent doesn't have a value
+    } else {
+      newOption["selectable"] = true;
+    }
+
     return newOption;
   };
 
@@ -68,7 +85,7 @@ function massageOptions(props: Props): MassagedOptions {
     let currentGroup = 0;
 
     return options.map((option) => {
-      let newOption = strigifyOption(option);
+      let newOption = massageOption(option);
       if (groups.length) newOption["group"] = groups.join(".");
 
       if (getKey(props.optionsKey, option) == null) {

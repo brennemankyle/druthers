@@ -292,7 +292,7 @@ storiesOf("Druthers", module)
       <StoryDruthers
         name="AlwaysOpenInPlaceOptions"
         selection={selection}
-        options={options}
+        options={optionGroupOptions}
         checkRadioMaxCount={0}
         optionsAlwaysOpen={true}
         overlayOptions={false}

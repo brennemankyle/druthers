@@ -84,7 +84,11 @@ const Option = styled(Item)(
   z-index: 999;
 
   &:hover {
-    background-color: ${props.styles_colors_highlight};
+    ${
+      props.item.selectable
+        ? "background-color: " + props.styles_colors_highlight + ";"
+        : ""
+    }
   }
 
   ${
@@ -100,16 +104,12 @@ const Option = styled(Item)(
       : ``
   }
   ${
-    props.item.childGroup && props.item.value == null
+    props.item.childGroup && !props.item.selectable
       ? `color: ${props.styles_colors_secondary};
         font-size: .8em;`
       : ``
   }
-  ${
-    props.item.childGroup && props.item.value != null
-      ? `font-weight: bold;`
-      : ``
-  }
+  ${props.item.childGroup && props.item.selectable ? `font-weight: bold;` : ``}
   ${
     props.item.group
       ? `margin-left: ${props.item.group.split(".").length * 2}em;`

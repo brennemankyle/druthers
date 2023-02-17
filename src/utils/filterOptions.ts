@@ -30,7 +30,11 @@ function onParentRankZeroRemoveValue(item: DeletableItem): DeletableItem {
 function filterOptions(props: MassagedSelectProps, searchTerm: string): Item[] {
   let calculateRank = (option: Item) => {
     if (option.label.toLowerCase() === searchTerm) return 32;
-    else if (option.value != null && option.value.toLowerCase() === searchTerm)
+    else if (
+      option.selectable &&
+      option.value != null &&
+      option.value.toLowerCase() === searchTerm
+    )
       return 16;
     else if (option.label.toLowerCase().startsWith(searchTerm)) return 8;
     else if (option.label.toLowerCase().endsWith(searchTerm)) return 4;
