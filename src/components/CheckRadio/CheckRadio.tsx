@@ -4,7 +4,7 @@ import React, {
   ChangeEventHandler,
   ReactElement,
 } from "react";
-import { Styles, Item, RawItem } from "../../utils/SelectTypes";
+import { InputStyles, Item, RawItem } from "../../utils/SelectTypes";
 import defaultProps from "../../utils/defaultProps";
 import { withKeys, noop } from "../../utils/utils";
 import callOnChange from "../../utils/callOnChange";
@@ -15,7 +15,7 @@ import useUpdateSelection, {
 import { CheckBox, Radio, Switch } from "../SingleCheckRadio/styled";
 import { MassageDataIn } from "../../utils/massageDataIn";
 
-interface Props extends Styles {
+interface Props extends InputStyles {
   style: CSSProperties;
   disabled: boolean;
   multiple: boolean;
@@ -30,7 +30,7 @@ interface Props extends Styles {
   svg_Checkmark: ReactElement;
 }
 
-function CheckRadio(rawProps: Props, ref) {
+function CheckRadio(rawProps: Partial<Props>, ref) {
   let props = rawProps.massaged ? rawProps : rawProps.massageDataIn(rawProps);
   let options = props.options;
   useUpdateSelection(props, true);

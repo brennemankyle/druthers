@@ -17,7 +17,7 @@ function targetValue(e): string {
   return String(e.target.value || e.target.getAttribute("data-val") || "");
 }
 
-function Select(rawProps: RawSelectProps): ReactElement {
+function Select(rawProps: Partial<RawSelectProps>): ReactElement {
   let props = rawProps.massaged ? rawProps : rawProps.massageDataIn(rawProps);
   const selfRef = useRef(null);
   const [state, dispatch] = useReducer(props.selectReducer, {

@@ -18,7 +18,7 @@ function hasOverflownX(element: HTMLElement): boolean {
   return element.scrollWidth > element.offsetWidth;
 }
 
-function Druthers(rawProps: Props & RawSelectProps): ReactElement {
+function Druthers(rawProps: Partial<Props & RawSelectProps>): ReactElement {
   let props = rawProps.massageDataIn(rawProps);
   const canCheckRadio =
     props.options.length <= props.checkRadioMaxCount &&

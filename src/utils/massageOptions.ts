@@ -26,7 +26,11 @@ interface StringifyRawItem {
   options?: RawItem[];
 }
 
-export type KeyGetter<T> = string | ((item: RawItem) => T);
+type GetterItem = {
+  [key: string]: string | ReactElement | boolean | RawItem[];
+};
+
+export type KeyGetter<T> = string | ((item: GetterItem) => T);
 
 function getKey<T>(keyGetter: KeyGetter<T>, option: RawItem): T {
   return typeof keyGetter === "string" ? option[keyGetter] : keyGetter(option);

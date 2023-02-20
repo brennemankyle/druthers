@@ -1,11 +1,16 @@
-import { ChangeEventHandler, MouseEventHandler, ReactElement } from "react";
+import {
+  ChangeEventHandler,
+  MouseEventHandler,
+  ReactElement,
+  ComponentType,
+} from "react";
 import { SelectReducer } from "../reducers/selectReducer";
 import { KeyGetter } from "./massageOptions";
 import { MassageDataOut } from "./massageDataOut";
 import { FilterOptions } from "./filterOptions";
 import { MassageDataIn } from "./massageDataIn";
 
-export interface Styles {
+export interface InputStyles {
   styles_fontSize: string;
   styles_borderRadius: string;
   styles_paddingTop: string;
@@ -39,6 +44,20 @@ export interface Styles {
   styles_colors_disabled: string;
   styles_colors_background: string;
 }
+
+interface InternalStyles {
+  styles_width: string;
+  styles_multiple: boolean;
+  styles_disabled: boolean;
+  styles_hasSelection: boolean;
+  styles_hasOptions: boolean;
+  styles_optionHighlighted: string;
+  styles_selectionHighlighted: string[];
+  styles_rightToLeft: boolean;
+  styles_optionsAlwaysOpen: boolean;
+}
+
+export type Styles = InputStyles & InternalStyles;
 
 export interface Item {
   value: string;
@@ -109,22 +128,22 @@ export interface RawSelectPropsWithoutStyles {
   text_noOptions: string;
   text_create: string;
 
-  component_HtmlFieldData: ReactElement;
-  component_Wrapper: ReactElement;
-  component_Selection: ReactElement;
-  component_SelectionList: ReactElement;
-  component_OptionList: ReactElement;
-  component_Option: ReactElement;
-  component_Search: ReactElement;
-  component_SelectionWrapper: ReactElement;
-  component_OverlayOptionsWrapper: ReactElement;
-  component_InPlaceOptionsWrapper: ReactElement;
-  component_AppendToBodyOptionsWrapper: ReactElement;
-  component_StyledAppendToBodyOptionsWrapper: ReactElement;
+  component_HtmlFieldData: ComponentType;
+  component_Wrapper: ComponentType;
+  component_Selection: ComponentType;
+  component_SelectionList: ComponentType;
+  component_OptionList: ComponentType;
+  component_Option: ComponentType;
+  component_Search: ComponentType;
+  component_SelectionWrapper: ComponentType;
+  component_OverlayOptionsWrapper: ComponentType;
+  component_InPlaceOptionsWrapper: ComponentType;
+  component_AppendToBodyOptionsWrapper: ComponentType;
+  component_StyledAppendToBodyOptionsWrapper: ComponentType;
 
-  svg_Checkmark: ReactElement;
-  svg_Remove: ReactElement;
-  svg_Expand: ReactElement;
+  svg_Checkmark: ComponentType;
+  svg_Remove: ComponentType;
+  svg_Expand: ComponentType;
 }
 
 export interface MassagedSelectPropsWithoutStyles
@@ -139,5 +158,6 @@ export interface MassagedSelectPropsWithoutStyles
   text_placeholder: string;
 }
 
-export type RawSelectProps = RawSelectPropsWithoutStyles & Styles;
-export type MassagedSelectProps = MassagedSelectPropsWithoutStyles & Styles;
+export type RawSelectProps = RawSelectPropsWithoutStyles & InputStyles;
+export type MassagedSelectProps = MassagedSelectPropsWithoutStyles &
+  InputStyles;
