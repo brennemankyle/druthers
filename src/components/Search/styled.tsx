@@ -26,7 +26,7 @@ const Search = styled(RawSearch)(
       : ``
   }
   ${
-    props.hide
+    props.hide || !props.styles_searchable
       ? `opacity: 0;
         width: 0;
         padding: 0;

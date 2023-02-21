@@ -301,6 +301,21 @@ storiesOf("Druthers", module)
     { info }
   )
   .add(
+    "Always Open Options No Search",
+    () => (
+      <StoryDruthers
+        name="AlwaysOpenInPlaceOptions"
+        selection={selection}
+        options={optionGroupOptions}
+        checkRadioMaxCount={0}
+        optionsAlwaysOpen={true}
+        overlayOptions={false}
+        searchable={false}
+      />
+    ),
+    { info }
+  )
+  .add(
     "Append to body",
     () => (
       <StoryDruthers

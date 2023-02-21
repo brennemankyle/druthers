@@ -58,6 +58,7 @@ function Select(rawProps: Partial<RawSelectProps>): ReactElement {
     styles_selectionHighlighted: selectionHighlighted,
     styles_rightToLeft: props.rightToLeft,
     styles_optionsAlwaysOpen: props.optionsAlwaysOpen,
+    styles_searchable: props.searchable,
     ...withKeys(props, "styles_"),
   };
 

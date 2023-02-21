@@ -55,6 +55,7 @@ interface InternalStyles {
   styles_selectionHighlighted: string[];
   styles_rightToLeft: boolean;
   styles_optionsAlwaysOpen: boolean;
+  styles_searchable: boolean;
 }
 
 export type Styles = InputStyles & InternalStyles;
@@ -112,6 +113,7 @@ export interface RawSelectPropsWithoutStyles {
   alwaysReturnArray: boolean;
   optionsAlwaysOpen: boolean;
   overlayOptions: boolean;
+  searchable: boolean;
   filterOptions: FilterOptions;
   massageDataIn: MassageDataIn;
   massageDataOut: MassageDataOut;

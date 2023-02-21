@@ -11,7 +11,7 @@ interface Props {
 
 const preventBlur = (e) => e.preventDefault();
 
-let SelectionWrapper = (props) => {
+function SelectionWrapper(props: Props) {
   const searchRef = useRef(null);
 
   let onClick = (e) => {
@@ -47,6 +47,6 @@ let SelectionWrapper = (props) => {
       <Expand />
     </div>
   );
-};
+}
 
 export default SelectionWrapper;

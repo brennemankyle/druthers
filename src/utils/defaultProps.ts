@@ -37,6 +37,7 @@ let defaultProps: MassagedSelectProps = {
   alwaysReturnArray: false,
   optionsAlwaysOpen: false,
   overlayOptions: true,
+  searchable: true,
   filterOptions,
   massageDataIn,
   massageDataOut,
