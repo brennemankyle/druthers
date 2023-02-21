@@ -105,7 +105,7 @@ const Option = styled(Item)(
   }
   ${
     props.item.childGroup && !props.item.selectable
-      ? `color: ${props.styles_colors_text};
+      ? `color: ${props.styles_colors_text}; opacity: 0.5;
         font-size: .8em;`
       : ``
   }

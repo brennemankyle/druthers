@@ -1,14 +1,16 @@
 import { castArray } from "./utils";
-import { MassagedSelectProps } from "./SelectTypes";
+import { Item, MassagedSelectProps } from "./SelectTypes";
 
 function internalCallOnChange(
   props: MassagedSelectProps,
-  value: string[]
+  value: string[],
+  option: Item | undefined = undefined
 ): void {
   props.onChange({
     target: {
       value: props.massageDataOut(props, value) as string, // html only returns strings, pretend to be one
       name: props.name,
+      option,
     },
   });
 }
@@ -23,8 +25,9 @@ function callOnChange(
   const item = props.options.find((option) => option.value === newValue);
 
   if (item && !item.selectable) return;
+
   if (method === "replace")
-    return internalCallOnChange(props, castArray(newValue));
+    return internalCallOnChange(props, castArray(newValue), item);
 
   let value: (string | undefined)[] =
     method === "add" ? castArray(newValue) : [];
@@ -51,7 +54,7 @@ function callOnChange(
     }
   }
 
-  internalCallOnChange(props, value);
+  internalCallOnChange(props, value, item);
 }
 
 export default callOnChange;
