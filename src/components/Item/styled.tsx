@@ -105,14 +105,19 @@ const Option = styled(Item)(
   }
   ${
     props.item.childGroup && !props.item.selectable
-      ? `color: ${props.styles_colors_text}; opacity: 0.5;
+      ? `color: ${props.styles_colors_text}; 
+        opacity: 0.65;
         font-size: .8em;`
       : ``
   }
   ${props.item.childGroup && props.item.selectable ? `font-weight: bold;` : ``}
   ${
     props.item.group
-      ? `margin-left: ${props.item.group.split(".").length * 2}em;`
+      ? `margin-left: ${
+          props.item.group.split(".").length *
+          2 *
+          (props.item.childGroup && !props.item.selectable ? 1.25 : 1) // Increase margin since font size decreased
+        }em;`
       : ``
   }
 `
