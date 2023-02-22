@@ -13,21 +13,21 @@ interface StyledAppendToBodyOptionsWrapperProps {
 }
 
 // Only props can by used for styled components, therefore AppendToBodyOptionsWrapper can't use it's state to be styled
-let StyledAppendToBodyOptionsWrapper = (
-  props: StyledAppendToBodyOptionsWrapperProps,
-  ref
-): ReactElement => {
-  let { className, children, placeOptionsAbove, parentRect, ...otherProps } =
-    props;
+const StyledAppendToBodyOptionsWrapper = forwardRef(
+  function StyledAppendToBodyOptionsWrapper(
+    props: StyledAppendToBodyOptionsWrapperProps,
+    ref
+  ): ReactElement {
+    let { className, children, placeOptionsAbove, parentRect, ...otherProps } =
+      props;
 
-  return (
-    <Wrapper className={className} ref={ref} {...otherProps}>
-      {children}
-    </Wrapper>
-  );
-};
-
-StyledAppendToBodyOptionsWrapper = forwardRef(StyledAppendToBodyOptionsWrapper);
+    return (
+      <Wrapper className={className} ref={ref} {...otherProps}>
+        {children}
+      </Wrapper>
+    );
+  }
+);
 
 interface AppendToBodyOptionsWrapperProps {
   className: string;

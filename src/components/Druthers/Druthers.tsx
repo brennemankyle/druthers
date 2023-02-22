@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useRef, ReactElement } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  ReactElement,
+  forwardRef,
+} from "react";
 import { RawSelectProps } from "../../utils/SelectTypes";
 import defaultProps from "../../utils/defaultProps";
 import useWindowWidth from "../../hooks/useWindowWidth/useWindowWidth";
@@ -18,7 +24,10 @@ function hasOverflownX(element: HTMLElement): boolean {
   return element.scrollWidth > element.offsetWidth;
 }
 
-function Druthers(rawProps: Partial<Props & RawSelectProps>): ReactElement {
+const Druthers = forwardRef(function Druthers(
+  rawProps: Partial<Props & RawSelectProps>,
+  ref
+): ReactElement {
   let props = rawProps.massageDataIn(rawProps);
   const canCheckRadio =
     props.options.length <= props.checkRadioMaxCount &&
@@ -64,10 +73,10 @@ function Druthers(rawProps: Partial<Props & RawSelectProps>): ReactElement {
       />
     ),
     (!canCheckRadio || isOverflown) && (
-      <Select {...props} massaged={true} key="Select" />
+      <Select {...props} massaged={true} ref={ref} key="Select" />
     ),
   ];
-}
+});
 
 Druthers.defaultProps = {
   ...defaultProps,

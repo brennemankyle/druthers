@@ -1,4 +1,4 @@
-import React, { forwardRef, MouseEventHandler } from "react";
+import React, { forwardRef, MouseEventHandler, ReactElement } from "react";
 
 interface Props {
   placeholder: string;
@@ -10,7 +10,7 @@ interface Props {
   hide: boolean;
 }
 
-function Search(props: Props, ref) {
+const Search = forwardRef(function Search(props: Props, ref): ReactElement {
   return (
     <input
       className={props.className + " search"}
@@ -26,8 +26,6 @@ function Search(props: Props, ref) {
       value={props.searchText}
     />
   );
-}
-
-Search = forwardRef(Search);
+});
 
 export default Search;

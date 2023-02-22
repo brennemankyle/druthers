@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { forwardRef, useRef, useState } from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import Druthers from "./Druthers";
-import { noop } from "../../utils/utils";
 
 let options = [
   { value: "1", label: "Banana" },
@@ -136,13 +135,14 @@ let infiniteOptionGroupOptions = [
   { value: "to_go", label: "To Go" },
 ];
 
-const StoryDruthers = (props) => {
+const StoryDruthers = forwardRef(function StoryDruthers(props, ref) {
   const [selection, setSelection] = useState(props.selection);
   let { selection: test, onChange, ...otherProps } = props;
 
   return (
     <Druthers
       {...otherProps}
+      ref={ref}
       selection={selection}
       onChange={(e) => {
         setSelection(e.target.value);
@@ -156,37 +156,40 @@ const StoryDruthers = (props) => {
       onBlur={() => action("onBlur")}
     />
   );
-};
+});
 StoryDruthers.displayName = "Druthers";
+
+const FocusButton = () => {
+  const ref = useRef<HTMLInputElement>(null);
+
+  return (
+    <>
+      <button
+        onClick={() => {
+          if (ref.current) {
+            ref.current.focus();
+          }
+        }}
+      >
+        Focus
+      </button>
+      <StoryDruthers
+        name="Focus Select"
+        selection={selection}
+        options={options}
+        ref={ref}
+        checkRadioMaxCount={0}
+      />
+    </>
+  );
+};
 
 const info = {
   propTables: [Druthers],
   propTablesExclude: [StoryDruthers],
 };
+
 let selection = [];
-
-// let NoDuplicatesState = () => {
-//   const [selectionNoDuplicates, setSelectionNoDuplicates] = useState([]);
-//
-//   return (
-//     <Druthers
-//       name="NoDuplicates"
-//       selection={selectionNoDuplicates}
-//       onChange={e => setSelectionNoDuplicates(e.target.value)}
-//       options={duplicateOptions}
-//       creatable
-//       multiple
-//       allowDuplicates={false}
-//     />
-//   );
-// };
-
-// let asyncOptions = searchText => {
-//   searchText = searchText ? searchText : "a";
-//   return fetch(
-//     `http://openlibrary.org/search.json?title=${encodeURI(searchText)}`
-//   );
-// };
 
 storiesOf("Druthers", module)
   .add(
@@ -314,6 +317,7 @@ storiesOf("Druthers", module)
     ),
     { info }
   )
+  .add("Focus Select", () => <FocusButton />, { info })
   .add(
     "Right to left",
     () => (

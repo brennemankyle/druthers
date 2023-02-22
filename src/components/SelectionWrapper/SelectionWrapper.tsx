@@ -1,4 +1,9 @@
-import React, { useRef, MouseEventHandler, ReactElement } from "react";
+import React, {
+  useRef,
+  MouseEventHandler,
+  ReactElement,
+  forwardRef,
+} from "react";
 
 interface Props {
   onFocus: MouseEventHandler<HTMLInputElement>;
@@ -11,8 +16,12 @@ interface Props {
 
 const preventBlur = (e) => e.preventDefault();
 
-function SelectionWrapper(props: Props) {
-  const searchRef = useRef(null);
+const SelectionWrapper = forwardRef(function SelectionWrapper(
+  props: Props,
+  ref
+) {
+  const _searchRef = useRef(null);
+  const searchRef = ref ?? _searchRef;
 
   let onClick = (e) => {
     e.preventDefault();
@@ -47,6 +56,6 @@ function SelectionWrapper(props: Props) {
       <Expand />
     </div>
   );
-}
+});
 
 export default SelectionWrapper;

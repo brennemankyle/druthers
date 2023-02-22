@@ -1,4 +1,10 @@
-import React, { useReducer, useRef, useEffect, ReactElement } from "react";
+import React, {
+  useReducer,
+  useRef,
+  useEffect,
+  ReactElement,
+  forwardRef,
+} from "react";
 import styled from "@emotion/styled";
 import { RawSelectProps } from "../../utils/SelectTypes";
 import defaultProps from "../../utils/defaultProps";
@@ -17,7 +23,10 @@ function targetValue(e): string {
   return String(e.target.value || e.target.getAttribute("data-val") || "");
 }
 
-function Select(rawProps: Partial<RawSelectProps>): ReactElement {
+const Select = forwardRef(function Select(
+  rawProps: Partial<RawSelectProps>,
+  ref
+): ReactElement {
   let props = rawProps.massaged ? rawProps : rawProps.massageDataIn(rawProps);
   const selfRef = useRef(null);
   const [state, dispatch] = useReducer(props.selectReducer, {
@@ -231,6 +240,7 @@ function Select(rawProps: Partial<RawSelectProps>): ReactElement {
         <SelectionWrapper
           onFocus={onFocus}
           onBlur={onBlur}
+          ref={ref}
           svg_Expand={props.svg_Expand}
           {...styles}
           areOptionsOpen={areOptionsOpen}
@@ -253,7 +263,6 @@ function Select(rawProps: Partial<RawSelectProps>): ReactElement {
               hide={!showSearch}
               placeholder={placeholder}
               searchText={searchText}
-              ref={props.ref}
               onKeyDown={onKeyDown}
               onChange={(e) => {
                 dispatch({ props, type: "clearOptionHighlighted" });
@@ -305,7 +314,7 @@ function Select(rawProps: Partial<RawSelectProps>): ReactElement {
       </Wrapper>
     )
   );
-}
+});
 
 Select.defaultProps = defaultProps;
 

@@ -6,7 +6,7 @@ interface Props {
   children: ReactElement;
 }
 
-function Wrapper(props: Props, ref): ReactElement {
+const Wrapper = forwardRef(function Wrapper(props: Props, ref): ReactElement {
   let { className, children, ...otherProps } = withoutKeys(props, "styles_");
 
   return (
@@ -14,8 +14,6 @@ function Wrapper(props: Props, ref): ReactElement {
       {children}
     </div>
   );
-}
-
-Wrapper = forwardRef(Wrapper);
+});
 
 export default Wrapper;
