@@ -3,6 +3,7 @@ import {
   MouseEventHandler,
   ReactElement,
   ComponentType,
+  MutableRefObject,
 } from "react";
 import { SelectReducer } from "../reducers/selectReducer";
 import { KeyGetter } from "./massageOptions";
@@ -118,6 +119,7 @@ export interface RawSelectPropsWithoutStyles {
   massageDataIn: MassageDataIn;
   massageDataOut: MassageDataOut;
   selectReducer: SelectReducer;
+  ref?: MutableRefObject<null>;
   valueKey: KeyGetter<string | undefined>;
   labelKey: KeyGetter<string | undefined>;
   optionsKey: KeyGetter<RawItem[] | undefined>;

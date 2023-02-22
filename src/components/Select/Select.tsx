@@ -253,6 +253,7 @@ function Select(rawProps: Partial<RawSelectProps>): ReactElement {
               hide={!showSearch}
               placeholder={placeholder}
               searchText={searchText}
+              ref={props.ref}
               onKeyDown={onKeyDown}
               onChange={(e) => {
                 dispatch({ props, type: "clearOptionHighlighted" });
