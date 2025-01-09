@@ -56,16 +56,21 @@ export interface RankItem<T> {
   item: T;
 }
 
+interface InternalRankItems {
+  [key: string]: InternalRankItems[] | number;
+  childSum: number;
+}
+
 export type Comparator<C> = (a: C, b: C) => number;
 
-export function rankFilterSort<T>(
+export function rankFilterSort<T extends { [key: string]: any }>(
   items: T[],
   calculateRank: (item: T) => number,
   comparator: Comparator<RankItem<T>> = (a, b) => b.rank - a.rank,
   childrenKey = "children",
-  onParentRankZero = (item: RankItem<T>) => item
-) {
-  let internalRankFilterSort = (items: T[]) => {
+  onParentRankZero = (item: T) => item
+): T[] {
+  let internalRankFilterSort = (items: T[]): InternalRankItems => {
     let accRank = 0;
 
     let filteredItems = items
@@ -108,24 +113,24 @@ export function rankFilterSort<T>(
     return {
       [childrenKey]: filteredItems,
       childSum: accRank,
-    };
+    } as InternalRankItems;
   };
 
-  return internalRankFilterSort(items)[childrenKey];
+  return internalRankFilterSort(items)[childrenKey] as unknown as T[];
 }
 
-export function withKeys<T extends object>(
+export function withKeys<T extends { [key: string]: any }>(
   obj: T,
   startsWith: string | string[],
   not = false
 ): Partial<T> {
-  return Object.keys(obj).reduce((acc, key) => {
+  return Object.keys(obj).reduce((acc: { [key: string]: any }, key) => {
     let condition = castArray(startsWith).some((word) => key.startsWith(word));
     condition = not ? !condition : condition;
     if (condition) acc[key] = obj[key];
 
     return acc;
-  }, {});
+  }, {}) as Partial<T>;
 }
 
 export function withoutKeys<T extends object>(

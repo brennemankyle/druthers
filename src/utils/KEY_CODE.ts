@@ -23,7 +23,7 @@ const KEY_CODES = {
   CLOSE_BRAKET: 221,
   SINGLE_QUOTE: 222,
   TAB: 9,
-  isOpenKeyCode: (keyCode) => {
+  isOpenKeyCode: (keyCode: number) => {
     const OPEN_KEYS = [
       KEY_CODES.ENTER_KEY,
       KEY_CODES.ARROW_UP,

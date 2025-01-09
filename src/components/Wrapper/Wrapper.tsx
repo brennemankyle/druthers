@@ -1,12 +1,18 @@
-import React, { forwardRef, ReactElement } from "react";
+import React, { ForwardedRef, forwardRef, ReactElement } from "react";
 import { withoutKeys } from "../../utils/utils";
+import { Styles } from "../../utils/SelectTypes";
 
 interface Props {
-  className: string;
+  className?: string;
   children: ReactElement;
 }
 
-const Wrapper = forwardRef(function Wrapper(props: Props, ref): ReactElement {
+type WrapperProps = Props & Styles;
+
+const Wrapper = forwardRef(function Wrapper(
+  props: WrapperProps,
+  ref: ForwardedRef<HTMLDivElement>
+): ReactElement {
   let { className, children, ...otherProps } = withoutKeys(props, "styles_");
 
   return (

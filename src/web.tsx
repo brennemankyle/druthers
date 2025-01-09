@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import Druthers from "./components/Druthers/Druthers";
 
 function Example(): ReactElement {
-  const [selection, setSelection] = useState();
+  const [selection, setSelection] = useState<string>();
   let options = [
     { value: "1", label: "Option 1" },
     { value: "2", label: "Option 2" },

@@ -4,7 +4,7 @@ import { DomRect } from "../useRefRect/useRefRect";
 function usePlaceAbove(
   rect: DomRect,
   optionsWrapperRect: DomRect,
-  skip = []
+  skip: string[] = []
 ): boolean {
   const [placeOptionsAbove, setPlaceOptionsAbove] = useState(false);
 

@@ -5,7 +5,7 @@ import Wrapper from "../Wrapper/Wrapper";
 import { Item } from "../../utils/SelectTypes";
 import { DomRect } from "../../hooks/useRefRect/useRefRect";
 
-interface StyledAppendToBodyOptionsWrapperProps {
+export interface StyledAppendToBodyOptionsWrapperProps {
   className: string;
   children: ReactElement;
   placeOptionsAbove: boolean;
@@ -13,21 +13,22 @@ interface StyledAppendToBodyOptionsWrapperProps {
 }
 
 // Only props can by used for styled components, therefore AppendToBodyOptionsWrapper can't use it's state to be styled
-const StyledAppendToBodyOptionsWrapper = forwardRef(
-  function StyledAppendToBodyOptionsWrapper(
-    props: StyledAppendToBodyOptionsWrapperProps,
-    ref
-  ): ReactElement {
-    let { className, children, placeOptionsAbove, parentRect, ...otherProps } =
-      props;
+const StyledAppendToBodyOptionsWrapper = forwardRef<
+  ReactElement,
+  StyledAppendToBodyOptionsWrapperProps
+>(function StyledAppendToBodyOptionsWrapper(
+  props: StyledAppendToBodyOptionsWrapperProps,
+  ref
+): ReactElement {
+  let { className, children, placeOptionsAbove, parentRect, ...otherProps } =
+    props;
 
-    return (
-      <Wrapper className={className} ref={ref} {...otherProps}>
-        {children}
-      </Wrapper>
-    );
-  }
-);
+  return (
+    <Wrapper className={className} ref={ref} {...otherProps}>
+      {children}
+    </Wrapper>
+  );
+});
 
 interface AppendToBodyOptionsWrapperProps {
   className: string;
@@ -35,19 +36,23 @@ interface AppendToBodyOptionsWrapperProps {
   parentRef: null;
   filteredOptions: Item[];
   updateOn: string[];
-  StyledAppendToBodyOptionsWrapper: ReactElement;
+  StyledWrapper: React.ForwardRefExoticComponent<
+    StyledAppendToBodyOptionsWrapperProps &
+      React.RefAttributes<
+        React.ReactElement<any, string | React.JSXElementConstructor<any>>
+      >
+  >;
 }
 
-function AppendToBodyOptionsWrapper(props: AppendToBodyOptionsWrapperProps) {
-  let {
-    className,
-    children,
-    parentRef,
-    filteredOptions,
-    updateOn,
-    StyledAppendToBodyOptionsWrapper,
-    ...otherProps
-  } = props;
+function AppendToBodyOptionsWrapper({
+  className,
+  children,
+  parentRef,
+  filteredOptions,
+  updateOn = [],
+  StyledWrapper = StyledAppendToBodyOptionsWrapper,
+  ...otherProps
+}: AppendToBodyOptionsWrapperProps) {
   const ref = useRef(null);
   const parentRect = useRefRect(parentRef, updateOn);
   const optionsWrapperRect = useRefRect(ref, updateOn);
@@ -63,7 +68,7 @@ function AppendToBodyOptionsWrapper(props: AppendToBodyOptionsWrapperProps) {
   }
 
   return (
-    <StyledAppendToBodyOptionsWrapper
+    <StyledWrapper
       className={className}
       ref={ref}
       placeOptionsAbove={placeOptionsAbove}
@@ -71,13 +76,9 @@ function AppendToBodyOptionsWrapper(props: AppendToBodyOptionsWrapperProps) {
       {...otherProps}
     >
       {children}
-    </StyledAppendToBodyOptionsWrapper>
+    </StyledWrapper>
   );
 }
-
-AppendToBodyOptionsWrapper.defaultProps = {
-  updateOn: [],
-};
 
 export { StyledAppendToBodyOptionsWrapper };
 export default AppendToBodyOptionsWrapper;

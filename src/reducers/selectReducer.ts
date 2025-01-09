@@ -11,7 +11,7 @@ export interface State {
   width: number;
 }
 
-interface Action {
+export interface Action {
   type: string;
   props: MassagedSelectProps;
   payload?: any;
@@ -23,8 +23,8 @@ const mergeState = (state: State, merge: Partial<State>) => {
   let newState = state;
 
   Object.keys(merge).forEach((key) => {
-    if (newState[key] !== merge[key])
-      newState = { ...newState, [key]: merge[key] };
+    if (newState[key as keyof State] !== merge[key as keyof State])
+      newState = { ...newState, [key]: merge[key as keyof State] };
   });
 
   return newState;
@@ -196,6 +196,7 @@ function selectReducer(
         newFilteredOptions.push({
           value: searchText,
           label: props.text_create + ` "${searchText}"`,
+          selectable: true,
           group: "0",
         }); // Add option for creatable
       }

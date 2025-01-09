@@ -1,16 +1,24 @@
-import React, { forwardRef, MouseEventHandler, ReactElement } from "react";
+import React, {
+  ForwardedRef,
+  forwardRef,
+  ReactElement,
+  KeyboardEventHandler,
+} from "react";
+import { MassagedSelectProps } from "../../utils/SelectTypes";
 
 interface Props {
-  placeholder: string;
-  onChange: MouseEventHandler<HTMLInputElement>;
+  className?: string;
   searchText: string;
-  onKeyDown: MouseEventHandler<HTMLInputElement>;
-  onFocus: MouseEventHandler<HTMLInputElement>;
-  onBlur: MouseEventHandler<HTMLInputElement>;
+  onKeyDown: KeyboardEventHandler<HTMLInputElement>;
   hide: boolean;
 }
 
-const Search = forwardRef(function Search(props: Props, ref): ReactElement {
+type SearchProps = Props & MassagedSelectProps;
+
+const Search = forwardRef(function Search(
+  props: SearchProps,
+  ref: ForwardedRef<HTMLInputElement>
+): ReactElement {
   return (
     <input
       className={props.className + " search"}
@@ -18,7 +26,7 @@ const Search = forwardRef(function Search(props: Props, ref): ReactElement {
       disabled={props.styles_disabled}
       type="text"
       placeholder={props.placeholder}
-      size={props.styles_search_size}
+      size={parseInt(props.styles_search_size, 10)}
       onChange={props.onChange}
       onKeyDown={props.onKeyDown}
       onFocus={props.onFocus}

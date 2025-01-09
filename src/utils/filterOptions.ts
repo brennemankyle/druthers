@@ -1,9 +1,9 @@
-import { isEmpty, without, rankFilterSort, Comparable } from "./utils";
+import { isEmpty, without, rankFilterSort, RankItem } from "./utils";
 import { flattenOptions } from "./massageOptions";
 import FuzzySet from "fuzzyset";
-import { Item, MassagedSelectProps } from "./SelectTypes";
+import { HierarchicalItem, Item, MassagedSelectProps } from "./SelectTypes";
 
-interface DeletableItem extends Omit<Item, "value"> {
+export interface DeletableItem extends Omit<Item, "value"> {
   value?: string;
 }
 
@@ -17,7 +17,7 @@ function fuzzySearch(item: Item, searchTerm: string): boolean {
   return result ? result.length > 0 : false;
 }
 
-function sortComparator(a: Comparable<Item>, b: Comparable<Item>): number {
+function sortComparator(a: RankItem<Item>, b: RankItem<Item>): number {
   return b.rank - a.rank || a.item.label.localeCompare(b.item.label); // sort by rank, then alphabetically
 }
 
@@ -49,12 +49,12 @@ function filterOptions(props: MassagedSelectProps, searchTerm: string): Item[] {
     searchTerm = searchTerm.toLowerCase();
 
     options = flattenOptions(
-      rankFilterSort(
+      rankFilterSort<HierarchicalItem>(
         props.hierarchicalOptions,
         calculateRank,
         sortComparator,
         "options",
-        onParentRankZeroRemoveValue
+        onParentRankZeroRemoveValue as any
       ),
       props.hasOptionGroups
     );

@@ -52,9 +52,13 @@ function useUpdateSelection(
 
     if (!selection.length && booleanSwitch) {
       // When changing to true/false switch, it should never be empty
-      selection = [{ value: "false" }];
+      selection = [
+        { label: "false", value: "false", group: "0", selectable: true },
+      ];
       if (props.options.length === 1 && props.options[0].value === "false") {
-        selection = [{ value: "true" }];
+        selection = [
+          { label: "true", value: "true", group: "0", selectable: true },
+        ];
       }
     }
 

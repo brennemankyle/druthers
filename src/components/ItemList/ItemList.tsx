@@ -1,53 +1,71 @@
-import React, { MouseEventHandler, ReactElement } from "react";
-import { Item } from "../../utils/SelectTypes";
+import React, { MouseEventHandler, TouchEventHandler } from "react";
+import {
+  AnyReactComponent,
+  Item as ItemType,
+  MassagedSelectProps,
+} from "../../utils/SelectTypes";
 import { withKeys, noop } from "../../utils/utils";
 
-const preventBlur = (e) => e.preventDefault();
+const preventBlur: MouseEventHandler<HTMLUListElement> = (e) =>
+  e.preventDefault();
+
+const preventBlurTouch: TouchEventHandler<HTMLUListElement> = (e) =>
+  e.preventDefault();
 
 interface Props {
   className: string;
-  itemList: Item[];
-  removable: boolean;
+  itemList: ItemType[];
   onClick: MouseEventHandler<HTMLUListElement>;
   noItemsText: string;
   onMouseOver: MouseEventHandler<HTMLUListElement>;
   onMouseOut: MouseEventHandler<HTMLUListElement>;
-  Item: ReactElement;
-  svg_Remove: ReactElement;
+  Item: AnyReactComponent;
 }
 
-function ItemList(props: Props) {
-  let styles = withKeys(props, "styles_");
-  let Item = props.Item;
+type ListProps = Props & MassagedSelectProps;
 
-  let renderItem = (item) => (
+function ItemList({
+  removable = false,
+  Item,
+  svg_Remove,
+  itemList,
+  onClick: baseOnClick,
+  onMouseOver: baseOnMouseOver,
+  onMouseOut: baseOnMouseOut,
+  className,
+  noItemsText,
+  ...otherProps
+}: ListProps) {
+  let styles = withKeys(otherProps, "styles_");
+
+  let renderItem = (item: ItemType) => (
     <Item
       item={item}
-      removable={props.removable}
+      removable={removable}
       key={item.value || item.label}
-      svg_Remove={props.svg_Remove}
+      svg_Remove={svg_Remove}
       {...styles}
     />
   );
 
-  let hasItems = !!props.itemList.length;
-  let onClick = hasItems ? props.onClick : noop;
-  let onMouseOver = hasItems ? props.onMouseOver : noop;
-  let onMouseOut = hasItems ? props.onMouseOut : noop;
+  let hasItems = !!itemList.length;
+  let onClick = hasItems ? baseOnClick : noop;
+  let onMouseOver = hasItems ? baseOnMouseOver : noop;
+  let onMouseOut = hasItems ? baseOnMouseOut : noop;
 
   return (
     <ul
-      className={props.className}
+      className={className}
       onClick={onClick}
       onMouseDown={preventBlur}
-      onTouchStart={preventBlur}
+      onTouchStart={preventBlurTouch}
       onMouseOver={onMouseOver}
       onMouseOut={onMouseOut}
     >
-      {props.itemList.map(renderItem)}
-      {!hasItems && props.noItemsText && (
+      {itemList.map(renderItem)}
+      {!hasItems && noItemsText && (
         <Item
-          item={{ value: "", label: props.noItemsText }}
+          item={{ value: "", label: noItemsText }}
           removable={false}
           {...styles}
         />
@@ -55,9 +73,5 @@ function ItemList(props: Props) {
     </ul>
   );
 }
-
-ItemList.defaultProps = {
-  removable: false,
-};
 
 export default ItemList;

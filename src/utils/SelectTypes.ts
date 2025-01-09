@@ -1,14 +1,21 @@
 import {
   ChangeEventHandler,
-  MouseEventHandler,
+  ForwardRefExoticComponent,
+  FunctionComponent,
   ReactElement,
-  ComponentType,
+  FocusEventHandler,
 } from "react";
 import { SelectReducer } from "../reducers/selectReducer";
-import { KeyGetter } from "./massageOptions";
+import { KeyGetter, StringifyRawItem } from "./massageOptions";
 import { MassageDataOut } from "./massageDataOut";
 import { FilterOptions } from "./filterOptions";
 import { MassageDataIn } from "./massageDataIn";
+import { StyledComponent } from "@emotion/styled";
+
+export type AnyReactComponent =
+  | StyledComponent<any>
+  | FunctionComponent<any>
+  | ForwardRefExoticComponent<any>;
 
 export interface InputStyles {
   styles_fontSize: string;
@@ -51,8 +58,8 @@ interface InternalStyles {
   styles_disabled: boolean;
   styles_hasSelection: boolean;
   styles_hasOptions: boolean;
-  styles_optionHighlighted: string;
-  styles_selectionHighlighted: string[];
+  styles_optionHighlighted: string | null;
+  styles_selectionHighlighted: string[] | null;
   styles_rightToLeft: boolean;
   styles_optionsAlwaysOpen: boolean;
   styles_searchable: boolean;
@@ -60,31 +67,24 @@ interface InternalStyles {
 
 export type Styles = InputStyles & InternalStyles;
 
-export interface Item {
-  value: string;
-  label: string;
+export interface Item
+  extends Required<Omit<StringifyRawItem, "options" | "displayElement">> {
   displayElement?: ReactElement;
-  selectable: boolean;
   group: string;
   childGroup?: string;
 }
 
-export interface HierarchicalItem {
-  value: string;
-  label: string;
-  displayElement?: ReactElement;
-  selectable: boolean;
-  group: string;
-  childGroup?: string;
+export interface HierarchicalItem extends Item {
   options?: HierarchicalItem[];
 }
 
 export interface RawItem {
   value?: any;
   label?: any;
-  displayElement?: ReactElement;
+  displayElement?: AnyReactComponent;
   selectable?: boolean;
   options?: RawItem[];
+  [key: string]: string | AnyReactComponent | boolean | RawItem[] | undefined;
 }
 
 export type RawSelection =
@@ -97,59 +97,60 @@ export type RawSelection =
 
 export interface RawSelectPropsWithoutStyles {
   onChange?: ChangeEventHandler<HTMLInputElement>;
-  onBlur: MouseEventHandler<HTMLInputElement>;
-  onFocus: MouseEventHandler<HTMLInputElement>;
+  onBlur?: FocusEventHandler<HTMLInputElement>;
+  onFocus?: FocusEventHandler<HTMLInputElement>;
   name?: string;
-  selection: RawSelection;
+  selection?: RawSelection;
   options: RawItem[];
-  placeholder: string;
-  multiple: boolean;
-  disabled: boolean;
-  creatable: boolean;
-  removable: boolean;
-  appendToBody: boolean;
-  rightToLeft: boolean;
-  allowDuplicates: boolean;
-  alwaysReturnArray: boolean;
-  optionsAlwaysOpen: boolean;
-  overlayOptions: boolean;
-  searchable: boolean;
-  filterOptions: FilterOptions;
-  massageDataIn: MassageDataIn;
-  massageDataOut: MassageDataOut;
-  selectReducer: SelectReducer;
-  valueKey: KeyGetter<string | undefined>;
-  labelKey: KeyGetter<string | undefined>;
-  optionsKey: KeyGetter<RawItem[] | undefined>;
-  displayElementKey: KeyGetter<ReactElement | undefined>;
-  selectableKey: KeyGetter<boolean | undefined>;
-  checkRadioMaxCount: number;
-  parseTo: "string" | "number" | "int" | "float" | "boolean";
+  placeholder?: string;
+  multiple?: boolean;
+  disabled?: boolean;
+  creatable?: boolean;
+  removable?: boolean;
+  appendToBody?: boolean;
+  rightToLeft?: boolean;
+  allowDuplicates?: boolean;
+  alwaysReturnArray?: boolean;
+  optionsAlwaysOpen?: boolean;
+  overlayOptions?: boolean;
+  searchable?: boolean;
+  filterOptions?: FilterOptions;
+  massageDataIn?: MassageDataIn;
+  massageDataOut?: MassageDataOut;
+  selectReducer?: SelectReducer;
+  valueKey?: KeyGetter<string>;
+  labelKey?: KeyGetter<string>;
+  optionsKey?: KeyGetter<RawItem[]>;
+  displayElementKey?: KeyGetter<AnyReactComponent>;
+  selectableKey?: KeyGetter<boolean>;
+  checkRadioMaxCount?: number;
+  parseTo?: "string" | "number" | "int" | "float" | "boolean";
+  massaged?: boolean;
 
-  text_placeholder: string;
-  text_noOptions: string;
-  text_create: string;
+  text_placeholder?: string;
+  text_noOptions?: string;
+  text_create?: string;
 
-  component_HtmlFieldData: ComponentType;
-  component_Wrapper: ComponentType;
-  component_Selection: ComponentType;
-  component_SelectionList: ComponentType;
-  component_OptionList: ComponentType;
-  component_Option: ComponentType;
-  component_Search: ComponentType;
-  component_SelectionWrapper: ComponentType;
-  component_OverlayOptionsWrapper: ComponentType;
-  component_InPlaceOptionsWrapper: ComponentType;
-  component_AppendToBodyOptionsWrapper: ComponentType;
-  component_StyledAppendToBodyOptionsWrapper: ComponentType;
+  component_HtmlFieldData?: AnyReactComponent;
+  component_Wrapper?: AnyReactComponent;
+  component_Selection?: AnyReactComponent;
+  component_SelectionList?: AnyReactComponent;
+  component_OptionList?: AnyReactComponent;
+  component_Option?: AnyReactComponent;
+  component_Search?: AnyReactComponent;
+  component_SelectionWrapper?: AnyReactComponent;
+  component_OverlayOptionsWrapper?: AnyReactComponent;
+  component_InPlaceOptionsWrapper?: AnyReactComponent;
+  component_AppendToBodyOptionsWrapper?: AnyReactComponent;
+  component_StyledAppendToBodyOptionsWrapper?: AnyReactComponent;
 
-  svg_Checkmark: ComponentType;
-  svg_Remove: ComponentType;
-  svg_Expand: ComponentType;
+  svg_Checkmark?: AnyReactComponent;
+  svg_Remove?: AnyReactComponent;
+  svg_Expand?: AnyReactComponent;
 }
 
 export interface MassagedSelectPropsWithoutStyles
-  extends Omit<RawSelectPropsWithoutStyles, "options" | "selection"> {
+  extends Required<Omit<RawSelectPropsWithoutStyles, "options" | "selection">> {
   selection: Item[];
   options: Item[];
   hasSelection: boolean;
@@ -160,6 +161,5 @@ export interface MassagedSelectPropsWithoutStyles
   text_placeholder: string;
 }
 
-export type RawSelectProps = RawSelectPropsWithoutStyles & InputStyles;
-export type MassagedSelectProps = MassagedSelectPropsWithoutStyles &
-  InputStyles;
+export type RawSelectProps = RawSelectPropsWithoutStyles & Partial<InputStyles>;
+export type MassagedSelectProps = MassagedSelectPropsWithoutStyles & Styles;

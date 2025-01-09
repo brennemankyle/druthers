@@ -3,29 +3,42 @@ import React, {
   MouseEventHandler,
   ReactElement,
   forwardRef,
+  TouchEventHandler,
+  ForwardedRef,
+  RefObject,
 } from "react";
+import { MassagedSelectProps } from "../../utils/SelectTypes";
 
 interface Props {
-  onFocus: MouseEventHandler<HTMLInputElement>;
-  onBlur: MouseEventHandler<HTMLInputElement>;
+  className?: string;
   areOptionsOpen: boolean;
   Search: ReactElement;
   SelectionList: ReactElement;
-  svg_Expand: ReactElement;
 }
 
-const preventBlur = (e) => e.preventDefault();
+type SelectionWrapperProps = Props & MassagedSelectProps;
+
+const preventBlur: MouseEventHandler<HTMLDivElement> = (e) =>
+  e.preventDefault();
+
+const preventBlurTouch: TouchEventHandler<HTMLDivElement> = (e) =>
+  e.preventDefault();
 
 const SelectionWrapper = forwardRef(function SelectionWrapper(
-  props: Props,
-  ref
+  props: SelectionWrapperProps,
+  ref: ForwardedRef<HTMLInputElement>
 ) {
-  const _searchRef = useRef(null);
-  const searchRef = ref ?? _searchRef;
+  const _searchRef = useRef<HTMLInputElement>(null);
+  const searchRef: RefObject<HTMLInputElement> =
+    (ref as RefObject<HTMLInputElement>) ?? _searchRef;
 
-  let onClick = (e) => {
+  let onClick: MouseEventHandler<HTMLDivElement> = (e) => {
     e.preventDefault();
-    if (e.target.classList.contains("remove")) return; // Don't open options if remove was clicked
+    if ((e.target as HTMLDivElement).classList.contains("remove")) return; // Don't open options if remove was clicked
+
+    if (!searchRef || !searchRef.current) {
+      return;
+    }
 
     if (!props.areOptionsOpen) {
       searchRef.current.focus(); // Open options
@@ -46,7 +59,7 @@ const SelectionWrapper = forwardRef(function SelectionWrapper(
       className={props.className}
       onClick={onClick}
       onMouseDown={preventBlur}
-      onTouchStart={preventBlur}
+      onTouchStart={preventBlurTouch}
     >
       <div>
         {props.SelectionList}

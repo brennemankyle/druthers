@@ -12,7 +12,7 @@ export interface DomRect {
   x: number;
 }
 
-function getRect(current: HTMLElement | undefined): DomRect {
+function getRect(current: HTMLElement | undefined | null): DomRect {
   if (!current)
     return {
       top: 0,
@@ -33,13 +33,16 @@ function getRect(current: HTMLElement | undefined): DomRect {
   return { top, bottom, left, right, width, height, x, y };
 }
 
-function useRefRect(ref, skip = []): DomRect {
+function useRefRect(
+  ref: React.MutableRefObject<HTMLElement | undefined | null> | null,
+  skip: string[] = []
+): DomRect {
   const [rect, setRect] = useState(getRect(undefined));
 
   useEffect(() => {
-    setRect(getRect(ref.current));
+    setRect(getRect(ref?.current));
     // eslint-disable-next-line
-  }, Object.values(getRect(ref.current)).concat(skip));
+  }, Object.values(getRect(ref?.current)).concat(skip));
 
   return rect;
 }

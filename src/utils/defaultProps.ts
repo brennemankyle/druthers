@@ -19,13 +19,17 @@ import { MassagedSelectProps } from "./SelectTypes";
 import { noop } from "./utils";
 
 let defaultProps: MassagedSelectProps = {
-  onChange: undefined,
+  onChange: noop,
   onBlur: noop,
   onFocus: noop,
-  name: undefined,
+  name: "",
   selection: [],
   options: [],
+  hasSelection: false,
   hierarchicalOptions: [],
+  hasOptions: false,
+  hasOptionGroups: false,
+  singleNoOptions: false,
   placeholder: "Select...",
   multiple: false,
   disabled: false,
@@ -49,16 +53,17 @@ let defaultProps: MassagedSelectProps = {
   optionsKey: (item) => item["options"],
   checkRadioMaxCount: 10,
   parseTo: "string",
+  massaged: false,
 
   text_placeholder: "",
   text_noOptions: "No Options",
   text_create: "Create",
 
-  component_Select: undefined, // These undefined ones are defined in Druthers, must be done there or we'd have circular imports
-  component_CheckRadio: undefined,
-  component_CheckBox: undefined,
-  component_Radio: undefined,
-  component_Switch: undefined,
+  // component_Select: undefined, // These undefined ones are defined in Druthers, must be done there or we'd have circular imports
+  // component_CheckRadio: undefined,
+  // component_CheckBox: undefined,
+  // component_Radio: undefined,
+  // component_Switch: undefined,
   component_HtmlFieldData: HtmlFieldData,
   component_Wrapper: Wrapper,
   component_Selection: Selection,
@@ -108,6 +113,16 @@ let defaultProps: MassagedSelectProps = {
   styles_colors_warningBold: "#FA2222",
   styles_colors_disabled: "#ECECEC",
   styles_colors_background: "white",
+  styles_width: "0",
+  styles_multiple: false,
+  styles_disabled: false,
+  styles_hasSelection: false,
+  styles_hasOptions: false,
+  styles_optionHighlighted: null,
+  styles_selectionHighlighted: null,
+  styles_rightToLeft: false,
+  styles_optionsAlwaysOpen: false,
+  styles_searchable: true,
 };
 
 export default defaultProps;

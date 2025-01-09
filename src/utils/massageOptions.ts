@@ -1,15 +1,24 @@
-import React, { ReactElement } from "react";
-import { RawItem, Item, HierarchicalItem } from "./SelectTypes";
+import React from "react";
+import {
+  RawItem,
+  Item,
+  HierarchicalItem,
+  RawSelectPropsWithoutStyles,
+} from "./SelectTypes";
 
-interface Props {
-  options: RawItem[];
-  allowDuplicates: boolean;
-  valueKey: KeyGetter<string | undefined>;
-  labelKey: KeyGetter<string | undefined>;
-  optionsKey: KeyGetter<RawItem[] | undefined>;
-  displayElementKey: KeyGetter<ReactElement | undefined>;
-  selectableKey: KeyGetter<boolean | undefined>;
-}
+export interface MassageOptionProps
+  extends Required<
+    Pick<
+      RawSelectPropsWithoutStyles,
+      | "options"
+      | "allowDuplicates"
+      | "valueKey"
+      | "labelKey"
+      | "optionsKey"
+      | "displayElementKey"
+      | "selectableKey"
+    >
+  > {}
 
 interface MassagedOptions {
   options: Item[];
@@ -18,22 +27,19 @@ interface MassagedOptions {
   hasOptionGroups: boolean;
 }
 
-interface StringifyRawItem {
-  value?: string;
-  label?: string;
-  displayElement?: ReactElement;
-  selectable?: boolean;
-  options?: RawItem[];
+export interface StringifyRawItem
+  extends Pick<RawItem, "displayElement" | "selectable"> {
+  value: string;
+  label: string;
+  options?: StringifyRawItem[];
 }
 
-type GetterItem = {
-  [key: string]: string | ReactElement | boolean | RawItem[];
-};
+export type KeyGetter<T> = string | ((item: RawItem) => T | undefined);
 
-export type KeyGetter<T> = string | ((item: GetterItem) => T);
-
-function getKey<T>(keyGetter: KeyGetter<T>, option: RawItem): T {
-  return typeof keyGetter === "string" ? option[keyGetter] : keyGetter(option);
+function getKey<T>(keyGetter: KeyGetter<T>, option: RawItem): T | undefined {
+  return typeof keyGetter === "string"
+    ? (option[keyGetter as keyof RawItem] as T)
+    : keyGetter(option);
 }
 
 function flattenOptions(
@@ -52,11 +58,11 @@ function flattenOptions(
   );
 }
 
-function massageOptions(props: Props): MassagedOptions {
+function massageOptions(props: MassageOptionProps): MassagedOptions {
   let hasOptionGroups = false;
 
   let massageOption = (option: RawItem): StringifyRawItem => {
-    let newOption: StringifyRawItem = {};
+    let newOption: Partial<StringifyRawItem> = {};
     let value = getKey(props.valueKey, option);
     let label = getKey(props.labelKey, option);
     let displayElement = getKey(props.displayElementKey, option);
@@ -79,17 +85,17 @@ function massageOptions(props: Props): MassagedOptions {
       newOption["selectable"] = true;
     }
 
-    return newOption;
+    return newOption as StringifyRawItem;
   };
 
   let internalMassageOptions = (
-    options: StringifyRawItem[],
+    options: RawItem[],
     groups: number[]
   ): HierarchicalItem[] => {
     let currentGroup = 0;
 
     return options.map((option) => {
-      let newOption = massageOption(option);
+      let newOption = massageOption(option as RawItem) as HierarchicalItem;
       if (groups.length) newOption["group"] = groups.join(".");
 
       if (getKey(props.optionsKey, option) == null) {
@@ -103,7 +109,7 @@ function massageOptions(props: Props): MassagedOptions {
         newOption["childGroup"] = childGroup.join(".");
 
         newOption["options"] = internalMassageOptions(
-          getKey<RawItem[]>(props.optionsKey, option),
+          getKey(props.optionsKey, option) as RawItem[],
           childGroup
         ); // Recursion
 
@@ -125,7 +131,7 @@ function massageOptions(props: Props): MassagedOptions {
         if (option.childGroup == null) {
           return false;
         } else {
-          delete option.value;
+          delete (option as any).value;
         }
       } else {
         previousValues.push(option.value);

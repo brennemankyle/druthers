@@ -1,5 +1,5 @@
 import React, { ComponentType } from "react";
-import { Item as ItemType } from "../../utils/SelectTypes";
+import { Item as ItemType, MassagedSelectProps } from "../../utils/SelectTypes";
 import { RemoveProps } from "../svg/svg";
 
 interface Props {
@@ -9,7 +9,9 @@ interface Props {
   svg_Remove: ComponentType<RemoveProps>;
 }
 
-function Item(props: Props) {
+type ItemProps = Props & MassagedSelectProps;
+
+function Item(props: ItemProps) {
   let Remove = props.svg_Remove;
 
   return (
