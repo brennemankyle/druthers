@@ -11,7 +11,7 @@ type WrapperProps = Props & Styles;
 
 const Wrapper = forwardRef(function Wrapper(
   props: WrapperProps,
-  ref: ForwardedRef<HTMLDivElement>
+  ref: ForwardedRef<HTMLDivElement> | undefined
 ): ReactElement {
   let { className, children, ...otherProps } = withoutKeys(props, "styles_");
 

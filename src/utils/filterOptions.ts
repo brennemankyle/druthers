@@ -1,5 +1,6 @@
 import { isEmpty, without, rankFilterSort, RankItem } from "./utils";
 import { flattenOptions } from "./massageOptions";
+// @ts-ignore
 import FuzzySet from "fuzzyset";
 import { HierarchicalItem, Item, MassagedSelectProps } from "./SelectTypes";
 

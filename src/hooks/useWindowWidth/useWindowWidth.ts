@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+// @ts-ignore
 import debounce from "debounce";
 
 function useWindowWidth(): number {

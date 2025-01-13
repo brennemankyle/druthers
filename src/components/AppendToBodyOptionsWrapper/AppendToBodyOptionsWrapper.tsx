@@ -1,36 +1,37 @@
-import React, { useRef, forwardRef, ReactElement } from "react";
+import React, { useRef, forwardRef, ReactElement, ForwardedRef } from "react";
 import useRefRect from "../../hooks/useRefRect/useRefRect";
 import usePlaceAbove from "../../hooks/usePlaceAbove/usePlaceAbove";
 import Wrapper from "../Wrapper/Wrapper";
-import { Item } from "../../utils/SelectTypes";
+import { Item, Styles } from "../../utils/SelectTypes";
 import { DomRect } from "../../hooks/useRefRect/useRefRect";
 
-export interface StyledAppendToBodyOptionsWrapperProps {
+interface StyledProps {
   className: string;
   children: ReactElement;
   placeOptionsAbove: boolean;
   parentRect: DomRect;
 }
 
+export type StyledAppendToBodyOptionsWrapperProps = StyledProps & Styles;
+
 // Only props can by used for styled components, therefore AppendToBodyOptionsWrapper can't use it's state to be styled
-const StyledAppendToBodyOptionsWrapper = forwardRef<
-  ReactElement,
-  StyledAppendToBodyOptionsWrapperProps
->(function StyledAppendToBodyOptionsWrapper(
-  props: StyledAppendToBodyOptionsWrapperProps,
-  ref
-): ReactElement {
-  let { className, children, placeOptionsAbove, parentRect, ...otherProps } =
-    props;
+const StyledAppendToBodyOptionsWrapper = forwardRef(
+  function StyledAppendToBodyOptionsWrapper(
+    props: StyledAppendToBodyOptionsWrapperProps,
+    ref: ForwardedRef<HTMLDivElement> | undefined
+  ) {
+    let { className, children, placeOptionsAbove, parentRect, ...otherProps } =
+      props;
 
-  return (
-    <Wrapper className={className} ref={ref} {...otherProps}>
-      {children}
-    </Wrapper>
-  );
-});
+    return (
+      <Wrapper className={className} ref={ref} {...otherProps}>
+        {children}
+      </Wrapper>
+    );
+  }
+);
 
-interface AppendToBodyOptionsWrapperProps {
+interface Props {
   className: string;
   children: ReactElement;
   parentRef: null;
@@ -43,6 +44,8 @@ interface AppendToBodyOptionsWrapperProps {
       >
   >;
 }
+
+type AppendToBodyOptionsWrapperProps = Styles & Props;
 
 function AppendToBodyOptionsWrapper({
   className,

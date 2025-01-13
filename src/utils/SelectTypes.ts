@@ -59,7 +59,7 @@ interface InternalStyles {
   styles_hasSelection: boolean;
   styles_hasOptions: boolean;
   styles_optionHighlighted: string | null;
-  styles_selectionHighlighted: string[] | null;
+  styles_selectionHighlighted: string | null;
   styles_rightToLeft: boolean;
   styles_optionsAlwaysOpen: boolean;
   styles_searchable: boolean;

@@ -1,7 +1,7 @@
 {
   "name": "druthers",
   "homepage": "https://brennemankyle.github.io/druthers/",
-  "version": "3.1.16",
+  "version": "3.1.17",
   "description": "React Multi-Select with automatic checkboxes/radios",
   "main": "src/index.ts",
   "private": false,
@@ -25,7 +25,8 @@
     "build": "build-storybook -s public",
     "deploy": "storybook-to-ghpages",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "typescript": "tsc --noEmit"
   },
   "keywords": [
     "multiple select",
