@@ -1,4 +1,11 @@
-import React, { useRef, forwardRef, ReactElement, ForwardedRef } from "react";
+import React, {
+  useRef,
+  forwardRef,
+  ReactElement,
+  ForwardedRef,
+  ForwardRefExoticComponent,
+  RefAttributes,
+} from "react";
 import useRefRect from "../../hooks/useRefRect/useRefRect";
 import usePlaceAbove from "../../hooks/usePlaceAbove/usePlaceAbove";
 import Wrapper from "../Wrapper/Wrapper";
@@ -37,11 +44,8 @@ interface Props {
   parentRef: null;
   filteredOptions: Item[];
   updateOn: string[];
-  StyledWrapper: React.ForwardRefExoticComponent<
-    StyledAppendToBodyOptionsWrapperProps &
-      React.RefAttributes<
-        React.ReactElement<any, string | React.JSXElementConstructor<any>>
-      >
+  StyledWrapper: ForwardRefExoticComponent<
+    StyledAppendToBodyOptionsWrapperProps & RefAttributes<HTMLDivElement>
   >;
 }
 
