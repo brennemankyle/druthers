@@ -26,7 +26,9 @@
     "deploy": "storybook-to-ghpages",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "typescript": "tsc --noEmit"
+    "tsc": "tsc --noEmit",
+    "tsc-build": "tsc --build",
+    "tsc-clean": "tsc --build --clean"
   },
   "keywords": [
     "multiple select",
