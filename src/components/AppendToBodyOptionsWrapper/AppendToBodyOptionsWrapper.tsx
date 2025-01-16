@@ -12,7 +12,7 @@ import Wrapper from "../Wrapper/Wrapper";
 import { Item, Styles } from "../../utils/SelectTypes";
 import { DomRect } from "../../hooks/useRefRect/useRefRect";
 
-interface StyledProps {
+export interface StyledProps {
   className: string;
   children: ReactElement;
   placeOptionsAbove: boolean;
@@ -38,7 +38,7 @@ const StyledAppendToBodyOptionsWrapper = forwardRef(
   }
 );
 
-interface Props {
+export interface Props {
   className: string;
   children: ReactElement;
   parentRef: null;
@@ -49,7 +49,7 @@ interface Props {
   >;
 }
 
-type AppendToBodyOptionsWrapperProps = Styles & Props;
+export type AppendToBodyOptionsWrapperProps = Styles & Props;
 
 function AppendToBodyOptionsWrapper({
   className,

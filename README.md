@@ -272,5 +272,5 @@ class SomeComponent extends React.Component {
 
 - Make code updates
 - Increment the version in the package.json
-- Run the typescript build `npm run tsc-build`
+- Run the typescript build `npm run tsc-build` to make sure it builds without error
 - publish the npm package update `npm publish`

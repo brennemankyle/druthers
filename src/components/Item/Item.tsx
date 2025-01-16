@@ -2,14 +2,14 @@ import React, { ComponentType } from "react";
 import { Item as ItemType, MassagedSelectProps } from "../../utils/SelectTypes";
 import { RemoveProps } from "../svg/svg";
 
-interface Props {
+export interface Props {
   className: string;
   removable: boolean;
   item: ItemType;
   svg_Remove: ComponentType<RemoveProps>;
 }
 
-type ItemProps = Props & MassagedSelectProps;
+export type ItemProps = Props & MassagedSelectProps;
 
 function Item(props: ItemProps) {
   let Remove = props.svg_Remove;

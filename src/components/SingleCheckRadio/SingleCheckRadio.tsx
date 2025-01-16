@@ -2,7 +2,7 @@ import React, { ReactElement, useState, MouseEventHandler } from "react";
 import { noop } from "../../utils/utils";
 import { MassagedSelectProps } from "../../utils/SelectTypes";
 
-interface Props {
+export interface Props {
   checked: boolean;
   toggle: boolean;
   value: string;
@@ -13,7 +13,7 @@ interface Props {
   title: string;
 }
 
-type CheckRadioProps = Partial<Props> & MassagedSelectProps;
+export type CheckRadioProps = Partial<Props> & MassagedSelectProps;
 
 function SingleCheckRadio({
   onClick = noop,

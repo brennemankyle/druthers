@@ -9,14 +9,14 @@ import React, {
 } from "react";
 import { MassagedSelectProps } from "../../utils/SelectTypes";
 
-interface Props {
+export interface Props {
   className?: string;
   areOptionsOpen: boolean;
   Search: ReactElement;
   SelectionList: ReactElement;
 }
 
-type SelectionWrapperProps = Props & MassagedSelectProps;
+export type SelectionWrapperProps = Props & MassagedSelectProps;
 
 const preventBlur: MouseEventHandler<HTMLDivElement> = (e) =>
   e.preventDefault();

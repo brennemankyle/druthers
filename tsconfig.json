@@ -18,6 +18,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "sourceMap": true,
+    "declaration": true,
     "outDir": "dist",
     "jsx": "react-jsx"
   },

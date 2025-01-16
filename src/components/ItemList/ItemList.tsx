@@ -12,7 +12,7 @@ const preventBlur: MouseEventHandler<HTMLUListElement> = (e) =>
 const preventBlurTouch: TouchEventHandler<HTMLUListElement> = (e) =>
   e.preventDefault();
 
-interface Props {
+export interface Props {
   className: string;
   itemList: ItemType[];
   onClick: MouseEventHandler<HTMLUListElement>;
@@ -22,7 +22,7 @@ interface Props {
   Item: AnyReactComponent;
 }
 
-type ListProps = Props & MassagedSelectProps;
+export type ListProps = Props & MassagedSelectProps;
 
 function ItemList({
   removable = false,

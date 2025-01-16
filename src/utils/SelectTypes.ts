@@ -52,7 +52,7 @@ export interface InputStyles {
   styles_colors_background: string;
 }
 
-interface InternalStyles {
+export interface InternalStyles {
   styles_width: string;
   styles_multiple: boolean;
   styles_disabled: boolean;

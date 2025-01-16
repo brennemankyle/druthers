@@ -6,14 +6,14 @@ import React, {
 } from "react";
 import { MassagedSelectProps } from "../../utils/SelectTypes";
 
-interface Props {
+export interface Props {
   className?: string;
   searchText: string;
   onKeyDown: KeyboardEventHandler<HTMLInputElement>;
   hide: boolean;
 }
 
-type SearchProps = Props & MassagedSelectProps;
+export type SearchProps = Props & MassagedSelectProps;
 
 const Search = forwardRef(function Search(
   props: SearchProps,
