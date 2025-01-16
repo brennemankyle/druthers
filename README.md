@@ -265,3 +265,12 @@ class SomeComponent extends React.Component {
 | styles_colors_warningBold                  | The color of the remove selection icon                                          |
 | styles_colors_disabled                     | The color for disabled elements                                                 |
 | styles_colors_background                   | The background color used                                                       |
+
+# Contributing
+
+## Publishing updates to the npm packages
+
+- Make code updates
+- Increment the version in the package.json
+- Run the typescript build `npm run tsc-build`
+- publish the npm package update `npm publish`
