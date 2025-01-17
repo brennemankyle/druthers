@@ -1,7 +1,7 @@
 {
   "name": "druthers",
   "homepage": "https://brennemankyle.github.io/druthers/",
-  "version": "3.1.22",
+  "version": "3.1.23",
   "description": "React Multi-Select with automatic checkboxes/radios",
   "main": "dist/index.js",
   "private": false,
@@ -27,7 +27,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "tsc": "tsc --noEmit",
-    "tsc-build": "tsc --build",
+    "tsc-build": "rm -rf dist && tsc --build",
     "tsc-clean": "tsc --build --clean"
   },
   "keywords": [
