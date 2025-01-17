@@ -81,10 +81,17 @@ export interface HierarchicalItem extends Item {
 export interface RawItem {
   value?: any;
   label?: any;
-  displayElement?: AnyReactComponent;
+  displayElement?: AnyReactComponent | ReactElement | Element;
   selectable?: boolean;
   options?: RawItem[];
-  [key: string]: string | AnyReactComponent | boolean | RawItem[] | undefined;
+  [key: string]:
+    | string
+    | AnyReactComponent
+    | boolean
+    | RawItem[]
+    | ReactElement
+    | Element
+    | undefined;
 }
 
 export type RawSelection =
@@ -122,7 +129,7 @@ export interface RawSelectPropsWithoutStyles {
   valueKey?: KeyGetter<string>;
   labelKey?: KeyGetter<string>;
   optionsKey?: KeyGetter<RawItem[]>;
-  displayElementKey?: KeyGetter<AnyReactComponent>;
+  displayElementKey?: KeyGetter<AnyReactComponent | ReactElement | Element>;
   selectableKey?: KeyGetter<boolean>;
   checkRadioMaxCount?: number;
   parseTo?: "string" | "number" | "int" | "float" | "boolean";
