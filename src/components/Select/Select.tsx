@@ -235,6 +235,7 @@ const Select = forwardRef(function Select(
 
   let optionList = (
     <OptionList
+      className="druthers-option-list"
       itemList={filteredOptions}
       onClick={onOptionClick}
       onMouseOver={onHoverOption}
@@ -255,12 +256,13 @@ const Select = forwardRef(function Select(
   }
 
   return (
-    <Wrapper {...styles} ref={selfRef}>
+    <Wrapper {...styles} ref={selfRef} className={props.className}>
       {props.name && (
         <HtmlFieldData name={props.name} itemList={props.selection} />
       )}
 
       <SelectionWrapper
+        className="druthers-selection-wrapper"
         onFocus={onFocus}
         onBlur={onBlur}
         ref={ref}
@@ -270,6 +272,7 @@ const Select = forwardRef(function Select(
         SelectionList={
           showSelection && (
             <SelectionList
+              className="druthers-selection-list"
               itemList={props.selection}
               onClick={onRemove}
               onMouseOver={onHoverSelection}
@@ -283,6 +286,7 @@ const Select = forwardRef(function Select(
         }
         Search={
           <Search
+            className="druthers-search"
             hide={!showSearch}
             placeholder={placeholder}
             searchText={searchText}
@@ -304,7 +308,10 @@ const Select = forwardRef(function Select(
         (areOptionsOpen || props.optionsAlwaysOpen) &&
         props.overlayOptions && (
           <DivRelative>
-            <OverlayOptionsWrapper {...styles}>
+            <OverlayOptionsWrapper
+              className="druthers-overlay-options-wrapper"
+              {...styles}
+            >
               {optionList}
             </OverlayOptionsWrapper>
           </DivRelative>
@@ -313,7 +320,10 @@ const Select = forwardRef(function Select(
       {!props.appendToBody &&
         (areOptionsOpen || props.optionsAlwaysOpen) &&
         !props.overlayOptions && (
-          <InPlaceOptionsWrapper {...styles}>
+          <InPlaceOptionsWrapper
+            className="druthers-in-place-options-wrapper"
+            {...styles}
+          >
             {optionList}
           </InPlaceOptionsWrapper>
         )}
@@ -323,6 +333,7 @@ const Select = forwardRef(function Select(
         ReactDOM.createPortal(
           <AppendToBodyOptionsWrapper
             {...styles}
+            className="druthers-append-to-body-options-wrapper"
             parentRef={selfRef}
             filteredOptions={filteredOptions}
             StyledAppendToBodyOptionsWrapper={StyledAppendToBodyOptionsWrapper}

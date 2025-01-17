@@ -21,7 +21,7 @@ const Search = forwardRef(function Search(
 ): ReactElement {
   return (
     <input
-      className={props.className + " search"}
+      className={props.className}
       ref={ref}
       disabled={props.styles_disabled}
       type="text"

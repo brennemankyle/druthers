@@ -22,7 +22,6 @@ import { CheckBox, Radio, Switch } from "../SingleCheckRadio/styled";
 
 interface Props {
   style: CSSProperties;
-  className: string;
   massaged: boolean;
   component_CheckBox: AnyReactComponent;
   component_Radio: AnyReactComponent;
@@ -35,7 +34,6 @@ type MassagedCheckRadioProps = Props & MassagedSelectProps;
 
 const defaultCheckRadioProps: MassagedCheckRadioProps = {
   ...defaultProps,
-  className: "",
   massaged: false,
   style: {},
   component_CheckBox: CheckBox,

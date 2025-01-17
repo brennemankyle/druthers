@@ -23,6 +23,7 @@ let defaultProps: MassagedSelectProps = {
   onBlur: noop,
   onFocus: noop,
   name: "",
+  className: "",
   selection: [],
   options: [],
   hasSelection: false,

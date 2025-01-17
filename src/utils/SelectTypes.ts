@@ -100,6 +100,7 @@ export interface RawSelectPropsWithoutStyles {
   onBlur?: FocusEventHandler<HTMLInputElement>;
   onFocus?: FocusEventHandler<HTMLInputElement>;
   name?: string;
+  className: string;
   selection?: RawSelection;
   options: RawItem[];
   placeholder?: string;

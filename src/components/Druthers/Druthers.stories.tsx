@@ -197,6 +197,7 @@ storiesOf("Druthers", module)
     () => (
       <StoryDruthers
         name="Single"
+        className="single"
         selection={selection}
         options={options}
         checkRadioMaxCount={0}
@@ -294,6 +295,7 @@ storiesOf("Druthers", module)
     () => (
       <StoryDruthers
         name="AlwaysOpenInPlaceOptions"
+        className="always-open-options"
         selection={selection}
         options={optionGroupOptions}
         checkRadioMaxCount={0}
