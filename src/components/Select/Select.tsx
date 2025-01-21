@@ -46,7 +46,8 @@ const Select = forwardRef(function Select(
     : massageDataIn(rawProps, defaultProps);
   const selfRef = useRef(null);
   const [state, dispatch] = useReducer(props.selectReducer, {
-    areOptionsOpen: false,
+    areOptionsOpen: props.optionsAlwaysOpen,
+    isFocused: false,
     searchText: "",
     placeholder: props.text_placeholder,
     optionHighlighted: null,
@@ -56,6 +57,7 @@ const Select = forwardRef(function Select(
   });
   const {
     areOptionsOpen,
+    isFocused,
     searchText,
     placeholder,
     optionHighlighted,
@@ -110,6 +112,7 @@ const Select = forwardRef(function Select(
   // Events
   let onFocus = (e: FocusEvent<HTMLInputElement>) => {
     dispatch({ props, type: "openOptions" });
+    dispatch({ props, type: "setIsFocused", payload: true });
 
     props.onFocus(e);
   };
@@ -119,6 +122,7 @@ const Select = forwardRef(function Select(
     }
 
     dispatch({ props, type: "closeOptions" });
+    dispatch({ props, type: "setIsFocused", payload: false });
 
     props.onBlur(e);
   };
@@ -215,8 +219,8 @@ const Select = forwardRef(function Select(
         noop;
   }
 
-  let showSelection = props.multiple || !areOptionsOpen; // Multiple: always show. Single: show when options are closed
-  let showSearch = props.multiple || areOptionsOpen || !props.hasSelection; // Multiple: always show. Single: show when options are open or when nothing is selected (placeholder should be shown)
+  let showSelection = props.multiple || !isFocused; // Multiple: always show. Single: show when options are closed
+  let showSearch = props.multiple || isFocused || !props.hasSelection; // Multiple: always show. Single: show when options are open or when nothing is selected (placeholder should be shown)
   let {
     component_HtmlFieldData: HtmlFieldData,
     component_Wrapper: Wrapper,
@@ -304,32 +308,28 @@ const Select = forwardRef(function Select(
         }
       />
 
-      {!props.appendToBody &&
-        (areOptionsOpen || props.optionsAlwaysOpen) &&
-        props.overlayOptions && (
-          <DivRelative>
-            <OverlayOptionsWrapper
-              className="druthers-overlay-options-wrapper"
-              {...styles}
-            >
-              {optionList}
-            </OverlayOptionsWrapper>
-          </DivRelative>
-        )}
-
-      {!props.appendToBody &&
-        (areOptionsOpen || props.optionsAlwaysOpen) &&
-        !props.overlayOptions && (
-          <InPlaceOptionsWrapper
-            className="druthers-in-place-options-wrapper"
+      {!props.appendToBody && areOptionsOpen && props.overlayOptions && (
+        <DivRelative>
+          <OverlayOptionsWrapper
+            className="druthers-overlay-options-wrapper"
             {...styles}
           >
             {optionList}
-          </InPlaceOptionsWrapper>
-        )}
+          </OverlayOptionsWrapper>
+        </DivRelative>
+      )}
+
+      {!props.appendToBody && areOptionsOpen && !props.overlayOptions && (
+        <InPlaceOptionsWrapper
+          className="druthers-in-place-options-wrapper"
+          {...styles}
+        >
+          {optionList}
+        </InPlaceOptionsWrapper>
+      )}
 
       {props.appendToBody &&
-        (areOptionsOpen || props.optionsAlwaysOpen) &&
+        areOptionsOpen &&
         ReactDOM.createPortal(
           <AppendToBodyOptionsWrapper
             {...styles}

@@ -40,10 +40,10 @@ const SelectionWrapper = forwardRef(function SelectionWrapper(
       return;
     }
 
-    if (!props.areOptionsOpen) {
-      searchRef.current.focus(); // Open options
-    } else {
+    if (document.activeElement === searchRef.current) {
       searchRef.current.blur(); // Close options
+    } else {
+      searchRef.current.focus(); // Open options
     }
   };
 

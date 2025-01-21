@@ -3,6 +3,7 @@ import { Item, MassagedSelectProps } from "../utils/SelectTypes";
 
 export interface State {
   areOptionsOpen: boolean;
+  isFocused: boolean;
   searchText: string;
   optionHighlighted: string | null;
   selectionHighlighted: string | null;
@@ -71,12 +72,18 @@ function selectReducer(
 
       return newState;
     case "closeOptions":
-      if (!areOptionsOpen) return newState;
+      if (!areOptionsOpen || props.optionsAlwaysOpen) return newState;
 
       newState = mergeState(newState, { areOptionsOpen: false });
 
       newState = reducer(newState, { props, type: "clearOptionHighlighted" });
       newState = reducer(newState, { props, type: "clearSearchText" });
+
+      return newState;
+    case "setIsFocused":
+      newState = mergeState(newState, {
+        isFocused: payload ?? false,
+      });
 
       return newState;
     case "setSearchText":
