@@ -70,7 +70,7 @@ const Select = forwardRef(function Select(
   useEffect(() => {
     dispatch({ props, type: "setWidth", payload: selfRef });
     // eslint-disable-next-line
-  }, [areOptionsOpen]);
+  }, [areOptionsOpen, selfRef]);
   useEffect(() => {
     dispatch({ props, type: "selectionUpdated" });
     // eslint-disable-next-line
