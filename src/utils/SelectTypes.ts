@@ -20,6 +20,8 @@ export type AnyReactComponent =
 export interface InputStyles {
   styles_fontSize: string;
   styles_borderRadius: string;
+  styles_borderWidth: string;
+  styles_borderStyle: string;
   styles_paddingTop: string;
   styles_paddingBottom: string;
   styles_paddingLeft: string;

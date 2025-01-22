@@ -27,7 +27,9 @@ const OptionList = styled(ItemList)(
   margin: 0;
   margin-block-start: 0;
   margin-block-end: 0;
-  border: 1px solid ${props.styles_colors_secondary};
+  border-color: ${props.styles_colors_secondary};
+  border-width: ${props.styles_borderWidth};
+  border-style: ${props.styles_borderStyle};
   border-radius: ${props.styles_borderRadius};
 
   .truncate-show, .truncate-hide {

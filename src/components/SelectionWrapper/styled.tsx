@@ -4,7 +4,9 @@ import RawSelectionWrapper from "./SelectionWrapper";
 
 const SelectionWrapper = styled(RawSelectionWrapper)(
   (props) => `
-  border: 1px solid ${props.styles_colors_secondary};
+  border-color: ${props.styles_colors_secondary};
+  border-width: ${props.styles_borderWidth};
+  border-style: ${props.styles_borderStyle};
   border-radius: ${props.styles_borderRadius};
   display: flex;
   justify-content: space-between;

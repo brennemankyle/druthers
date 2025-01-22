@@ -30,8 +30,9 @@ const CheckBox = styled(SingleCheckRadio)(
     padding-bottom: ${props.styles_checkRadio_paddingBottom};
     padding-right: ${props.styles_checkRadio_paddingRight};
     padding-left: ${props.styles_checkRadio_paddingLeft};
-    border: ${props.styles_checkRadio_borderWidth} solid
-      ${props.styles_colors_secondary};
+    border-color: ${props.styles_colors_secondary};
+    border-width: ${props.styles_checkRadio_borderWidth};
+    border-style: solid;
     width: ${props.styles_icon_width};
     height: ${props.styles_icon_width};
     background-color: ${
@@ -85,8 +86,9 @@ const Radio = styled(SingleCheckRadio)(
     padding-right: ${props.styles_checkRadio_paddingRight};
     padding-left: ${props.styles_checkRadio_paddingLeft};
     background-size: 0.1em;
-    border: ${props.styles_checkRadio_borderWidth} solid
-      ${props.styles_colors_secondary};
+    border-color: ${props.styles_colors_secondary};
+    border-width: ${props.styles_checkRadio_borderWidth};
+    border-style: solid;
     width: ${props.styles_icon_width};
     height: ${props.styles_icon_width};
     background-color: ${
@@ -142,8 +144,9 @@ const Switch = styled(SingleCheckRadio)(
     padding-bottom: ${props.styles_checkRadio_paddingBottom};
     padding-right: ${props.styles_checkRadio_paddingRight};
     padding-left: ${props.styles_checkRadio_paddingLeft};
-    border: ${props.styles_checkRadio_borderWidth} solid
-      ${props.styles_colors_secondary};
+    border-color: ${props.styles_colors_secondary};
+    border-width: ${props.styles_checkRadio_borderWidth};
+    border-style: solid;
     width: calc(${props.styles_icon_width} * 2);
     height: ${props.styles_icon_width};
     background-color: ${

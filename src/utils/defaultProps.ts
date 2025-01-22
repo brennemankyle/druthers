@@ -87,6 +87,8 @@ let defaultProps: MassagedSelectProps = {
 
   styles_fontSize: "1em",
   styles_borderRadius: ".2em",
+  styles_borderWidth: "1px",
+  styles_borderStyle: "solid",
   styles_paddingTop: ".25em",
   styles_paddingBottom: ".25em",
   styles_paddingLeft: ".25em",

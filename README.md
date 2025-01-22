@@ -153,6 +153,8 @@ class SomeComponent extends React.Component {
 | **Style Props**                            |                                  |
 | styles_fontSize                            | '1em'                            |
 | styles_borderRadius                        | '.2em'                           |
+| styles_borderWidth                        | '1px'                           |
+| styles_borderStyle                        | 'solid'                           |
 | styles_paddingTop                          | '.25em'                          |
 | styles_paddingBottom                       | '.25em'                          |
 | styles_paddingLeft                         | '.25em'                          |
@@ -242,6 +244,8 @@ class SomeComponent extends React.Component {
 | **Style Props**                            |                                                                                 |
 | styles_fontSize                            | Controls the entire size of the component                                       |
 | styles_borderRadius                        | The amount of curve of the border                                               |
+| styles_borderWidth                        | The width of the border                                               |
+| styles_borderStyle                        | The border style                                             |
 | styles_paddingTop                          | The padding top                                                                 |
 | styles_paddingBottom                       | The padding bottom                                                              |
 | styles_paddingLeft                         | The padding left                                                                |
