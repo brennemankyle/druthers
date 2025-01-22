@@ -29,6 +29,10 @@ const OptionList = styled(ItemList)(
   margin-block-end: 0;
   border: 1px solid ${props.styles_colors_secondary};
   border-radius: ${props.styles_borderRadius};
+
+  .truncate-show, .truncate-hide {
+    cursor: pointer;
+  }
 `
 );
 

@@ -48,6 +48,7 @@ const Select = forwardRef(function Select(
   const [state, dispatch] = useReducer(props.selectReducer, {
     areOptionsOpen: props.optionsAlwaysOpen,
     isFocused: false,
+    showTruncated: false,
     searchText: "",
     placeholder: props.text_placeholder,
     optionHighlighted: null,
@@ -58,6 +59,7 @@ const Select = forwardRef(function Select(
   const {
     areOptionsOpen,
     isFocused,
+    showTruncated,
     searchText,
     placeholder,
     optionHighlighted,
@@ -127,7 +129,22 @@ const Select = forwardRef(function Select(
     props.onBlur(e);
   };
   let onOptionClick = (e: MouseEvent<HTMLUListElement>) => {
-    if (!targetHasValue(e)) return; // no value, do nothing
+    if (!targetHasValue(e)) {
+      if (
+        e.target &&
+        ((e.target as HTMLLIElement).classList.contains("truncate-show") ||
+          (e.target as HTMLLIElement).classList.contains("truncate-hide"))
+      ) {
+        dispatch({
+          props,
+          type: "setShowTruncated",
+          payload: (e.target as HTMLLIElement).classList.contains(
+            "truncate-show"
+          ),
+        });
+      }
+      return; // no value, do nothing
+    }
 
     selectOption(targetValue(e));
   };
@@ -247,6 +264,10 @@ const Select = forwardRef(function Select(
       noItemsText={
         props.hasOptions ? props.text_noOptions : props.text_create + "..."
       }
+      text_truncatedShow={props.text_truncatedShow}
+      text_truncatedHide={props.text_truncatedHide}
+      truncateOptions={props.truncateOptions}
+      showTruncated={showTruncated}
       {...styles}
     />
   );

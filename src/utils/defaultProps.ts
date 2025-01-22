@@ -53,11 +53,14 @@ let defaultProps: MassagedSelectProps = {
   selectableKey: (item) => item["selectable"],
   optionsKey: (item) => item["options"],
   checkRadioMaxCount: 10,
+  truncateOptions: null,
   parseTo: "string",
   massaged: false,
 
   text_placeholder: "",
   text_noOptions: "No Options",
+  text_truncatedShow: "...more",
+  text_truncatedHide: "...less",
   text_create: "Create",
 
   // component_Select: undefined, // These undefined ones are defined in Druthers, must be done there or we'd have circular imports

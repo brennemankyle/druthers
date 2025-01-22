@@ -17,6 +17,10 @@ export interface Props {
   itemList: ItemType[];
   onClick: MouseEventHandler<HTMLUListElement>;
   noItemsText: string;
+  truncateOptions?: number;
+  text_truncatedHide?: string;
+  text_truncatedShow?: string;
+  showTruncated?: boolean;
   onMouseOver: MouseEventHandler<HTMLUListElement>;
   onMouseOut: MouseEventHandler<HTMLUListElement>;
   Item: AnyReactComponent;
@@ -34,6 +38,10 @@ function ItemList({
   onMouseOut: baseOnMouseOut,
   className,
   noItemsText,
+  text_truncatedHide,
+  text_truncatedShow,
+  showTruncated,
+  truncateOptions,
   ...otherProps
 }: ListProps) {
   let styles = withKeys(otherProps, "styles_");
@@ -52,6 +60,10 @@ function ItemList({
   let onClick = hasItems ? baseOnClick : noop;
   let onMouseOver = hasItems ? baseOnMouseOver : noop;
   let onMouseOut = hasItems ? baseOnMouseOut : noop;
+  let truncatedItemsCount =
+    truncateOptions == null
+      ? 0
+      : Math.max(itemList.length - truncateOptions, 0);
 
   return (
     <ul
@@ -62,10 +74,40 @@ function ItemList({
       onMouseOver={onMouseOver}
       onMouseOut={onMouseOut}
     >
-      {itemList.map(renderItem)}
+      {itemList
+        .slice(
+          0,
+          truncateOptions == null || showTruncated
+            ? itemList.length
+            : truncateOptions
+        )
+        .map(renderItem)}
+      {hasItems && !!truncatedItemsCount && !showTruncated && (
+        <Item
+          item={{
+            label: text_truncatedShow,
+          }}
+          key="truncateItemsHidden"
+          className="truncate-show"
+          removable={false}
+          {...styles}
+        />
+      )}
+      {hasItems && !!truncatedItemsCount && showTruncated && (
+        <Item
+          item={{
+            label: text_truncatedHide,
+          }}
+          key="truncateItemsShown"
+          className="truncate-hide"
+          removable={false}
+          {...styles}
+        />
+      )}
       {!hasItems && noItemsText && (
         <Item
           item={{ value: "", label: noItemsText }}
+          key="noItems"
           removable={false}
           {...styles}
         />

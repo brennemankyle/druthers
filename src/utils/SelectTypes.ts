@@ -132,11 +132,14 @@ export interface RawSelectPropsWithoutStyles {
   displayElementKey?: KeyGetter<AnyReactComponent | ReactElement | Element>;
   selectableKey?: KeyGetter<boolean>;
   checkRadioMaxCount?: number;
+  truncateOptions?: number | null;
   parseTo?: "string" | "number" | "int" | "float" | "boolean";
   massaged?: boolean;
 
   text_placeholder?: string;
   text_noOptions?: string;
+  text_truncatedShow?: string;
+  text_truncatedHide?: string;
   text_create?: string;
 
   component_HtmlFieldData?: AnyReactComponent;

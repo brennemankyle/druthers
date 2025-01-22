@@ -255,6 +255,18 @@ storiesOf("Druthers", module)
     { info }
   )
   .add(
+    "Truncate Options",
+    () => (
+      <StoryDruthers
+        name="TruncateOptions"
+        selection={selection}
+        options={optionGroupOptions}
+        truncateOptions={5}
+      />
+    ),
+    { info }
+  )
+  .add(
     "Selectable Option Groups",
     () => (
       <StoryDruthers

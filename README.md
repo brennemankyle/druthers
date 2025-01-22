@@ -121,10 +121,13 @@ class SomeComponent extends React.Component {
 | labelKey                                   | object => object["label"]        |
 | optionsKey                                 | object => object["options"]      |
 | checkRadioMaxCount                         | 10                               |
+| truncateOptions                     | null                        |
 | parseTo                                    | string                           |
 | **Text Props**                             |                                  |
 | text_placeholder                           | ''                               |
 | text_noOptions                             | 'No Options'                     |
+| text_truncatedShow             | Show:             |
+| text_truncatedHide             | Hide:             |
 | text_create                                | 'Create'                         |
 | **Component Props**                        |                                  |
 | component_Select                           | Select                           |
@@ -207,10 +210,13 @@ class SomeComponent extends React.Component {
 | labelKey                                   | The name of the label key in an option object, can be a function or string      |
 | optionsKey                                 | The name of the child options key in an option object, function or string       |
 | checkRadioMaxCount                         | The maximum radio buttons allowed before rendering a Select instead             |
+| truncateOptions                               | The amount of options to show, the rest will be truncated                 |
 | parseTo                                    | parse value from onChange to a js type: string, number, int, float, boolean     |
 | **Text Props**                             |                                                                                 |
 | text_placeholder                           | Same as `placeholder` with a more descriptive name                              |
 | text_noOptions                             | The text shown when there are no options                                        |
+| text_truncatedShow             | The text shown when options have been truncated             |
+| text_truncatedShow             | The text shown when options have been truncated but they are shown            |
 | text_create                                | The text shown when a new selection can be created                              |
 | **Component Props**                        |                                                                                 |
 | component_Select                           | Multi/Single select component                                                   |

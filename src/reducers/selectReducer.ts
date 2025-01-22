@@ -4,6 +4,7 @@ import { Item, MassagedSelectProps } from "../utils/SelectTypes";
 export interface State {
   areOptionsOpen: boolean;
   isFocused: boolean;
+  showTruncated: boolean;
   searchText: string;
   optionHighlighted: string | null;
   selectionHighlighted: string | null;
@@ -83,6 +84,12 @@ function selectReducer(
     case "setIsFocused":
       newState = mergeState(newState, {
         isFocused: payload ?? false,
+      });
+
+      return newState;
+    case "setShowTruncated":
+      newState = mergeState(newState, {
+        showTruncated: payload ?? false,
       });
 
       return newState;
