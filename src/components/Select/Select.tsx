@@ -9,6 +9,7 @@ import React, {
   SyntheticEvent,
   KeyboardEvent,
   ChangeEvent,
+  MutableRefObject,
 } from "react";
 import styled from "@emotion/styled";
 import { MassagedSelectProps, RawSelectProps } from "../../utils/SelectTypes";
@@ -44,7 +45,7 @@ const Select = forwardRef(function Select(
   let props: MassagedSelectProps = rawProps.massaged
     ? (rawProps as unknown as MassagedSelectProps)
     : massageDataIn(rawProps, defaultProps);
-  const selfRef = useRef(null);
+  const selfRef = useRef<MutableRefObject<HTMLDivElement>>(null);
   const [state, dispatch] = useReducer(props.selectReducer, {
     areOptionsOpen: props.optionsAlwaysOpen,
     isFocused: false,
@@ -70,7 +71,7 @@ const Select = forwardRef(function Select(
   useEffect(() => {
     dispatch({ props, type: "setWidth", payload: selfRef });
     // eslint-disable-next-line
-  }, [areOptionsOpen, selfRef]);
+  }, [areOptionsOpen, (selfRef?.current as any)?.offsetWidth]);
   useEffect(() => {
     dispatch({ props, type: "selectionUpdated" });
     // eslint-disable-next-line
