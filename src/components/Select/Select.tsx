@@ -70,11 +70,17 @@ const Select = forwardRef(function Select(
   } = state;
   useEffect(() => {
     dispatch({ props, type: "setWidth", payload: selfRef });
-    // eslint-disable-next-line
-  }, [areOptionsOpen, (selfRef?.current as any)?.offsetWidth]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    areOptionsOpen,
+    selfRef,
+    selfRef?.current,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    (selfRef?.current as any)?.offsetWidth,
+  ]);
   useEffect(() => {
     dispatch({ props, type: "selectionUpdated" });
-    // eslint-disable-next-line
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.selection]);
   useUpdateSelection(props); // Update selection based on prop changes
 
