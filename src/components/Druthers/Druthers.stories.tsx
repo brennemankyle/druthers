@@ -279,7 +279,7 @@ storiesOf("Druthers", module)
     { info }
   )
   .add(
-    "Infinite Option Groups",
+    "Infinite Nested Option Groups",
     () => (
       <StoryDruthers
         name="InfiniteOptionGroupOptions"
@@ -291,7 +291,7 @@ storiesOf("Druthers", module)
     { info }
   )
   .add(
-    "React Element Labels",
+    "React Element Custom Display",
     () => (
       <StoryDruthers
         name="ReactElementLabels"

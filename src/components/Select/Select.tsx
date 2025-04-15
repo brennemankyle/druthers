@@ -136,6 +136,8 @@ const Select = forwardRef(function Select(
     props.onBlur(e);
   };
   let onOptionClick = (e: MouseEvent<HTMLUListElement>) => {
+    e.preventDefault(); // Make custom display elements like links not fire when selecting an option
+
     if (!targetHasValue(e)) {
       if (
         e.target &&
