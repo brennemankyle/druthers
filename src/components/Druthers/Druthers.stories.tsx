@@ -28,17 +28,29 @@ let displayElementOptions = [
   {
     value: "1",
     label: "Google",
-    displayElement: <a href="https://www.google.com/">Google</a>,
+    displayElement: (
+      <a target="_blank" href="https://www.google.com/">
+        Google
+      </a>
+    ),
   },
   {
     value: "2",
     label: "Bing",
-    displayElement: <a href="https://www.bing.com/">Bing</a>,
+    displayElement: (
+      <a target="_blank" href="https://www.bing.com/">
+        Bing
+      </a>
+    ),
   },
   {
     value: "3",
     label: "DuckDuckGo",
-    displayElement: <a href="https://duckduckgo.com/">DuckDuckGo</a>,
+    displayElement: (
+      <a target="_blank" href="https://duckduckgo.com/">
+        DuckDuckGo
+      </a>
+    ),
   },
 ];
 

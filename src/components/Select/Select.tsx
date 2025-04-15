@@ -152,10 +152,10 @@ const Select = forwardRef(function Select(
           ),
         });
       }
-      return; // no value, do nothing
+      // no value, do nothing
+    } else {
+      selectOption(targetValue(e));
     }
-
-    selectOption(targetValue(e));
   };
   let onRemove = (e: MouseEvent<HTMLUListElement>) => {
     if (
