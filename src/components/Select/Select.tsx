@@ -6,7 +6,6 @@ import React, {
   forwardRef,
   MouseEvent,
   FocusEvent,
-  SyntheticEvent,
   KeyboardEvent,
   ChangeEvent,
   MutableRefObject,
@@ -21,17 +20,14 @@ import callOnChange from "../../utils/callOnChange";
 import useUpdateSelection from "../../hooks/useUpdateSelection/useUpdateSelection";
 import KEY_CODE from "../../utils/KEY_CODE";
 
-function targetHasValue(e: MouseEvent<HTMLElement>): boolean {
-  return (
-    (e.target as HTMLElement).hasAttribute("value") ||
-    (e.target as HTMLElement).hasAttribute("data-val")
-  );
+function hasValue(target: HTMLElement): boolean {
+  return target.hasAttribute("value") || target.hasAttribute("data-val");
 }
 
-function targetValue(e: SyntheticEvent<HTMLElement>): string {
+function getValue(target: HTMLElement): string {
   return String(
-    (e.target as HTMLInputElement).value ||
-      (e.target as HTMLInputElement).getAttribute("data-val") ||
+    (target as HTMLInputElement).value ||
+      (target as HTMLInputElement).getAttribute("data-val") ||
       ""
   );
 }
@@ -127,7 +123,7 @@ const Select = forwardRef(function Select(
   };
   let onBlur = (e: FocusEvent<HTMLInputElement>) => {
     if (props.singleNoOptions) {
-      callOnChange(props, targetValue(e)); // Make single no options behave like text input
+      callOnChange(props, getValue(e.target as HTMLElement)); // Make single no options behave like text input
     }
 
     dispatch({ props, type: "closeOptions" });
@@ -138,49 +134,50 @@ const Select = forwardRef(function Select(
   let onOptionClick = (e: MouseEvent<HTMLUListElement>) => {
     e.preventDefault(); // Make custom display elements like links not fire when selecting an option
 
-    if (!targetHasValue(e)) {
+    const li = (e.target as HTMLElement).closest("li");
+    const target: HTMLLIElement = li || (e.target as HTMLLIElement);
+
+    if (!hasValue(target)) {
       if (
-        e.target &&
-        ((e.target as HTMLLIElement).classList.contains("truncate-show") ||
-          (e.target as HTMLLIElement).classList.contains("truncate-hide"))
+        target &&
+        (target.classList.contains("truncate-show") ||
+          target.classList.contains("truncate-hide"))
       ) {
         dispatch({
           props,
           type: "setShowTruncated",
-          payload: (e.target as HTMLLIElement).classList.contains(
-            "truncate-show"
-          ),
+          payload: target.classList.contains("truncate-show"),
         });
       }
-      // no value, do nothing
-    } else {
-      selectOption(targetValue(e));
+      return; // no value, do nothing
     }
+
+    selectOption(getValue(target));
   };
   let onRemove = (e: MouseEvent<HTMLUListElement>) => {
     if (
       (e.target as HTMLUListElement).classList.contains("remove") &&
-      targetHasValue(e)
+      hasValue(e.target as HTMLElement)
     ) {
-      removeSelectionItem(targetValue(e));
+      removeSelectionItem(getValue(e.target as HTMLElement));
     }
   };
   let onHoverOption = (e: MouseEvent<HTMLUListElement>) => {
-    if (targetHasValue(e))
+    if (hasValue(e.target as HTMLElement))
       dispatch({
         props,
         type: "setOptionHighlighted",
-        payload: targetValue(e),
+        payload: getValue(e.target as HTMLElement),
       });
   };
   let onHoverSelection = (e: MouseEvent<HTMLUListElement>) => {
     if (!(e.target as HTMLUListElement).classList.contains("remove")) return;
 
-    if (targetHasValue(e))
+    if (hasValue(e.target as HTMLElement))
       dispatch({
         props,
         type: "setSelectionHighlighted",
-        payload: targetValue(e),
+        payload: getValue(e.target as HTMLElement),
       });
   };
   let onSelectionOut = (e: MouseEvent<HTMLUListElement>) => {
@@ -330,7 +327,7 @@ const Select = forwardRef(function Select(
               dispatch({
                 props,
                 type: "setSearchText",
-                payload: targetValue(e),
+                payload: getValue(e.target as HTMLElement),
               });
             }}
             {...styles}

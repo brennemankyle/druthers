@@ -310,6 +310,7 @@ storiesOf("Druthers", module)
         selection={selection}
         options={displayElementOptions}
         checkRadioMaxCount={0}
+        optionsAlwaysOpen
       />
     ),
     { info }
