@@ -113,6 +113,9 @@ class SomeComponent extends React.Component {
 | rightToLeft                                | false                            |
 | allowDuplicates                            | true                             |
 | alwaysReturnArray                          | false                            |
+| optionsAlwaysOpen                          | false                            |
+| overlayOptions                          | true                            |
+| searchable                          | true                            |
 | preventDisplayElementOptionClick | false                      |
 | filterOptions                              | filterOptions                    |
 | massageDataIn                              | massageDataIn                    |
@@ -120,6 +123,8 @@ class SomeComponent extends React.Component {
 | selectReducer                              | selectReducer                    |
 | valueKey                                   | object => object["value"]        |
 | labelKey                                   | object => object["label"]        |
+| displayElementKey                                 | (item) => item["displayElement"]      |
+| selectableKey                                 |  (item) => item["selectable"]      |
 | optionsKey                                 | object => object["options"]      |
 | checkRadioMaxCount                         | 10                               |
 | truncateOptions                     | null                        |
@@ -205,6 +210,9 @@ class SomeComponent extends React.Component {
 | rightToLeft                                | Whether to show text from right to left instead                                 |
 | allowDuplicates                            | Whether duplicate selection items are allowed                                   |
 | alwaysReturnArray                          | Always return an array from onChange, instead of only when multiple             |
+| optionsAlwaysOpen                          | Sets whether the option list is always open                            |
+| overlayOptions                          | Overlay the options on top of other elements. Usually used in conjunction with optionsAlwaysOpen to have the list always open and displayed inline in a list                             |
+| searchable                          | Whether the options are searchable                            |
 | preventDisplayElementOptionClick | Prevent child display element from doing it's default click                      |
 | filterOptions                              | The function which filters options based on search text                         |
 | massageDataIn                              | The function that massages the props coming in                                  |
@@ -212,6 +220,8 @@ class SomeComponent extends React.Component {
 | selectReducer                              | The function/reducer that controls the state of the Select component            |
 | valueKey                                   | The name of the value key in an option object, can be a function or string      |
 | labelKey                                   | The name of the label key in an option object, can be a function or string      |
+| displayElementKey                                 | The name of the element to display, if there is one     |
+| selectableKey                                 |  The key for if an option is selectable      |
 | optionsKey                                 | The name of the child options key in an option object, function or string       |
 | checkRadioMaxCount                         | The maximum radio buttons allowed before rendering a Select instead             |
 | truncateOptions                               | The amount of options to show, the rest will be truncated                 |
