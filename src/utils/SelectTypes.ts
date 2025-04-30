@@ -124,6 +124,7 @@ export interface RawSelectPropsWithoutStyles {
   optionsAlwaysOpen?: boolean;
   overlayOptions?: boolean;
   searchable?: boolean;
+  preventDisplayElementOptionClick?: boolean;
   filterOptions?: FilterOptions;
   massageDataIn?: MassageDataIn;
   massageDataOut?: MassageDataOut;

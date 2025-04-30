@@ -113,6 +113,7 @@ class SomeComponent extends React.Component {
 | rightToLeft                                | false                            |
 | allowDuplicates                            | true                             |
 | alwaysReturnArray                          | false                            |
+| preventDisplayElementOptionClick | false                      |
 | filterOptions                              | filterOptions                    |
 | massageDataIn                              | massageDataIn                    |
 | massageDataOut                             | massageDataOut                   |
@@ -204,6 +205,7 @@ class SomeComponent extends React.Component {
 | rightToLeft                                | Whether to show text from right to left instead                                 |
 | allowDuplicates                            | Whether duplicate selection items are allowed                                   |
 | alwaysReturnArray                          | Always return an array from onChange, instead of only when multiple             |
+| preventDisplayElementOptionClick | Prevent child display element from doing it's default click                      |
 | filterOptions                              | The function which filters options based on search text                         |
 | massageDataIn                              | The function that massages the props coming in                                  |
 | massageDataOut                             | The function massaging the selection returned from the onChange event           |
