@@ -1,7 +1,7 @@
 {
   "name": "druthers",
   "homepage": "https://brennemankyle.github.io/druthers/",
-  "version": "3.1.34",
+  "version": "3.1.35",
   "description": "React Multi-Select with automatic checkboxes/radios",
   "main": "dist/index.js",
   "private": false,
