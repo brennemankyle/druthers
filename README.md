@@ -181,7 +181,7 @@ class SomeComponent extends React.Component {
 | styles_checkRadio_paddingBottom            | '.2em'                           |
 | styles_checkRadio_paddingLeft              | '.2em'                           |
 | styles_checkRadio_paddingRight             | '.2em'                           |
-| styles_search_size                         | 5                                |
+| styles_search_size                         | 13                                |
 | styles_icon_width                          | '1em'                            |
 | styles_colors_primary                      | 'black'                          |
 | styles_colors_secondary                    | '#C3C3C3'                        |
