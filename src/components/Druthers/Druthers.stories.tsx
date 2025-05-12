@@ -11,6 +11,32 @@ let options = [
   { value: "5", label: "Apple" },
 ];
 
+let manyOptions = [
+  { value: "1", label: "Banana" },
+  { value: "2", label: "Orange" },
+  { value: "3", label: "Grape" },
+  { value: "4", label: "GrapeFruit" },
+  { value: "5", label: "Apple" },
+  { value: "6", label: "Pear" },
+  { value: "7", label: "Pineapple" },
+  { value: "8", label: "Mango" },
+  { value: "9", label: "Kiwi" },
+  { value: "10", label: "Strawberry" },
+  { value: "11", label: "Cherry" },
+  { value: "12", label: "Blueberry" },
+  { value: "13", label: "Raspberry" },
+  { value: "14", label: "Watermelon" },
+  { value: "15", label: "Papaya" },
+  { value: "16", label: "Raspberry" },
+  { value: "17", label: "Tomato" },
+  { value: "18", label: "Durian" },
+  { value: "19", label: "Apricot" },
+  { value: "20", label: "Pomegranate" },
+  { value: "21", label: "Crabapple" },
+  { value: "22", label: "Dragonfruit" },
+  { value: "23", label: "Soursop" },
+];
+
 let duplicateOptions = [
   { value: "1", label: "Option 1" },
   { value: "1", label: "Option 1" },
@@ -274,6 +300,19 @@ storiesOf("Druthers", module)
         selection={selection}
         options={optionGroupOptions}
         truncateOptions={5}
+      />
+    ),
+    { info }
+  )
+  .add(
+    "Scroll",
+    () => (
+      <StoryDruthers
+        name="Scroll"
+        className="Scroll"
+        selection={selection}
+        options={manyOptions}
+        checkRadioMaxCount={0}
       />
     ),
     { info }
