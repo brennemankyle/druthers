@@ -9,19 +9,19 @@ export const Wrapper = styled(RawWrapper)(
 `
 );
 
-export const createRawOptionsWrapper = (
+export const createBaseOptionsWrapper = (
   component: StyledComponent<any> | ForwardRefExoticComponent<any>
 ) => {
   return styled(component)(
     (props) => `
-    height: ${props.styles_optionsWrapper_height};
+    max-height: ${props.styles_optionsWrapper_maxHeight};
     overflow-y: ${props.styles_optionsWrapper_overflowY};
   `
   );
 };
-const RawOptionsWrapper = createRawOptionsWrapper(RawWrapper);
+const BaseOptionsWrapper = createBaseOptionsWrapper(RawWrapper);
 
-export const OverlayOptionsWrapper = styled(RawOptionsWrapper)(
+export const OverlayOptionsWrapper = styled(BaseOptionsWrapper)(
   (props) => `
   position: absolute;
   top: 0;
@@ -33,7 +33,7 @@ export const OverlayOptionsWrapper = styled(RawOptionsWrapper)(
 `
 );
 
-export const InPlaceOptionsWrapper = styled(RawOptionsWrapper)`
+export const InPlaceOptionsWrapper = styled(BaseOptionsWrapper)`
   background-color: ${(props) => props.styles_colors_background};
   width: ${(props) => props.styles_width}px;
 `;

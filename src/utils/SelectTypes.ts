@@ -26,7 +26,7 @@ export interface InputStyles {
   styles_paddingBottom: string;
   styles_paddingLeft: string;
   styles_paddingRight: string;
-  styles_optionsWrapper_height: string;
+  styles_optionsWrapper_maxHeight: string;
   styles_optionsWrapper_overflowY: string;
   styles_selection_paddingTop: string;
   styles_selection_paddingBottom: string;

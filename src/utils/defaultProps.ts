@@ -94,7 +94,7 @@ let defaultProps: MassagedSelectProps = {
   styles_paddingBottom: ".25em",
   styles_paddingLeft: ".25em",
   styles_paddingRight: ".25em",
-  styles_optionsWrapper_height: "500px",
+  styles_optionsWrapper_maxHeight: "500px",
   styles_optionsWrapper_overflowY: "auto",
   styles_selection_paddingTop: ".2em",
   styles_selection_paddingBottom: ".2em",

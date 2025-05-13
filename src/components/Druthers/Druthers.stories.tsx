@@ -351,6 +351,7 @@ storiesOf("Druthers", module)
         options={displayElementOptions}
         checkRadioMaxCount={0}
         optionsAlwaysOpen
+        overlayOptions={false}
       />
     ),
     { info }

@@ -165,6 +165,8 @@ class SomeComponent extends React.Component {
 | styles_paddingBottom                       | '.25em'                          |
 | styles_paddingLeft                         | '.25em'                          |
 | styles_paddingRight                        | '.25em'                          |
+| styles_optionsWrapper_maxHeight                        | '500px'                          |
+| styles_optionsWrapper_overflowY                        | 'auto'                          |
 | styles_selection_paddingTop                | '.2em'                           |
 | styles_selection_paddingBottom             | '.2em'                           |
 | styles_selection_paddingLeft               | '.4em'                           |
@@ -262,6 +264,8 @@ class SomeComponent extends React.Component {
 | styles_paddingBottom                       | The padding bottom                                                              |
 | styles_paddingLeft                         | The padding left                                                                |
 | styles_paddingRight                        | The padding right                                                               |
+| styles_optionsWrapper_maxHeight                        | The max height of the option list                                                               |
+| styles_optionsWrapper_overflowY                        | The overflow Y value like auto for scrolling                                                               |
 | styles_selection_paddingTop                | The selection's padding top                                                     |
 | styles_selection_paddingBottom             | The selection's padding bottom                                                  |
 | styles_selection_paddingLeft               | The selection's padding left                                                    |
