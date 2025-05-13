@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "@emotion/styled";
+import React, { ForwardRefExoticComponent } from "react";
+import styled, { StyledComponent } from "@emotion/styled";
 import RawWrapper from "./Wrapper";
 
 export const Wrapper = styled(RawWrapper)(
@@ -9,7 +9,19 @@ export const Wrapper = styled(RawWrapper)(
 `
 );
 
-export const OverlayOptionsWrapper = styled(RawWrapper)(
+export const createRawOptionsWrapper = (
+  component: StyledComponent<any> | ForwardRefExoticComponent<any>
+) => {
+  return styled(component)(
+    (props) => `
+    height: ${props.styles_optionsWrapper_height};
+    overflow-y: ${props.styles_optionsWrapper_overflowY};
+  `
+  );
+};
+const RawOptionsWrapper = createRawOptionsWrapper(RawWrapper);
+
+export const OverlayOptionsWrapper = styled(RawOptionsWrapper)(
   (props) => `
   position: absolute;
   top: 0;
@@ -21,7 +33,7 @@ export const OverlayOptionsWrapper = styled(RawWrapper)(
 `
 );
 
-export const InPlaceOptionsWrapper = styled(Wrapper)`
+export const InPlaceOptionsWrapper = styled(RawOptionsWrapper)`
   background-color: ${(props) => props.styles_colors_background};
   width: ${(props) => props.styles_width}px;
 `;

@@ -5,10 +5,13 @@ import {
   StyledAppendToBodyOptionsWrapperProps,
 } from "./AppendToBodyOptionsWrapper";
 import { Styles } from "../../utils/SelectTypes";
+import { createRawOptionsWrapper } from "../Wrapper/styled";
 
-const StyledAppendToBodyOptionsWrapper = styled(
+const RawOptionsWrapper = createRawOptionsWrapper(
   RawStyledAppendToBodyOptionsWrapper
-)(
+);
+
+const StyledAppendToBodyOptionsWrapper = styled(RawOptionsWrapper)(
   (props: Styles & StyledAppendToBodyOptionsWrapperProps) => `
   position: absolute;
   background-color: ${props.styles_colors_background};

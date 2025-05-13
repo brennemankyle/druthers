@@ -310,6 +310,7 @@ storiesOf("Druthers", module)
       <StoryDruthers
         name="Scroll"
         className="Scroll"
+        optionsAlwaysOpen
         selection={selection}
         options={manyOptions}
         checkRadioMaxCount={0}
