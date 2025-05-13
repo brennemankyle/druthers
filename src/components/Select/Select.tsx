@@ -337,10 +337,13 @@ const Select = forwardRef(function Select(
         }
       />
 
-      {!props.appendToBody && areOptionsOpen && props.overlayOptions && (
-        <DivRelative>
+      {!props.appendToBody && props.overlayOptions && (
+        <DivRelative key="overlay-options-wrapper">
           <OverlayOptionsWrapper
-            className="druthers-overlay-options-wrapper"
+            className="options-wrapper druthers-overlay-options-wrapper"
+            styles={{
+              display: areOptionsOpen ? "initial" : "none",
+            }}
             {...styles}
           >
             {optionList}
@@ -348,9 +351,13 @@ const Select = forwardRef(function Select(
         </DivRelative>
       )}
 
-      {!props.appendToBody && areOptionsOpen && !props.overlayOptions && (
+      {!props.appendToBody && !props.overlayOptions && (
         <InPlaceOptionsWrapper
-          className="druthers-in-place-options-wrapper"
+          key="in-place-options-wrapper"
+          className="options-wrapper druthers-in-place-options-wrapper"
+          styles={{
+            display: areOptionsOpen ? "initial" : "none",
+          }}
           {...styles}
         >
           {optionList}
@@ -358,11 +365,14 @@ const Select = forwardRef(function Select(
       )}
 
       {props.appendToBody &&
-        areOptionsOpen &&
         ReactDOM.createPortal(
           <AppendToBodyOptionsWrapper
+            key="append-to-body-options-wrapper"
             {...styles}
-            className="druthers-append-to-body-options-wrapper"
+            styles={{
+              display: areOptionsOpen ? "initial" : "none",
+            }}
+            className="options-wrapper druthers-append-to-body-options-wrapper"
             parentRef={selfRef}
             filteredOptions={filteredOptions}
             StyledAppendToBodyOptionsWrapper={StyledAppendToBodyOptionsWrapper}
