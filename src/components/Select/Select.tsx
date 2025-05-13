@@ -338,8 +338,9 @@ const Select = forwardRef(function Select(
       />
 
       {!props.appendToBody && props.overlayOptions && (
-        <DivRelative key="overlay-options-wrapper">
+        <DivRelative key="relative-container-overlay-options-wrapper">
           <OverlayOptionsWrapper
+            key="overlay-options-wrapper"
             className="options-wrapper druthers-overlay-options-wrapper"
             styles={{
               display: areOptionsOpen ? "initial" : "none",
