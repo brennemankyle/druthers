@@ -1,4 +1,4 @@
-import React, { ForwardRefExoticComponent } from "react";
+import { ForwardRefExoticComponent } from "react";
 import styled, { StyledComponent } from "@emotion/styled";
 import RawWrapper from "./Wrapper";
 
@@ -14,8 +14,11 @@ export const createBaseOptionsWrapper = (
 ) => {
   return styled(component)(
     (props) => `
-    max-height: ${props.styles_optionsWrapper_maxHeight};
-    overflow-y: ${props.styles_optionsWrapper_overflowY};
+        max-height: ${props.styles_optionsWrapper_maxHeight};
+        overflow-y: ${props.styles_optionsWrapper_overflowY as any};
+        width: ${props.styles_width}px;
+        height: ${props.styles_optionsWrapper_maxHeight};
+        overflow-x: hidden;
   `
   );
 };
@@ -28,12 +31,10 @@ export const OverlayOptionsWrapper = styled(BaseOptionsWrapper)(
   left: 0;
   z-index: 999;
   background-color: ${props.styles_colors_background};
-  width: ${props.styles_width}px;
   ${!props.styles_hasOptions && !props.styles_multiple ? `display: none;` : ``}
 `
 );
 
 export const InPlaceOptionsWrapper = styled(BaseOptionsWrapper)`
   background-color: ${(props) => props.styles_colors_background};
-  width: ${(props) => props.styles_width}px;
 `;

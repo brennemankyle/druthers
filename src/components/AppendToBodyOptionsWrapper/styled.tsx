@@ -15,7 +15,6 @@ const StyledAppendToBodyOptionsWrapper = styled(BaseOptionsWrapper)(
   (props: Styles & StyledAppendToBodyOptionsWrapperProps) => `
   position: absolute;
   background-color: ${props.styles_colors_background};
-  width: ${props.styles_width}px;
 
   ${
     props.placeOptionsAbove

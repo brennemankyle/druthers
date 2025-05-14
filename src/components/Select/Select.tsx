@@ -19,6 +19,13 @@ import { withKeys, noop } from "../../utils/utils";
 import callOnChange from "../../utils/callOnChange";
 import useUpdateSelection from "../../hooks/useUpdateSelection/useUpdateSelection";
 import KEY_CODE from "../../utils/KEY_CODE";
+import { createBaseOptionsWrapper } from "../Wrapper/styled";
+
+const DivRelative = styled.div`
+  position: relative;
+`;
+
+const OverlayContainer = createBaseOptionsWrapper(DivRelative);
 
 function hasValue(target: HTMLElement): boolean {
   return target.hasAttribute("value") || target.hasAttribute("data-val");
@@ -80,18 +87,22 @@ const Select = forwardRef(function Select(
   }, [props.selection]);
   useUpdateSelection(props); // Update selection based on prop changes
 
-  let styles = {
+  const stylesWithoutHighlightedOptions = {
     ...withKeys(props, "styles_"),
     styles_width: width,
     styles_multiple: props.multiple,
     styles_disabled: props.disabled,
     styles_hasSelection: props.hasSelection,
     styles_hasOptions: props.hasOptions,
-    styles_optionHighlighted: optionHighlighted,
     styles_selectionHighlighted: selectionHighlighted,
     styles_rightToLeft: props.rightToLeft,
     styles_optionsAlwaysOpen: props.optionsAlwaysOpen,
     styles_searchable: props.searchable,
+  };
+
+  const styles = {
+    ...stylesWithoutHighlightedOptions,
+    styles_optionHighlighted: optionHighlighted,
   };
 
   if (!props.hasOptions && !props.creatable) {
@@ -280,10 +291,6 @@ const Select = forwardRef(function Select(
     />
   );
 
-  const DivRelative = styled.div`
-    position: relative;
-  `;
-
   if (!props.hasOptions && !props.creatable) {
     return <></>;
   }
@@ -338,18 +345,21 @@ const Select = forwardRef(function Select(
       />
 
       {!props.appendToBody && props.overlayOptions && (
-        <DivRelative key="relative-container-overlay-options-wrapper">
+        <OverlayContainer
+          key="overlay-options-wrapper"
+          {...stylesWithoutHighlightedOptions}
+        >
           <OverlayOptionsWrapper
             key="overlay-options-wrapper"
             className="options-wrapper druthers-overlay-options-wrapper"
             styles={{
               display: areOptionsOpen ? "initial" : "none",
             }}
-            {...styles}
+            {...stylesWithoutHighlightedOptions}
           >
             {optionList}
           </OverlayOptionsWrapper>
-        </DivRelative>
+        </OverlayContainer>
       )}
 
       {!props.appendToBody && !props.overlayOptions && (
@@ -359,7 +369,7 @@ const Select = forwardRef(function Select(
           styles={{
             display: areOptionsOpen ? "initial" : "none",
           }}
-          {...styles}
+          {...stylesWithoutHighlightedOptions}
         >
           {optionList}
         </InPlaceOptionsWrapper>
@@ -369,7 +379,7 @@ const Select = forwardRef(function Select(
         ReactDOM.createPortal(
           <AppendToBodyOptionsWrapper
             key="append-to-body-options-wrapper"
-            {...styles}
+            {...stylesWithoutHighlightedOptions}
             styles={{
               display: areOptionsOpen ? "initial" : "none",
             }}
