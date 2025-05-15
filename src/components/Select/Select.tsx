@@ -19,13 +19,14 @@ import { withKeys, noop } from "../../utils/utils";
 import callOnChange from "../../utils/callOnChange";
 import useUpdateSelection from "../../hooks/useUpdateSelection/useUpdateSelection";
 import KEY_CODE from "../../utils/KEY_CODE";
-import { createBaseOptionsWrapper } from "../Wrapper/styled";
 
-const DivRelative = styled.div`
+const OverlayContainer = styled.div(
+  (props: any) => `
   position: relative;
-`;
-
-const OverlayContainer = createBaseOptionsWrapper(DivRelative);
+  max-height: ${props.styles_optionsWrapper_maxHeight};
+  width: ${props.styles_width}px;
+`
+);
 
 function hasValue(target: HTMLElement): boolean {
   return target.hasAttribute("value") || target.hasAttribute("data-val");

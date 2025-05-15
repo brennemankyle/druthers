@@ -17,7 +17,6 @@ export const createBaseOptionsWrapper = (
         max-height: ${props.styles_optionsWrapper_maxHeight};
         overflow-y: ${props.styles_optionsWrapper_overflowY as any};
         width: ${props.styles_width}px;
-        height: ${props.styles_optionsWrapper_maxHeight};
         overflow-x: hidden;
   `
   );
