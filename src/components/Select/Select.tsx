@@ -346,12 +346,8 @@ const Select = forwardRef(function Select(
       />
 
       {!props.appendToBody && props.overlayOptions && areOptionsOpen && (
-        <OverlayContainer
-          key="overlay-options-wrapper"
-          {...stylesWithoutHighlightedOptions}
-        >
+        <OverlayContainer {...stylesWithoutHighlightedOptions}>
           <OverlayOptionsWrapper
-            key="overlay-options-wrapper"
             className="options-wrapper druthers-overlay-options-wrapper"
             {...stylesWithoutHighlightedOptions}
           >
@@ -362,7 +358,6 @@ const Select = forwardRef(function Select(
 
       {!props.appendToBody && !props.overlayOptions && areOptionsOpen && (
         <InPlaceOptionsWrapper
-          key="in-place-options-wrapper"
           className="options-wrapper druthers-in-place-options-wrapper"
           {...stylesWithoutHighlightedOptions}
         >
@@ -374,7 +369,6 @@ const Select = forwardRef(function Select(
         areOptionsOpen &&
         ReactDOM.createPortal(
           <AppendToBodyOptionsWrapper
-            key="append-to-body-options-wrapper"
             {...stylesWithoutHighlightedOptions}
             className="options-wrapper druthers-append-to-body-options-wrapper"
             parentRef={selfRef}
