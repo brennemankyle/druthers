@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import callOnChange from "../../utils/callOnChange";
 import { Item, MassagedSelectProps } from "../../utils/SelectTypes";
-import { inspect } from "util";
+import inspect from "browser-util-inspect";
 
 function allBooleanValues(options: Item[]): boolean {
   return options.every((option) => ["false", "true"].includes(option.value));

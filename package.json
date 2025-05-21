@@ -1,16 +1,16 @@
 {
   "name": "druthers",
   "homepage": "https://brennemankyle.github.io/druthers/",
-  "version": "3.1.41",
+  "version": "3.1.43",
   "description": "React Multi-Select with automatic checkboxes/radios",
   "main": "dist/index.js",
   "private": false,
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "browser-util-inspect": "^0.2.0",
     "debounce": "^1.2.1",
-    "fuzzyset": "^1.0.7",
-    "util-inspect": "^0.1.8"
+    "fuzzyset": "^1.0.7"
   },
   "peerDependencies": {
     "react": "^18.0.2",
@@ -79,6 +79,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@types/browser-util-inspect": "^0.2.4",
     "@types/fuzzyset": "^1.0.4",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.12",
