@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import callOnChange from "../../utils/callOnChange";
 import { Item, MassagedSelectProps } from "../../utils/SelectTypes";
+import { inspect } from "util";
 
 function allBooleanValues(options: Item[]): boolean {
   return options.every((option) => ["false", "true"].includes(option.value));
@@ -69,7 +70,12 @@ function useUpdateSelection(
         "replace"
       );
     }
-  }, [props.allowDuplicates, props.multiple, props.creatable, JSON.stringify(props.options)]);
+  }, [
+    props.allowDuplicates,
+    props.multiple,
+    props.creatable,
+    JSON.stringify(inspect(props.options)),
+  ]);
 
   useEffect(() => {
     callOnChange(
