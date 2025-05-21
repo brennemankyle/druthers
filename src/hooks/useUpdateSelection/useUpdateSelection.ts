@@ -69,7 +69,7 @@ function useUpdateSelection(
         "replace"
       );
     }
-  }, [props.allowDuplicates, props.multiple, props.creatable, props.options]);
+  }, [props.allowDuplicates, props.multiple, props.creatable, JSON.stringify(props.options)]);
 
   useEffect(() => {
     callOnChange(
