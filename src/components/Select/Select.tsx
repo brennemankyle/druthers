@@ -113,7 +113,12 @@ const Select = forwardRef(function Select(
   }
 
   let selectOption = (option: string) => {
-    if (!props.multiple && document.activeElement) {
+    if (
+      !props.multiple &&
+      selfRef.current &&
+      document.activeElement ===
+        (selfRef.current as any).querySelector("input.druthers-search")
+    ) {
       (document.activeElement as HTMLDivElement).blur(); // Close options on single select
     }
 
