@@ -9,6 +9,7 @@ import React, {
   KeyboardEvent,
   ChangeEvent,
   MutableRefObject,
+  RefObject,
 } from "react";
 import styled from "@emotion/styled";
 import { MassagedSelectProps, RawSelectProps } from "../../utils/SelectTypes";
@@ -113,7 +114,12 @@ const Select = forwardRef(function Select(
   }
 
   let selectOption = (option: string) => {
-    if (!props.multiple && document.activeElement) {
+    if (
+      !props.multiple &&
+      selfRef.current &&
+      document.activeElement ===
+        (selfRef.current as any).querySelector("input.druthers-search")
+    ) {
       (document.activeElement as HTMLDivElement).blur(); // Close options on single select
     }
 
