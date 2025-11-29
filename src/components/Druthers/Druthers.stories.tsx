@@ -373,14 +373,20 @@ storiesOf("Druthers", module)
   .add(
     "Append to body",
     () => (
-      <StoryDruthers
-        name="AppendToBody"
-        selection={selection}
-        options={options}
-        creatable
-        multiple
-        appendToBody
-      />
+      <>
+        <StoryDruthers
+          name="AppendToBody"
+          selection={selection}
+          options={options}
+          creatable
+          multiple
+          appendToBody
+        />
+        <div>
+          this is extra stuff to make sure the append to body works and goes
+          over this element
+        </div>
+      </>
     ),
     { info }
   )

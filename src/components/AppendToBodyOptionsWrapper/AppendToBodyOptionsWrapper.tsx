@@ -44,7 +44,7 @@ export interface Props {
   parentRef: null;
   filteredOptions: Item[];
   updateOn: string[];
-  StyledWrapper: ForwardRefExoticComponent<
+  StyledAppendToBodyOptionsWrapper: ForwardRefExoticComponent<
     StyledAppendToBodyOptionsWrapperProps & RefAttributes<HTMLDivElement>
   >;
 }
@@ -57,7 +57,7 @@ function AppendToBodyOptionsWrapper({
   parentRef,
   filteredOptions,
   updateOn = [],
-  StyledWrapper = StyledAppendToBodyOptionsWrapper,
+  StyledAppendToBodyOptionsWrapper: StyledWrapper,
   ...otherProps
 }: AppendToBodyOptionsWrapperProps) {
   const ref = useRef(null);
